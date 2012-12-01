@@ -66,18 +66,31 @@ Durch das Wechseln von Zuständen und das Speichern von Zeichen auf dem Band kö
 %
 Gegeben sei eine Turingmaschine. Auf dem Band befindet sich eine beliebige Sequenz von 0en und 1en, die nicht durch ein Blanksymbol unterbrochen wird. Gesucht ist ein Algorithmus, welcher das Band mit Blanksymbolen überschreibt und genau so viele Einsen nebeneinander angeordnet schreiben soll, wie im String anfangs enthalten waren. Als Beispiel soll der Eingabestring ,,00101101`` zur Ausgabe ,,1111`` führen. Ebenso soll ,,10`` zu ,,1`` führen. Es ist nicht spezifiziert, wo der Ausgabestring am Band stehen muss. Die Übergangstabelle~\ref{tab:simple_tm_algo} implementiert diese Lösung. Der Initialzustand sei ,,S`` und der Cursor sei auf dem linkesten Zeichen positioniert, welches kein Blanksymbol ist.
 %
-(TODO Missing)
-%\begin{table}
-% \begin{center}
-%  \begin{tabular}{cl}
-%   \hline
-%    Zustand & Lesen & Schreiben & Bewegung & neuer Zustand \\
-%   \hline \hline
-%    S       & 0     & $\square$ & R        & 
-%   \hline
-%  \end{tabular}
-% \end{center}
-%\end{table}
+\begin{table}
+ \begin{center}
+  \begin{tabular}{cllll}
+   \hline
+    Zustand & Lesen     & Schreiben & Bewegung & neuer Zustand \\
+   \hline \hline
+    Start   & 0         & $\square$ & Rechts   & Start \\
+    Start   & 1         & $\square$ & Rechts   & Read1 \\
+    Start   & $\square$ & $\square$ & Rechts   & End \\
+    Start   & $\square$ & $\square$ & Rechts   & End \\
+    Read1   & 0         & 0         & Rechts   & Read1 \\
+    Read1   & 1         & 1         & Rechts   & Read1 \\
+    Read1   & $\square$ & !         & Rechts   & Write1 \\
+    Read1   & !         & !         & Rechts   & Write1 \\
+    Write1  & 0         & 0         & Rechts   & Write1 \\
+    Write1  & 1         & 1         & Rechts   & Write1 \\
+    Write1  & $\square$ & 1         & Links    & GoBack \\
+    GoBack  & 0         & 0         & Links    & GoBack \\
+    GoBack  & 1         & 1         & Links    & GoBack \\
+    GoBack  & $\square$ & $\square$ & Rechts   & Start \\
+    GoBack  & !         & !         & Links    & GoBack \\
+   \hline
+  \end{tabular}
+ \end{center}
+\end{table}
 %
 \section{Halteproblem}
 \index{Halteproblem}
