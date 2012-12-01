@@ -1,0 +1,425 @@
+\chapter{Aussagenlogik}
+\index{Aussagenlogik}
+\label{sec:propositional_logic}
+\newcommand{\BOOL}{\text{BOOL}}
+\newcommand{\T}{1}
+\newcommand{\F}{0}
+\newcommand{\f}{f_\arabic{bfunc}}
+\newcounter{bfunc}
+%
+%   TODO. bfunc sucks. f\_0 is base function but KNF should be f\_1.
+%         \stepcounter{bfunc}
+%   TODO: More axiomatic structure.
+%
+Die Aussagenlogik stellt die Basis jeder Form von Logik dar, wie sie in der Informatik, Mathematik, Philosophie und weiteren Wissenschaften zur Anwendung kommt. Im folgenden Kapitel werden die Grundbegriffe und Grundkonzepte beschrieben mit denen die Aussagenlogik formalisiert wird. \\
+In den Lehrveranstaltungen \coursedm{} und \courselc{} wird die Aussagenlogik tiefgehender behandelt und als Basis für weitere Logikformen wie der Prädikatenlogik verwendet. Die first-order logic (FOL) findet in der Praxis Verwendung.
+
+\index{Aussage (Logik)}
+\index{Literal}
+Eine Aussage ist ein aussagenlogischer Ausdruck, der wahr oder falsch ist. Diese Ausdrücke lassen sich beliebig verketten, sodass wie in der Arithmetik endlich lange Ausdrücke entstehen. Verkettete Aussagen kommen durch die Verknüpfung von Aussagen mithilfe von Operatoren zustande\footnote{Aussagenlogische Ausdrücke sind somit rekursive Strukturen}. Eine Aussage kann aber auch ein Wahrheitswert (wahr oder falsch) oder eine Variable (Literal, frei zuweisbarer Wert) sein. Weitere Notation für die Werte wahr und falsch sind $\set{1, 0}$, $\set{W, F}$ (deutsch), $\set{T, F}$ (Englisch) oder $\set{\top, \bot}$. In diesem Dokument wird primär $\T$ und $\F$ verwendet.
+
+\section{Wahrheitstabellen und Verknüpfungen}
+\index{Oder-Verknüpfung}
+\index{Und-Verknüpfung}
+\index{Negation}
+%
+\begin{table}[p]
+ \begin{center}
+  \begin{tabular}{cc|c}
+   \hline
+    $A$ & $B$ & $A \lor B$ \\
+   \hline \hline
+    \F  & \F  & \F \\
+    \F  & \T  & \T \\
+    \T  & \F  & \T \\
+    \T  & \T  & \T \\
+  \end{tabular}
+  \caption{Wahrheitstabelle einer Oder-Verknüpfung}
+  \label{fig:or_operator}
+ \end{center}
+\end{table}
+\begin{table}[p]
+ \begin{center}
+  \begin{tabular}{cc|c}
+   \hline
+    $A$ & $B$ & $A \land B$ \\
+   \hline \hline
+    \F  & \F  & \F \\
+    \F  & \T  & \F \\
+    \T  & \F  & \F \\
+    \T  & \T  & \T \\
+  \end{tabular}
+  \caption{Wahrheitstabelle einer Und-Verknüpfung}
+  \label{fig:and_operator}
+ \end{center}
+\end{table}
+\begin{table}[p]
+ \begin{center}
+  \begin{tabular}{c|c}
+   \hline
+    $A$ & $\neg A$ \\
+   \hline \hline
+    \F   & \T \\
+    \T   & \F \\
+  \end{tabular}
+  \caption{Wahrheitstabelle einer Nicht-Verknüpfung}
+  \label{fig:neg_operator}
+ \end{center}
+\end{table}
+%
+Es gibt 3 Grundverknüpfungen auf die aussagenlogische Ausdrücke oft reduziert werden: Das \emph{Oder} ($\lor$, ,,Disjunktion``) wird wahr (Tabelle~\ref{fig:or_operator}), wenn einer oder beide Argumente wahr sind. Das Und ($\land$, ,,Konjunktion``) wird wahr (Tabelle~\ref{fig:and_operator}), wenn beide Argumente einzeln wahr sind. Die Negation ($\neg$) ist eine unäre Operation (dh. sie bezieht sich nur auf 1 Argument) und gibt statt einem wahr falsch zurück und vice versa (Tabelle~\ref{fig:neg_operator}).
+
+\index{Wahrheitstabelle}
+Die Tabellen stellen Wahrheitstabellen dar; Tabellen, die die einzelnen Variablenbelegungen angeben sowie das Ergebnis (und eventuell auch Teilergebnis) des aussagelogischen Ausdrucks. Mit diesen drei Operatoren lassen sich alle aussagenlogische Ausdrücke formulieren (dh. jede beliebige Kombination von Wahrheitswerten in einer Wahrheitstabelle).
+
+Zwei aussagenlogische Ausdrücke sind äquivalent, wenn deren Wahrheitstabellen äquivalent sind.
+%
+\section{Weitere Operatoren}
+%
+\subsection{Exklusives Oder (XOR)}
+\index{Exklusives Oder}
+\index{XOR}
+%
+\begin{table}[h]
+ \begin{center}
+  \begin{tabular}{cc|c}
+   \hline
+    $A$ & $B$ & $A \oplus{} B$ \\
+   \hline \hline
+    \F  & \F  & \F \\
+    \F  & \T  & \T \\
+    \T  & \F  & \T \\
+    \T  & \T  & \F \\
+  \end{tabular}
+  \caption{Wahrheitstabelle einer XOR-Verknüpfung}
+  \label{fig:xor_operator}
+ \end{center}
+\end{table}
+%
+XOR ($\oplus$, exklusives Oder, Kontravalenz, Abb.~\ref{fig:xor_operator}) ist genau dann wahr, wenn nur genau einer der Werte wahr ist.
+\[
+  A \oplus B \spacewrap\lequal (A \lor B) \land (\neg A \lor \neg B)
+\]
+
+Das Besondere an XOR ist seine Bijektivität. Durch zweifache Anwendung des XORs mit einem Schlüssel, wird der selbe Wert wieder retourniert. Deshalb kommt XOR etwa in der Kryptographie sehr oft zum Einsatz. Aspekte der Kryptographie (etwa der AES-Algorithmus, der im AddRoundKey Schritt eine XOR-Verknüpfung durchführt) werden in der Lehrveranstaltung \courseiis{} behandelt.
+%
+\begin{table}[h]
+  \begin{center}
+    \begin{tabular}{cccccc|l}
+      0&1&1&0&1&1& Wert \\
+      1&1&0&0&0&1& Schlüssel \\
+    \hline
+      1&0&1&0&1&0& XOR-Ergebnis \\
+      1&1&0&0&0&1& Schlüssel \\
+    \hline
+      0&1&1&0&1&1& XOR-Ergebnis = Wert
+    \end{tabular}
+  \end{center}
+\end{table}
+
+Interessant ist weiters, dass ein 3-stelliges XOR diese Eigenschaft verliert (alle Variablen wahr, erzeugt wahr).
+%
+\begin{align*}
+  0 \oplus{} 0 \oplus{} 0 & = 0 \\
+  0 \oplus{} 1 \oplus{} 0 & = 1 \\
+  1 \oplus{} 0 \oplus{} 0 & = 1 \\
+  1 \oplus{} 1 \oplus{} 0 & = 0 \\
+  0 \oplus{} 0 \oplus{} 1 & = 1 \\
+  0 \oplus{} 1 \oplus{} 1 & = 0 \\
+  1 \oplus{} 0 \oplus{} 1 & = 0 \\
+  1 \oplus{} 1 \oplus{} 1 & = 1
+\end{align*}
+%
+\subsection{Implikation}
+\index{Implikation}
+\index{Subjunktion}
+%
+\begin{table}[h]
+ \begin{center}
+  \begin{tabular}{cc|c}
+   \hline
+    $A$ & $B$ & $A \rightarrow{} B$ \\
+   \hline \hline
+    \F  & \F  & \T \\
+    \F  & \T  & \T \\
+    \T  & \F  & \F \\
+    \T  & \T  & \T \\
+  \end{tabular}
+  \caption{Wahrheitstabelle einer Implikation}
+  \label{fig:implication_operator}
+ \end{center}
+\end{table}
+%
+Eine Implikation ($\rightarrow$ oder $\implies$, Subjunktion, Abb.~\ref{fig:implication_operator}) wird so interpretiert, dass der zweite Ausdruck verwendet wird, wenn der erste Ausdruck wahr ist. Dies entspricht dem natürlich-sprachlichen ,,Wenn\dots dann\dots``.
+\begin{equation}
+  A \rightarrow B \spacewrap\lequal \neg A \lor B
+\end{equation}
+%
+Man kann es als unintuitiv betrachten, dass die Implikation wahr zurückgibt, wenn die Vorbedingung $A$ \emph{nicht} erfüllt ist. Bei einem Pfeil in die linke Richtung ($\leftarrow$) handelt es sich auch um eine Implikation, jedoch wird die Position der Argumente im Vergleich zum rechten Pfeil vertauscht.
+
+\subsection{NAND}
+\index{NAND}
+%
+\begin{table}[h]
+ \begin{center}
+  \begin{tabular}{cc|c}
+   \hline
+    $A$ & $B$ & $A | B$ \\
+   \hline \hline
+    \F  & \F  & \T \\
+    \F  & \T  & \T \\
+    \T  & \F  & \T \\
+    \T  & \T  & \F \\
+  \end{tabular}
+  \caption{Wahrheitstabelle einer NAND-Verknüpfung}
+  \label{fig:nand_operator}
+ \end{center}
+\end{table}
+%
+Das NAND (| oder $\uparrow$, Shefferscher Strich) ist die Negation des Und-Operators. Als Besonderheit lassen sich aus diesem Operator alle aussagenlogische Ausdrücke ableiten. Somit können sie darauf verzichten die aussagenlogischen Ausdrücke auf die Operatoren $\land$, $\lor$ und $\neg$ zu reduzieren, sondern können direkt nur das NAND nutzen, um alle Ausdrücke abzubilden.
+\begin{equation}
+  (A | A) | B \leftrightarrow \bot
+\end{equation}
+%
+\subsection{Bijunktion}
+\index{Bijunktion}
+\index{Äquivalenz (Logik)}
+%
+\begin{table}[h]
+ \begin{center}
+  \begin{tabular}{cc|c}
+   \hline
+    $A$ & $B$ & $A \leftrightarrow{} B$ \\
+   \hline \hline
+    \F  & \F  & \T \\
+    \F  & \T  & \F \\
+    \T  & \F  & \F \\
+    \T  & \T  & \T \\
+  \end{tabular}
+  \caption{Wahrheitstabelle einer Bijunktion}
+  \label{fig:bijunction_operator}
+ \end{center}
+\end{table}
+%
+Die Bijunktion ($\leftrightarrow$, Äquivalenz) wird genau dann wahr, wenn beide Argumente äquivalent sind. Sie entspricht dem natürlich-sprachlichen ,,sein`` und wird verwendet, um die Äquivalenz zweier aussagenlogischer Ausdrücke zu notieren. Interessant ist, dass es sich um die Negation einer XOR-Verknüpfung handelt und daher auch als ,,XNOR`` (negated XOR) bezeichnet wird.
+%
+\begin{equation}
+  A \land (B \oplus{} A) \spacewrap\lequal A \land \neg B
+\end{equation}
+\begin{equation}
+  A \leftrightarrow B  \spacewrap\lequal (A \rightarrow B) \land (B \rightarrow A)
+\end{equation}
+%
+\section{Logische und binäre Verknüpfungen}
+%
+In Zusammenhang mit dem Lernen von Programmiersprachen entsteht die Frage, was der Unterschied zwischen logischen und binären Evaluierungen von boolschen Ausdrücken ist. Wir betrachten die Programmiersprache C.
+%
+\lstset{language={C},caption={Unterschied zwischen logischen und binären Operatoren}}
+\begin{lstlisting}
+if (6 & 1) printf("foo");
+if (6 && 1) printf("bar");
+\end{lstlisting}
+%
+Dieses Teilprogramm gibt nur ,,bar`` zurück. Für die C-Programmiersprache sei auf den Artikel \href{http://cm.bell-labs.com/who/dmr/chist.html}{,,The Development of the C Language*``} von Dennis M. Ritchie\footnote{englischsprachiger Artikel. Unterkapitel ,,Neonatal C`` geht auf den Unterschied ein. Zuletzt abgerufen im November 2012} verwiesen. Die Frage nach dem Unterschied kann wie folgt beantwortet werden:
+
+Bei einem Binäroperator wie etwa \& oder \textbar{} werden die beiden Operanden binär interpretiert. Dies bedeutet 6 (binär \binval{110}) und-verknüpft mit 1 (binär \binval{1}) ergibt \binval{000}.
+\begin{center}
+  \begin{tabular}{lccc}
+       & 1 & 1 & 0 \\
+       & 0 & 0 & 1 \\
+  \hline
+    \& & 0 & 0 & 0
+  \end{tabular}
+\end{center}
+
+Bei einem logischen Operator (\&\&, \textbar\textbar) wird der Ausdruck zuerst in einen Binärwert verwandelt und später binär evaluiert. So evaluiert 6 (Wahrheitswert wahr, binär \binval{1}) und 1 (Wahrheitswert wahr, binär \binval{1}) zu wahr (binär \binval{1}). Ich möchte in Erinnerung rufen, dass in der Programmiersprache C Ausdrücke gleich Null (\texttt{NULL} und \texttt{0}) als falsch interpretiert werden. Alle anderen Ausdrücke sind wahr.
+%
+\section{Tautologie}
+\index{Tautologie}
+%
+Unter einer Tautologie ($\top$) versteht man eine boolsche Funktion, die unter einer beliebigen Variablenkonfiguration zum Ausdruck Wahr evaluiert. Sie ist damit bedingungslos. Da der Wahrheitswert selbst als boolsche Funktion interpretiert werden kann, wird das Symbol $\top$ oft für wahr synonym verwendet.
+\begin{equation}
+  ((A \lor B) \lor (B \land A)) \lor (\neg A \land \neg B) \leftrightarrow \top
+\end{equation}
+%
+\section{Widerspruch}
+\index{Widerspruch}
+\index{Kontradiktion}
+%
+Unter einem Widerspruch ($\bot$, Kontradiktion) versteht man eine boolsche Funktion, die unter einer beliebigen Variablenkonfiguration zum Ausdruck falsch evaluiert. Sie ist damit bedingungslos. Sie stellt ein wichtiges Werkzeug bei der mathematischen Beweisform \emph{Beweis durch Widerspruch} dar. In einigen formalen Systemen ist auch der Spruch ,,ex falso quodlibet`` relevant, welcher repräsentiert, dass aus einem Widerspruch Beliebiges geschlossen werden kann.
+%
+\begin{equation}
+  ((A \lor B) \lor (B \land A)) \land (\neg A \land \neg B) \leftrightarrow \bot
+\end{equation}
+
+\section{Operator precedence}
+\index{Operator precedence}
+%
+Ausdrücke können mehrdeutig sein, wenn die Klammerung die Reihenfolge der Evaluierung der Operatoren nicht klar vorgibt.
+%
+\[
+  A \lor B \land \neg C \rightarrow D
+\]
+%
+Die \emph{operator precedence} sind semantische Regeln, welche Operatoren am stärksten binden. Es gibt unterschiedliche Auffassungen und sie werden nicht so konsistent verwendet, wie hier dargestellt, doch stellt die Tabelle~\ref{tab:op_precedence} eine Zusammenfassung des allgemeinen Konsens dar. Allgemein binden binäre (= zweistellige) Operatoren stärker als unäre (= einstellige) und typischerweise bindet das Und stärker als das Oder. Während alle Operatoren links-assoziativ sind, bildet die Implikation mit einer Rechtsassoziativität eine Ausnahme:
+\begin{equation}
+  a \rightarrow b \rightarrow c \spacewrap\lequal a \rightarrow (b \rightarrow c)
+\end{equation}
+
+\begin{table}[h]
+ \begin{center}
+  \begin{tabular}{cc}
+   $\neg$        & Negation \\
+   $\land$       & Konjunktion \\
+   $\lor$        & Disjunktion \\
+   $\rightarrow$ & Implikation
+  \end{tabular}
+  \caption{Operator precedence für aussagenlogische Operatoren
+           (Operatoren weiter oben binden stärker)}
+  \label{tab:op_precedence}
+ \end{center}
+\end{table}
+
+Klammern sind ein Ausweg, um Unklarheiten in der operator precedence zu deklarieren und werden auf dem selben Weg in der Mathematik verwendet.
+Die aussagenlogische Formel von vorhin besitzt folgende äquivalente Klammerung:
+%
+\begin{equation}
+  ((A \lor (B \land (\neg C))) \rightarrow D)
+\end{equation}
+%
+\section{Spezielle Strukturen}
+%
+\subsection{Klauseln und Monome}
+\index{Klausel}
+\index{Monom}
+%
+Unter einer Klausel (Disjunktionsterm) versteht man eine Oder-verknüpfte Liste von Literalen. Das konjunktive Äquivalent bezeichnet man als Monom (Konjunktionsterm). Eine $n$-Klausel ist eine Disjunktion aus $n$ Literalen.
+
+\index{Hornklausel}
+Hornklauseln finden in der logischen Programmierung Anwendung und seien deshalb hier auch erwähnt: Hornklauseln sind Klauseln, die maximal einen negationsfreien Literal besitzen.
+%
+\begin{table}[h]
+ \begin{center}
+  \begin{tabular}{cl}
+   \hline
+    Typ         & Beispiel (jeweils $\set{A, B, C, D, E} \in \set{\T, \F}$) \\
+   \hline \hline
+    Klausel     & $A \lor B \lor C \lor D \lor E$ \\
+    3-Klausel   & $A \lor B \lor C$ \\
+    Monom       & $A \land B \land C \land D$ \\
+    Hornklausel & $A \lor \neg B \lor \neg C \lor \neg D$ \\
+   \hline
+  \end{tabular}
+  \caption{Beispiele für Klauseln und Monome}
+  \label{fig:bijunction_operator}
+ \end{center}
+\end{table}
+%
+\subsection{Kommutative Normalform}
+\index{Kommutative Normalform}
+%
+Unter der kommutativen Normalform versteht man einen aussagenlogischen Ausdruck, der aus einer beliebigen Anzahl von UND-verknüpften Klauseln gebildet wird.
+\[
+  \bigwedge_i \bigvee_j x_{ij} \qquad \text{ mit } x_{ij} \in \set{\T, \F} \text{ oder } \neg x_{ij}
+\]
+%
+Jede beliebige boolsche Funktion lässt sich als KNF darstellen. Wir befassen uns mit dieser Aussage, indem wir eine Funktion hernehmen und sie in eine KNF transformieren. In der Tabelle~\ref{tab:knf} wird die boolsche Funktion $\f: ((A \lor B) \land C) \lor (A \land B)$ in eine KNF transformiert. Dass die Funktion $\f$ mit der korrespondierenden KNF übereinstimmt (und wir daher keinen Fehler gemacht haben) lässt sich überprüfen indem wir von beiden Funktionen die Wahrheitstabellen bilden und vergleichen. Wir stellen fest, dass die Wahrheitstabellen beide jener in Tabelle~\ref{tab:knf-table} entspricht.
+
+Es lässt sich auch ein allgemeiner Algorithmus angeben aus dem die KNF eines beliebigen Ausdrucks gebildet werden kann: Erstelle die Wahrheitstabelle und konjugiere alle negierten Konfigurationen, die zu falsch evaluieren. Dieser Algorithmus wurde in Tabelle~\ref{tab:general-knf-dnf} auf Basis der Wahrheitstabelle~\ref{tab:knf-table} angewandt.
+%
+\begin{table}[p]
+  \begin{center}
+    \begin{tabular}{cc}
+     \hline
+      Funktion     & Transformationsregel \\
+     \hline \hline
+      $((A \lor B) \land C) \lor (A \land B)$
+         & $X \lor (Y \land Z) \Leftrightarrow (X \lor Y) \land (X \lor Z)$ \\
+      $((A \lor B) \lor (A \land B)) \land ((A \land B) \lor C)$
+         & Tauschen \\
+      $((A \land B) \lor C) \land ((A \land B) \lor (A \lor B))$
+         & $X \lor (Y \land Z) \Leftrightarrow (X \lor Y) \land (X \lor Z)$ \\
+      $((A \lor C) \land (B \lor C)) \land ((A \land B) \lor (A \lor B))$
+         & $((X \land Y) \lor (X \lor Y)) \Leftrightarrow (X \lor Y)$ \\
+      $(A \lor C) \land (B \lor C) \land (A \lor B)$ & Kommutative Normalform \\
+     \hline
+    \end{tabular}
+    \caption{Transformation von $\f$ in eine KNF}
+    \label{tab:knf}
+  \end{center}
+\end{table}
+%
+\begin{table}[p]
+  \begin{center}
+    \begin{tabular}{ccc|c}
+       A &  B &  C & $((A \lor B) \land C) \lor (A \land B)$ \\
+    \hline
+      \F & \F & \F & \F \\
+      \F & \F & \T & \F \\
+      \F & \T & \F & \F \\
+      \F & \T & \T & \T \\
+      \T & \F & \F & \F \\
+      \T & \F & \T & \T \\
+      \T & \T & \F & \T \\
+      \T & \T & \T & \T
+    \end{tabular}
+    \caption{Wahrheitstabelle der Funktion $\f$}
+    \label{tab:knf-table}
+  \end{center}
+\end{table}
+%
+\begin{table}[p]
+  \begin{center}
+    \begin{tabular}{cc}
+     \hline
+      Funktion     & Typ \\
+     \hline \hline
+      $((A \lor B) \land C) \lor (A \land B)$ & $\f$ \\
+
+      $(\neg A \lor \neg B \lor \neg C) \land (\neg A \lor \neg B \lor C)
+      \land (\neg A \lor B \lor \neg C) \land (A \lor \neg B \lor \neg C)$ & KNF \\
+
+      $(\neg A \land B \land C) \lor (A \land \neg B \land C)
+      \lor (A \land B \land \neg C) \lor (A \land B \land C)$ & DNF \\
+     \hline
+    \end{tabular}
+    \caption{Konstruktion der KNF/DNF durch Disjunktion/Konjunktion der Variablenbelegungen, die zu wahr/falsch führen}
+    \label{tab:general-knf-dnf}
+  \end{center}
+\end{table}
+%
+\subsection{Disjunktive Normalform}
+\index{Disjunktive Normalform}
+%
+Unter der disjunktiven Normalform versteht man einen aussagenlogischen
+Ausdruck, der aus eine beliebigen Anzahl von Oder-verknüpften Monomen
+gebildet wird.
+\[
+ \bigvee_i \bigwedge_j x_{ij} \qquad \text{ mit } x_{ij} \in \set{\T, \F} \text{ oder } \neg x_{ij}
+\]
+%
+Äquivalent zur KNF kann die DNF gebildet werden, indem Variablenbelegungen---die zu wahr evaluieren---disjunktiert werden (allerdings nicht negiert).
+%
+\section{Gödelscher Unvollständigkeitssatz}
+\index{Gödelscher Unvollständigkeitssatz}
+\index{Lügner-Paradoxon}
+%
+\begin{quote}
+  In jedem formalen und logischen System gibt es Aussagen, die unentscheidbar sind.
+\end{quote}
+%
+In der Aussagenlogik wird die Unvollständigkeit durch das Lügnerparadoxon illustriert.
+%
+\begin{quote}
+  Diese Aussage ist falsch.
+\end{quote}
+%
+Handelt es sich um einen Ausdruck, der gesamtheitlich als \T{} angenommen wird, so muss die Summe aller Teilaussagen als wahrheitsgemäß angesehen werden d.h. ,,Diese Aussage ist falsch`` wird zu \T{} evaluieren. Da sich die Aussage auf den Gesamtausdruck bezieht, müsste dieser Ausdruck zu \F{} evaluieren, was sich mit unserer Annahme widerspricht. Dieser Fall ist somit nicht entscheidbar.
+
+Selbige Überlegung lässt sich mit \F{} durchführen. Im Gesamten kann somit die Aussage nicht entschieden werden. Das Lügner-Paradoxon bildet ein Beispiel hierfür in der Logik.
+%
+%
+%Ein weiteres Beispiel ist der Ausdruck zur Transitivität:
+%\[
+%  ((A \rightarrow B) \land (B \rightarrow C)) \rightarrow (A \rightarrow C)
+%\]

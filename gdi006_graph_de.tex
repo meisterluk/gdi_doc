@@ -1,0 +1,34 @@
+\chapter{Graphentheorie}
+%
+Ein Graph ist eine Menge $(V, E)$ von Knoten (engl. vertex) und Kanten (engl. edge). Graphen unterscheiden sich aufgrund ihrer Eigenschaften und damit assoziiert werden zahlreiche neue Begriffe definiert, um den Austausch innerhalb des Forschungsgebiets zu erleichtern.
+%
+\begin{description}
+  \item[(un)gerichteter Graph]
+    Ein gerichteter Graph unterscheidet zwischen einer Kante $(u, v)$ und der Kante $(v, u)$, während diese Unterscheidung beim ungerichteten Graphen wegfällt.
+  \item[Zyklus]
+   Eine beliebige Sequenz von Knoten, die einem Ablauf von Kanten folgen, wobei der Startknoten gleich dem Endknoten ist.
+  \item[Schleife]
+   Genau eine Kante, die den Knoten mit sich selbst verbindet. Sie ist auch damit ein Zyklus, wobei die Sequenz eine Maximallänge von 1 anlegt.
+  \item[Baum]
+   Bäume sind das Lieblingsspielzeug der Informatik. Ein Baum wird als zusammenhängender, zyklusfreier Graph verstanden. Er ermöglicht es Daten in einer hierarchischen Baumstruktur abzubilden.
+  \item[Brücke]
+   Unter einer Brücke versteht man eine Kante, die bei Entfernung die Eigenschaft ,,zusammenhängend`` des Graphen zu ,,unzusammenhängend``.
+  \item[Clique]
+   Unter Clique versteht man eine Menge von Knoten $k$, in der jeder Knoten direkt mit jedem anderen verbunden ist. Wird die Clique für den gesamtem Graphen angewandt, fällt die Definition mit der Definition des vollständigen Graphens zusammen.
+  \item[Eulerscher Graph]
+   Der Eulersche Graph ist ein spezieller Zyklus, der alle Knoten des Graphen nutzt und jede Kanten genau nur 1mal verwendet.
+  \item[Grad]
+   Der Grad eines Knotens ist definiert als die Anzahl an ein- und ausgehenden Kanten.
+  \item[Hamiltonpfad]
+   Unter einem Hamiltonpfad versteht man einen Pfad im Graphen, der jeden Knoten genau einmal besucht.
+  \item[Pfad]
+   Unter einem Pfad versteht man eine Sequenz von Kanten, die einer Wanderung durch den Graphen entspricht (Endknoten sind Startknoten des nächsten Knotens)
+  \item[Planarität]
+   Ein Graph ist planar, wenn er ohne Überschneidungen von Kanten auf einer 2D-Fläche gezeichnet werden kann.
+  \item[Quelle/Senke]
+   Unter der Quelle versteht man bei einem gerichteten Graph einen Knoten, der nach außen führende Kanten besitzt. Eine Senke ist ein Knoten, der nur eingehende Kanten auf diesen Knoten besitzt.
+  \item[Vollständiger Graph]
+   Unter einem vollständigen Graph versteht man einen Graph, in dem jeder Knoten mit jedem Knoten direkt verbunden ist.
+\end{description}
+
+%TODO: \section{Konzept Adjazenzmatrix}

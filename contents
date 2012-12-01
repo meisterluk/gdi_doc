@@ -1,0 +1,122 @@
+Table of Contents
+=================
+
+Incomplete chapter
+  Set theory, Turing machine, Graph theory, Encoding, Algorithms, Complexity and Non-determinism, Formal grammars
+Topics in discussion
+  Combinatorics, more number theory such as prime numbers
+
+01 Foundations of Computer Science
+----------------------------------
+
+* Term “computation” and “automation”.
+* 4 parts of computer science.
+
+02 Bits
+-------
+
+* Term “Bits” and “Bytes”. 1 byte = 8 bit.
+* Bits & Bytes operations.
+* Concept of number systems.
+* How can we map numbers to bits of (non-)arbitrary precision?
+* Arithmetic operations in other number systems.
+* Modulo and ISBN-10 example?
+* How many positions are necessary for an alphabet [a-zA-Z0-9]?
+* Relation of positions and states.
+* Shifts with negative numbers.
+* Real numbers in IEEE 574.
+* SI units.
+
+03 Logic
+--------
+
+* The concept of logic. Cheatsheet for boolean operations.
+* Definition “boolean operation” and “boolean function”: f: {0,1}^n -> {0,1}
+* Definition of the formal grammar “propositional logic”.
+* NAND is complete boolean function [0]_.
+* Relation turnstile and double arrows.
+* Negation of boolean functions.
+* Term satisifiability and contradiction.
+* Term Junctor, bijunction and tautology.
+* Relation to set theory.
+
+.. [0]_: Discrete Mathematics, Exercise 94.
+
+04 Set theory
+-------------
+
+* Introduction to set theory and especially its notations.
+* Set vs unique set.
+* Injectivity, Surjectivity, Bijectivity.
+
+05 Turing machine
+-----------------
+
+* The concept of Turing machines. Structure of a TM. n-tapes. n-dimensional.
+* Simple algorithms for turing-computable functions.
+* Concept “input, processing, output”.
+* Cannot store integers directly, but in encoded form, because input alphabet is finite.
+* A movement can be omitted “Stop”.
+* Dining Philosopher's problem?
+
+06 Graph theory
+---------------
+
+* Glossary / Terminology.
+* Basic problems such as minimal span tree.
+* Concept adjacency matrix.
+
+07 Encoding
+-----------
+
+* The concept of encoding.
+* (un)signed integers/floats/strings.
+* The concept of encodings (mapping of alphabets).
+* (un)signed integers. floating points numbers and fixed point numbers.
+* Strings and Unicode.
+* {Huffman, Gray} coding, Fano condition, shannon, entropy.
+* little and big endian
+
+08 Abstraction
+--------------
+
+* The concept of abstraction.
+
+09 Landau notation
+------------------
+
+* Definition of Big-O, Theta and Omega.
+* Start with constant and linear and introduce new runtimes one after another.
+* Knuth's approach with A-notation?
+
+10 Algorithms
+-------------
+
+* Term “Algorithm”.
+* Algorithmic thinking.
+* Variable swapping (3 ways).
+* Explain several well-known algorithms.
+
+11 Complexity and Non-determinism
+---------------------------------
+
+* Term complexity.
+* Concepts in complexity theory.
+* Concept “Proof by reduction”.
+* Concept of non-determinism. Cannot be implemented. Decision pathes.
+* How does randomization and parallelism differ from non-determinism?
+* Show SAT Problem.
+* MATCHING problem in bipartit graph equals REACH. MAX FLOW equals REACH.
+
+12 Formal grammars
+------------------
+
+* Relation between decision problems and formal languages.
+* Regular Expressions.
+* Finite state machine.
+* Define an infinite structure in Regex. CFL following. CSL following. Recursive enumerable languages following. Show relation to halting problem.
+
+13 Computer scientists
+----------------------
+
+* Some non-exhaustive list.

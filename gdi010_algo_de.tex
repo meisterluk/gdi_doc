@@ -1,0 +1,113 @@
+\chapter{Algorithmen}
+\epigraph{Quod erat faciendum}{lat. ,,Was zu machen war``}
+%
+\index{Algorithmus}
+Algorithmen sind schrittweise Anleitungen zur Lösung eines Problems. Sie bilden damit eine Sequenz von Instruktionen, welche es uns ermöglicht Datenmodifikationen systematisch vorzunehmen und neue Daten zu produzieren. Sie können dabei beliebig aufgeteilt werden, sodass typische Programme aus einer Reihe von Algorithmen zur Lösung von Teilproblemen bestehen. Es ist Aufgabe des Entwicklers die Logik des Algorithmus entsprechend seiner Anforderungen korrekt zu implementieren und für variable Daten alle Spezialfälle abzudecken.
+
+Der Algorithmusbegriff wurde im 9. Jahrhundert durch Muhammed al-Chwarizmi geprägt. Wie (viele nachfolgende) Mathematiker beschrieb er Verfahren mit denen Zahlen nach einer Vorschrift schrittweise transformiert wurden. Algorithmen wurden zum Instrument um Berechnungen durchzuführen und mit der industriellen Revolution stieg auch das Verlangen diese Berechnungen automatisiert auf Maschinen durchzuführen.
+
+\index{Algorithmisches Denken}
+Ein wichtiger Lernprozess bei der Entwicklung von Algorithmen ist das \emph{algorithmische Denken}. Eine allgemeine Datentransformation in Worten zu fassen scheint leichter als die schrittweise Formulierung der Logik. Erst durch die Aneignung von algorithmischem Denken können Prozesse in Programmiersprachen formalisiert werden.
+
+Ein kleines Beispiel für algorithmisches Denken ist etwa das Tauschen zweier Zahlen. Stellt man einer Person die Frage, wie sie zwei auf einer Tafel dargestellte Zahlen tauschen würde, wählen die meisten Personen eine visuellen Ansatz und deuten mit Fingern an, wie die Position der einzelnen Zahlen zu wechseln ist. Auf einer Rechenmaschine gibt es das Konzept der Positionen auf einer zweidimensionalen Fläche nicht und auch das simultane Austauschen ist nicht möglich. Die 2 Zahlen liegen in einer Maschine auf 2 verschiedenen Speicherbereichen. Der algorithmische Ansatz verwendet zum Tauschen einen dritten Speicherbereich als Hilfsvariable (hier: $h$). Wir können nun folgenden Algorithmus formulieren, welcher pro Schritt eine Zuweisung eines Wertes an eine Variable beschreibt.
+%
+\begin{figure}[h]
+ \begin{center}
+  \begin{align*}
+  \texttt{h} \texttt{=} & \texttt{a} \\
+  \texttt{a} \texttt{=} & \texttt{b} \\
+  \texttt{b} \texttt{=} & \texttt{h}
+  \end{align*}
+  \caption{Dreieckstausch zweier Variablen a und b}
+ \end{center}
+\end{figure}
+
+\section{Programmiersprachen}
+%
+Programmiersprachen sind künstliche Sprachen, die formal spezifiziert sind und durch ein syntaktisch korrektes Programm kann das Verhalten einer Rechenmaschine gesteuert werden. Der Zusammenhang zu Algorithmen liegt in der Tatsache, dass Algorithmen in Programmiersprachen notiert werden, damit sie automatisiert von unserem Computer ausgeführt werden können. Compiler ermöglichen es uns die Programme nicht als direkte Instruktionen einer CPU zu schreiben, sondern machen es möglich den Algorithmus in einer höheren Sprache zu schreiben und sie dann automatisiert für die CPU herunterbrechen zu lassen. Dadurch wird insbesondere die Lesbarkeit der Algorithmen verbessert, da ein Algorithmus nicht mit zu vielen Details vorliegt.
+
+\section{Pseudocode}
+%
+\index{Pseudocode}
+Als Pseudocode wird Quelltext verstanden, der in keiner formal spezifizierten Sprache vorliegt, sondern nur den algorithmischen Ansatz skizziert. Allgemein bekannte Konstrukte (if-then-else, while Schleifen) werden in einer verständlichen Form von Programmiersprachen übernommen.
+
+\section{Eigenschaften von Algorithmen}
+%
+Algorithmen repräsentieren Verarbeitungssequenzen. Diese Sequenzen besitzen Eigenschaften, die analysiert und optimiert werden können. Wir wollen die Frage beantworten, welche Eigenschaften das sind:
+%
+\begin{description}
+ \item[Platzkomplexität] Wieviel Speicher braucht der Algorithmus?
+ \item[Laufzeit / Zeitkomplexität] Wie lange benötigt der Algorithmus zur Verarbeitung?
+ \item[Determinismus] Liefert der Algorithmus immer das selbe Ergebnis für die gleiche Eingabe?
+ \item[Strategie] Divide and Conquer, Dynamic Programming, Heuristische Verfahren, \dots
+\end{description}
+
+Während die letzten beiden Eigenschaft neutral sind, sind die ersten beiden der Hauptgrund einen Algorithmus einem anderen vorzuziehen. Platz (also Speicher) ist nicht immer ausreichend vorhanden und die Laufzeit soll gering gehaltet werden, um Zeit und Energie zu sparen.
+
+\section{Rekursive und iterative Algorithmen}
+%
+% TODO: Make clear that iterative is the opposite of recursive
+\index{Rekursion}
+Eine weitere Eigenschaft von Algorithmen ist ein rekursives Verhalten. Man hat es geschafft, Maschinen so zu organisieren, dass sie ein rekursives Verhalten verarbeiten können. Damit sind auch rekursive Algorithmen interessant geworden, die oft einfach und klarer zu verstehen sind als ihre iterativen Äquivalente. Was bedeutet aber nun \emph{Rekursion}?
+
+\begin{quote}
+   \textbf{Re·kur·si·on}; die, -/-, siehe Rekursion
+\end{quote}
+
+\index{Abbruchbedingung}
+Rekursion bedeutet die Definition einer Sache durch sich selbst. Im obigen Zitat wird etwas Rekursion durch sich selbst definiert und soll damit den Begriff illustrieren\footnote{Die Suchmaschine Google fragt (als Easteregg) bei der Eingabe von ,,recursion`` nach, ob der Benutzer denn nicht ,,recursion`` gemeint hat.}. So sind rekursive Algorithmen so aufgebaut, dass sie in ihrer Definition sich selbst nochmals aufrufen. Dabei besitzt der rekursive Aufruf jedoch typischerweise unterschiedliche Parameter als der Aufruf zuvor, sodass es irgendwann zum Eintreten der \emph{Abbruchbedingung} kommt, die dieses rekursive Verhalten abbricht. Die Fibonacci-Zahlen lassen sich über eine Rekursion darstellen:
+
+% TODO: Avoid fibonacci as recursion example
+\lstset{language={Haskell},label={lst:fib},caption={Haskell Quelltext zur Definition der Fibonacci-Zahlen}}
+\begin{lstlisting}
+fib 0 = 0
+fib 1 = 1
+fib n = fib (n - 1) + fib (n - 2)
+\end{lstlisting}
+
+Im Listing~\ref{lst:fib} wird in der dritten Zeile die Funktion fib durch einen Aufruf von sich selbst definiert. Die Zeilen 1 und 2 stellen Abbruchbedingungen dar. Das iterative Äquivalent in der Programmiersprache C sieht etwa so aus wie Listing~\ref{lst:fibc}. % TODO: fix numbering of \ref. Argl.
+%
+\lstset{language={C},label={lst:fibc},caption={C Quelltext zur Definition der Fibonacci-Zahlen}}
+\begin{lstlisting}
+#include <stdio.h>
+
+int fib(int n)
+{
+    int a = 0, b = 1, c, i;
+    for (i=0; i<n-1; i++)
+    {
+        c = b;
+        b = a + b;
+        a = c;
+    }
+    return a;
+}
+
+int main()
+{
+    printf("%d\n", fib(20));
+    return 0;
+}
+\end{lstlisting}
+%
+\section{Bekannte Algorithmen}
+%
+Algorithmen \& Maschinen:
+%
+\begin{itemize}
+  \item Rekursion
+  \item Mandelbrot
+  \item Bubblesort
+  \item Euklidischer Algorithmus
+  \item Game of Life
+  \item Ameise
+  \item Vierfarbenproblem 
+  \item Halteproblem
+  \item Türme von Hanoi
+  \item TSP
+\end{itemize}
+
+%TODO \subsection{Türme von Hanoi}
+%%
+%Gegeben seien 3 Stapel. Auf Stapel 1 befinden sich Ringe, wobei der oberste
+%Ring der kleinste ist unterliegende Ringe größere Durchmesser besitzen. Ziel ist es die Ringe von Stapel 1 auf Stapel 3 in der gegebenen Reihenfolge zu versetzen.

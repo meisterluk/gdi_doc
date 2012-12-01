@@ -1,0 +1,61 @@
+\documentclass[12pt,a4paper]{book}
+%
+\input{includes}
+\input{definitions}
+%
+\begin{document}
+\maketitle
+\tableofcontents
+%
+% TODO:
+%   units package?
+%   exercises in script?
+%   parts of TAOCP?
+%   ensure that you are using the correct notation for decimals commas
+%
+\newpage
+
+\switch%
+\case{\equals{\languagename}{ngerman}}%
+  \selectlanguage{ngerman}%
+  \input{titlepage_de}%
+  \input{gdi001_intro_de}%
+  \input{gdi002_bits_de}%
+  \input{gdi003_logic_de}%
+  \input{gdi004_set_theory_de}%
+  \input{gdi005_turing_de}%
+  \input{gdi006_graph_de}%
+  \input{gdi007_encoding_de}%
+  \input{gdi008_abstraction_de}%
+  \input{gdi009_landau_de}%
+  \input{gdi010_algo_de}%
+  \input{gdi011_complexity_de}%
+  \input{gdi012_lang_de}%
+  \input{gdi013_people_de}%
+  \bibliography{bibliography_de}%
+%
+\case{\equals{\languagename}{english}}%
+  \selectlanguage{english}%
+  \input{titlepage_en}%
+  \input{gdi001_intro_en}%
+  \input{gdi002_bits_en}%
+  \input{gdi003_logic_en}%
+  \input{gdi004_set_theory_en}%
+  \input{gdi005_turing_en}%
+  \input{gdi006_graph_en}%
+  \input{gdi007_encoding_en}%
+  \input{gdi008_abstraction_en}%
+  \input{gdi009_landau_en}%
+  \input{gdi010_algo_en}%
+  \input{gdi011_complexity_en}%
+  \input{gdi012_lang_en}%
+  \input{gdi013_people_en}%
+  \bibliography{bibliography_en}%
+\otherwise%
+  \errmessage{Unknown valid language configured.}
+\endswitch%
+
+\bibliographystyle{alpha}
+\printindex
+
+\end{document}

@@ -1,0 +1,82 @@
+\makeatletter\long\def\equals#1#2{\pdf@strcmp{#1}{#2}}\makeatother
+%
+\newcommand{\translate}[2]{%
+  \switch%
+    \case{\equals{\languagename}{english}}#1%
+    \case{\equals{\languagename}{ngerman}}#2%
+  \endswitch
+}
+% 
+\newcommand{\onlyenglish}[1]{\ifcase\equals{\languagename}{english}#1\fi}
+\newcommand{\onlygerman}[1]{\ifcase\equals{\languagename}{ngerman}#1\fi}
+%
+\newcommand{\doctitle}{\translate{Foundations of Computer Science}{Grundlagen der Informatik}}
+\newcommand{\docauthor}{Lukas Prokop}
+%
+\title{\doctitle}
+\date{\today}
+\author{\docauthor}
+%
+\hypersetup{
+  pdftitle={\doctitle},
+  pdfsubject={\doctitle{} Skriptum},
+  pdfauthor={\docauthor},
+  pdfkeywords={\translate{Foundations, computer science, Turing, Boole, logic, complexity theory}{Grundlagen, Informatik, Turing, Boole, Logik, Komplexitätstheorie}}
+}
+%
+\onlygerman{\usepackage{lmodern}}
+%
+% TODO: prefer acronyms?
+% TODO: hashmap with key=CS and value gets automatically generated (first occurence expr in parenthesis added, english/german)
+%
+%\switch[\pdfstrcmp{\languagename}]%
+\switch%
+\case{\equals{\languagename}{ngerman}}%
+%\case{{german}}%
+  \newcommand{\studycs}{Informatik [F 033 521]}%
+  \newcommand{\studysdbm}{Softwareentwicklung und Wirtschaft [F 033 524]}%
+  \newcommand{\courselfocs}{,,Grundlagen der Informatik`` (VO, 716.232)}%
+  \newcommand{\coursefocs}{,,Grundlagen der Informatik`` (UE, 716.231)}%
+  \newcommand{\courseics}{,,Einführung in das Studium der Informatik`` (710.104, nur Informatikstudium)}%
+  \newcommand{\coursesee}{,,Einführung in Softwareentwicklung-Wirtschaft`` (710.010, nur SEW-Studium)}%
+  \newcommand{\courseisp}{,,Einführung in die strukturierte Programmierung`` (706.001)}%
+  \newcommand{\coursedm}{,,Diskrete Mathematik`` (503.007)}%
+  \newcommand{\coursellp}{,,Logik und Logische Programmierung`` (716.051, nur Informatikstudium)}%
+  \newcommand{\coursedsa}{,,Datenstrukturen und Algorithmen`` (708.031)}%
+  \newcommand{\courseiis}{,,Einführung in die Informationssicherheit`` (705.026)}%
+  \newcommand{\courseswp}{,,Softwareparadigmen`` (716.060)}%
+  \newcommand{\coursetcs}{,,Theoretische Informatik 1`` (708.243, nur Informatikstudium)}%
+  \newcommand{\courselc}{,,Logik und Berechenbarkeit`` (705.033, nur Informatikstudium)}%
+  \newcommand{\coursedaa}{,,Entwurf und Analyse von Algorithmen`` (716.033)}%
+\case{\equals{\languagename}{english}}%
+%\case{{english}}%
+  \newcommand{\studycs}{Computer Science [F 033 521]}%
+  \newcommand{\studysdbm}{Software Development and Business Management [F 033 524]}%
+  \newcommand{\courselfocs}{``Foundations of Computer Science'' (L, 716.232)}%
+  \newcommand{\coursefocs}{``Foundations of Computer Science'' (P, 716.231)}%
+  \newcommand{\courseics}{``Introduction to Computer Science'' (710.104, only CS studies)}%
+  \newcommand{\coursesee}{``Software Engineering and Economy'' (710.010, only SDBM studies)}%
+  \newcommand{\courseisp}{``Introduction to Structured Programming'' (706.001)}%
+  \newcommand{\coursedm}{``Discrete Mathematics For Telematics'' (503.007)}%
+  \newcommand{\coursellp}{``Logic and Logic Programming'' (716.051, only CS studies)}%
+  \newcommand{\coursedsa}{``Data Structures and Algorithms'' (708.031)}%
+  \newcommand{\courseiis}{``Introduction to Information Security'' (705.026)}%
+  \newcommand{\courseswp}{``Software paradigms'' (716.060)}%
+  \newcommand{\coursetcs}{``Theoretical Computer Science I'' (708.243, only CS studies)}%
+  \newcommand{\courselc}{``Logic and Computability'' (705.033, only CS studies)}%
+  \newcommand{\coursedaa}{``Design and Analysis of Algorithms'' (716.033)}%
+\otherwise
+  \errmessage{Unknown valid language configured.}
+\endswitch
+%
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\spacewrap}[1]{\quad#1\quad}
+\newcommand{\lequal}{\leftrightarrow}
+\newcommand{\binval}[1]{\texttt{#1}} % binary value
+\newcommand{\card}[1]{\hspace{3pt}\left| #1\right|\hspace{3pt}}
+\newcommand{\On}[1]{\mathcal{O}\left(#1\right)}
+\newcommand{\mathspace}{\hspace{20pt}}
+\newcommand{\born}[1]{* #1}
+\newcommand{\life}[2]{* #1 $\dagger$ #2}
+%
+\makeindex
