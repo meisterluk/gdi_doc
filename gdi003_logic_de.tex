@@ -80,7 +80,7 @@ Zwei aussagenlogische Ausdrücke sind äquivalent, wenn deren Wahrheitstabellen 
 \index{Exklusives Oder}
 \index{XOR}
 %
-\begin{table}[h]
+\begin{table}[ht]
  \begin{center}
   \begin{tabular}{cc|c}
    \hline
@@ -103,7 +103,7 @@ XOR ($\oplus$, exklusives Oder, Kontravalenz, Abb.~\ref{fig:xor_operator}) ist g
 
 Das Besondere an XOR ist seine Bijektivität. Durch zweifache Anwendung des XORs mit einem Schlüssel, wird der selbe Wert wieder retourniert. Deshalb kommt XOR etwa in der Kryptographie sehr oft zum Einsatz. Aspekte der Kryptographie (etwa der AES-Algorithmus, der im AddRoundKey Schritt eine XOR-Verknüpfung durchführt) werden in der Lehrveranstaltung \courseiis{} behandelt.
 %
-\begin{table}[h]
+\begin{table}[ht]
   \begin{center}
     \begin{tabular}{cccccc|l}
       0&1&1&0&1&1& Wert \\
@@ -134,7 +134,7 @@ Interessant ist weiters, dass ein 3-stelliges XOR diese Eigenschaft verliert (al
 \index{Implikation}
 \index{Subjunktion}
 %
-\begin{table}[h]
+\begin{table}[ht]
  \begin{center}
   \begin{tabular}{cc|c}
    \hline
@@ -160,7 +160,7 @@ Man kann es als unintuitiv betrachten, dass die Implikation wahr zurückgibt, we
 \subsection{NAND}
 \index{NAND}
 %
-\begin{table}[h]
+\begin{table}[ht]
  \begin{center}
   \begin{tabular}{cc|c}
    \hline
@@ -185,7 +185,7 @@ Das NAND (| oder $\uparrow$, Shefferscher Strich) ist die Negation des Und-Opera
 \index{Bijunktion}
 \index{Äquivalenz (Logik)}
 %
-\begin{table}[h]
+\begin{table}[ht]
  \begin{center}
   \begin{tabular}{cc|c}
    \hline
@@ -214,7 +214,7 @@ Die Bijunktion ($\leftrightarrow$, Äquivalenz) wird genau dann wahr, wenn beide
 %
 In Zusammenhang mit dem Lernen von Programmiersprachen entsteht die Frage, was der Unterschied zwischen logischen und binären Evaluierungen von boolschen Ausdrücken ist. Wir betrachten die Programmiersprache C.
 %
-\lstset{language={C},caption={Unterschied zwischen logischen und binären Operatoren}}
+\lstset{language={C}, caption={Unterschied zwischen logischen und binären Operatoren}, label={lst:difflogbin}}
 \begin{lstlisting}
 if (6 & 1) printf("foo");
 if (6 && 1) printf("bar");
@@ -266,7 +266,7 @@ Die \emph{operator precedence} sind semantische Regeln, welche Operatoren am st�
   a \rightarrow b \rightarrow c \spacewrap\lequal a \rightarrow (b \rightarrow c)
 \end{equation}
 
-\begin{table}[h]
+\begin{table}[ht]
  \begin{center}
   \begin{tabular}{cc}
    $\neg$        & Negation \\
@@ -298,7 +298,7 @@ Unter einer Klausel (Disjunktionsterm) versteht man eine Oder-verknüpfte Liste 
 \index{Hornklausel}
 Hornklauseln finden in der logischen Programmierung Anwendung und seien deshalb hier auch erwähnt: Hornklauseln sind Klauseln, die maximal einen negationsfreien Literal besitzen.
 %
-\begin{table}[h]
+\begin{table}[ht]
  \begin{center}
   \begin{tabular}{cl}
    \hline
@@ -311,7 +311,7 @@ Hornklauseln finden in der logischen Programmierung Anwendung und seien deshalb 
    \hline
   \end{tabular}
   \caption{Beispiele für Klauseln und Monome}
-  \label{fig:bijunction_operator}
+  \label{fig:clauses_monoms}
  \end{center}
 \end{table}
 %

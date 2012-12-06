@@ -12,6 +12,7 @@ Unser neues Werkzeug nennt sich ,,Landau-Notation'', ,,$\mathcal{O}$-Notation''\
 \begin{algorithm}[p]
 \caption{Subroutine with constant runtime}
 \label{algo:constant}
+\lstset{language={python}, label={lst:pyconstant}}
 \begin{lstlisting}
 #!/usr/bin/env python
 
@@ -29,6 +30,7 @@ Der Algorithmus in Funktion~\ref{algo:constant} nimmt eine Liste \textit{array} 
 \begin{algorithm}[p]
 \caption{Subroutine with linear runtime}
 \label{algo:linear}
+\lstset{language={python}, label={lst:pylinear}}
 \begin{lstlisting}
 #!/usr/bin/env python
 
@@ -129,6 +131,7 @@ Gegeben sei eine beliebige Funktion $f(n)$ mit der exakten Schranke $g(n)$. Wir 
 \begin{algorithm}
 \caption{Subroutine with sequence of sub-algorithms}
 \label{algo:sequence}
+\lstset{language={python}, label={lst:pyseq}}
 \begin{lstlisting}
 #!/usr/bin/env python
 
@@ -168,6 +171,7 @@ Wir merken uns also: Wir müssen immer alle Elemente des Algorithmus betrachten,
 \begin{algorithm}
 \caption{Subroutine with nested algorithms}
 \label{algo:nested}
+\lstset{language={python}, label={lst:pynested}}
 \begin{lstlisting}
 #!/usr/bin/env python
 
@@ -186,6 +190,7 @@ function([1, 2, 3, 4])
 \begin{algorithm}
 \caption{Subroutine with runtime square rooted to input value}
 \label{algo:sqrt}
+\lstset{language={python}, label={lst:pyruntimesquared}}
 \begin{lstlisting}
 #!/usr/bin/env python
 
@@ -284,6 +289,7 @@ Im Übrigen haben wir bei diesem Beweis zum ersten Mal gesehen, dass die Notatio
 \begin{algorithm}
 \caption{Binary search algorithm}
 \label{algo:binsearch}
+\lstset{language={python}, label={lst:pybinsearch}}
 \begin{lstlisting}
 import math
 
@@ -385,7 +391,7 @@ Abseits der Betrachtung von Klassen gibt es auch Sichtweisen, die Algorithmen in
 Wir betrachten mit der $\mathcal{O}$-Notation verschiedene Klassen von Funktionen, die Attribute wie Laufzeit oder Speicherverbrauch beschreiben. Obwohl sie formal genau definiert ist und ein etabliertes Werkzeug ist, steht die $\mathcal{O}$-Notation auch Kritik\footnote{Suche etwa nach ``Algorithms for the masses''} gegenüber, da sie dem Programmierer nicht jenes Werkzeug zur Verfügung stellt, welches wir immer brauchen (Sprechen wir \emph{immer} von sehr großen $n$? Wird immer sauber definiert, was man mit $n$ bezeichnet?).
 
 In Bezug auf Notation verwenden wir jetzt möglichst einheitliche Notationen für Klassen von Funktionen. Es wäre sinnfrei $\On{3n}$ zu notieren, da es zu $\On{42n}$ äquivalent ist und $\On{n}$ am einfachsten zu schreiben ist. Wir definieren als eine Liste an bekannten Funktionsklassen aufsteigend nach ihrer Komplexität (Tabelle~\ref{tab:classes}).
-\begin{table}[h]
+\begin{table}[ht]
  \begin{center}
   \begin{tabular}{cl}
    Klasse & Beschreibung \\

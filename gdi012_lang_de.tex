@@ -30,12 +30,12 @@ Gesucht sei folgende Grammatik:
 \end{quote}
 
 Der folgende Ausdruck spezifiziert diese Grammatik:
-\lstset{language={}, caption={Die Grammatik $\{a^n b c^m | 0\leq n\leq 1, m \geq 0\}$}, frame={single}}
+\lstset{language={}, label={lst:regq}, caption={Die Grammatik $\{a^n b c^m | 0\leq n\leq 1, m \geq 0\}$}, frame={single}}
 \begin{lstlisting}
 a?bc*
 \end{lstlisting}
 
-\begin{table}[h]
+\begin{table}[ht]
  \begin{center}
   \begin{tabular}{cl}
    \hline
@@ -58,7 +58,7 @@ Gesucht sei folgende Grammatik:
 
 Für dieses Problem benötigen wir zwei Konzepte: Einerseits brauchen wir ein exklusives Oder, welches uns eine Option selektiert. Andererseits brauchen wir Bereiche, sodass wir Operatoren nicht nur auf einzelne Zeichen sondern ganze Blöcke anwenden können. Die beiden Konzepte nennen sich Alternation (vertikaler Strich) und Gruppen (runde Klammern). Die Verwendung sollte aus der Lösung hervorgehen.
 
-\lstset{language={}, caption={Die Message-Grammatik}, frame={single}}
+\lstset{language={}, label={lst:message}, caption={Die Message-Grammatik}, frame={single}}
 \begin{lstlisting}
 Message of the (Day|Month)!
 \end{lstlisting}
@@ -69,7 +69,7 @@ Reguläre Ausdrücke (engl. ,,Regular Expressions``, kurz ,,RegEx``) sind eine N
 
 Wir spezifizieren, dass ein ,,Terminal`` ein Zeichen ist, welches in der selben Form in der Ausgabe vorkommt. Wir fassen die Operatoren von regulären Ausdrücken zusammen (Tabelle~\ref{tab:regex_op}).
 
-\begin{table}[h]
+\begin{table}[ht]
  \begin{center}
   \begin{tabular}{cl}
    \hline
@@ -82,6 +82,8 @@ Wir spezifizieren, dass ein ,,Terminal`` ein Zeichen ist, welches in der selben 
     ?     & Das vorige Zeichen kommt 0--1 mal vor (,,optional``) \\
    \hline
   \end{tabular}
+  \caption{RegEx Operatoren}
+  \label{tab:regex_op}
  \end{center}
 \end{table}
 
@@ -99,7 +101,7 @@ Gesucht sei folgende Grammatik:
 \end{quote}
 
 Diese vorgegebene Sprache lässt sich mit einem regulären Ausdruck verarbeiten.
-\lstset{language={}, caption={Anzahl von ,,a`` gleich Anzahl von ,,b``}, frame={single}}
+\lstset{language={}, label={lst:eqo}, caption={Anzahl von ,,a`` gleich Anzahl von ,,b``}, frame={single}}
 \begin{lstlisting}
 (ab)*
 \end{lstlisting}
@@ -110,7 +112,7 @@ Wir erweitern aber nun unsere Grammatik:
 \end{quote}
 
 Durch die Vorgabe der Position bekommen wir ein neues Problem. Wir versuchen folgenden regulären Ausdruck:
-\lstset{language={}, caption={,,a`` gefolgt von ,,b''}, frame={single}}
+\lstset{language={}, label={lst:rep}, caption={,,a`` gefolgt von ,,b''}, frame={single}}
 \begin{lstlisting}
 a*b*
 \end{lstlisting}
@@ -120,13 +122,13 @@ Das geübte Auge erkennt, dass die Anzahl der erzeugten ,,a`` ungleich der Anzah
 Wir führen zwei neue Notationen ein: Die vorige Grammatik notieren wir jetzt kürzer mit $\set{a^n b^n \mid n \in \mathbb{N}, n \geq 0}$ notieren und damit die textuelle Beschreibung ersetzen. Weiters sei führen wir Ersetzungsregeln ein. Wir geben ein Nonterminal ,,S`` vor und ersetzen das Nonterminal so lange bis wir nur mehr Terminale erhalten. Ab diesem Zeitpunkt wurde von unserer Sprache ein Wort abgeleitet. Das \textdollar{} steht für das leere Wort.
 % TODO: fix $ to be \varepsilon
 
-\lstset{language={}, caption={Die kontext-freie Grammatik $\set{a^n b^n}$}, escapechar={}, frame={single}}
+\lstset{language={}, label={lst:cfgsample}, caption={Die kontext-freie Grammatik $\set{a^n b^n}$}, escapechar={}, frame={single}}
 \begin{lstlisting}
 S ::= aSb | $
 \end{lstlisting}
 
 Basierend auf S können wir jetzt beliebige Wörter der Sprache ableiten
-\lstset{language={}, caption={Die Ableitung von ,,aaabbb``}, frame={single}}
+\lstset{language={}, label={lst:cfl}, caption={Die Ableitung von ,,aaabbb``}, frame={single}}
 \begin{lstlisting}
 S
 aSb
@@ -146,14 +148,14 @@ Eine weitere Ebene stellen die kontext-sensitiven Grammatiken dar. Dazu sei folg
 \]
 
 Unser erster Versuch schlägt fehl: Die Anzahl der ,,a`` und ,,b`` sind äquivalent, aber die ,,c`` sind unabhängig. Folglich kann die formulierte Sprache nicht ihre spezifizierte Grammatik einhalten.
-\lstset{language={}, caption={Die kontext-freie Grammatik für ein kontext-sensitives Problem}, frame={single}}
+\lstset{language={}, label={lst:cflcsl}, caption={Die kontext-freie Grammatik für ein kontext-sensitives Problem}, frame={single}}
 \begin{lstlisting}
 S ::= aSbB | $
 B ::= Bc
 \end{lstlisting}
 
 Wir müssen unsere Grammatik ausbauen und auf der linken Seite sowohl Terminale als auch Non-Terminale verwenden:
-\lstset{language={}, caption={Die kontext-freie Grammatik $\set{a^n b^n c^n}$}, frame={single}}
+\lstset{language={}, label={lst:cslsample}, caption={Die kontext-freie Grammatik $\set{a^n b^n c^n}$}, frame={single}}
 \begin{lstlisting}
 S ::= aSBH | $
 aS ::= aa
@@ -171,7 +173,7 @@ Wir haben bei diesen Beispielen gesehen, dass gewisse Modelle nicht ausreichen, 
 
 Abbildung~\ref{fig:chomsky_hierarchy} visualisiert die Chomsky-Hierarchie.
 %
-\begin{figure}[h]
+\begin{figure}[ht]
  \begin{center}
   \includegraphics{img/chomsky_hierarchy.pdf}
   \caption{Die Chomsky-Hierarchie}
