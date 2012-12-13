@@ -12,7 +12,7 @@
 %   TODO: More axiomatic structure.
 %
 Die Aussagenlogik stellt die Basis jeder Form von Logik dar, wie sie in der Informatik, Mathematik, Philosophie und weiteren Wissenschaften zur Anwendung kommt. Im folgenden Kapitel werden die Grundbegriffe und Grundkonzepte beschrieben mit denen die Aussagenlogik formalisiert wird. \\
-In den Lehrveranstaltungen \coursedm{} und \courselc{} wird die Aussagenlogik tiefgehender behandelt und als Basis für weitere Logikformen wie der Prädikatenlogik verwendet. Die first-order logic (FOL) findet in der Praxis Verwendung.
+In den Lehrveranstaltungen \coursedm{} und \courselc{}\footnote{Lehrveranstaltungen an der Technischen Universität, Graz} wird die Aussagenlogik tiefgehender behandelt und als Basis für weitere Logikformen wie der Prädikatenlogik verwendet. Die first-order logic (FOL) findet in der Praxis Verwendung.
 
 \index{Aussage (Logik)}
 \index{Literal}
@@ -67,7 +67,7 @@ Eine Aussage ist ein aussagenlogischer Ausdruck, der wahr oder falsch ist. Diese
  \end{center}
 \end{table}
 %
-Es gibt 3 Grundverknüpfungen auf die aussagenlogische Ausdrücke oft reduziert werden: Das \emph{Oder} ($\lor$, ,,Disjunktion``) wird wahr (Tabelle~\ref{fig:or_operator}), wenn einer oder beide Argumente wahr sind. Das Und ($\land$, ,,Konjunktion``) wird wahr (Tabelle~\ref{fig:and_operator}), wenn beide Argumente einzeln wahr sind. Die Negation ($\neg$) ist eine unäre Operation (dh. sie bezieht sich nur auf 1 Argument) und gibt statt einem wahr falsch zurück und vice versa (Tabelle~\ref{fig:neg_operator}).
+Es gibt 3 Grundverknüpfungen, auf die aussagenlogische Ausdrücke oft reduziert werden: Das \emph{Oder} ($\lor$, ,,Disjunktion``) wird wahr (Tabelle~\ref{fig:or_operator}), wenn einer oder beide Argumente wahr sind. Das Und ($\land$, ,,Konjunktion``) wird wahr (Tabelle~\ref{fig:and_operator}), wenn beide Argumente einzeln wahr sind. Die Negation ($\neg$) ist eine unäre Operation (dh. sie bezieht sich nur auf 1 Argument) und gibt statt einem wahr falsch zurück und vice versa (Tabelle~\ref{fig:neg_operator}).
 
 \index{Wahrheitstabelle}
 Die Tabellen stellen Wahrheitstabellen dar; Tabellen, die die einzelnen Variablenbelegungen angeben sowie das Ergebnis (und eventuell auch Teilergebnis) des aussagelogischen Ausdrucks. Mit diesen drei Operatoren lassen sich alle aussagenlogische Ausdrücke formulieren (dh. jede beliebige Kombination von Wahrheitswerten in einer Wahrheitstabelle).
@@ -101,7 +101,7 @@ XOR ($\oplus$, exklusives Oder, Kontravalenz, Abb.~\ref{fig:xor_operator}) ist g
   A \oplus B \spacewrap\lequal (A \lor B) \land (\neg A \lor \neg B)
 \]
 
-Das Besondere an XOR ist seine Bijektivität. Durch zweifache Anwendung des XORs mit einem Schlüssel, wird der selbe Wert wieder retourniert. Deshalb kommt XOR etwa in der Kryptographie sehr oft zum Einsatz. Aspekte der Kryptographie (etwa der AES-Algorithmus, der im AddRoundKey Schritt eine XOR-Verknüpfung durchführt) werden in der Lehrveranstaltung \courseiis{} behandelt.
+Das Besondere an XOR ist seine Bijektivität. Durch zweifache Anwendung des XORs mit einem Schlüssel wird der selbe Wert wieder retourniert. Deshalb kommt XOR etwa in der Kryptographie sehr oft zum Einsatz. Aspekte der Kryptographie (etwa der AES-Algorithmus, der im AddRoundKey Schritt eine XOR-Verknüpfung durchführt) werden in der Lehrveranstaltung \courseiis{} behandelt.
 %
 \begin{table}[ht]
   \begin{center}
@@ -117,7 +117,7 @@ Das Besondere an XOR ist seine Bijektivität. Durch zweifache Anwendung des XORs
   \end{center}
 \end{table}
 
-Interessant ist weiters, dass ein 3-stelliges XOR diese Eigenschaft verliert (alle Variablen wahr, erzeugt wahr).
+Interessant ist weiters, dass ein 3-stelliges XOR diese Eigenschaft verliert. Ein 3-stelliges XOR ist nicht nur dann wahr, wenn eine der Variablen wahr ist, sondern auch wenn alle Variablen wahr werden.
 %
 \begin{align*}
   0 \oplus{} 0 \oplus{} 0 & = 0 \\
@@ -176,8 +176,9 @@ Man kann es als unintuitiv betrachten, dass die Implikation wahr zurückgibt, we
  \end{center}
 \end{table}
 %
-Das NAND (| oder $\uparrow$, Shefferscher Strich) ist die Negation des Und-Operators. Als Besonderheit lassen sich aus diesem Operator alle aussagenlogische Ausdrücke ableiten. Somit können sie darauf verzichten die aussagenlogischen Ausdrücke auf die Operatoren $\land$, $\lor$ und $\neg$ zu reduzieren, sondern können direkt nur das NAND nutzen, um alle Ausdrücke abzubilden.
+Das NAND (| oder $\uparrow$, Shefferscher Strich) ist die Negation des Und-Operators. Als Besonderheit lassen sich aus diesem Operator alle aussagenlogische Ausdrücke ableiten. Somit können sie darauf verzichten die aussagenlogischen Ausdrücke auf die Operatoren $\land$, $\lor$ und $\neg$ zu reduzieren, sondern können direkt nur das NAND nutzen, um alle Ausdrücke abzubilden. So wird als Beispiel in Formel~\ref{eq:nand_false} das NAND verwendet, um den Wahrheitswert falsch abzuleiten.
 \begin{equation}
+ \label{eq:nand_false}
   (A | A) | B \leftrightarrow \bot
 \end{equation}
 %
@@ -201,15 +202,16 @@ Das NAND (| oder $\uparrow$, Shefferscher Strich) ist die Negation des Und-Opera
  \end{center}
 \end{table}
 %
-Die Bijunktion ($\leftrightarrow$, Äquivalenz) wird genau dann wahr, wenn beide Argumente äquivalent sind. Sie entspricht dem natürlich-sprachlichen ,,sein`` und wird verwendet, um die Äquivalenz zweier aussagenlogischer Ausdrücke zu notieren. Interessant ist, dass es sich um die Negation einer XOR-Verknüpfung handelt und daher auch als ,,XNOR`` (negated XOR) bezeichnet wird.
+Die Bijunktion ($\leftrightarrow$, Äquivalenz) wird genau dann wahr, wenn beide Argumente äquivalent sind. Sie entspricht dem natürlich-sprachlichen ,,sein`` und wird verwendet, um die Äquivalenz zweier aussagenlogischer Ausdrücke zu notieren. Interessant ist, dass es sich um die Negation einer XOR-Verknüpfung handelt. % und daher auch als ,,XNOR`` (negated XOR) bezeichnet wird.
 %
-\begin{equation}
-  A \land (B \oplus{} A) \spacewrap\lequal A \land \neg B
-\end{equation}
+%\begin{equation}
+%  A \land (B \oplus{} A) \spacewrap\lequal A \land \neg B
+%\end{equation}
 \begin{equation}
   A \leftrightarrow B  \spacewrap\lequal (A \rightarrow B) \land (B \rightarrow A)
 \end{equation}
 %
+\begin{comment}
 \section{Logische und binäre Verknüpfungen}
 %
 In Zusammenhang mit dem Lernen von Programmiersprachen entsteht die Frage, was der Unterschied zwischen logischen und binären Evaluierungen von boolschen Ausdrücken ist. Wir betrachten die Programmiersprache C.
@@ -233,6 +235,7 @@ Bei einem Binäroperator wie etwa \& oder \textbar{} werden die beiden Operanden
 \end{center}
 
 Bei einem logischen Operator (\&\&, \textbar\textbar) wird der Ausdruck zuerst in einen Binärwert verwandelt und später binär evaluiert. So evaluiert 6 (Wahrheitswert wahr, binär \binval{1}) und 1 (Wahrheitswert wahr, binär \binval{1}) zu wahr (binär \binval{1}). Ich möchte in Erinnerung rufen, dass in der Programmiersprache C Ausdrücke gleich Null (\texttt{NULL} und \texttt{0}) als falsch interpretiert werden. Alle anderen Ausdrücke sind wahr.
+\end{comment}
 %
 \section{Tautologie}
 \index{Tautologie}
@@ -255,15 +258,15 @@ Unter einem Widerspruch ($\bot$, Kontradiktion) versteht man eine boolsche Funkt
 \section{Operator precedence}
 \index{Operator precedence}
 %
-Ausdrücke können mehrdeutig sein, wenn die Klammerung die Reihenfolge der Evaluierung der Operatoren nicht klar vorgibt.
+Ausdrücke könnten mehrdeutig sein, wenn die Klammerung die Reihenfolge der Evaluierung der Operatoren nicht klar vorgibt.
 %
 \[
   A \lor B \land \neg C \rightarrow D
 \]
 %
-Die \emph{operator precedence} sind semantische Regeln, welche Operatoren am stärksten binden. Es gibt unterschiedliche Auffassungen und sie werden nicht so konsistent verwendet, wie hier dargestellt, doch stellt die Tabelle~\ref{tab:op_precedence} eine Zusammenfassung des allgemeinen Konsens dar. Allgemein binden binäre (= zweistellige) Operatoren stärker als unäre (= einstellige) und typischerweise bindet das Und stärker als das Oder. Während alle Operatoren links-assoziativ sind, bildet die Implikation mit einer Rechtsassoziativität eine Ausnahme:
+Die \emph{operator precedence} sind semantische Regeln, welche Operatoren am stärksten binden. Es gibt unterschiedliche Auffassungen und sie werden nicht so konsistent verwendet, wie hier dargestellt, doch stellt die Tabelle~\ref{tab:op_precedence} eine Zusammenfassung des allgemeinen Konsens dar. Allgemein binden binäre (= zweistellige) Operatoren schwächer als unäre (= einstellige) und typischerweise bindet das Und stärker als das Oder. Während alle Operatoren links-assoziativ sind, bildet die Implikation mit einer Rechtsassoziativität eine Ausnahme:
 \begin{equation}
-  a \rightarrow b \rightarrow c \spacewrap\lequal a \rightarrow (b \rightarrow c)
+  (a \rightarrow b \rightarrow c) \spacewrap\lequal (a \rightarrow (b \rightarrow c))
 \end{equation}
 
 \begin{table}[ht]
@@ -315,18 +318,33 @@ Hornklauseln finden in der logischen Programmierung Anwendung und seien deshalb 
  \end{center}
 \end{table}
 %
-\subsection{Kommutative Normalform}
-\index{Kommutative Normalform}
+\subsection{Konjunktive Normalform (KNF)}
+\index{Konjunktive Normalform}
+\index{KNF}
+\index{CNF}
 %
-Unter der kommutativen Normalform versteht man einen aussagenlogischen Ausdruck, der aus einer beliebigen Anzahl von UND-verknüpften Klauseln gebildet wird.
+Unter der konjunktiven Normalform (engl. ,,conjunctive normal form``, CNF) versteht man einen aussagenlogischen Ausdruck, der aus einer beliebigen Anzahl von UND-verknüpften Klauseln gebildet wird. Ein Beispiel ist in Formel~\ref{eq:cnf_example} gegeben.
 \[
-  \bigwedge_i \bigvee_j x_{ij} \qquad \text{ mit } x_{ij} \in \set{\T, \F} \text{ oder } \neg x_{ij}
+  \bigwedge_i \bigvee_j x_{ij} \qquad \text{ mit } x_{ij} \text{ als positives oder negatives Literal}
 \]
+\begin{equation}
+ \label{eq:cnf_example}
+  (a \lor b) \land (\neg a \lor c \lor d) \land (b \lor c)
+\end{equation}
 %
 Jede beliebige boolsche Funktion lässt sich als KNF darstellen. Wir befassen uns mit dieser Aussage, indem wir eine Funktion hernehmen und sie in eine KNF transformieren. In der Tabelle~\ref{tab:knf} wird die boolsche Funktion $\f: ((A \lor B) \land C) \lor (A \land B)$ in eine KNF transformiert. Dass die Funktion $\f$ mit der korrespondierenden KNF übereinstimmt (und wir daher keinen Fehler gemacht haben) lässt sich überprüfen indem wir von beiden Funktionen die Wahrheitstabellen bilden und vergleichen. Wir stellen fest, dass die Wahrheitstabellen beide jener in Tabelle~\ref{tab:knf-table} entspricht.
 
-Es lässt sich auch ein allgemeiner Algorithmus angeben aus dem die KNF eines beliebigen Ausdrucks gebildet werden kann: Erstelle die Wahrheitstabelle und konjugiere alle negierten Konfigurationen, die zu falsch evaluieren. Dieser Algorithmus wurde in Tabelle~\ref{tab:general-knf-dnf} auf Basis der Wahrheitstabelle~\ref{tab:knf-table} angewandt.
+Es lässt sich auch ein allgemeiner Algorithmus angeben aus dem die KNF eines beliebigen Ausdrucks gebildet werden kann:
+\begin{enumerate}
+ \item Erstelle die Wahrheitstabelle.
+ \item Wähle alle Konfigurationen unter denen die Formel zu falsch evaluiert.
+ \item Negiere alle Variablen.
+ \item Verbinde alle Variablen einer Konfiguration mit ODERs.
+ \item Verbinde alle Konfigurationen mit mehreren UNDs.
+\end{enumerate}
+Dieser Algorithmus wurde in Tabelle~\ref{tab:general-knf-dnf} auf Basis der Wahrheitstabelle~\ref{tab:knf-table} angewandt.
 %
+% TODO: Clarify and explain those tables.
 \begin{table}[p]
   \begin{center}
     \begin{tabular}{cc}
@@ -341,7 +359,7 @@ Es lässt sich auch ein allgemeiner Algorithmus angeben aus dem die KNF eines be
          & $X \lor (Y \land Z) \Leftrightarrow (X \lor Y) \land (X \lor Z)$ \\
       $((A \lor C) \land (B \lor C)) \land ((A \land B) \lor (A \lor B))$
          & $((X \land Y) \lor (X \lor Y)) \Leftrightarrow (X \lor Y)$ \\
-      $(A \lor C) \land (B \lor C) \land (A \lor B)$ & Kommutative Normalform \\
+      $(A \lor C) \land (B \lor C) \land (A \lor B)$ & Konjunktive Normalform \\
      \hline
     \end{tabular}
     \caption{Transformation von $\f$ in eine KNF}
@@ -376,8 +394,8 @@ Es lässt sich auch ein allgemeiner Algorithmus angeben aus dem die KNF eines be
      \hline \hline
       $((A \lor B) \land C) \lor (A \land B)$ & $\f$ \\
 
-      $(\neg A \lor \neg B \lor \neg C) \land (\neg A \lor \neg B \lor C)
-      \land (\neg A \lor B \lor \neg C) \land (A \lor \neg B \lor \neg C)$ & KNF \\
+      $(A \lor B \lor C) \land (A \lor B \lor \neg C)
+      \land (A \lor \neg B \lor C) \land (\neg A \lor B \lor C)$ & KNF \\
 
       $(\neg A \land B \land C) \lor (A \land \neg B \land C)
       \lor (A \land B \land \neg C) \lor (A \land B \land C)$ & DNF \\

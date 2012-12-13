@@ -44,10 +44,13 @@ lernen Kinder mithilfe der Finger die arithmetischen Operationen kennen und
 setzen sich dabei mit dem Dezimalsystem auseinander. Durch Wörter wie ,,zehn``
 haben wir uns auch eigene Wörter geschaffen, die Zahlen in ihrer dezimalen
 Repräsentation bezeichnen.%
-\footnote{Lojban spricht Zahlen so aus wie einzelnen Ziffern von links nach rechts
- angeordnet sind. Diese Konvention wird auch gerne bei der Aussprache von Zahlen
- in einem Zahlensystem verwendet, die für die verwendete Sprache unüblich sind.
- $100_2$ wäre nach dieser Konvention ,,eins-null-null''.}
+%\footnote{Lojban spricht Zahlen so aus wie einzelnen Ziffern von links nach rechts
+% angeordnet sind. Diese Konvention wird auch gerne bei der Aussprache von Zahlen
+% in einem Zahlensystem verwendet, die für die verwendete Sprache unüblich sind.
+% $100_2$ wäre nach dieser Konvention ,,eins-null-null''.}
+\footnote{Für die Aussprache einer Zahl in einem anderen Zahlensystem als dem
+üblichen Dezimalsystem gilt als Konvention, dass sie gleich der Aussprache der
+einzelnen Ziffern ist. So wird $100_2$ etwa als ,,eins-null-null'' ausgesprochen.}
 
 Das Dezimalsystem umfasst 10 verschiedene Ziffern.
 \begin{align*}
@@ -212,8 +215,8 @@ unserer Verwendung von Zahlen.
 Daher müssen wir Zahlen auf eine Länge beschränken. Die Zahlen liegen
 dann an einem beliebigen Ort im Speicher. Eine Ganzzahl (engl.~,,Integer'')
 wird üblicherweise in einer Größe von 32bit%
-\footnote{Wie wir jetzt wissen, sind das 4 Bytes und kann 4294967296
-verschiedene Zustände annehmen; also etwa 4,3 Milliarden.}
+\footnote{Wie wir jetzt wissen, sind das 4 Bytes die 4294967296
+verschiedene Zustände annehmen können; also etwa 4,3 Milliarden.}
 gespeichert.
 
 \begin{figure}[ht]
@@ -242,8 +245,8 @@ Der Over- und Underflow kann durch Techniken wie Ganzzahlarithmetik vermieden
 werden, doch aufgrund des Geschwindigkeitsverlustes und der Komplexität
 verzichtet man in maschinennahen Umgebungen darauf. Dynamische Sprachen
 (etwa Python und ruby) bieten Ganzzahlen mit unendlicher Genauigkeit
-oft als gewöhnliche Zahl an und verstecken, dass auf der Maschine ständig
-Overflows passieren.
+oft als gewöhnliche Zahl an und verstecken die Umsetzung auf maschinennahe
+Zahlen mit beschränkter Länge.
 %
 \subsection{Konvertierung zwischen Zahlensystemen}
 %
@@ -308,7 +311,7 @@ Kette darstellen.
 \subsubsection{Der Tabellenansatz}
 %
 Der Tabellenansatz erlaubt einen einfachen Umgang und stellt die explizite
-Frage ,,Brauche ich diesen Wert, um meinen Zielwert zu erreichen?``. Erfolgt
+Frage ,,Brauche ich diesen Wert, um meinen Zielwert zu erreichen?{}``. Erfolgt
 die Antwort mit ,,Ja``, wird eine 1 notiert; sonst 0. Das Funktionsprinzip
 wird in Abbildung~\ref{tab:table_approach} dargestellt. Wir konvertieren die
 Zahl $59_{10}$ ins Binärsystem. Dazu tragen wir auf einer Linie die
