@@ -12,11 +12,11 @@
 %   TODO: More axiomatic structure.
 %
 Die Aussagenlogik stellt die Basis jeder Form von Logik dar, wie sie in der Informatik, Mathematik, Philosophie und weiteren Wissenschaften zur Anwendung kommt. Im folgenden Kapitel werden die Grundbegriffe und Grundkonzepte beschrieben mit denen die Aussagenlogik formalisiert wird. \\
-In den Lehrveranstaltungen \coursedm{} und \courselc{}\footnote{Lehrveranstaltungen an der Technischen Universität, Graz} wird die Aussagenlogik tiefgehender behandelt und als Basis für weitere Logikformen wie der Prädikatenlogik verwendet. Die first-order logic (FOL) findet in der Praxis Verwendung.
+In den Lehrveranstaltungen \coursedm{} und \courselc{}\footnote{Lehrveranstaltungen an der Technischen Universität, Graz} wird die Aussagenlogik tiefgehender behandelt und als Basis für weitere Logikformen wie der Prädikatenlogik verwendet. Die übergeordnete first-order logic (FOL) findet in der Praxis am meisten Verwendung.
 
 \index{Aussage (Logik)}
 \index{Literal}
-Eine Aussage ist ein aussagenlogischer Ausdruck, der wahr oder falsch ist. Diese Ausdrücke lassen sich beliebig verketten, sodass wie in der Arithmetik endlich lange Ausdrücke entstehen. Verkettete Aussagen kommen durch die Verknüpfung von Aussagen mithilfe von Operatoren zustande\footnote{Aussagenlogische Ausdrücke sind somit rekursive Strukturen}. Eine Aussage kann aber auch ein Wahrheitswert (wahr oder falsch) oder eine Variable (Literal, frei zuweisbarer Wert) sein. Weitere Notation für die Werte wahr und falsch sind $\set{1, 0}$, $\set{W, F}$ (deutsch), $\set{T, F}$ (Englisch) oder $\set{\top, \bot}$. In diesem Dokument wird primär $\T$ und $\F$ verwendet.
+Eine Aussage ist ein aussagenlogischer Ausdruck, der wahr oder falsch ist. Diese Ausdrücke lassen sich beliebig verketten, sodass wie in der Arithmetik endlich lange Ausdrücke entstehen. Verkettete Aussagen kommen durch die Verknüpfung von Aussagen mithilfe von Operatoren zustande\footnote{Aussagenlogische Ausdrücke sind somit rekursive Strukturen}. Eine Aussage kann aber auch ein Wahrheitswert (wahr oder falsch) oder eine Variable (Literal, frei zuweisbarer Wert) sein. Weitere Notation für die Werte wahr und falsch sind $\set{1, 0}$, $\set{W, F}$ (deutsch), $\set{T, F}$ (Englisch) oder $\set{\top, \bot}$. In diesem Dokument wird bevorzugt $\T$ und $\F$ verwendet.
 
 \section{Wahrheitstabellen und Verknüpfungen}
 \index{Oder-Verknüpfung}
@@ -67,10 +67,10 @@ Eine Aussage ist ein aussagenlogischer Ausdruck, der wahr oder falsch ist. Diese
  \end{center}
 \end{table}
 %
-Es gibt 3 Grundverknüpfungen, auf die aussagenlogische Ausdrücke oft reduziert werden: Das \emph{Oder} ($\lor$, ,,Disjunktion``) wird wahr (Tabelle~\ref{fig:or_operator}), wenn einer oder beide Argumente wahr sind. Das Und ($\land$, ,,Konjunktion``) wird wahr (Tabelle~\ref{fig:and_operator}), wenn beide Argumente einzeln wahr sind. Die Negation ($\neg$) ist eine unäre Operation (dh. sie bezieht sich nur auf 1 Argument) und gibt statt einem wahr falsch zurück und vice versa (Tabelle~\ref{fig:neg_operator}).
+Es gibt 3 Grundverknüpfungen, auf die aussagenlogische Ausdrücke oft reduziert werden: Das \emph{Oder} ($\lor$, ,,Disjunktion``) wird wahr (Tabelle~\ref{fig:or_operator}), wenn eines oder beide Argumente wahr sind. Das Und ($\land$, ,,Konjunktion``) wird wahr (Tabelle~\ref{fig:and_operator}), wenn beide Argumente einzeln wahr sind. Die Negation ($\neg$) ist eine unäre Operation (dh. sie bezieht sich nur auf 1 Argument) und gibt statt einem wahr falsch zurück und vice versa (Tabelle~\ref{fig:neg_operator}).
 
 \index{Wahrheitstabelle}
-Die Tabellen stellen Wahrheitstabellen dar; Tabellen, die die einzelnen Variablenbelegungen angeben sowie das Ergebnis (und eventuell auch Teilergebnis) des aussagelogischen Ausdrucks. Mit diesen drei Operatoren lassen sich alle aussagenlogische Ausdrücke formulieren (dh. jede beliebige Kombination von Wahrheitswerten in einer Wahrheitstabelle).
+Die Tabellen stellen Wahrheitstabellen dar; Tabellen, die die einzelnen Variablenbelegungen angeben sowie das Ergebnis (und eventuell auch Teilergebnisse) des aussagelogischen Ausdrucks. Mit diesen drei Operatoren lassen sich alle aussagenlogische Ausdrücke formulieren (dh. jede beliebige Kombination von Wahrheitswerten in einer Wahrheitstabelle).
 
 Zwei aussagenlogische Ausdrücke sind äquivalent, wenn deren Wahrheitstabellen äquivalent sind.
 %
@@ -176,7 +176,7 @@ Man kann es als unintuitiv betrachten, dass die Implikation wahr zurückgibt, we
  \end{center}
 \end{table}
 %
-Das NAND (| oder $\uparrow$, Shefferscher Strich) ist die Negation des Und-Operators. Als Besonderheit lassen sich aus diesem Operator alle aussagenlogische Ausdrücke ableiten. Somit können sie darauf verzichten die aussagenlogischen Ausdrücke auf die Operatoren $\land$, $\lor$ und $\neg$ zu reduzieren, sondern können direkt nur das NAND nutzen, um alle Ausdrücke abzubilden. So wird als Beispiel in Formel~\ref{eq:nand_false} das NAND verwendet, um den Wahrheitswert falsch abzuleiten.
+Das NAND ($|$ oder $\uparrow$, Shefferscher Strich) ist die Negation des Und-Operators. Als Besonderheit lassen sich aus diesem Operator alle aussagenlogische Ausdrücke ableiten. Somit können sie darauf verzichten die aussagenlogischen Ausdrücke auf die Operatoren $\land$, $\lor$ und $\neg$ zu reduzieren, sondern können direkt nur das NAND nutzen, um alle Ausdrücke abzubilden. So wird als Beispiel in Formel~\ref{eq:nand_false} das NAND verwendet, um den Wahrheitswert falsch abzuleiten.
 \begin{equation}
  \label{eq:nand_false}
   (A | A) | B \leftrightarrow \bot
@@ -240,7 +240,7 @@ Bei einem logischen Operator (\&\&, \textbar\textbar) wird der Ausdruck zuerst i
 \section{Tautologie}
 \index{Tautologie}
 %
-Unter einer Tautologie ($\top$) versteht man eine boolsche Funktion, die unter einer beliebigen Variablenkonfiguration zum Ausdruck Wahr evaluiert. Sie ist damit bedingungslos. Da der Wahrheitswert selbst als boolsche Funktion interpretiert werden kann, wird das Symbol $\top$ oft für wahr synonym verwendet.
+Unter einer Tautologie ($\top$) versteht man eine boolsche Funktion, die unter einer beliebigen Variablenkonfiguration zum Ausdruck Wahr evaluiert. Sie ist damit bedingungslos. Da der Wahrheitswert selbst als boolsche Funktion interpretiert werden kann, wird das Symbol $\top$ oft synonym verwendet.
 \begin{equation}
   ((A \lor B) \lor (B \land A)) \lor (\neg A \land \neg B) \leftrightarrow \top
 \end{equation}
@@ -426,13 +426,15 @@ gebildet wird.
   In jedem formalen und logischen System gibt es Aussagen, die unentscheidbar sind.
 \end{quote}
 %
-In der Aussagenlogik wird die Unvollständigkeit durch das Lügnerparadoxon illustriert.
+% TODO: reference to paper
+Kurt Gödel (\life{1906}{1978}) beschrieb die sogenannten Unvollständigkeitssätze, die die Grenzen von formalen Systemen aufzeigen.
+In der Aussagenlogik möchten wir uns mit Unvollständigkeit durch das Lügnerparadoxon betrachten.
 %
 \begin{quote}
   Diese Aussage ist falsch.
 \end{quote}
 %
-Handelt es sich um einen Ausdruck, der gesamtheitlich als \T{} angenommen wird, so muss die Summe aller Teilaussagen als wahrheitsgemäß angesehen werden d.h. ,,Diese Aussage ist falsch`` wird zu \T{} evaluieren. Da sich die Aussage auf den Gesamtausdruck bezieht, müsste dieser Ausdruck zu \F{} evaluieren, was sich mit unserer Annahme widerspricht. Dieser Fall ist somit nicht entscheidbar.
+Handelt es sich um einen Ausdruck, der gesamtheitlich als \T{} angenommen wird, so muss die Summe aller Teilaussagen als wahrheitsgemäß angesehen werden d.h. ,,Diese Aussage ist falsch`` wird zu \T{} evaluieren. Da sich die Aussage auf den Gesamtausdruck bezieht, müsste dieser Ausdruck zu \F{} evaluieren, was sich mit unserer Annahme widerspricht. Das vorliegende Problem kann durch die Selbstreferenzierung nicht gelöst werden. Es ist somit nicht entscheidbar.
 
 Selbige Überlegung lässt sich mit \F{} durchführen. Im Gesamten kann somit die Aussage nicht entschieden werden. Das Lügner-Paradoxon bildet ein Beispiel hierfür in der Logik.
 %

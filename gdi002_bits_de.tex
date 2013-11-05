@@ -36,6 +36,7 @@ beliebiger Länge dargestellt werden kann. Die Menge der Ziffern bildet dabei
 das sogenannte \emph{Alphabet}.
 
 \subsection{Basis 10}
+\label{sec:bits_numeric_systems_10}
 \index{Dezimalsystem}
 %
 Der Grund für das Entstehen des Dezimalsystems (\short{dec}) liegt in der
@@ -54,8 +55,8 @@ einzelnen Ziffern ist. So wird $100_2$ etwa als ,,eins-null-null'' ausgesprochen
 
 Das Dezimalsystem umfasst 10 verschiedene Ziffern.
 \begin{align*}
-         \text{Alphabet} &= \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\} \\
-  \card{\text{Alphabet}} &= 10 
+         \text{Alphabet}_{\text{dec}} &= \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\} \\
+  \card{\text{Alphabet}_{\text{dec}}} &= 10 
 \end{align*}
 
 %\aside % TODO
@@ -141,7 +142,7 @@ kann somit auf folgende Weise aufgelöst werden.
 \subsection{Das Bit}
 \index{Bit}
 %
-Ein Bit (abgekürzt von \emph{BInary digiT}) bezeichnet eine Stelle in einem
+Ein Bit (Abk. \emph{BInary digiT}) bezeichnet eine Stelle in einem
 binären Zahlensystem. In einem Bit können zwei Zustände unterschieden werden.
 %
 \begin{table}[ht]
@@ -167,7 +168,8 @@ binären Zahlensystem. In einem Bit können zwei Zustände unterschieden werden.
 %
 Die Anzahl der möglichen Zustände wächst logarithmisch zur Basis 2
 (\emph{logarithmus dualis}); wie in Tabelle~\ref{tab:digits_states}
-dargestellt. Der Zusammenhang zwischen $s$ und $d$ erklärt sich durch
+dargestellt. Der Zusammenhang zwischen der Anzahl der abbildbaren
+Zustände $s$ und der Anzahl der Ziffern $d$ erklärt sich durch
 $s = 2^d$ bzw. logarithmisch mit $\log_2{s} = d$.
 
 \index{Byte}
@@ -202,7 +204,7 @@ Zahlen keine Bedeutung zuzuweisen, wobei sie technisch existieren.
 Aus dieser Konsequenz gab es mehrere Versuche die Präfixe
 auf das Binärsystem anzupassen.%
 \footnote{Zur Unterscheidung wurde von der IEC der Präfix Kibi/Mebi/Gibi
-für die Basis 2 eingeführt. Donald Knuth schlug den Suffix -yllion vor.}
+für die Basis 2 eingeführt.}
 
 \subsection{Overflows und Underflows}
 %
@@ -226,7 +228,7 @@ gespeichert.
     \framebox[3\width]{1} \framebox[3\width]{1} \framebox[3\width]{1} \framebox[3\width]{1} $+ 1 =$ \\
     \framebox[3\width]{0} \framebox[3\width]{0} \framebox[3\width]{0} \framebox[3\width]{0} \hspace{27.5pt}~
   \end{center}
-  \caption{In der letzten Zeile wird ein Overflow illustriert}
+  \caption{Illustration eines Overflow in der letzten Zeile}
   \label{fig:overflow}
 \end{figure}
 %
@@ -244,9 +246,9 @@ Der Underflow beschreibt das Äquivalent für das Dekrementieren.
 Der Over- und Underflow kann durch Techniken wie Ganzzahlarithmetik vermieden
 werden, doch aufgrund des Geschwindigkeitsverlustes und der Komplexität
 verzichtet man in maschinennahen Umgebungen darauf. Dynamische Sprachen
-(etwa Python und ruby) bieten Ganzzahlen mit unendlicher Genauigkeit
-oft als gewöhnliche Zahl an und verstecken die Umsetzung auf maschinennahe
-Zahlen mit beschränkter Länge.
+(etwa Python und ruby) bieten oft Ganzzahlen mit unendlicher Genauigkeit
+an und verstecken die Umsetzung auf maschinennahe Zahlen mit beschränkter
+Länge.
 %
 \subsection{Konvertierung zwischen Zahlensystemen}
 %
@@ -287,8 +289,9 @@ Da $66-2\cdot8^0-0\cdot8^1-0\cdot8^2 = 0$ sind wir am Ziel angekommen:
 
 \subsubsection{Der Kettenansatz}
 %
-Ähnlich dem mathematischen Ansatz lassen sich die Zahlen als verschachtelte
-Kette darstellen.
+Zahlen lassen sich als verschachtelte Kette darstellen.
+Wir spalten dabei immer einen Restwert in einer alternierenden
+Sequenz von Addition und Multiplikation ab.
 %
 \[
   59_{10}
@@ -317,13 +320,13 @@ wird in Abbildung~\ref{tab:table_approach} dargestellt. Wir konvertieren die
 Zahl $59_{10}$ ins Binärsystem. Dazu tragen wir auf einer Linie die
 2er-Potenzen absteigend auf (die höchste Potenz muss die größer Zahl
 kleiner-gleich der gesuchten Zahlen sein). Wir bearbeiten die Zahlen
-von links nach rechts. Wir fragen uns, ob die Zahl $32$ kleiner $59$ ist
-(dh. ob sie ,,gebraucht`` wird). Wenn ja, tragen wir darunter eine 1 ein.
-Wenn nein, tragen wir darunter eine 0 ein.
+von links nach rechts. Wir fragen uns, ob die Zahl $32$ kleiner oder gleich
+$59$ ist (dh. ob sie ,,gebraucht`` wird). Wenn ja, tragen wir darunter
+eine 1 ein. Wenn nein, tragen wir darunter eine 0 ein.
 Wir fragen uns, ob die Zahl $32+16$ kleiner $59$ ist. Ja, daher 1.
 $32+16+8$ ist auch kleiner $59$ und daher tragen wir eine 1 ein.
 $32+16+8+4$ wäre jedoch $60$ und überschreitet unseren Wert $59$.
-Wir lehnen die 2er-Potenz mit einer $0$ ab. Mit $32+16+8+2+1$ erreicht
+Wir lehnen diese 2er-Potenz mit einer $0$ ab. Mit $32+16+8+2+1$ erreicht
 die Summe genau unsere Zahl $59$; in binär $111011_2$.
 %
 \begin{table}[ht]
@@ -404,6 +407,6 @@ behandelt.
 
 Beachte, dass Bits genau die beiden aussagenlogischen Ausdrücke
 \textsl{wahr} und \textsl{falsch} repräsentieren können, jedoch diese
-Werte seltenst auf modernen Maschinen durch wirkliche Bits gespeichert
-werden, da (wie erwähnt) die kleinste adressierbare Speichereinheit
-ein Byte ist.
+Werte praktisch nie auf modernen Maschinen durch wirkliche Bits
+gespeichert werden, da (wie erwähnt) die kleinste adressierbare
+Speichereinheit ein Byte ist.
