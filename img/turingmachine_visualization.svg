@@ -13,7 +13,7 @@
    height="300"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.3.1 r9886"
+   inkscape:version="0.48.4 r9939"
    sodipodi:docname="turingmachine_visualization.svg">
   <sodipodi:namedview
      id="base"
@@ -22,9 +22,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.5738687"
-     inkscape:cx="138.02243"
-     inkscape:cy="177.43079"
+     inkscape:zoom="1.7933333"
+     inkscape:cx="200"
+     inkscape:cy="150"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -324,7 +324,7 @@
          style="font-size:20px">0</flowPara></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot4099"
-       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0.02737339px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
        transform="matrix(1.095955,0,0,1.095955,23.319396,755.42529)"><flowRegion
          id="flowRegion4101"><rect
            id="rect4103"
@@ -332,36 +332,40 @@
            height="110.98899"
            x="39.56044"
            y="136.81319"
-           style="font-size:20px" /></flowRegion><flowPara
-         id="flowPara4105">M1  0  1  R  M2</flowPara><flowPara
-         id="flowPara4107">M1  1  1  R  M2</flowPara><flowPara
-         id="flowPara4109">M2  0  0  R  M1</flowPara><flowPara
-         id="flowPara4111">M2  1  0  R  M2</flowPara></flowRoot>    <rect
+           style="font-size:20px;word-spacing:0.02737339px" /></flowRegion><flowPara
+         id="flowPara4105"
+         style="-inkscape-font-specification:Gentium Basic;font-family:Gentium Basic;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;word-spacing:1.98913277px">M1  0  1  R  M2</flowPara><flowPara
+         id="flowPara4107"
+         style="-inkscape-font-specification:Gentium Basic;font-family:Gentium Basic;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;word-spacing:1.98913277px">M1  1  1  R  M2</flowPara><flowPara
+         id="flowPara4109"
+         style="-inkscape-font-specification:Gentium Basic;font-family:Gentium Basic;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;word-spacing:1.98913277px">M2  0  0  R  M1</flowPara><flowPara
+         id="flowPara4111"
+         style="-inkscape-font-specification:Gentium Basic;font-family:Gentium Basic;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;word-spacing:1.98913277px">M2  1  0  R  M2</flowPara></flowRoot>    <rect
        y="904.6319"
        x="55.466934"
-       height="111.40202"
-       width="187.27583"
+       height="111.40204"
+       width="166.08624"
        id="rect5065"
        style="fill:none;stroke:#dd0000;stroke-width:2.19191003;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
     <path
        inkscape:connector-curvature="0"
        id="path5067"
-       d="m 105.81711,904.46313 0,111.40207"
+       d="m 99.81711,904.46313 0,111.40207"
        style="fill:none;stroke:#dd0000;stroke-width:2.19191003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
     <path
        inkscape:connector-curvature="0"
        id="path5069"
-       d="m 134.72142,1015.8652 0,-110.7999"
+       d="m 126.72142,1015.8652 0,-110.7999"
        style="fill:none;stroke:#dd0000;stroke-width:2.19191003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
     <path
        inkscape:connector-curvature="0"
        id="path5071"
-       d="m 161.51811,904.46313 0,112.00417"
+       d="m 151.51811,904.46313 0,112.00417"
        style="fill:none;stroke:#dd0000;stroke-width:2.19191003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
     <path
        inkscape:connector-curvature="0"
        id="path5073"
-       d="m 191.32569,1015.8652 0,-111.40207"
+       d="m 177.32569,1015.8652 0,-111.40207"
        style="fill:none;stroke:#dd0000;stroke-width:2.19191003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
     <path
        sodipodi:nodetypes="ccccc"
@@ -381,7 +385,7 @@
            height="28.750494"
            width="37.492199"
            id="rect5079" /></flowRegion><flowPara
-         style="font-size:20px;text-align:center;text-anchor:middle"
+         style="font-size:20px;text-align:center;text-anchor:middle;-inkscape-font-specification:Gentium Basic;font-family:Gentium Basic;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
          id="flowPara5081">M1</flowPara></flowRoot>    <rect
        y="855.07013"
        x="268.80563"
@@ -431,5 +435,5 @@
            x="15.929329"
            y="12.106524" /></flowRegion><flowPara
          id="flowPara3863-4"
-         style="font-size:11px">Übergangstabelle</flowPara></flowRoot>  </g>
+         style="font-size:12px;-inkscape-font-specification:Gentium Basic;font-family:Gentium Basic;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Übergangstabelle</flowPara></flowRoot>  </g>
 </svg>

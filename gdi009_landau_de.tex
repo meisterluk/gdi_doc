@@ -1,10 +1,10 @@
 \chapter{Landau Notation}
 %
-Die Informatik ist daran interessiert, Algorithmen---die im Alltag zur Anwendung kommen\footnote{Ein bekanntes Beispiel sind hierfür Sortieralgorithmen.}---zu optimieren, um Rechenzeit und Energie zu sparen. Effizientere Algorithmen erlauben ein wirtschaftlicheres Handeln. Wir benötigen daher ein Werkzeug, um Algorithmen bezüglich ihrer Eigenschaften wie Speicherverbrauch und Laufzeit vergleichen zu können.
+Die Informatik ist daran interessiert, Algorithmen---so wie sie im Alltag zur Anwendung kommen\footnote{Ein bekanntes Beispiel sind hierfür Sortieralgorithmen.}---zu optimieren, um Rechenzeit und Energie zu sparen. Effizientere Algorithmen erlauben ein wirtschaftlicheres Handeln. Wir benötigen daher ein Werkzeug, um Algorithmen bezüglich ihrer Eigenschaften wie Speicherverbrauch und Laufzeit vergleichen zu können. Wir bedienen uns dabei einer speziellen mathematischen Notation, welcher die Betrachtung des asymptotischen Verhaltens einer Funktion zugrunde liegt.
 
-Bei den nachfolgenden Beispielen sprechen wir von einer Variable $n$. Es ist wichtig zu wissen, wofür dieses $n$ steht, doch ergibt es sich aus dem Kontext oft implizit. Bei einem Sortieralgorithmus wird man mit $n$ die Anzahl der zu sortierenden Elemente beschreiben. Bei der Multiplikation zweier Zahlen wird man die maximale Anzahl der Stellen der beiden Zahlen mit $n$ bezeichnen. Sollte es sich aus dem Kontext nicht eindeutig ergeben, so ist eine textuelle Beschreibung von $n$ sehr wichtig.
+Bei den nachfolgenden Beispielen sprechen wir von einer Variable $n$. Es ist wichtig zu wissen, wofür dieses $n$ steht, doch ergibt es sich aus dem Kontext oft implizit. Es ist jene Variable, die signifikant für die Effizienz des Algorithmus ist. Bei einem Sortieralgorithmus wird man mit $n$ die Anzahl der Vergleichsoperationen zwischen Elementen beschreiben. Bei der Multiplikation zweier Zahlen wird man die maximale Anzahl der Stellen der beiden Zahlen mit $n$ bezeichnen. Sollte es sich aus dem Kontext nicht eindeutig ergeben, so ist eine textuelle Beschreibung von $n$ sehr wichtig.
 
-Unser neues Werkzeug nennt sich ,,Landau-Notation'', ,,$\mathcal{O}$-Notation''\footnote{In \LaTeX{}  \texttt{\textbackslash mathcal\{O\}} und in Unicode U+039F ``GREEK CAPITAL LETTER OMICRON''} oder engl.~``Big O-Notation''.
+Unser neues Werkzeug nennt sich ,,Landau-Notation``, ,,$\mathcal{O}$-Notation``\footnote{In \LaTeX{}  \texttt{\textbackslash mathcal\{O\}} und in Unicode U+039F ``GREEK CAPITAL LETTER OMICRON`` notiert.} oder engl.~``Big O-Notation``.
 
 \section{2 grundlegende Klassen}
 \subsection{Konstante Laufzeiten}
@@ -61,11 +61,11 @@ Wird ein Algorithmus häufig verwendet, wird es besser sein einen Algorithmus mi
    $10^6$ & 1              & $10^6$ \\
  \hline
   \end{tabular}
-  \caption{Zwei Algorithmen, deren Laufzeit mit $f_1(n) = 1$ und $f_2(n) = n$ beschrieben werden können, im Vergleich}
+  \caption{Zwei Algorithmen, deren Laufzeit mit $f_1(n) = 1$ und $f_2(n) = n$ beschrieben werden können, im Vergleich.}
  \end{center}
 \end{table}
 
-Wir führen nun die $\mathcal{O}$-Notation ein und untersuchen, ob eine der beiden Funktionen ,,größer'' ist als die andere. ,,Größer'' bedeutet mathematisch wir finden eine Schranke $g(n)$ für eine Funktion $f(n)$, die stets größere Werte liefert als $f(n)$. In diesem Fall sprechen wir von einer ,,oberen Schranke'' und uns interessiert das asymptotische Verhalten.
+Wir führen nun die $\mathcal{O}$-Notation ein und untersuchen, ob eine der beiden Funktionen ,,größer`` ist als die andere. ,,Größer`` bedeutet mathematisch wir finden eine Schranke $g(n)$ für eine Funktion $f(n)$, die stets größere Werte liefert als $f(n)$. In diesem Fall sprechen wir von einer ,,oberen Schranke`` und uns interessiert das asymptotische Verhalten.
 
 Wir überlegen uns intuitiv folgende Definition: Eine Funktion $g(n)$ ist die obere Schranke von $f(n)$, wenn\dots
 \[
@@ -87,7 +87,7 @@ Wir betrachten eine Funktion (die zB eine Laufzeit beschreibt). Es sei folgende 
 \]
 Diese Definition erfüllt, was wir erreichen wollen. Für sehr große $n$ vergleichen wir die Algorithmen und beobachten welche Funktion schneller wächst.
 
-Wir treffen jedoch noch eine Entscheidung: Algorithmen mit linearer Laufzeit sind nicht sehr attraktiv. Die Information ,,die Funktion wächst linear'' ist wichtig, aber ob sie mit dem Faktor $2$ oder $3$ wächst, bezeichnen wir als irrelevant. Auch wenn $f_1(n) = 2n$ langsamer wächst als $f_2(n) = 3n$ so sind sie doch sehr ähnlich. Wir möchten definieren, dass Funktionen mit konstanten Faktoren in der selben Klasse liegen. Wir erweitern unsere Definition ein letztes Mal und führen dazu einen Faktor $c$ ein:
+Wir treffen jedoch noch eine Entscheidung: Algorithmen mit linearer Laufzeit sind nicht sehr attraktiv. Die Information ,,die Funktion wächst linear`` ist wichtig, aber ob sie mit dem Faktor $2$ oder $3$ wächst, bezeichnen wir als irrelevant. Auch wenn $f_1(n) = 2n$ langsamer wächst als $f_2(n) = 3n$ so sind sie doch sehr ähnlich. Wir möchten definieren, dass Funktionen mit konstanten Faktoren in der selben Klasse liegen. Wir erweitern unsere Definition ein letztes Mal und führen dazu einen Faktor $c$ ein:
 \[
    \On{g(n)} = \{ f(n) \mid \exists c \in \mathbb{R}^+, n_0 \in \mathbb{N},
                   \:\forall n \geq n_0: f(n) \leq c \cdot g(n) \}
@@ -211,7 +211,7 @@ Die Aussage des letzten Absatzes ist fehlerfrei und begründet die Genialität d
 %
 \section{Weitere Klassen von Funktionen}
 %
-Zum dritten Mal in diesem Dokument wird der Begriff ,,Klasse'' verwendet. Wir besitzen jedoch noch keine Definition einer ,,Klasse''. Dieser Begriff ist etwas komplizierter, jedoch möchten wir ihn kurz formal definieren:
+Zum dritten Mal in diesem Dokument wird der Begriff ,,Klasse`` verwendet. Wir besitzen jedoch noch keine Definition einer ,,Klasse``. Dieser Begriff ist etwas komplizierter, jedoch möchten wir ihn kurz formal definieren:
 Zwei Funktionen liegen in der selben Klasse, wenn sie gegenseitig eine exakte Schranke der anderen Funktion sind. Die Definition der exakten Schranke ist gegeben als:
 \[
   \On{g(n)} = \{ f(n) \mid \exists c_1, c_2 \in \mathbb{R}^+, n_0 \in \mathbb{N},
@@ -378,17 +378,17 @@ Da sie exakte Schranken zueinander sind, handelt es sich bei $\On{3^n}$ und $\On
 %
 \subsection{Die Suche nach der langsamst wachsenden Funktion}
 %
-Wir sprechen von ,,möglichst großem $n$'' und von ,,Wachstum'' sowie ,,oberen Schranken''. Bei der Angabe von Beispielen zum Rechnen findet man jedoch die Frage nach der ,,langsamst wachsenden Funktion''. Wie passen diese Dinge zusammen?
+Wir sprechen von ,,möglichst großem $n$`` und von ,,Wachstum`` sowie ,,oberen Schranken``. Bei der Angabe von Beispielen zum Rechnen findet man jedoch die Frage nach der ,,langsamst wachsenden Funktion``. Wie passen diese Dinge zusammen?
 
-Wir definieren drei Funktionen $f_1(n) = n$, $f_2(n) = 42n$ und $f_3(n) = n^n$. Mithilfe der formalen Definition stellen wir fest, dass die Relationen $f_1 \in \On{n^n}$, $f_2 \in \On{n^n}$ und $f_3 \in \On{n^n}$ gelten. Unzufrieden stellen wir fest, dass jede der betrachteten Funktionen $n^n$ als obere Schranke besitzt. Die Information ,,die Laufzeit fast aller Algorithmen kann mit $\On{n^n}$ abgeschätzt werden'' ist praktisch nicht hilfreich. Aus diesem Grund suchen wir jene Klasse für eine Funktion, in der die Funktion liegt und die im Vergleich zu anderen Klassen am langsamsten wächst.
+Wir definieren drei Funktionen $f_1(n) = n$, $f_2(n) = 42n$ und $f_3(n) = n^n$. Mithilfe der formalen Definition stellen wir fest, dass die Relationen $f_1 \in \On{n^n}$, $f_2 \in \On{n^n}$ und $f_3 \in \On{n^n}$ gelten. Unzufrieden stellen wir fest, dass jede der betrachteten Funktionen $n^n$ als obere Schranke besitzt. Die Information ,,die Laufzeit fast aller Algorithmen kann mit $\On{n^n}$ abgeschätzt werden`` ist praktisch nicht hilfreich. Aus diesem Grund suchen wir jene Klasse für eine Funktion, in der die Funktion liegt und die im Vergleich zu anderen Klassen am langsamsten wächst.
 %
 \subsection{Polynomiell vs exponentiell}
 %
-Abseits der Betrachtung von Klassen gibt es auch Sichtweisen, die Algorithmen in nur 2 Klassen teilen: Polynomielle Funktionen (jene der Struktur $a_1 \cdot n^0 + a_2 \cdot n^1 + a_3 \cdot n^2 + \ldots$) und exponentielle Funktionen. Dabei werden polynomielle Funktionen als ,,effizient'' betrachtet und sind erstrebenswert. Diese Sichtweise begründet die Sichtweise auf ,,Komplexitätsklassen'' in der theoretischen Informatik.
+Abseits der Betrachtung von Klassen gibt es auch Sichtweisen, die Algorithmen in nur 2 Klassen teilen: Polynomielle Funktionen (jene der Struktur $a_1 \cdot n^0 + a_2 \cdot n^1 + a_3 \cdot n^2 + \ldots$) und exponentielle Funktionen. Dabei werden polynomielle Funktionen als ,,effizient`` betrachtet und sind erstrebenswert. Diese Sichtweise begründet die Sichtweise auf ,,Komplexitätsklassen`` in der theoretischen Informatik.
 %
 \section{Conclusio}
 %
-Wir betrachten mit der $\mathcal{O}$-Notation verschiedene Klassen von Funktionen, die Attribute wie Laufzeit oder Speicherverbrauch beschreiben. Obwohl sie formal genau definiert ist und ein etabliertes Werkzeug ist, steht die $\mathcal{O}$-Notation auch Kritik\footnote{Suche etwa nach ``Algorithms for the masses''} gegenüber, da sie dem Programmierer nicht jenes Werkzeug zur Verfügung stellt, welches wir immer brauchen (Sprechen wir \emph{immer} von sehr großen $n$? Wird immer sauber definiert, was man mit $n$ bezeichnet?).
+Wir betrachten mit der $\mathcal{O}$-Notation verschiedene Klassen von Funktionen, die Attribute wie Laufzeit oder Speicherverbrauch beschreiben. Obwohl sie formal genau definiert ist und ein etabliertes Werkzeug ist, steht die $\mathcal{O}$-Notation auch Kritik\footnote{Suche etwa nach ``Algorithms for the masses``} gegenüber, da sie dem Programmierer nicht jenes Werkzeug zur Verfügung stellt, welches wir immer brauchen (Sprechen wir \emph{immer} von sehr großen $n$? Wird immer sauber definiert, was man mit $n$ bezeichnet?).
 
 In Bezug auf Notation verwenden wir jetzt möglichst einheitliche Notationen für Klassen von Funktionen. Es wäre sinnfrei $\On{3n}$ zu notieren, da es zu $\On{42n}$ äquivalent ist und $\On{n}$ am einfachsten zu schreiben ist. Wir definieren als eine Liste an bekannten Funktionsklassen aufsteigend nach ihrer Komplexität (Tabelle~\ref{tab:classes}).
 \begin{table}[ht]
@@ -455,4 +455,4 @@ Auf der Basis unseres Verständnisses für die $\mathcal{O}$-Notation, betrachte
   \item Wie stehen obere, untere und exakte Schranken zueinander? Welche Rechenregeln ergeben sich?
 \end{itemize}
 %
-Die Lehrveranstaltungen \coursedaa{}, \coursetcs{} und \coursedaa{} sind Pflichtlehrveranstaltungen der Studiengänge ,,Informatik'', (teilweise) ,,Softwareentwicklung-Wirtschaft'', (teilweise) ,,Telematik'' und (teilweise) ,,(Technische) Mathematik''. Sie behandeln die behandelten und unbehandelten Konzepte tiefergehend.
+Die Lehrveranstaltungen \coursedaa{}, \coursetcs{} und \coursedaa{} sind Pflichtlehrveranstaltungen der Studiengänge ,,Informatik``, (teilweise) ,,Softwareentwicklung-Wirtschaft``, (teilweise) ,,Telematik`` und (teilweise) ,,(Technische) Mathematik``. Sie behandeln die behandelten und unbehandelten Konzepte tiefergehend.

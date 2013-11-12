@@ -1,23 +1,46 @@
 \chapter{Graphentheorie}
 %
-Ein Graph ist eine Menge $(V, E)$ von Knoten (engl. vertex) und Kanten (engl. edge). Graphen unterscheiden sich aufgrund ihrer Eigenschaften und damit assoziiert werden zahlreiche neue Begriffe definiert, um den Austausch innerhalb des Forschungsgebiets zu erleichtern.
+\begin{figure}[p]
+ \begin{center}
+  \includegraphics{img/example_graph.pdf}
+  \caption{
+      Visualisierung eines ungerichteten Beispielgraphs $V = {a, b, c, d, e},
+      E = \{(a, c), (a, e), (b, c), (b, d), (b, e), (c, d), (d, e)\}$.
+      Der Graph besitzt 7 von 10 ($= \frac{|V| \cdot (|V|-1)}{2}$) möglichen Kanten.
+      Er ist einfach, besitzt 4 Zyklen und kann planar dargestellt werden.
+  }
+  \label{fig:example_graph}
+ \end{center}
+\end{figure}
+
+Ein Graph ist eine Menge $(V, E)$ von Knoten (engl. vertex) und Kanten (engl. edge). Graphen unterscheiden sich aufgrund ihrer Eigenschaften in Form und Anzahl an Knoten und Kanten. Da Graphen so vielfältig eingesetzt werden, haben sich viele Begriffe etabliert, die teilweise mehrdeutig verwendet werden. Es sei hier eine möglichst genaue Definition der Begriffe im Kontext der Informatik gegeben:
 %
 \begin{description}
   \item[(un)gerichteter Graph]
-    Ein gerichteter Graph unterscheidet zwischen einer Kante $(u, v)$ und der Kante $(v, u)$, während diese Unterscheidung beim ungerichteten Graphen wegfällt.
+    Ein gerichteter Graph unterscheidet zwischen einer Kante $(u, v)$ und der Kante $(v, u)$, während diese Unterscheidung beim ungerichteten Graphen wegfällt. Bei der Visualisierung werden Pfeile genutzt, um die
+    Richtung zu definieren.
+  \item[Pfad / Weg] Eine beliebige Sequenz von benachbarten Knoten.
   \item[Zyklus]
-   Eine beliebige Sequenz von Knoten, die einem Ablauf von Kanten folgen, wobei der Startknoten gleich dem Endknoten ist.
+   Ein Pfad dessen Startknoten gleich dem Endknoten ist.
   \item[Schleife]
-   Genau eine Kante, die den Knoten mit sich selbst verbindet. Sie ist auch damit ein Zyklus, wobei die Sequenz eine Maximallänge von 1 anlegt.
+   Eine Kante, die den Knoten mit sich selbst verbindet. Sie ist auch damit ein Zyklus der Länge 1.
+  \item[Multigraph]
+    Graph, welcher mehrere Kanten zwischen zwei Knoten und Schleifen erlaubt.
+  \item[einfacher/simpler Graph]
+    Ungerichteter Graph, welcher kein Multigraph ist.
   \item[Baum]
-   Bäume sind das Lieblingsspielzeug der Informatik. Ein Baum wird als zusammenhängender, zyklusfreier Graph verstanden. Er ermöglicht es Daten in einer hierarchischen Baumstruktur abzubilden.
+   Ein Baum wird als zusammenhängender, zyklusfreier Graph verstanden. Er ermöglicht es Daten einer hierarchischen Struktur abzubilden.
   \item[Brücke]
-   Unter einer Brücke versteht man eine Kante, die bei Entfernung die Eigenschaft ,,zusammenhängend`` des Graphen zu ,,unzusammenhängend``.
+   Unter einer Brücke versteht man eine Kante deren Entfernung zur Verlust der Eigenschaft ,,zusammenhängend`` des Graphens führt.
+  \item[Vollständiger Graph]
+   Unter einem vollständigen Graph versteht man einen Graph, in dem jeder Knoten mit jedem Knoten direkt verbunden ist.
+  \item[Untergraph]
+   Ein Graph $G'$, welcher eine Untermenge der Knoten von $G$ verwendet und nur jene Kanten verwendet, deren Knoten in $G'$ enthalten sind.
   \item[Clique]
-   Unter Clique versteht man eine Menge von Knoten $k$, in der jeder Knoten direkt mit jedem anderen verbunden ist. Wird die Clique für den gesamtem Graphen angewandt, fällt die Definition mit der Definition des vollständigen Graphens zusammen.
+   Ein vollständiger Untergraph.
   \item[Eulerscher Graph]
    Der Eulersche Graph ist ein spezieller Zyklus, der alle Knoten des Graphen nutzt und jede Kanten genau nur 1mal verwendet.
-  \item[Grad]
+  \item[Grad eines Knoten]
    Der Grad eines Knotens ist definiert als die Anzahl an ein- und ausgehenden Kanten.
   \item[Hamiltonpfad]
    Unter einem Hamiltonpfad versteht man einen Pfad im Graphen, der jeden Knoten genau einmal besucht.
@@ -26,9 +49,17 @@ Ein Graph ist eine Menge $(V, E)$ von Knoten (engl. vertex) und Kanten (engl. ed
   \item[Planarität]
    Ein Graph ist planar, wenn er ohne Überschneidungen von Kanten auf einer 2D-Fläche gezeichnet werden kann.
   \item[Quelle/Senke]
-   Unter der Quelle versteht man bei einem gerichteten Graph einen Knoten, der nach außen führende Kanten besitzt. Eine Senke ist ein Knoten, der nur eingehende Kanten auf diesen Knoten besitzt.
-  \item[Vollständiger Graph]
-   Unter einem vollständigen Graph versteht man einen Graph, in dem jeder Knoten mit jedem Knoten direkt verbunden ist.
+   Unter der Quelle versteht man bei einem gerichteten Graph einen Knoten, der nur nach außen führende Kanten besitzt. Eine Senke ist ein Knoten, der nur eingehende Kanten auf diesen Knoten besitzt.
 \end{description}
 
-%TODO: \section{Konzept Adjazenzmatrix}
+\section{Datenstrukturen zur Speicherung von Graphen}
+%
+Für die Speicherung eines Graphen ist eine Datenstruktur erforderlich, die Knoten und Kanten abbildet. Die Knoten werden typischerweise durchnummeriert; deren Namen separat assoziativ gespeichert. Im Fokus stehen zwei verschiedene Konzepte um Kanten zu speichern:
+%
+\begin{description}
+  \item[Inzidenzliste]
+    Die Kanten werden als Paar von Knoten in einer Liste gespeichert.
+  \item[Adjazenzmatrix]
+    In einer Matrix der Größe $|V|\times |V|$ wird ein Eintrag $m_{i,j}$ mit einer 1 (oder einem Gewicht) besetzt,
+    wenn eine Kante zwischen den Knoten $i$ und $j$ besteht.
+\end{description}

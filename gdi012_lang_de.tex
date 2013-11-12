@@ -2,6 +2,7 @@
 \index{Formale Grammatiken}
 % TODO: Chomsky-Hierarchie
 %
+\index{Formale Grammatiken}
 Die Informatik macht sich Gedanken um die systematische Verarbeitung von Information. Anhand verschiedener Modelle haben wir bereits gesehen, wie wir eine Eingabe nehmen, diese nach Vorschriftsregeln verarbeiten und dann eine Antwort auf das gestellte Anfangsproblem liefern. Dabei haben wir eine wichtige Frage wegfallen lassen: Woher weiß der Algorithmus, ob diese Eingabe valid? Woher weiß die Turingmaschine, dass das---was auf dem Band steht---eine korrekte Eingabe ist, die zu keinem undefinierten Verhalten führt?\footnote{Als Beispiel für undefiniertes Verhalten sei hier die Division durch Null gegeben.}
 
 Das Wortproblem stellt folgende Frage:
@@ -9,118 +10,236 @@ Das Wortproblem stellt folgende Frage:
   Gegeben sei eine Sprache $S$. Ermittle, ob ein Wort $W$ Teil von $S$ ist oder nicht.
 \end{quotation}
 %
-Wir verwenden die neuen Begriffe \emph{Wort} (String bzw. Zeichenkette) und \emph{Sprache} (synonym Grammatik, Vorschriften über die mögliche Aneinanderreihung von Wörtern). Für diese muss eine Zugehörigkeitsbeziehung ermittelt werden. Führen wir das Konzept der Grammatiken ein.
+Wir verwenden die neuen Begriffe \emph{Wort} (oder String bzw. Zeichenkette) und \emph{Sprache} (Vorschriften über die mögliche Aneinanderreihung von Wörtern). Eine Sprache beschreibt eine Menge von Wörtern\footnote{Beachte, dass Wort anders als im linguistischen Sinn betrachtet wird. So ist ein Satz wie ,,Der Gärtner ist der Mörder`` \emph{ein} Wort der Sprache.}. Für diese muss eine Zugehörigkeitsbeziehung ermittelt werden können. Wir führen das Konzept der Sprachen und Grammatiken ein.
 
-\section{Eine einfache Grammatik}
+\section{Eine einfache Sprache}
 %
-Gegeben sei eine einfache Grammatik, die genau nur 1 Zeichenkette akzeptieren soll und zwar jene, die nur aus ,,a`` besteht. Diese Sprache sei mit ,,a`` spezifiziert und damit bereits vollständig. Stimmt das Eingabewort $W$ mit der Grammatik ,,a`` überein, wird die Eingabe akzeptiert andernfalls zurückgewiesen. Somit wird das Wortproblem entschieden.
+Gegeben sei eine einfache Sprache, die genau nur 1 Zeichenkette akzeptieren soll und zwar jene, die nur aus \gramm{a} besteht. Stimmt das Eingabewort $W$ mit der Zeichenkette \gramm{a} überein, wird die Eingabe akzeptiert andernfalls zurückgewiesen. So wird das Wortproblem entschieden. Da wir die Sprache als Menge repräsentieren können, verwenden wir Mengennotation: $S = \{\texttt{a}\}$ und das Wortproblem für einen String $s$ lautet $s \stackrel{?}{\in} S$.
+%
+\begin{figure}[ht]
+ \begin{center}
+  \includegraphics{img/wordproblem.pdf}
+  \caption{Zwei Beispiele für die Entscheidung das Wortproblems für die Sprache \gramm{a}.}
+  \label{fig:wordproblem}
+ \end{center}
+\end{figure}
 
-Ein komplexeres Beispiel verwendet mehrere Zeichen: Die Grammatik ,,abb`` akzeptiert genau jene Wörter, die eine Länge 3 und den Aufbau ,,abb`` haben.
+Ein komplexeres Beispiel verwendet mehrere Zeichen: Die Sprache $T$ als \gramm{abb} akzeptiert genau jene Wörter, die eine Länge 3 und den Aufbau ,,abb`` haben.
 
-Wir möchten unser Konzept erweitern, indem wir Mengen abbilden können. So war es uns bislang nicht möglich eine Grammatik ,,Akzeptiere alle Wörter die nur aus \emph{a}s bestehen`` zu formulieren. Wir führen daher das Konzept der Quantoren ein.
+Wir möchten in diesem Kapitel also Sprachen definieren. Wir haben eine textuelle Beschreibung verwendet. Wir haben auch Mengennotation verwendet. Wobei diese Ansätze durchaus legitim sind, besitzt der textuelle Ansatz das Problem fehleranfällig zu sein (Spezialfälle werden nicht spezifiziert) und Mengennotation kann komplexere, unendliche Sprachen nicht übersichtlich abbilden. Wir befassen uns daher mit zwei weiteren Ansätzen in den folgenden Abschnitten:
+\index{Reguläre Ausdrücke}
+\begin{itemize}
+  \item reguläre Ausdrücke (kompakte Schreibweise für eine bestimmte Untermenge von Sprachen)
+  \item formale Grammatiken (ein mächtiges Werkzeug um allgemeine Grammatiken zu beschreiben)
+\end{itemize}
+
+\subsubsection*{Unsere einfachen Sprachen in Mengennotation}
+\[
+  S = \{\texttt{a}\}  \qquad  T = \{\texttt{abb}\}
+\]
+
+\subsubsection*{Unsere einfachen Sprachen als regulärer Ausdruck}
+\lstset{language={}, label={lst:regex_S}, caption={$S$ als regulärer Ausdruck}, frame={single}}
+\begin{lstlisting}
+a
+\end{lstlisting}
+\lstset{language={}, label={lst:regex_T}, caption={$T$ als regulärer Ausdruck}, frame={single}}
+\begin{lstlisting}
+abb
+\end{lstlisting}
+
+\subsubsection*{Unsere einfachen Sprachen als formale Grammatik}
+\lstset{language={}, label={lst:regex_S}, caption={$S$ als formale Grammatik $G=(V,\Sigma,P,S)$}, frame={single}, escapechar=\@}
+\begin{lstlisting}
+S @$\rightarrow$@ a
+\end{lstlisting}
+\lstset{language={}, label={lst:regex_T}, caption={$T$ als formale Grammatik $G=(V,\Sigma,P,S)$}, frame={single}, escapechar=\@}
+\begin{lstlisting}
+S @$\rightarrow$@ abb
+\end{lstlisting}
 
 \section{Eine Grammatik mit Wiederholungen}
 %
-\index{Quantoren (formale Grammatiken)}
-Wiederholungen werden durch Symbole mit spezieller Bedeutung repräsentiert. In Tabelle~\ref{tab:quantifiers} werden diese Quantoren vorgestellt. Wir können damit mehr Grammatiken als vorhin definieren.
+Wir möchten unsere Sprachendefinitionen erweitern, indem wir eine Anzahl abbilden können. So war es uns bislang nicht möglich eine Sprache (zB) ,,Akzeptiere alle Wörter die nur aus \emph{a}s bestehen`` zu formulieren. Hierfür müssen wir Wiederholungen repräsentieren.
 
-Gesucht sei folgende Grammatik:
-\begin{quote}
-  Das Zeichen ,,a`` kann (aber muss nicht) vorkommen. Nachfolgend kommt ein ,,b`` und anschließend beliebig viele ,,c``.
-\end{quote}
-
-Der folgende Ausdruck spezifiziert diese Grammatik:
-\lstset{language={}, label={lst:regq}, caption={Die Grammatik $\{a^n b c^m | 0\leq n\leq 1, m \geq 0\}$}, frame={single}}
-\begin{lstlisting}
-a?bc*
-\end{lstlisting}
-
+\subsection{In regulären Ausdrücken}
+%
+Wir führen daher das Konzept der Quantoren ein. Ein regulärer Ausdruck ist eine Zeichenkette, die ein oder mehrere Zeichenketten spezifiziert. Grundsätzlich wird für reguläre Ausdrücke jenes Wort notiert, welches innerhalb der Sprache liegt. Wir lernen jetzt Konzepte kennen, um mehrere Wörter abzubilden.
+%
 \begin{table}[ht]
  \begin{center}
   \begin{tabular}{cl}
    \hline
-    + & Das vorige Zeichen kommt 1--$\infty$ mal vor (,,1-mal oder öfters``) \\
-    * & Das vorige Zeichen kommt 0--$\infty$ mal vor (,,beliebig oft``) \\
-    ? & Das vorige Zeichen kommt 0--1 mal vor (,,optional``) \\
+    \texttt{+} & Das vorige Zeichen kommt 1--$\infty$ mal vor (,,1-mal oder öfters``) \\
+    \texttt{*} & Das vorige Zeichen kommt 0--$\infty$ mal vor (,,beliebig oft``) \\
+    \texttt{?} & Das vorige Zeichen kommt 0--1 mal vor (,,optional``) \\
    \hline
   \end{tabular}
-  \caption{Quantoren zur Beschreibung unserer Grammatiken}
+  \caption{Quantoren in regulären Ausdrücken}
   \label{tab:quantifiers}
  \end{center}
 \end{table}
 
-\section{Eine Grammatik mit Alternationen}
-%
-Gesucht sei folgende Grammatik:
+\index{Quantoren (reguläre Ausdrücke)}
+In Tabelle~\ref{tab:quantifiers} werden Quantoren definiert. Kommen diese Zeichen in einem regulären Ausdruck vor, werden diese nicht wortwörtlich verstanden, sondern beziehen sich auf das letzte Zeichen oder die letzte Gruppe.
+
+Wir betrachten ein Beispiel. Gesucht sei folgende Grammatik $R$:
 \begin{quote}
-  Die Zeichenkette beginnt mit ,,Message of the `` und hört entweder mit ,,Day`` oder ,,Month``. Am Ende befindet sich ein Rufzeichen ,,!``.
+  Das Zeichen \gramm{a} kann (aber muss nicht) vorkommen. Nachfolgend kommt ein \gramm{b} und
+  anschließend beliebig viele \gramm{c}.
 \end{quote}
 
-Für dieses Problem benötigen wir zwei Konzepte: Einerseits brauchen wir ein exklusives Oder, welches uns eine Option selektiert. Andererseits brauchen wir Bereiche, sodass wir Operatoren nicht nur auf einzelne Zeichen sondern ganze Blöcke anwenden können. Die beiden Konzepte nennen sich Alternation (vertikaler Strich) und Gruppen (runde Klammern). Die Verwendung sollte aus der Lösung hervorgehen.
-
-\lstset{language={}, label={lst:message}, caption={Die Message-Grammatik}, frame={single}}
+Der folgende Ausdruck spezifiziert diese Grammatik:
+\lstset{language={}, label={lst:regex_repetition}, caption={Die Grammatik $\{a^n b c^m | 0\leq n\leq 1, m \geq 0\}$}, frame={single}}
 \begin{lstlisting}
-Message of the (Day|Month)!
+a?bc*
 \end{lstlisting}
+
+Das erste Fragezeichen bezieht sich auf das vorige Zeichen ,,a`` und macht es optional. Das folgende ,,b`` muss zwingend vorkommen. Dem ,,c`` ist ein Stern nachgestellt und ein Stern spezifiziert die Quantität ,,beliebig oft``.
+
+\subsection{In Mengennotation}
+%
+Die Beschriftung von Listing~\ref{lst:regex_repetition} nutzt Mengennotation. Hierbei wird die Anzahl der Vorkommnisse eines Zeichens oder einer Gruppe mit einer hochgestellten Zahl notiert. Wird die Domäne der Variable ($n$ und $m$) nicht angegeben, spricht man von natürlichen Zahlen inklusive der 0.
+
+\subsection{Als formale Grammatik}
+%
+In einer formalen Grammatik ist Wiederholung über Rekursion abzubilden.
+
+Aber besprechen wir zuerst, was formale Grammatiken denn sind und wie sie Wörter erzeugen. Eine formale Grammatik $G = (V, \Sigma, P, S)$ besitzt ein endliches Vokabular $V$, ein Alphabet $\Sigma$, Produktionsregeln $P$ und ein Startsymbol $S$. Das Erzeugen von Strings startet stets mit dem Startsymbol $S$ und Produktionsregeln $P$ erlauben es uns Zeichen sukzessive durch Zeichen aus $V$ zu ersetzen. Wir unterscheiden dabei zwischen den Terminalsymbolen $\Sigma$ und Nonterminalsymbolen $V \setminus \Sigma$. Terminalsymbole sind jene Symbole, die in der endgültigen Zeichenkette vorkommen. Für Nonterminalsymbole sind Regeln in $P$ definiert, wie man sie ersetzen kann. Die Ersetzungen erfolgen so lange bis nur mehr Terminalsymbole enthalten sind.
+
+% TODO: ,` and ,,`` in wrong order
+Als ersten Schritt (um $R$ zu definieren) beschreiben wir eine Grammatik ,Das Zeichen \gramm{a} kann vorkommen`.
+\lstset{language={}, label={lst:regex_R1}, caption={$R1$ als formale Grammatik $G=(V,\Sigma,P,S)$}, frame={single}, escapechar=\@}
+\begin{lstlisting}
+S @$\rightarrow$@ a
+S @$\rightarrow$@
+\end{lstlisting}
+
+Wir starten also mit einem Startsymbol ,,S`` und ersetzen es jetzt. Entweder wir entscheiden uns für die Zeile 1 und setzen ,,a`` ein oder einen leeren String ,,`` (Zeile 2).
+
+Als zweiten Schritt beschreiben wir eine Grammatik ,Das Zeichen \gramm{a} kann vorkommen. Nachfolgend kommt ein \gramm{b}`.
+\lstset{language={}, label={lst:regex_R2}, caption={$R2$ als formale Grammatik $G=(V,\Sigma,P,S)$}, frame={single}, escapechar=\@}
+\begin{lstlisting}
+S @$\rightarrow$@ ab
+S @$\rightarrow$@ b
+\end{lstlisting}
+
+Nachdem ein optionales \texttt{a} angegeben wurde, folgt ein \texttt{b}. Für die Wiederholung von \texttt{c} verwenden wir ein Nonterminalsymbol \texttt{R} (welches per Konvention großgeschrieben wird).
+\lstset{language={}, label={lst:regex_R3}, caption={$R$ als formale Grammatik $G=(V,\Sigma,P,S)$}, frame={single}, escapechar=\@}
+\begin{lstlisting}
+S @$\rightarrow$@ abR
+S @$\rightarrow$@ bR
+R @$\rightarrow$@
+R @$\rightarrow$@ cR
+\end{lstlisting}
+
+Gehen wir die Produktionsregeln für den Eingabestring \texttt{abcc} durch. Wir starten wieder mit dem Startsymbol ,,S``. Wir ersetzen es mittels der 1. Zeile zu ,,abR``. Wir erkennen ein verbleibendes Nonterminal in ,,R`` in dem String und suchen uns hierfür entsprechende Regeln; die Regeln 3 und 4 kommen in Frage. Für den gegebenen Eingabestring müssen wir Regel 4 verwenden. Es entsteht der String ,,abcR``. Wieder ersetzen wir das ,,R`` durch die Regel 4. ,,abcR`` besitzt auch noch ein Nonterminal, welches jetzt jedoch mittels Regel 3 ersetzt wird. Es entsteht der String ,,abcc`` (bestehend nur aus Terminalsymbolen). Damit liegt der String ,,abcc`` in der durch die formale Grammatik spezifizierten Sprache.
+
+\section{Alternation in Grammatiken}
+%
+Gesucht sei folgende Grammatik $A$:
+\begin{quote}
+  Die Zeichenkette beginnt mit ,,message of the `` und endet entweder mit ,,day`` oder ,,week``. Am Ende befindet sich weiters ein Rufzeichen ,,{!}``.
+\end{quote}
+
+\subsection{Als regulärer Ausdruck}
+%
+In einem regulären Ausdruck lässt sich eine Alternation definieren, indem der vertikale Balken als Alternationsoperator verwendet wird. Dabei wird entweder die linke Seite vom Balken oder die rechte Seite herangezogen. Die Seiten können durch eine Gruppierung beschränkt werden, die durch runde Klammern definiert wird.
+
+\lstset{language={}, label={lst:regex_alternation}, caption={Die Grammatik $A$}, frame={single}}
+\begin{lstlisting}
+message of the (day|week)!
+\end{lstlisting}
+
+\subsection{Als formale Grammatik}
+%
+Alternation haben wir schon implizit bei formalen Grammatiken kennen gelernt. Wir wählen aus mit welcher Regel wir ein Nonterminalsymbol ersetzen.
+%
+\lstset{language={}, label={lst:regex_A}, caption={$A$ als formale Grammatik $G=(V,\Sigma,P,S)$}, frame={single}, escapechar=\@}
+\begin{lstlisting}
+S @$\rightarrow$@ message of the A!
+A @$\rightarrow$@ day
+A @$\rightarrow$@ week
+\end{lstlisting}
+
+Wir haben jetzt die wichtigsten Konzepte betrachtet, um Sprachen definieren zu können. Wir möchten jetzt noch auf ein paar spezifische Details eingehen und die Mächtigkeit von Sprachen evaluieren.
 
 \section{Reguläre Ausdrücke}
 %
-Reguläre Ausdrücke (engl. ,,Regular Expressions``, kurz ,,RegEx``) sind eine Notation, um Grammatiken zu beschreiben. Was vorhin als Grammatik-Beschreibung bezeichnet wurde, ist in Wirklichkeit \emph{einer} von mehreren Wegen eine Grammatik zu formulieren. 
-
-Wir spezifizieren, dass ein ,,Terminal`` ein Zeichen ist, welches in der selben Form in der Ausgabe vorkommt. Wir fassen die Operatoren von regulären Ausdrücken zusammen (Tabelle~\ref{tab:regex_op}).
-
 \begin{table}[ht]
  \begin{center}
   \begin{tabular}{cl}
    \hline
-    .     & Ein beliebiges Zeichen \\
- {[}ab{]} & Eines der Zeichen aus $\set{a, b}$ \\
-    (ab)  & Fasst die Sequenz ,,ab`` zu einer Gruppe zusammen \\
-    a|bc  & Entweder ,,a`` oder ,,bc`` \\
-    +     & Das vorige Zeichen kommt 1--$\infty$ mal vor (,,1-mal oder öfters``) \\
-    *     & Das vorige Zeichen kommt 0--$\infty$ mal vor (,,beliebig oft``) \\
-    ?     & Das vorige Zeichen kommt 0--1 mal vor (,,optional``) \\
+    \texttt{.}     & Ein beliebiges Zeichen (aus $\Sigma$) \\
+    \texttt{[ab]}  & Eines der Zeichen aus $\set{\texttt{a}, \texttt{b}}$ (Zeichenmenge) \\
+    \texttt{(ab)}  & Fasst die Sequenz ,,ab`` zu einer Gruppe zusammen (Gruppierung) \\
+    \texttt{a|bc}  & Entweder ,,a`` oder ,,bc`` (Alternation) \\
+    \texttt{+}     & Das vorige Zeichen kommt 1--$\infty$ mal vor (,,1-mal oder öfters``) \\
+    \texttt{*}     & Das vorige Zeichen kommt 0--$\infty$ mal vor (,,beliebig oft``) \\
+    \texttt{?}     & Das vorige Zeichen kommt 0--1 mal vor (,,optional``) \\
    \hline
   \end{tabular}
   \caption{RegEx Operatoren}
   \label{tab:regex_op}
  \end{center}
 \end{table}
+%
+Reguläre Ausdrücke (engl. ,,regular expressions`` oder kurz RegEx) sind eine kompakte Schreibweise, um mehrere Zeichenketten darzustellen. In Tabelle~\ref{tab:regex_op} sind die Sonderzeichen nochmals zusammengefasst dargestellt. In der Tabelle wird eine Möglichkeit genannt eine Zeichenmenge anzugeben. Dieses Konzept kann genauso durch eine Alternation simuliert werden.
 
 \subsection{Non-greedy Verhalten}
 %
-Maschinen, die reguläre Ausdrücke verarbeiten arbeiten unterschiedlich. Alte Implementierungen nutzen Backtracking-Verfahren und neuere Implementierungen besitzen viel mehr Optimierungen. Die wesentliche Frage ist, wie diese Maschinen implementiert sind, da sie das Verhalten der regulären Ausdrücke bestimmen.
+Maschinen, die reguläre Ausdrücke verarbeiten arbeiten unterschiedlich bzw. können über Modifiers konfiguriert werden. Alte Implementierungen nutzen Backtracking-Verfahren und neuere Implementierungen enthalten Optimierungen, die neu erforscht wurden. Die wesentliche Frage ist, wie diese Maschinen implementiert sind, da sie das Verhalten der regulären Ausdrücke bestimmen.
 
-Wie sieht es mit dem regulären Ausdruch ,,(.*)(.*)`` und der Eingabe ,,abc`` aus? Greedy-Verhalten bezeichnet das Bestreben eines Ausdrucks, möglichst viel Inhalt zu matchen). Entsprechend würde die erste Punkt-Stern-Kombination die gesamte Eingabe matchen, da sie versucht sich alles zuzuweisen. Non-greedy Verhalten kann man meist durch das Anfügen eines Fragezeichens nach dem Gruppenquantor erreichen. Für unser Beispiel wäre etwa ,,(.*?)(.*)`` sinnvoll, wenn der gesamte String der zweiten Kombination zugewiesen werden soll.
+Eine häufig vorkommende Struktur bei regulären Ausdrücken ist \texttt{(.*)}. Es handelt es sich um eine Gruppe von beliebigen Zeichen beliebiger Länge. Salopp gesprochen matcht dieser Ausdruck jeden String.
+Wie sieht es nun mit dem regulären Ausdruck \texttt{(.*)(.*)} und der Eingabe ,,abc`` aus? Greedy-Verhalten bezeichnet das Bestreben eines Ausdrucks, möglichst viel Inhalt zu matchen. Entsprechend würde die erste Punkt-Stern-Kombination die gesamte Eingabe matchen, da sie versucht sich alles zuzuweisen. Dies verwirrt viele RegEx-Benutzer, da ein RegEx \texttt{a(.*)a} bei dem Eingabestring ,,abaaba`` nicht ,,aba`` zweimal matcht, sondern einmal ,,abaaba``.
+
+Non-greedy Verhalten kann man meist durch das Anfügen eines Fragezeichens nach dem Gruppenquantor erreichen. Für unser Beispiel wäre etwa \texttt{a(.*?)a} sinnvoll um den String in zwei Teilen zu matchen.
 
 \section{Kontextfreie Grammatiken}
 %
-Gesucht sei folgende Grammatik:
+Kontextfreie Sprachen sind mächtiger als reguläre Sprachen. Diese Behauptung besagt, dass die Menge der Sprachen die durch reguläre Ausdrücke repräsentiert werden können kleiner als die Menge der Sprachen ist, die mit formalen, kontextfreien Grammatiken spezifiziert werden können. Wir betrachten ein Beispiel.
+
+Gesucht sei folgende Sprache $E$:
 \begin{quote}
-  Die Anzahl der ,,a`` ist gleich der Anzahl von ,,b``. 
+  Die Anzahl von ,,a`` ist gleich der Anzahl von ,,b``. 
 \end{quote}
 
-Diese vorgegebene Sprache lässt sich mit einem regulären Ausdruck verarbeiten.
-\lstset{language={}, label={lst:eqo}, caption={Anzahl von ,,a`` gleich Anzahl von ,,b``}, frame={single}}
+Probieren wir einen regulären Ausdruck zu finden.
+\lstset{language={}, label={lst:cfg_regex1}, caption={Regulärer Ausdruck für die Sprache $E$}, frame={single}}
 \begin{lstlisting}
 (ab)*
 \end{lstlisting}
 
-Wir erweitern aber nun unsere Grammatik:
+Die äquivalente formale Grammatik sieht folgendermaßen aus:
+\lstset{language={}, label={lst:regex_A}, caption={Sprache $E$ als formale Grammatik}, frame={single}, escapechar=\@}
+\begin{lstlisting}
+S @$\rightarrow$@ abS
+S @$\rightarrow$@
+\end{lstlisting}
+
+Bisher war jedoch die Reihenfolge der Zeichen undefiniert. Wir erweitern nun $E$ zur Sprache $F$:
 \begin{quote}
   Eine Sequenz von ,,a`` wird von einer Sequenz der gleichen Länge von ,,b`` gefolgt.
 \end{quote}
+In Mengennotation wäre dies mit $\set{a^n b^n \mid n \in \mathbb{N}, n \geq 0}$ anzugeben.
 
-Durch die Vorgabe der Position bekommen wir ein neues Problem. Wir versuchen folgenden regulären Ausdruck:
-\lstset{language={}, label={lst:rep}, caption={,,a`` gefolgt von ,,b''}, frame={single}}
+Durch die Vorgabe der Position bekommen wir ein neues Problem. Wir versuchen es mit folgendem regulären Ausdruck:
+\lstset{language={}, label={lst:rep}, caption={Regulärer Ausdruck Versuch für die Sprache $F$}, frame={single}}
 \begin{lstlisting}
 a*b*
 \end{lstlisting}
 
-Das geübte Auge erkennt, dass die Anzahl der erzeugten ,,a`` ungleich der Anzahl von ,,b`` sein kann. Daher repräsentiert dieser reguläre Ausdruck nicht die spezifizierte Grammatik. Wir erkennen, dass die vorliegende Grammatik sich nicht mehr regulär abbilden lässt, sondern kontext-frei ist.
+Das geübte Auge erkennt, dass die Anzahl der erzeugten ,,a`` ungleich der Anzahl von ,,b`` sein kann. Daher repräsentiert dieser reguläre Ausdruck nicht die spezifizierte Sprache. So ist etwa ,,aaab`` in der Sprache des regulären Ausdrucks enthalten, aber nicht in der textuellen Beschreibung. Wir erkennen, dass die vorliegende Grammatik sich nicht mehr regulär abbilden lässt, sondern ,,kontextfrei`` ist.
 
-Wir führen zwei neue Notationen ein: Die vorige Grammatik notieren wir jetzt kürzer mit $\set{a^n b^n \mid n \in \mathbb{N}, n \geq 0}$ notieren und damit die textuelle Beschreibung ersetzen. Weiters sei führen wir Ersetzungsregeln ein. Wir geben ein Nonterminal ,,S`` vor und ersetzen das Nonterminal so lange bis wir nur mehr Terminale erhalten. Ab diesem Zeitpunkt wurde von unserer Sprache ein Wort abgeleitet. Das \textdollar{} steht für das leere Wort.
-% TODO: fix $ to be \varepsilon
+Mithilfe einer formalen Grammatik können wir diese Sprache definieren:
+\lstset{language={}, label={lst:lang_F}, caption={Formale Grammatik für Sprache $F$}, frame={single}, escapechar=\@}
+\begin{lstlisting}
+S @$\rightarrow$@ aSB
+S @$\rightarrow$@
+\end{lstlisting}
+
+
+
 
 \lstset{language={}, label={lst:cfgsample}, caption={Die kontext-freie Grammatik $\set{a^n b^n}$}, escapechar={}, frame={single}}
 \begin{lstlisting}

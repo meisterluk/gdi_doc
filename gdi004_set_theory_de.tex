@@ -9,7 +9,7 @@ Eine \emph{Menge} (engl. Set) ist
  \item besitzt eine beliebige Anzahl von Elementen
 \end{itemize}
 %
-Die leere Menge wird mit $\diameter$ oder $\{\}$ bezeichnet. Die Anzahl der Elemente einer Menge nennt man auch \emph{Kardinalität einer Menge}. Zur Notation der Kardinalität werden vertikale Balken um die Menge verwendet. So haben wir etwa in Kapitel~\ref{sec:bits_numeric_systems_10} von $|\text{Alphabet}_{\text{dec}}|$ gesprochen, wobei hier auch die Anzahl der Elemente der Menge Alphabet im Dezimalsystem gemeint ist. Die Definition der Mengen erlaubt sowohl endliche als auch unendliche Mengen\footnote{Die Diskussion um die Definition eines Unendlichkeitsbegriffs und der Abgrenzung zum Begriff ,,endlich abzählbar'' entstammt direkt der Mengenlehre. Als guter Einstieg in die Thematik dient der Satz von Cantor.}. Mengen werden wie Matrizen per Konvention mit einem Großbuchstaben bezeichnet.
+Die leere Menge wird mit $\diameter$ oder $\{\}$ bezeichnet. Die Anzahl der Elemente einer Menge nennt man auch \emph{Kardinalität einer Menge}. Zur Notation der Kardinalität werden vertikale Balken um die Menge verwendet. So haben wir etwa in Kapitel~\ref{sec:bits_numeric_systems_10} von $|\text{Alphabet}_{\text{dec}}|$ gesprochen, wobei hier auch die Anzahl der Elemente der Menge Alphabet im Dezimalsystem gemeint ist. Die Definition der Mengen erlaubt sowohl endliche als auch unendliche Mengen\footnote{Die Diskussion um die Definition eines Unendlichkeitsbegriffs und der Abgrenzung zum Begriff ,,endlich abzählbar`` entstammt direkt der Mengenlehre. Als guter Einstieg in die Thematik dient der Satz von Cantor.}. Mengen werden wie Matrizen per Konvention mit einem Großbuchstaben bezeichnet.
 %
 \[
    A = \{1, 2, 3, 4\}
@@ -21,7 +21,7 @@ Die leere Menge wird mit $\diameter$ oder $\{\}$ bezeichnet. Die Anzahl der Elem
 %
 Wir stellen fest dass geschwungene Klammern genutzt werden, um Mengen zu definieren. Innerhalb dieser Klammern sind die Elemente dieser Menge komma-getrennt aufgelistet. Diese Notation reicht jedoch nicht immer aus, um beliebige Mengen zu spezifizieren.
 
-Die Mengennotation (engl. ,,set-builder notation'', ,,set comprehension'') erlaubt es uns zwischen den geschwungenen Klammern einen vertikalen Balken (oder einen Doppelpunkt) zu verwenden. Wenn die Kriterien auf der rechten Seite des Balkens erfüllt sind, wird das Element auf der linken Seite aufgenommen. Domänenkriterien (zB. $t \in \mathbb{N}$) dürfen jedoch auch auf der linken Seite genannt werden, wenn sie sich nur auf das auszuwählende Element beziehen. Auf diesem Weg können wir auch unendliche Mengen abbilden.
+Die Mengennotation (engl. ,,set-builder notation``, ,,set comprehension``) erlaubt es uns zwischen den geschwungenen Klammern einen vertikalen Balken (oder einen Doppelpunkt) zu verwenden. Wenn die Kriterien auf der rechten Seite des Balkens erfüllt sind, wird das Element auf der linken Seite aufgenommen. Domänenkriterien (zB. $t \in \mathbb{N}$) dürfen jedoch auch auf der linken Seite genannt werden, wenn sie sich nur auf das auszuwählende Element beziehen. Auf diesem Weg können wir auch unendliche Mengen abbilden.
 
 \[
     C = \{x^2 | x \in \mathbb{N}\}
@@ -44,7 +44,7 @@ Entsprechend der genannten Definition darf jedes Element genau nur einmal vorkom
 \end{description}
 
 Alle Begriffe erlauben grundsätzlich Verschachtelungen (zB Liste in Liste),
-werden jedoch meist nur eindimensional verwendet.
+werden jedoch oft nur eindimensional verwendet.
 
 \section{Elementare Mengenoperationen}
 %
@@ -107,7 +107,7 @@ ist die Menge jener Elemente, die in $A$, aber nicht in $B$, vorkommen.
 \subsection{Teilmenge}
 %
 Die Teilmenge beschreibt eine Relation und erzeugt keine neue Menge.
-Ihr Ergebnis ist also eine ,,Ja'' oder ,,Nein'' Antwort.
+Ihr Ergebnis ist also eine ,,Ja`` oder ,,Nein`` Antwort.
 Eine Menge ist eine Teilmenge einer anderen Menge genau dann alle
 Elemente in der betrachteten Elemente enthalten sind. $A$ ist eine
 Teilmenge von $B$ genau dann wenn $A \subseteq B$:
@@ -115,8 +115,19 @@ Teilmenge von $B$ genau dann wenn $A \subseteq B$:
     A \subseteq B \text{ iff } \forall x \in A, x \in B
 \]
 
-Wir grenzen hierbei ,,echte Teilmengen'' ($A \neq B$, Operator $\subset$)
-von ,,Teilmengen'' ($A = B \lor |A| < |B|$, Operator $\subseteq$) ab.
+Wir grenzen hierbei ,,echte Teilmengen`` ($A \neq B$, Operator $\subset$)
+von ,,Teilmengen`` ($A = B \lor |A| < |B|$, Operator $\subseteq$) ab.
+
+\subsection{Mitgliedschaft}
+%
+Eine weitere Relation ist die Mitgliedschaft.
+Für jede Menge kann getestet werden, ob ein Element enthalten ist. Als Beispiel
+sei die Menge $C = \{x^2 | x \in \mathbb{N}\}$ gegeben. Darin sind etwa die Elemente
+$1, 4$ und $81$ enthalten. Die Frage der Mitgliedschaft lautet: $x \in C$ für
+ein bestimmtes $x$?
+\[
+  4 \in C  \qquad  42 \notin C  \qquad  441 \in C
+\]
 
 \section{Darstellung von Mengen}
 %
