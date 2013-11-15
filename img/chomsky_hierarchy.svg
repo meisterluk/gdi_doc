@@ -10,11 +10,11 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="300"
-   height="300"
+   height="250"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="chomsky_hierarchy.pdf">
+   sodipodi:docname="chomsky_hierarchy.svg">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -25,7 +25,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.82"
-     inkscape:cx="151.0989"
+     inkscape:cx="152.1978"
      inkscape:cy="150"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -43,7 +43,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -51,29 +51,26 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-752.36218)">
+     transform="translate(0,-802.36218)">
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 4.9450549,248.35165 145.0549451,0 145.05495,0 L 150,25.274727 z"
+       d="m 4.9450549,1040.7138 145.0549451,0 145.05495,0 L 150,817.63691 z"
        id="path3753"
        inkscape:connector-curvature="0"
-       transform="translate(0,752.36218)"
        sodipodi:nodetypes="ccccc" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 32.967033,204.94505 234.615387,0"
+       d="m 32.967033,997.30723 234.615387,0"
        id="path3755"
-       inkscape:connector-curvature="0"
-       transform="translate(0,752.36218)" />
+       inkscape:connector-curvature="0" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 62.087912,159.89011 174.725278,0"
+       d="m 62.087912,952.25229 174.725278,0"
        id="path3757"
-       inkscape:connector-curvature="0"
-       transform="translate(0,752.36218)" />
+       inkscape:connector-curvature="0" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 89.252747,870.95559 121.266913,0"
+       d="m 89.252747,910.95559 121.266913,0"
        id="path3759"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
@@ -81,7 +78,7 @@
        xml:space="preserve"
        id="flowRoot3761"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       transform="translate(-9.3406592,756.75778)"><flowRegion
+       transform="translate(-9.3406592,796.75778)"><flowRegion
          id="flowRegion3763"><rect
            id="rect3765"
            width="240.65935"
@@ -89,11 +86,11 @@
            x="40.65934"
            y="205.49451" /></flowRegion><flowPara
          id="flowPara3767"
-         style="font-size:24px;text-align:center;text-anchor:middle;-inkscape-font-specification:Gentium Basic;font-family:Gentium Basic;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">regulär</flowPara></flowRoot>    <flowRoot
+         style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Gentium Basic;-inkscape-font-specification:Gentium Basic">regulär</flowPara></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot3761-0"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       transform="translate(-9.3406612,716.75778)"><flowRegion
+       transform="translate(-9.3406612,756.75778)"><flowRegion
          id="flowRegion3763-2"><rect
            id="rect3765-9"
            width="240.65935"
@@ -101,11 +98,11 @@
            x="40.65934"
            y="205.49451" /></flowRegion><flowPara
          id="flowPara3767-5"
-         style="font-size:20px;text-align:center;text-anchor:middle;-inkscape-font-specification:Gentium Basic;font-family:Gentium Basic;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">kontext-frei</flowPara></flowRoot>    <flowRoot
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Gentium Basic;-inkscape-font-specification:Gentium Basic">kontext-frei</flowPara></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot3761-0-4"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       transform="translate(-9.3406607,672.75778)"><flowRegion
+       transform="translate(-9.3406607,712.75778)"><flowRegion
          id="flowRegion3763-2-8"><rect
            id="rect3765-9-3"
            width="240.65935"
@@ -113,11 +110,11 @@
            x="40.65934"
            y="205.49451" /></flowRegion><flowPara
          id="flowPara3767-5-0"
-         style="font-size:18px;text-align:center;text-anchor:middle;-inkscape-font-specification:Gentium Basic;font-family:Gentium Basic;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">kontext-sensitiv</flowPara></flowRoot>    <flowRoot
+         style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Gentium Basic;-inkscape-font-specification:Gentium Basic">kontext-sensitiv</flowPara></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot3823"
        style="font-size:10px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       transform="translate(-70.879121,773.2413)"><flowRegion
+       transform="translate(-70.879121,813.2413)"><flowRegion
          id="flowRegion3825"><rect
            id="rect3827"
            width="244.50549"
@@ -126,7 +123,7 @@
            y="48.35165"
            style="font-size:10px;text-align:center;text-anchor:middle" /></flowRegion><flowPara
          id="flowPara3829"
-         style="font-size:14px;-inkscape-font-specification:Gentium Basic;font-family:Gentium Basic;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">rekursiv-</flowPara><flowPara
+         style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Gentium Basic;-inkscape-font-specification:Gentium Basic">rekursiv-</flowPara><flowPara
          id="flowPara3831"
-         style="font-size:14px;-inkscape-font-specification:Gentium Basic;font-family:Gentium Basic;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">aufzählbar</flowPara></flowRoot>  </g>
+         style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Gentium Basic;-inkscape-font-specification:Gentium Basic">aufzählbar</flowPara></flowRoot>  </g>
 </svg>

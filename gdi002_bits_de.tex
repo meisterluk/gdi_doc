@@ -60,14 +60,16 @@ Das Dezimalsystem umfasst 10 verschiedene Ziffern.
 \end{align*}
 
 %\aside % TODO
-Aufgrund der Tatsache, dass es sich bei $0$ um die erste natürliche Zahl handelt,
-wird \emph{Indexing} (das Referenzieren eines Eintrags in einer Sequenz) seit der
-C-Programmiersprache in der überwiegenden Mehrheit der Programmiersprachen
-mit Null beginnend durchgeführt (,,null-basierte Nummerierung``).%
+Fraglich ist, welche die erste natürliche Zahl ist. Einerseits wird mit $1$ zum
+Zählen begonnen und andererseits ist $0$ die Ziffer mit dem niedrigsten Wert.
+Jedenfalls hat es sich seit der C-Programmiersprache in der überwiegenden
+Mehrheit der Programmiersprachen \emph{Indexing} (das Referenzieren eines
+Eintrags in einer Sequenz) seit der mit Null beginnend durchzuführen
+(,,null-basierte Nummerierung``).%
 \footnote{Ausnahmen (chronologisch betrachtet nach C) bilden etwa die Sprachen
 Lua, Mathematica, MATLAB und SQL}
 % http://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html
-% EWD831
+% TODO: EWD831
 %
 \subsection{Basis 2}
 \index{Binärsystem}
@@ -179,7 +181,8 @@ Ein Byte ist meist die kleinste Speichergröße, die
 von einer CPU in einem modernen Rechner angesprochen werden kann.
 Bekannt ist das Byte aus Einheiten wie Megabyte und Gigabyte, um
 die Speichergröße von Medien wie Caches, Festplatten und USB-Sticks
-anzugeben.
+anzugeben. In Tabelle~\ref{tab:si_units} wird die Umrechnung der
+Speichergrößen in Bytes dargestellt.
 %
 \begin{table}[ht]
   \begin{center}
@@ -198,13 +201,7 @@ anzugeben.
   \end{center}
 \end{table}
 
-Interessant ist die Diskussion, dass $2^{10} = 1024$ ist und
-daher die Zahl 1000 durch Bits nicht dargestellt werden kann ohne
-Zahlen keine Bedeutung zuzuweisen, wobei sie technisch existieren.
-Aus dieser Konsequenz gab es mehrere Versuche die Präfixe
-auf das Binärsystem anzupassen.%
-\footnote{Zur Unterscheidung wurde von der IEC der Präfix Kibi/Mebi/Gibi
-für die Basis 2 eingeführt.}
+Leider sind Begriffe wie ,,Kilobyte`` in der Praxis nicht so eindeutig definiert, wie es wünschenswert wäre. Ein Kilo ($2^{10}$) weicht bei dieser Definition von Tabelle~\ref{tab:si_units} um 24 Werte vom üblichen Kilo ($10^3$) ab. Es gab mehrere Versuche die Präfixe auf das Binärsystem anzupassen, allerdings widerspiegelt die genannten Tabelle die übliche Konvention wider\footnote{Zur Unterscheidung wurde von der IEC der Präfix Kibi/Mebi/Gibi für die Basis 2 eingeführt.}.
 
 \subsection{Overflows und Underflows}
 %
@@ -250,7 +247,8 @@ verzichtet man in maschinennahen Umgebungen darauf. Dynamische Sprachen
 an und verstecken die Umsetzung auf maschinennahe Zahlen mit beschränkter
 Länge.
 %
-\subsection{Konvertierung zwischen Zahlensystemen}
+\section{Konvertierung zwischen Zahlensystemen}
+\index{Konvertierung!zwischen Zahlensystemen}
 %
 Liegt eine Repräsentation einer Zahl vor, so lässt sie sich in ein beliebiges
 anderes Zahlensystem mit Stellenwertordnung umrechnen, indem man eine der
@@ -372,7 +370,7 @@ mit $n=4$ binär durch $1110$ dargestellt.
   \end{center}
 \end{table}
 
-\subsection{Arithmetische Operationen}
+\section{Arithmetische Operationen}
 %
 Moderne Rechenmaschinen nutzen ALUs (,,arithmetic logical unit``),
 um Rechenoperationen mit Bytes durchzuführen. Diese umfassen etwa:
@@ -390,7 +388,7 @@ nicht näher erörtert. Es sei nur erwähnt, dass es auf einer
 Maschine zu Fehlerfällen kommen kann wie etwa eine Division
 durch Null.
 
-\subsection{Bitweise Operationen}
+\section{Bitweise Operationen}
 %
 Eine ALU kann auch Operationen durchführen, die auf die einzelnen Bits
 angewandt werden:

@@ -1,10 +1,9 @@
 \chapter{Formale Grammatiken}
 \index{Formale Grammatiken}
-% TODO: Chomsky-Hierarchie
 %
-\index{Formale Grammatiken}
 Die Informatik macht sich Gedanken um die systematische Verarbeitung von Information. Anhand verschiedener Modelle haben wir bereits gesehen, wie wir eine Eingabe nehmen, diese nach Vorschriftsregeln verarbeiten und dann eine Antwort auf das gestellte Anfangsproblem liefern. Dabei haben wir eine wichtige Frage wegfallen lassen: Woher weiß der Algorithmus, ob diese Eingabe valid? Woher weiß die Turingmaschine, dass das---was auf dem Band steht---eine korrekte Eingabe ist, die zu keinem undefinierten Verhalten führt?\footnote{Als Beispiel für undefiniertes Verhalten sei hier die Division durch Null gegeben.}
 
+\index{Wortproblem}
 Das Wortproblem stellt folgende Frage:
 \begin{quotation}
   Gegeben sei eine Sprache $S$. Ermittle, ob ein Wort $W$ Teil von $S$ ist oder nicht.
@@ -13,6 +12,7 @@ Das Wortproblem stellt folgende Frage:
 Wir verwenden die neuen Begriffe \emph{Wort} (oder String bzw. Zeichenkette) und \emph{Sprache} (Vorschriften über die mögliche Aneinanderreihung von Wörtern). Eine Sprache beschreibt eine Menge von Wörtern\footnote{Beachte, dass Wort anders als im linguistischen Sinn betrachtet wird. So ist ein Satz wie ,,Der Gärtner ist der Mörder`` \emph{ein} Wort der Sprache.}. Für diese muss eine Zugehörigkeitsbeziehung ermittelt werden können. Wir führen das Konzept der Sprachen und Grammatiken ein.
 
 \section{Eine einfache Sprache}
+\index{Reguläre Ausdrücke!Beispiel}
 %
 Gegeben sei eine einfache Sprache, die genau nur 1 Zeichenkette akzeptieren soll und zwar jene, die nur aus \gramm{a} besteht. Stimmt das Eingabewort $W$ mit der Zeichenkette \gramm{a} überein, wird die Eingabe akzeptiert andernfalls zurückgewiesen. So wird das Wortproblem entschieden. Da wir die Sprache als Menge repräsentieren können, verwenden wir Mengennotation: $S = \{\texttt{a}\}$ und das Wortproblem für einen String $s$ lautet $s \stackrel{?}{\in} S$.
 %
@@ -34,6 +34,8 @@ Wir möchten in diesem Kapitel also Sprachen definieren. Wir haben eine textuell
 \end{itemize}
 
 \subsubsection*{Unsere einfachen Sprachen in Mengennotation}
+\index{Reguläre Ausdrücke!Beispiel}
+\index{Formale Grammatiken!Beispiel}
 \[
   S = \{\texttt{a}\}  \qquad  T = \{\texttt{abb}\}
 \]
@@ -63,6 +65,7 @@ S @$\rightarrow$@ abb
 Wir möchten unsere Sprachendefinitionen erweitern, indem wir eine Anzahl abbilden können. So war es uns bislang nicht möglich eine Sprache (zB) ,,Akzeptiere alle Wörter die nur aus \emph{a}s bestehen`` zu formulieren. Hierfür müssen wir Wiederholungen repräsentieren.
 
 \subsection{In regulären Ausdrücken}
+\index{Reguläre Ausdrücke!Quantoren}
 %
 Wir führen daher das Konzept der Quantoren ein. Ein regulärer Ausdruck ist eine Zeichenkette, die ein oder mehrere Zeichenketten spezifiziert. Grundsätzlich wird für reguläre Ausdrücke jenes Wort notiert, welches innerhalb der Sprache liegt. Wir lernen jetzt Konzepte kennen, um mehrere Wörter abzubilden.
 %
@@ -102,6 +105,8 @@ Das erste Fragezeichen bezieht sich auf das vorige Zeichen ,,a`` und macht es op
 Die Beschriftung von Listing~\ref{lst:regex_repetition} nutzt Mengennotation. Hierbei wird die Anzahl der Vorkommnisse eines Zeichens oder einer Gruppe mit einer hochgestellten Zahl notiert. Wird die Domäne der Variable ($n$ und $m$) nicht angegeben, spricht man von natürlichen Zahlen inklusive der 0.
 
 \subsection{Als formale Grammatik}
+\index{Reguläre Ausdrücke!Beispiel}
+\index{Formale Grammatiken!Beispiel}
 %
 In einer formalen Grammatik ist Wiederholung über Rekursion abzubilden.
 
@@ -143,6 +148,7 @@ Gesucht sei folgende Grammatik $A$:
 \end{quote}
 
 \subsection{Als regulärer Ausdruck}
+\index{Reguläre Ausdrücke!Beispiel}
 %
 In einem regulären Ausdruck lässt sich eine Alternation definieren, indem der vertikale Balken als Alternationsoperator verwendet wird. Dabei wird entweder die linke Seite vom Balken oder die rechte Seite herangezogen. Die Seiten können durch eine Gruppierung beschränkt werden, die durch runde Klammern definiert wird.
 
@@ -152,6 +158,7 @@ message of the (day|week)!
 \end{lstlisting}
 
 \subsection{Als formale Grammatik}
+\index{Formale Grammatiken!Beispiel}
 %
 Alternation haben wir schon implizit bei formalen Grammatiken kennen gelernt. Wir wählen aus mit welcher Regel wir ein Nonterminalsymbol ersetzen.
 %
@@ -165,6 +172,7 @@ A @$\rightarrow$@ week
 Wir haben jetzt die wichtigsten Konzepte betrachtet, um Sprachen definieren zu können. Wir möchten jetzt noch auf ein paar spezifische Details eingehen und die Mächtigkeit von Sprachen evaluieren.
 
 \section{Reguläre Ausdrücke}
+\index{Reguläre Ausdrücke!Operatoren}
 %
 \begin{table}[ht]
  \begin{center}
@@ -187,17 +195,131 @@ Wir haben jetzt die wichtigsten Konzepte betrachtet, um Sprachen definieren zu k
 Reguläre Ausdrücke (engl. ,,regular expressions`` oder kurz RegEx) sind eine kompakte Schreibweise, um mehrere Zeichenketten darzustellen. In Tabelle~\ref{tab:regex_op} sind die Sonderzeichen nochmals zusammengefasst dargestellt. In der Tabelle wird eine Möglichkeit genannt eine Zeichenmenge anzugeben. Dieses Konzept kann genauso durch eine Alternation simuliert werden.
 
 \subsection{Non-greedy Verhalten}
+\index{Greediness (Reguläre Ausdrücke)}
 %
-Maschinen, die reguläre Ausdrücke verarbeiten arbeiten unterschiedlich bzw. können über Modifiers konfiguriert werden. Alte Implementierungen nutzen Backtracking-Verfahren und neuere Implementierungen enthalten Optimierungen, die neu erforscht wurden. Die wesentliche Frage ist, wie diese Maschinen implementiert sind, da sie das Verhalten der regulären Ausdrücke bestimmen.
+RegEx-Implementierungen gibt es unterschiedliche. Die zwei großen Implementierungen nennen sich ,,POSIX`` und ,,PCRE``. Diese unterscheiden sich durch ihren Aufbau und ihre Features. Ich möchte hier auf ein Detail eingehen.
 
 Eine häufig vorkommende Struktur bei regulären Ausdrücken ist \texttt{(.*)}. Es handelt es sich um eine Gruppe von beliebigen Zeichen beliebiger Länge. Salopp gesprochen matcht dieser Ausdruck jeden String.
-Wie sieht es nun mit dem regulären Ausdruck \texttt{(.*)(.*)} und der Eingabe ,,abc`` aus? Greedy-Verhalten bezeichnet das Bestreben eines Ausdrucks, möglichst viel Inhalt zu matchen. Entsprechend würde die erste Punkt-Stern-Kombination die gesamte Eingabe matchen, da sie versucht sich alles zuzuweisen. Dies verwirrt viele RegEx-Benutzer, da ein RegEx \texttt{a(.*)a} bei dem Eingabestring ,,abaaba`` nicht ,,aba`` zweimal matcht, sondern einmal ,,abaaba``.
+Wie sieht es nun mit dem regulären Ausdruck \texttt{(.*)} und der Eingabe ,,abc`` aus? Greedy-Verhalten bezeichnet das Bestreben eines Ausdrucks, möglichst viel Inhalt zu matchen. Entsprechend würde dieser Ausdruck die gesamte Eingabe matchen, da sie versucht sich alles zuzuweisen. Dies verwirrt viele RegEx-Benutzer, da ein RegEx \texttt{a(.*)a} bei dem Eingabestring ,,abaaba`` nicht ,,aba`` zweimal matcht, sondern einmal ,,abaaba``. RegEx sind für gewöhnlich immer bestrebt möglichst viel zu matchen.
 
-Non-greedy Verhalten kann man meist durch das Anfügen eines Fragezeichens nach dem Gruppenquantor erreichen. Für unser Beispiel wäre etwa \texttt{a(.*?)a} sinnvoll um den String in zwei Teilen zu matchen.
+Non-greedy Verhalten kann man durch das Anfügen eines Fragezeichens nach dem Gruppenquantor erreichen; ist allerdings nur bei ,,PCRE``-Engines verfügbar. Für unser Beispiel wäre etwa \texttt{a(.*?)a} sinnvoll um den String in zwei Teilen zu matchen.
+
+\subsection{Deterministische Automaten}
+\index{Konvertierung!von regulären Ausdrücken zu Automaten}
+%
+Abseits der Strings mit den jeweiligen Operatoren gibt es auch eine andere Darstellungsweise für reguläre Ausdrücke. Zu jedem regulären Ausdruck kann ein deterministischer Automat gefunden. Ein deterministischer Automat ist ein gerichteter, kantenbeschrifteter Graph. Wir erinnern uns, dass ein Graph aus Knoten und Kanten besteht. Es gibt einen Startknoten\footnote{In diesem Dokument folgen wir der Konvention, dass der Startknoten der am weitesten links positionierte Knoten ist. Im Allgemeinen handelt es sich um die einzige Quelle im Graphen.} und von diesem ausgehend werden die Zeichen vom Eingabestring gelesen. Je nach gelesenem Zeichen folgt man jener Kanten, deren Beschriftung mit dem Zeichen übereinstimmt. Ein Eingabestring wird genau dann von der Grammatik akzeptiert, wenn der String auf einem Endknoten zu Ende geht, der durch einen zusätzlichen inneren Kreis markiert ist.
+
+\index{Nichtdeterminismus!Automaten von regulären Sprachen}
+Das Wesentliche ist, dass dieser Automat das Kriterium des Determinismus zu erfüllen hat. Dies bedeutet in jedem beliebigen Zustand des Automatens kann durch das gelesene Zeichen eindeutig bestimmt werden welcher Kante zu folgen ist. Oder in anderen Worten gibt es keine zwei Kanten mit der selben Beschriftung, die am selben Ausgangsknoten starten. In Abbildung~\ref{fig:nondeterministic_automaton} ist nicht-deterministischer Automat dargestellt, der diese Regel bricht.
+
+Bei der Erstellung eines Automatens wird folgender Ansatz empfohlen:
+\begin{enumerate}
+  \item Repräsentiere die Operatoren äquivalent, wie sie in Abbildung~\ref{fig:basic_automatons} dargestellt werden.
+  \item Reduziere den Automaten, indem unnötige Strukturen entfernt werden (zB wenn die linke und rechte Seite einer Alternation äquivalent ist)
+  \item Entferne Nichtdeterminismus.
+\end{enumerate}
+%
+Es gibt keinen universellen Algorithmus um Nichtdeterminismus entfernen zu können. Für jede reguläre Sprache existiert jedoch ein deterministischer Automat. Es sei folgender Hinweis gegeben: Während die Operatoren darauf optimiert sind anzugeben wie oft ein Zeichen oder eine Sequenz vorkommt, stellt der Automat stets die Frage ,,welches Zeichen kommt als nächstes?``. Es empfiehlt sich daher Beispielstrings aufzuschreiben und bei jedem Zeichen die Frage nach dem nächsten möglichen Zeichen zu stellen. Die Abzweigungen im Automaten verändern sich dadurch oft stark. In Abbildung~\ref{fig:example_automatons} sind einige Beispielautomaten gegeben.
+%
+\begin{figure}[hb]
+ \begin{center}
+  \includegraphics{img/nondeterministic_automaton.pdf}
+  \caption{Beispiel eines nicht-deterministischen Automatens}
+  \label{fig:nondeterministic_automaton}
+ \end{center}
+\end{figure}
+
+\subsection{Konventionen und Beispiele}
+%
+Ich möchte hier noch auf Konventionen im Bereich der formalen Grammatiken aufmerksam machen. So ist es üblich den leeren String ,,`` mit einem $\varepsilon$ darzustellen, da der leere String kein druckbares Zeichen ist und die Anführungszeichen kein Teil der Spezifikation von formalen Grammatiken ist.
+
+Wendet man reguläre Ausdrücke in Programmiersprachen an, entdeckt man, dass Ausdrücke auf Teile des Gesamtwortes angewendet werden und nicht den gesamten String matchen müssen. Hierfür existieren die Operatoren \^ und \$, welche den Anfang und das Ende eines Strings repräsentieren. Jenes Zeichen welches einem \$ vorangestellt ist, muss also das letzte Zeichen des Eingabestrings sein. Die Verwendung dieser Operatoren ist im Bereich der formalen Grammatik nicht notwendig, da stets davon ausgegangen wird, dass der gesamte String gematcht werden soll.
+
+In Tabelle~\ref{tab:regex_examples} sind Beispiele für reguläre Ausdrücke dargestellt.
+\index{Reguläre Ausdrücke!Beispiel}
+%
+\begin{table}[p]
+ \begin{center}
+  \begin{tabular}{ll}
+    \hline \hline
+      \emph{matcht} & \emph{matcht nicht} \\
+    \hline \hline
+      \multicolumn{2}{c}{\texttt{(ab)?|cd}} \\
+    \hline
+      $\varepsilon$ & abcd \\
+      ab & abab \\
+      cd & \\
+    \hline
+      \multicolumn{2}{c}{\texttt{(ab|cd)*}} \\
+    \hline
+      $\varepsilon$ & a \\
+      abcd & d \\
+      abab & abc \\
+      cd & \\
+    \hline
+      \multicolumn{2}{c}{\texttt{a?a+}} \\
+    \hline
+      a & $\varepsilon$ \\
+      aa & b \\
+      aaa & \\
+    \hline
+      \multicolumn{2}{c}{\texttt{(a(b|c)+d|e?)+}} \\
+    \hline
+      $\varepsilon$ & ad \\
+      acd & ea \\
+      abcd & d \\
+      acccde & \\
+      eabbde & \\
+    \hline
+      \multicolumn{2}{c}{\texttt{a?b*c+}} \\
+    \hline
+      abc & a \\
+      ac & ab \\
+      c & aabc \\
+      bbbc & \\
+    \hline
+      \multicolumn{2}{c}{\texttt{a?b*c+}} \\
+    \hline
+      abc & a \\
+      ac & ab \\
+      c & aabc \\
+      bbbc & \\
+    \hline
+      \multicolumn{2}{c}{\texttt{(ab+a*)+ab+}} \\
+    \hline
+      abab & aba \\
+      abbbab & abb \\
+      abbbaaabbbab & abbaaaba \\
+      abaabbb & abbbaaba \\
+    \hline \hline
+  \end{tabular}
+  \caption{Beispiele für reguläre Ausdrücke und deren Matching-Verhalten}
+  \label{tab:regex_examples}
+ \end{center}
+\end{table}
+
+\begin{figure}[p]
+ \begin{center}
+  \includegraphics{img/basic_deterministic_automatons.pdf}
+  \caption{
+    Die deterministischen Automaten der Grammatiken
+    (a) \gramm{a|b} (b) \gramm{a?b} (c) \gramm{a+} (d) \gramm{a*}
+  }
+  \label{fig:basic_automatons}
+ \end{center}
+ \begin{center}
+  \includegraphics{img/deterministic_automatons.pdf}
+  \caption{Die deterministischen Automaten der Grammatiken
+    (a) \gramm{(ab+a*)+ab+} (b) \gramm{(ab)?|cd} (c) \gramm{a?b*c+}}
+  \label{fig:example_automatons}
+ \end{center}
+\end{figure}
 
 \section{Kontextfreie Grammatiken}
+\index{CFL}
+\index{Kontextfreie Grammatik}
 %
-Kontextfreie Sprachen sind mächtiger als reguläre Sprachen. Diese Behauptung besagt, dass die Menge der Sprachen die durch reguläre Ausdrücke repräsentiert werden können kleiner als die Menge der Sprachen ist, die mit formalen, kontextfreien Grammatiken spezifiziert werden können. Wir betrachten ein Beispiel.
+Kontextfreie Sprachen (engl. ,,context-free languages``) sind mächtiger als reguläre Sprachen. Diese Behauptung besagt, dass die Menge der Sprachen die durch reguläre Ausdrücke repräsentiert werden können kleiner als die Menge der Sprachen ist, die mit kontextfreien Grammatiken spezifiziert werden können. Wir betrachten ein Beispiel.
 
 Gesucht sei folgende Sprache $E$:
 \begin{quote}
@@ -229,70 +351,73 @@ Durch die Vorgabe der Position bekommen wir ein neues Problem. Wir versuchen es 
 a*b*
 \end{lstlisting}
 
-Das geübte Auge erkennt, dass die Anzahl der erzeugten ,,a`` ungleich der Anzahl von ,,b`` sein kann. Daher repräsentiert dieser reguläre Ausdruck nicht die spezifizierte Sprache. So ist etwa ,,aaab`` in der Sprache des regulären Ausdrucks enthalten, aber nicht in der textuellen Beschreibung. Wir erkennen, dass die vorliegende Grammatik sich nicht mehr regulär abbilden lässt, sondern ,,kontextfrei`` ist.
+Das geübte Auge erkennt, dass die Anzahl der erzeugten ,,a`` ungleich der Anzahl von ,,b`` sein kann. Daher repräsentiert dieser reguläre Ausdruck nicht die spezifizierte Sprache. So ist etwa ,,aaab`` in der Sprache des regulären Ausdrucks enthalten, aber nicht in der textuellen Beschreibung. Wir erkennen, dass die vorliegende Grammatik sich nicht mehr regulär abbilden lässt, sondern ,,kontextfrei`` ist. Es handelt sich um unsere erste Sprache, die in der Menge der kontextfreien Sprachen aber nicht in der Menge der regulären Sprachen liegt.
 
-Mithilfe einer formalen Grammatik können wir diese Sprache definieren:
+\index{Kontextfreie Grammatik!Beispiel}
+Mithilfe einer formalen Grammatik können wir diese Sprache jedoch definieren:
 \lstset{language={}, label={lst:lang_F}, caption={Formale Grammatik für Sprache $F$}, frame={single}, escapechar=\@}
 \begin{lstlisting}
-S @$\rightarrow$@ aSB
+S @$\rightarrow$@ aSb
 S @$\rightarrow$@
 \end{lstlisting}
 
-
-
-
-\lstset{language={}, label={lst:cfgsample}, caption={Die kontext-freie Grammatik $\set{a^n b^n}$}, escapechar={}, frame={single}}
-\begin{lstlisting}
-S ::= aSb | $
-\end{lstlisting}
-
-Basierend auf S können wir jetzt beliebige Wörter der Sprache ableiten
-\lstset{language={}, label={lst:cfl}, caption={Die Ableitung von ,,aaabbb``}, frame={single}}
-\begin{lstlisting}
-S
-aSb
-aaSbb
-aaaSbbb
-aaa$bbb
-aaabbb
-\end{lstlisting}
-
-Für kontextfreie Grammatiken dürfen wir Nonterminale definieren, die ersetzt werden. Wir müssen dabei beachten, dass wir auf der linken Seite nur ein Nonterminal verwenden dürfen. % TODO: What are the exact rules?
-
-\section{Kontext-sensitive Grammatik}
-%
-Eine weitere Ebene stellen die kontext-sensitiven Grammatiken dar. Dazu sei folgende Grammatik zu formulieren:
+Basierend auf S können wir jetzt beliebige Wörter der Sprache ableiten. So nehmen wir etwa $n=3$ an:
 \[
-  \set{a^n b^n c^n \mid n \in \mathbb{N}, n \geq 0}
+  \text{S} \rightarrow \text{aSb} \rightarrow \text{aaSbb} \rightarrow
+  \text{aaaSbbb} \rightarrow \text{aaaSbbb} 
 \]
 
-Unser erster Versuch schlägt fehl: Die Anzahl der ,,a`` und ,,b`` sind äquivalent, aber die ,,c`` sind unabhängig. Folglich kann die formulierte Sprache nicht ihre spezifizierte Grammatik einhalten.
-\lstset{language={}, label={lst:cflcsl}, caption={Die kontext-freie Grammatik für ein kontext-sensitives Problem}, frame={single}}
+Für kontextfreie Grammatiken dürfen wir Nonterminale definieren, die ersetzt werden. Die Idee für diese Grammatik ist es bei jeder Rekursion auf der linken und rechten Seite der Rekursion Zeichen zum endgültigen String hinzuzufügen.
+
+Wir müssen dabei beachten, dass wir auf der linken Seite nur ein Nonterminal verwenden dürfen, um eine kontextfreie Grammatik zu sein.
+
+\section{Kontext-sensitive Grammatik}
+\index{Kontext-sensitive Grammatik}
+%
+Eine weitere Menge stellen die kontext-sensitiven Sprachen dar. Dazu sei folgende Sprache zu formulieren:
+\[
+  H = \set{a^n b^n c^n \mid n \in \mathbb{N}, n \geq 0}
+\]
+
+\index{Kontext-sensitive Grammatik!Beispiel}
+Wir setzen wieder eine Grammatik an und versuchen durch Gegenbeispiele ihre Falschheit zu zeigen.
+\lstset{language={}, label={lst:cflcsl}, caption={Lösungsversuch für Sprache $H$}, frame={single}, escapechar=\@}
 \begin{lstlisting}
-S ::= aSbB | $
-B ::= Bc
+S @$\rightarrow$@ aSbB
+S @$\rightarrow$@
+B @$\rightarrow$@ Bc
+B @$\rightarrow$@
 \end{lstlisting}
 
+Die Grammatik in Listing~\ref{lst:cflcsl} ist inkorrekt. Mithilfe der Ableitung
+\[
+  \text{S} \rightarrow \text{aSbB} \rightarrow \text{abB} \rightarrow 
+  \text{abBc} \rightarrow \text{abBcc} \rightarrow \text{abcc}
+\]
+können wir uns ein Wort bauen, welches aus der Grammatik aus Listing~\ref{lst:cflcsl} stammt allerdings nicht Teil der Menge $H$ ist. Daher ist die Grammatik fehlerhaft. Die Anzahl der ,,a`` und ,,b`` sind äquivalent, aber die ,,c`` sind unabhängig.
+
 Wir müssen unsere Grammatik ausbauen und auf der linken Seite sowohl Terminale als auch Non-Terminale verwenden:
-\lstset{language={}, label={lst:cslsample}, caption={Die kontext-freie Grammatik $\set{a^n b^n c^n}$}, frame={single}}
+\lstset{language={}, label={lst:cslsample}, caption={Die kontext-sensitive Grammatik $\set{a^n b^n c^n}$}, frame={single}, escapechar=\@}
 \begin{lstlisting}
-S ::= aSBH | $
-aS ::= aa
-aB ::= ab
-bB ::= bb
-HB ::= BC
-bC ::= bc
-cC ::= cc
-CH ::= CC
+S @$\rightarrow$@ aSBH
+S @$\rightarrow$@
+aS @$\rightarrow$@ aa
+aB @$\rightarrow$@ ab
+bB @$\rightarrow$@ bb
+HB @$\rightarrow$@ BC
+bC @$\rightarrow$@ bc
+cC @$\rightarrow$@ cc
+CH @$\rightarrow$@ CC
 \end{lstlisting}
 
 \section{Chomsky-Hierarchie}
+\index{Chomsky-Hierarchie}
 %
-Wir haben bei diesen Beispielen gesehen, dass gewisse Modelle nicht ausreichen, um Sprachen zu beschreiben. Noam Chomsky hat die Chomsky-Hierarchie formuliert, um Sprachen in Kategorien einzuteilen. Dabei sind reguläre Sprachen die schwächsten Sprachen. Kontextfreie Sprachen stehen über den regulären Sprachen und können auch alle regulären Sprachen abbilden. Am mächtigsten sind die rekursive-aufzählbaren Sprachen, die es etwa erlauben die Anzahl der Rekursionen in den Ersetzungsregeln während der Verarbeitung zu verändern.
+Wir haben bei diesen Beispielen gesehen, dass gewisse Modelle nicht ausreichen, um Sprachen zu beschreiben. Noam Chomsky hat die Chomsky-Hierarchie formuliert, um Sprachen in Kategorien einzuteilen. Dabei sind reguläre Sprachen die schwächsten Sprachen. Kontextfreie Sprachen stehen über den regulären Sprachen und können auch alle regulären Sprachen abbilden. Am mächtigsten sind die rekursiv-aufzählbaren Sprachen, die es etwa erlauben die Anzahl der Rekursionen in den Ersetzungsregeln während der Verarbeitung zu verändern. Wir möchten hier auf weitere Beispiele verzichten und auf die Lehrveranstaltung \courseswp{} verweisen, welche sich detailierter mit diesen Sprachen auseinander setzt.
 
 Abbildung~\ref{fig:chomsky_hierarchy} visualisiert die Chomsky-Hierarchie.
 %
-\begin{figure}[ht]
+\begin{figure}[h]
  \begin{center}
   \includegraphics{img/chomsky_hierarchy.pdf}
   \caption{Die Chomsky-Hierarchie}

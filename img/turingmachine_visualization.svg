@@ -349,28 +349,13 @@
        style="fill:none;stroke:#dd0000;stroke-width:2.19191003;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
     <path
        inkscape:connector-curvature="0"
-       id="path5067"
-       d="m 99.81711,904.46313 0,111.40207"
-       style="fill:none;stroke:#dd0000;stroke-width:2.19191003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
-    <path
-       inkscape:connector-curvature="0"
        id="path5069"
        d="m 126.72142,1015.8652 0,-110.7999"
        style="fill:none;stroke:#dd0000;stroke-width:2.19191003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
     <path
-       inkscape:connector-curvature="0"
-       id="path5071"
-       d="m 151.51811,904.46313 0,112.00417"
-       style="fill:none;stroke:#dd0000;stroke-width:2.19191003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
-    <path
-       inkscape:connector-curvature="0"
-       id="path5073"
-       d="m 177.32569,1015.8652 0,-111.40207"
-       style="fill:none;stroke:#dd0000;stroke-width:2.19191003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
-    <path
        sodipodi:nodetypes="ccccc"
-       style="fill:none;stroke:#82ff82;stroke-width:2.19191003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#Arrow1Mstarts);marker-end:url(#Arrow1MendX)"
-       d="m 184.70178,830.52518 0,41.54986 -152.951962,9e-5 0,74.84121 25.893443,0"
+       style="fill:none;stroke:#82ff82;stroke-width:2.19199991;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1MendX)"
+       d="m 184.70178,829.13113 0,42.94391 -152.951962,9e-5 0,74.84121 25.893443,0"
        id="path4113"
        inkscape:connector-curvature="0" />
     <flowRoot
@@ -398,7 +383,7 @@
        inkscape:connector-curvature="0"
        id="path5085"
        d="m 184.35244,872.07504 83.45693,0"
-       style="fill:none;stroke:#82ff82;stroke-width:2.19191003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1MendG)" />
+       style="fill:none;stroke:#82ff82;stroke-width:2.19191002999999984;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:none" />
     <flowRoot
        xml:space="preserve"
        id="flowRoot3857"
@@ -411,7 +396,7 @@
            x="15.929329"
            y="12.106524" /></flowRegion><flowPara
          id="flowPara3863"
-         style="font-size:11px">Band</flowPara></flowRoot>    <flowRoot
+         style="font-size:11px;-inkscape-font-specification:Gentium Basic;font-family:Gentium Basic;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Band</flowPara></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot3857-8"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
@@ -423,7 +408,7 @@
            x="15.929329"
            y="12.106524" /></flowRegion><flowPara
          id="flowPara3863-8"
-         style="font-size:11px">Zustand</flowPara></flowRoot>    <flowRoot
+         style="font-size:11px;-inkscape-font-specification:Gentium Basic;font-family:Gentium Basic;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Zustand</flowPara></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot3857-9"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
@@ -435,5 +420,34 @@
            x="15.929329"
            y="12.106524" /></flowRegion><flowPara
          id="flowPara3863-4"
-         style="font-size:12px;-inkscape-font-specification:Gentium Basic;font-family:Gentium Basic;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Übergangstabelle</flowPara></flowRoot>  </g>
+         style="font-size:12px;-inkscape-font-specification:Gentium Basic;font-family:Gentium Basic;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Übergangstabelle</flowPara></flowRoot>    <path
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path5085-1"
+       d="m 222.63653,946.41422 83.45693,0"
+       style="fill:none;stroke:#82ff82;stroke-width:2.19191003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1MendX)" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4646"
+       style="font-size:14px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       transform="translate(42,738.36218)"><flowRegion
+         id="flowRegion4648"><rect
+           id="rect4650"
+           width="116.54275"
+           height="107.62082"
+           x="269.33084"
+           y="162.82527"
+           style="text-align:start;text-anchor:start" /></flowRegion><flowPara
+         id="flowPara4652"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Gentium Basic;-inkscape-font-specification:Gentium Basic">write</flowPara><flowPara
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Gentium Basic;-inkscape-font-specification:Gentium Basic"
+         id="flowPara4654">  1</flowPara><flowPara
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Gentium Basic;-inkscape-font-specification:Gentium Basic"
+         id="flowPara4656">to tape, move</flowPara><flowPara
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Gentium Basic;-inkscape-font-specification:Gentium Basic"
+         id="flowPara4658">  R</flowPara><flowPara
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Gentium Basic;-inkscape-font-specification:Gentium Basic"
+         id="flowPara4660">and go to state</flowPara><flowPara
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;font-family:Gentium Basic;-inkscape-font-specification:Gentium Basic"
+         id="flowPara4662">  M2</flowPara></flowRoot>  </g>
 </svg>

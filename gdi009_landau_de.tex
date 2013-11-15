@@ -1,67 +1,76 @@
 \chapter{Landau Notation}
+\index{O-Notation}
+\index{Landau Notation}
+\index{Asymptotische Abschätzung}
 %
-Die Informatik ist daran interessiert, Algorithmen---so wie sie im Alltag zur Anwendung kommen\footnote{Ein bekanntes Beispiel sind hierfür Sortieralgorithmen.}---zu optimieren, um Rechenzeit und Energie zu sparen. Effizientere Algorithmen erlauben ein wirtschaftlicheres Handeln. Wir benötigen daher ein Werkzeug, um Algorithmen bezüglich ihrer Eigenschaften wie Speicherverbrauch und Laufzeit vergleichen zu können. Wir bedienen uns dabei einer speziellen mathematischen Notation, welcher die Betrachtung des asymptotischen Verhaltens einer Funktion zugrunde liegt.
+Die Informatik ist daran interessiert, Algorithmen---so wie sie im Alltag zur Anwendung kommen\footnote{Ein bekanntes Beispiel sind hierfür Sortieralgorithmen.}---zu optimieren, um Rechenzeit, Speicherplatz und Energie zu sparen. Effizientere Algorithmen erlauben ein wirtschaftlicheres Handeln. Wir benötigen daher ein Werkzeug, um Algorithmen bezüglich ihrer Eigenschaften wie Speicherverbrauch und Laufzeit vergleichen zu können. Obwohl wir nachfolgend von der Laufzeit sprechen, kann die dahinterstehende Theorie genauso auf andere Ressourcen angewandt werden.
 
-Bei den nachfolgenden Beispielen sprechen wir von einer Variable $n$. Es ist wichtig zu wissen, wofür dieses $n$ steht, doch ergibt es sich aus dem Kontext oft implizit. Es ist jene Variable, die signifikant für die Effizienz des Algorithmus ist. Bei einem Sortieralgorithmus wird man mit $n$ die Anzahl der Vergleichsoperationen zwischen Elementen beschreiben. Bei der Multiplikation zweier Zahlen wird man die maximale Anzahl der Stellen der beiden Zahlen mit $n$ bezeichnen. Sollte es sich aus dem Kontext nicht eindeutig ergeben, so ist eine textuelle Beschreibung von $n$ sehr wichtig.
+Wir bedienen uns einer speziellen mathematischen Notation, welcher die Betrachtung des asymptotischen Verhaltens einer Funktion zugrunde liegt. Diese nennt sich ,,Landau-Notation``, ,,$\mathcal{O}$-Notation``\footnote{In \LaTeX{}  \texttt{\textbackslash mathcal\{O\}} und in Unicode mit U+039F ,,GREEK CAPITAL LETTER OMICRON`` notiert.} oder engl.~``Big O-Notation``. Der Ressourcenverbrauch eines Algorithmus kann durch eine mathematische Funktion beschrieben werden und die $\mathcal{O}$-Notation gibt uns ein relatives Maß, um Algorithmen vergleichen zu können.
 
-Unser neues Werkzeug nennt sich ,,Landau-Notation``, ,,$\mathcal{O}$-Notation``\footnote{In \LaTeX{}  \texttt{\textbackslash mathcal\{O\}} und in Unicode U+039F ``GREEK CAPITAL LETTER OMICRON`` notiert.} oder engl.~``Big O-Notation``.
-
+Bei den nachfolgenden Beispielen sprechen wir von einer Variable $n$. Es ist jene Variable, die signifikanten Einfluß auf die Effizienz des Algorithmus hat. Bei einem Sortieralgorithmus wird man mit $n$ die Anzahl der Vergleichsoperationen zwischen Elementen beschreiben. Bei der Multiplikation zweier Zahlen wird man die maximale Anzahl der Stellen der beiden Zahlen mit $n$ bezeichnen. Es ist wichtig zu wissen, wofür dieses $n$ konkret steht, doch ergibt es sich aus dem Kontext oft implizit. Im allgemeinen Fall handelt es sich um die Größe der Eingabe.
+%
 \section{2 grundlegende Klassen}
 \subsection{Konstante Laufzeiten}
+\index{Konstante Algorithmen}
 %
 \begin{algorithm}[p]
 \caption{Subroutine with constant runtime}
 \label{algo:constant}
 \lstset{language={python}, label={lst:pyconstant}}
 \begin{lstlisting}
-#!/usr/bin/env python
-
-def function(lst):
+def function(n):
+    print("Hello World")
     return 0
-
-function([1, 2, 3, 4])
 \end{lstlisting}
 \end{algorithm}
+%
+Der Algorithmus~\ref{algo:constant} (siehe Seite~\pageref{algo:constant}) nimmt einen Parameter \texttt{lst} an und gibt einen Wahrheitswert zurück. Wir suchen jetzt eine mathematische Funktion, welche uns repräsentiert wieviele Schritte der Algorithmus für eine Eingabe ausführen wird. Für Algorithmus~\ref{algo:constant} gilt: Unabhängig von der Größe von $n$ wird 1 Instruktion ausgeführt\footnote{Die Rückgabe eines Wertes ist stets Teil einer Funktionsverarbeitung und zählen wir daher nicht dazu.}. Wir setzen daher die mathematische Funktion
+\[
+  f_1(x) = 1
+\]
+an. Relevant ist hier, dass es sich bei der Zahl $1$ um eine Konstante handelt. Alle Algorithmen deren Effizienz mit einer mathematischen Funktion beschrieben werden können, die nur Konstanten verwendet, fallen in die Klasse ,,konstant``. Also auch etwa $f_2(x) = 0$ oder $f_3(x) = 365$. Ganz allgemein: Ein Algorithmus der Ressourcen unabhängig von der Eingabegröße verwendet, besitzt eine konstante Schranke bezüglich dieser Ressource.
 
-Der Algorithmus in Funktion~\ref{algo:constant} nimmt eine Liste \textit{array} als Parameter und gibt unabhängig von der Länge des Parameters einen Wahrheitswert zurück. Seine Laufzeit ist damit konstant.
-
+Wir haben die Formulierung ,,in eine Klasse fallen`` genutzt. Es bedeutet, dass eine Klasse (wie $\mathcal{O}(1)$) eine Menge von Funktionen ist und unsere gegebene Funktion $f_1$ ist Teil dieser Menge. Alle konstanten Algorithmen sind Elemente von $\On{1}$. Wir schreiben ,,ist Teil von`` mit dem Gleichheitszeichen an\footnote{Das Zeichen $\in$ wird auch genutzt, aber kommt in Fachliteratur selten vor. Wir möchten daher in diesem Dokument der Gleichheitszeichen-Konvention folgen.}:
+\[
+    f_1 = \On{1} \qquad f_2 = \On{1} \qquad f_3 = \On{1}
+\]
+%
 \subsection{Lineare Laufzeiten}
+\index{Lineare Algorithmen}
 %
 \begin{algorithm}[p]
 \caption{Subroutine with linear runtime}
 \label{algo:linear}
 \lstset{language={python}, label={lst:pylinear}}
 \begin{lstlisting}
-#!/usr/bin/env python
-
 def function(lst):
-    for number in lst:
-        print(number)
+    for i in lst:
+        print(i)
     return 0
-
-function([1, 2, 3, 4])
 \end{lstlisting}
 \end{algorithm}
-
-Der Algorithmus (Funktion~\ref{algo:linear}) benötigt eine lineare Laufzeit. Der Ablauf der Funktion verrät, dass er über alle Elemente der übergebenen Liste iteriert und damit genau $n$ Schritte benötigt, wenn $n$ die Anzahl der Listenelemente beschreibt. Wird ein $n$ hinzugefügt, benötigt der Algorithmus 1 Zeiteinheit mehr. Es besteht eine \emph{direkte Proportionalität} zwischen $n$ und der Anzahl von Schritten.
-
-\section{Woher $\mathcal{O}$ kommt}
 %
-Wird ein Algorithmus häufig verwendet, wird es besser sein einen Algorithmus mit konstanter Laufzeit zu wählen. Wir können dann versichern, dass unabhängig von der Größe der Eingabedaten (zB Text des Benutzers in einem Webbrowser) der Algorithmus jeweils mit der selben Laufzeit zum Ergebnis kommt. Dies wird in der Praxis relevant, sobald Inputdaten beliebige Größen besitzen dürfen.
+Der Algorithmus~\ref{algo:linear} benötigt eine lineare Laufzeit. Der Ablauf verrät, dass er über alle Elemente der Liste als Parameter iteriert und damit genau $n$ Schritte benötigt, wenn $n$ die Anzahl der Listenelemente beschreibt. Wird ein $n$ hinzugefügt, benötigt der Algorithmus $1$ Instruktion mehr. Es besteht eine \emph{direkte Proportionalität} zwischen $n$ und der Anzahl von Schritten.
+
+\section{Wozu $\mathcal{O}$ und wie es definiert ist}
 %
-\begin{table}
+Angenommen wir hätten zwei Algorithmen. Der erste Algorithmus löst ein gegebenes Problem in konstanter Zeit. Der zweite Algorithmus behandelt das selbe Problem in linearer Zeit. In diesem Fall werden wir den ersten Algorithmus bevorzugen, da dieser Algorithmus bei größeren Eingabedaten trotzdem noch schnell zu einem Ergebnis kommt. Der erste Algorithmus ist ,,effizienter`` (vergleiche mit Tabelle~\ref{tab:constant_vs_linear}).
+%
+\begin{table}[p]
  \begin{center}
   \begin{tabular}{ccc}
-   $n$ & Schritte für $f_1$ & Schritte für $f_2$ \\
+  \hline \hline
+   $n$     & Schritte für $f_1$ & Schritte für $f_2$ \\
   \hline
-   1  & 1                  & 1 \\
-   2  & 1                  & 2 \\
-   3  & 1                  & 3 \\
-   100 & 1                 & 100 \\
-   $10^6$ & 1              & $10^6$ \\
- \hline
+   1       & 1                  & 1 \\
+   2       & 1                  & 2 \\
+   3       & 1                  & 3 \\
+   100     & 1                 & 100 \\
+   $10^6$  & 1              & $10^6$ \\
+ \hline \hline
   \end{tabular}
   \caption{Zwei Algorithmen, deren Laufzeit mit $f_1(n) = 1$ und $f_2(n) = n$ beschrieben werden können, im Vergleich.}
+  \label{tab:constant_vs_linear}
  \end{center}
 \end{table}
 
@@ -72,22 +81,23 @@ Wir überlegen uns intuitiv folgende Definition: Eine Funktion $g(n)$ ist die ob
   \forall n \in \mathbb{N}: f(n) \leq g(n)
 \]
 
-Beachte, dass wir hier die Einschränkung treffen, dass wir von positiven Zahlen sprechen. Ein Algorithmus mit negativer Laufzeit ist nur theoretisch vorhanden\footnote{Mit der bisherigen Definition werden wir feststellen, dass $f_2$ keine obere Schranke für $f_1$ bei negativen $n$ darstellt. Wir führen jedoch später ein Konstrukt ein, welches $f_2$ zu einer oberen Schrank macht.} und wird nicht von uns behandelt. \\
-Im Vergleich von $f_1(n) = 1$ und $f_2(n) = n$ können wir $f_1$ als $f(n)$ und $f_2$ als $g(n)$ einsetzen. Wir stellen fest, dass für ein beliebiges $n$ das Ergebnis der Funktion $g(n)$ ein größeres Ergebnis liefert. $f_2$ ist eine obere Schranke von $f_1$.
+%Beachte, dass wir hier die Einschränkung treffen, dass wir von positiven Zahlen sprechen. Ein Algorithmus mit negativer Laufzeit ist nur theoretisch vorhanden\footnote{Mit der bisherigen Definition werden wir feststellen, dass $f_2$ keine obere Schranke für $f_1$ bei negativen $n$ darstellt. Wir führen jedoch später ein Konstrukt ein, welches $f_2$ zu einer oberen Schrank macht.} und wird nicht von uns behandelt. \\
+Möchten wir $f_4(n) = 1$ und $f_5(n) = n$ vergleichen, können wir $f_4$ als $f(n)$ und $f_5$ als $g(n)$ einsetzen. Wir stellen fest, dass für ein beliebiges, positives $n$ das Ergebnis der Funktion $g(n)$ ein größeres Ergebnis liefert. $f_5$ ist eine obere Schranke von $f_4$.
 
 Wir vergleichen noch zwei andere Funktionen:
 \[
-   f_1(n) = 42   \hspace{40pt}  f_2(n) = \pi \cdot n
+   f_6(n) = 42   \hspace{40pt}  f_7(n) = \pi \cdot n
 \]
-Wir erhalten für $n = 2$ bei $f_1(2) = 42$ und bei $f_2(2) \approx 6,283$. Es ist irgendwie unbefriedigend, dass $f_2$ \emph{keine} obere Schranke von $f_1$ ist, da die Werte von $f_1$ kleiner als jene von $f_2$ für niedrige $n$ sind. Es ist doch erkennbar, dass ab einen gewissen $n$ die Funktion $f_2$ wesentlich stärker wächst. Daher erweitern wir unsere Definition um einen Mindestwert, ab dem diese Kleiner-Gleich-Relation erst gelten muss.
+Wir erhalten für $n = 2$ bei $f_6(2) = 42$ und bei $f_7(2) \approx 6,283$. Es ist irgendwie unbefriedigend, dass $f_7$ \emph{keine} obere Schranke von $f_6$ ist, da die Werte von $f_6$ größer als jene von $f_7$ für niedrige $n$ sind. Es ist doch erkennbar, dass ab einem gewissen $n$ die Funktion $f_7$ wesentlich stärker wächst. Daher erweitern wir unsere Definition um einen Mindestwert, ab dem diese Kleiner-Gleich-Relation erst gelten muss.
 
 Wir betrachten eine Funktion (die zB eine Laufzeit beschreibt). Es sei folgende Definition gegeben:
 \[
   \On{g(n)} = \{ f(n) \mid \exists n_0 \in \mathbb{N}, \:\forall n \geq n_0: f(n) \leq g(n) \}
 \]
-Diese Definition erfüllt, was wir erreichen wollen. Für sehr große $n$ vergleichen wir die Algorithmen und beobachten welche Funktion schneller wächst.
+Diese Definition erfüllt, was wir erreichen wollen. Wir definieren uns ein sehr großes $n$ für welchen wir den Vergleich der Werte beider Algorithmen (bzw. deren Funktionen) ansetzen und beobachten welche Funktion schneller wächst.
 
-Wir treffen jedoch noch eine Entscheidung: Algorithmen mit linearer Laufzeit sind nicht sehr attraktiv. Die Information ,,die Funktion wächst linear`` ist wichtig, aber ob sie mit dem Faktor $2$ oder $3$ wächst, bezeichnen wir als irrelevant. Auch wenn $f_1(n) = 2n$ langsamer wächst als $f_2(n) = 3n$ so sind sie doch sehr ähnlich. Wir möchten definieren, dass Funktionen mit konstanten Faktoren in der selben Klasse liegen. Wir erweitern unsere Definition ein letztes Mal und führen dazu einen Faktor $c$ ein:
+\index{O-Notation!Formale Definition}
+Wir treffen jedoch noch eine Entscheidung: Faktoren sind nicht sehr attraktiv. Die Information ,,die Funktion wächst linear`` ist wichtig, aber ob sie mit dem Faktor $2$ oder $3$ wächst, definieren wir als irrelevant. Auch wenn $f_8(n) = 2n$ langsamer wächst als $f_9(n) = 3n$ so sind sie doch sehr ähnlich. Die Entscheidung lässt sich auch mit der Praxis begründen: Moore's Law zeigt uns, dass die Geschwindigkeit von Rechnern exponentiell zunimmt und damit Unterschiede durch Faktoren locker wettmacht. Wir möchten definieren, dass Funktionen mit konstanten Faktoren in der selben Klasse liegen. Wir erweitern unsere Definition ein letztes Mal und führen dazu einen Faktor $c$ ein:
 \[
    \On{g(n)} = \{ f(n) \mid \exists c \in \mathbb{R}^+, n_0 \in \mathbb{N},
                   \:\forall n \geq n_0: f(n) \leq c \cdot g(n) \}
@@ -95,364 +105,219 @@ Wir treffen jedoch noch eine Entscheidung: Algorithmen mit linearer Laufzeit sin
 %
 Diese Definition ist unser formaler Unterbau zur Betrachtung der Landau-Notation.
 
-\section{Landau-Notation verallgemeinert}
+\section{Kombination von Algorithmen}
 %
-Wobei wir hier in unserem Fall von Laufzeiten sprechen, behandelt die Landau-Notation allgemein asymptotisches Verhalten von Funktionen. Der zweite große Anwendungsbereich der Landau-Notation in der Informatik ist der Speicherverbrauch. Wie viel mehr Speicher brauche ich bei größeren Eingabedaten?
+\begin{algorithm}
+\caption{Combination of algorithms}
+\label{algo:sequence}
+\lstset{language={python}, label={lst:pyseq}}
+\begin{lstlisting}
+def function(lst):
+    for i in lst:
+        print(i)
+    print("Hello World")
+    return 0
+\end{lstlisting}
+\end{algorithm}
+\begin{algorithm}
+\caption{Algorithm with nested algorithms}
+\label{algo:nested}
+\lstset{language={python}, label={lst:pynested}}
+\begin{lstlisting}
+def function(lst):
+    print("Hello World")
+    return 0
 
-Abseits von der oberen Schranke $\mathcal{O}$ gibt es auch untere Schranken $\Omega$. Bei dieser wird im Gegensatz zur Definition von $\mathcal{O}$ das $\leq$ gegen ein $\geq$ getauscht. Diese Schranke wird in diesem Dokument nicht weiter behandelt.
-
-Es existiert auch die Definition der exakten Schranke $\Theta$, welche weiter unten im Dokument betrachtet wird.
-
-\subsection{Die Landau-Notation visualisiert}
+def function2(lst):
+    for i in lst:
+        function(lst)
+        print(i)
+    return 0
+\end{lstlisting}
+\end{algorithm}
 %
-\begin{figure}[p]
+Gegeben sei Algorithmus~\ref{algo:sequence}, welcher in zwei Teilbereiche geteilt werden kann. Einerseits haben wir eine Iteration, welche auf eine lineare Laufzeitfunktion in $\On{n}$ hindeutet. Nachfolgend haben wir einen Algorithmus, welcher aus einer Instruktion besteht (konstante Laufzeit in $\On{1}$). Wie verhält sich jetzt die gesamte Laufzeit des Algorithmus? Wir verwenden die Rechenregeln der $\mathcal{O}$-Notation:
+%
+\[
+  f_1(n) = \On{g_1(n)}  \qquad  f_2(n) = \On{g_2(n)}
+\] \[
+  \Rightarrow f_1(n) + f_2(n) = \On{\max{\left(g_1(n), g_2(n)\right)}}
+\] \[
+  \Rightarrow f_1(n) \cdot f_2(n) = \On{g_1(n) \cdot g_2(n)}
+\]
+%
+Die erste Regel besagt, dass bei sequentieller Betrachtung der Algorithmen die am stärksten wachsende Funktion die asymptotische Schranke des gesamten Algorithmus vorgibt. Die zweite Regel beschreibt eine verschachtelte Ausführung wie in Algorithmus~\ref{algo:nested}. Wenn ein Algorithmus einen anderen Algorithmus verwendet, entspricht dies der Multiplikation der Funktionen.
+
+Für Algorithmus~\ref{algo:sequence} berechnen wir:
+%
+\[
+  n + 1 = \On{\max\left(n, 1\right)}
+\] \[
+  n + 1 = \On{n}
+\]
+Für Algorithmus~\ref{algo:nested} gilt:
+\[
+  n \cdot 1 = \On{n \cdot 1}
+\] \[
+  n \cdot 1 = \On{n}
+\]
+%
+Wir merken uns also: Wir müssen immer alle Elemente des Algorithmus betrachten, um die Gesamtlaufzeit angeben zu können.
+%
+\section{Verallgemeinerung und Visualisierung der $\mathcal{O}$-Notation}
+\index{O-Notation}
+%
+Wobei wir hier in unserem Fall von Laufzeiten sprechen, behandelt die Landau-Notation allgemein asymptotisches Verhalten von Funktionen. Wir können für beliebige Ressourcenverwendung eine mathematische Funktion zur Beschreibung heranziehen und durch die $\mathcal{O}$-Notation entsprechende Klassen bilden, um Ressourcenverwendungen zu vergleichen. Liegen zwei Funktionen in der selben Klasse und ein genauer Vergleich ist notwendig, ist eine genaue mathematische Analyse der ignorierten Terme notwendig. Wir haben jedoch vorhin eine Begründung geliefert, dass diese Terme im Allgemeinen nicht relevant sind.
+
+Abseits von der oberen Schranke $\mathcal{O}$ gibt es auch untere Schranken $\Omega$ und exakte Schranken $\Theta$. Um den Umfang dieses Dokuments zu beschränken wird hierauf nicht mehr eingegangen und diese Elemente werden in Lehrveranstaltungen wie \coursedsa{} und \coursedaa{} behandelt.
+
+Weiters möchten wir hier noch folgenden Aspekt diskutieren: Im Algorithmus~\ref{algo:constant} wird von einer Funktion \texttt{print} gesprochen. Doch welche Laufzeit besitzt diese Funktion eigentlich? Über mehrere Abstraktionsebenen hinweg wird es sich letztendlich um eine Sequenz von Maschinenbefehlen handeln. Doch dazu müssten wir die gesamte Maschine analysieren. Wir einigen uns aber in der Theoretischen Informatik darauf, dass die Architektur der Maschine vernachlässigt wird indem stets die Turingmaschine als Referenzmodell herangezogen wird. Die Turingmaschine bietet uns ein universelles Konzept, um Berechenbarkeit erfassbar zu machen. Ein Schritt auf der Turingmaschine ist unsere elementare Einheit. Und unter anderem deshalb ist die Turingmaschine heute genauso wichtig wie zu Zeiten als Rechenmaschinen noch nicht gebaut werden konnten.
+%
+\begin{figure}[h]
  \begin{center}
   \includegraphics{img/upper_bound.pdf}
   \caption{$g(n)$ bildet eine obere Schranke von $f(n)$}
   \label{fig:upper}
  \end{center}
 \end{figure}
-\begin{figure}[p]
- \begin{center}
-  \includegraphics{img/exact_bound.pdf}
-  \caption{$g(n)$ bildet eine exakte Schranke von $f(n)$}
-  \label{fig:exact}
- \end{center}
-\end{figure}
 
 \paragraph{Abbildung~\ref{fig:upper}}
-Gegeben sei eine beliebige Funktion $f(n)$ mit der oberen Schranke $g(n)$. Wir können nun ein beliebiges $n_0$ definieren, wobei ab diesem $n_0$ jeder Wert von $g(n)$ größer ist als der Wert von $f(n)$.
-
-\paragraph{Abbildung~\ref{fig:exact}}
-Gegeben sei eine beliebige Funktion $f(n)$ mit der exakten Schranke $g(n)$. Wir können nun ein beliebiges $n_0$ definieren, ab dem wir versichern können, dass $f(n)$ zwischen zwei Funktionen $g(n)$ liegt. Dabei kann das $g(n)$ durch einen beliebigen Faktor skaliert werden.
-
-\subsection{Algorithmen-Sequenzen}
-%
-\begin{algorithm}
-\caption{Subroutine with sequence of sub-algorithms}
-\label{algo:sequence}
-\lstset{language={python}, label={lst:pyseq}}
-\begin{lstlisting}
-#!/usr/bin/env python
-
-def function(lst):
-    for i in range(int(number)):
-        print(i)
-    print(lst)
-    return 0
-
-function([1, 2, 3, 4])
-\end{lstlisting}
-\end{algorithm}
-%
-Gegeben sei ein Algorithmus, welcher in zwei Teilbereiche geteilt werden kann (Funktion~\ref{algo:sequence}).
-Einerseits haben wir eine Iteration, welche auf die Laufzeitfunktion $f_1(n) = n$ deutet.
-Folgend haben wir einen Algorithmus, welcher die Liste ausgibt und $f_2(n) = 1$ Laufzeit besitzt.
-Wie verhält sich jetzt die gesamte Laufzeit des Algorithmus? Dazu können wir die Rechenregeln für $\mathcal{O}$-Notation beachten.
-%
-\[
-  \On{f(n)} + \On{g(n)} = \On{\max\left(f(n), g(n)\right)}
-\] \[
-  \On{f(n)} \cdot \On{g(n)} = \On{f(n) \cdot g(n)}
-\]
-%
-Die erste Regel besagt, dass bei sequentieller Betrachtung der Algorithmen die am stärksten zu wachsende Funktion die asymptotische Schranke vorgibt. Die zweite Regel beschreibt eine verschachtelte Ausführung wie in Funktion~\ref{algo:nested}. Für Funktion~\ref{algo:sequence} berechnen wir:
-%
-\[
-  \On{n} + \On{1} = \On{\max\left(n, 1\right)} = \On{n}
-\]
-Für die Funktion~\ref{algo:nested} gilt:
-\[
-  \On{n} \cdot \On{1} = \On{n \cdot 1} = \On{n}
-\]
-%
-Wir merken uns also: Wir müssen immer alle Elemente des Algorithmus betrachten, um die Gesamtlaufzeit angeben zu können.
-
-\begin{algorithm}
-\caption{Subroutine with nested algorithms}
-\label{algo:nested}
-\lstset{language={python}, label={lst:pynested}}
-\begin{lstlisting}
-#!/usr/bin/env python
-
-def function(lst):
-    for i in range(int(number)):
-        print(i)
-        print(lst)
-    return 0
-
-function([1, 2, 3, 4])
-\end{lstlisting}
-\end{algorithm}
-%
-\section{Die Unschärferelation}
-%
-\begin{algorithm}
-\caption{Subroutine with runtime square rooted to input value}
-\label{algo:sqrt}
-\lstset{language={python}, label={lst:pyruntimesquared}}
-\begin{lstlisting}
-#!/usr/bin/env python
-
-import math
-
-def function(lst):
-    return math.sqrt(len(lst))
-
-function([1, 2, 3, 4])
-\end{lstlisting}
-\end{algorithm}
-%
-Wir betrachten den Algorithmus in Funktion~\ref{algo:sqrt}. Wir haben hier ein Problem, wenn wir die Schlussfolgerungen des vorigen Kapitels beachten. Wir benutzen die Funktion \verb=math.sqrt=, welche uns die Quadratwurzel einer Länge der Inputmenge \textit{lst} zurückliefert. Wir wissen jedoch nicht welche Laufzeit \verb=math.sqrt= besitzt.
-
-Die Funktion wird über mehrere Abstraktionsebenen schlussendlich eine Maschinencode-Instruktion aufrufen, welche uns das Ergebnis maschinennah ermittelt. Die Frage ist jedoch mit welcher Laufzeit dieses Ergebnis ermittelt werden kann. Handelt es sich nur um einen Lookup in einer Tabelle, könnte es sich um $\On{1}$ handeln. Umgekehrt sind aber auch Algorithmen mit $\On{n}$ Zeitkomplexität bekannt. Ebenso habe ich verschwiegen, welche Komplexität ein return-Statement besitzt. Es scheint als ob wir hier Algorithmen gar nicht untersuchen können ohne die gesamte Maschine zu betrachten.
-
-Die Aussage des letzten Absatzes ist fehlerfrei und begründet die Genialität der Turingmaschine. Die Turingmaschine bietet uns ein universales Konzept mit dem wir die Laufzeit $1:1$ mit der Anzahl der ausgeführten Schritte beobachten können. Sie dient uns als Referenzmaschine auf der wir all unsere Algorithmen untersuchen können. Daher ist die Turingmaschine ein elementares Konzept der theoretischen Informatik.
+Gegeben sei eine beliebige Funktion $f(n)$ mit der oberen Schranke $g(n)$. Wir können ein $n_0$ finden, wobei ab diesem $n_0$ jeder Wert von $g(n)$ größer ist als der Wert von $f(n)$.
 %
 \section{Weitere Klassen von Funktionen}
 %
-Zum dritten Mal in diesem Dokument wird der Begriff ,,Klasse`` verwendet. Wir besitzen jedoch noch keine Definition einer ,,Klasse``. Dieser Begriff ist etwas komplizierter, jedoch möchten wir ihn kurz formal definieren:
-Zwei Funktionen liegen in der selben Klasse, wenn sie gegenseitig eine exakte Schranke der anderen Funktion sind. Die Definition der exakten Schranke ist gegeben als:
-\[
-  \On{g(n)} = \{ f(n) \mid \exists c_1, c_2 \in \mathbb{R}^+, n_0 \in \mathbb{N},
-                 \forall n \geq n_0: c_1 \cdot g(n) \leq f(n) \leq c_2 \cdot g(n) \}
-\]
-%
-Wir verwenden also einen Faktor $c_1$ um die Schranke $g(n)$ nach unten zu skalieren und eine entsprechende untere Schranke zu erhalten. Genauso können wir $g(n)$ mit $c_2$ nach oben skalieren, um eine obere Schranke zu erhalten.
-
-Liegen jetzt $f_1(n) = 2n$ und $f_2(n) = 3n$ in der selben Klasse? Wir beobachten, ob sie gegenseitig exakte Schranken sind. Wir betrachten die mathematische Definition:
-\[
-  \On{3n} = \{ 2n \mid \exists c_1, c_2 \in \mathbb{R}^+, n_0 \in \mathbb{N},
-              \forall n \geq n_0: c_1 \cdot 3n \leq 2n \leq c_2 \cdot 3n \}
-\] \[
-  \On{2n} = \{ 2n \mid \exists c_3, c_4 \in \mathbb{R}^+, n_0 \in \mathbb{N},
-              \forall n \geq n_0: c_3 \cdot 2n \leq 3n \leq c_4 \cdot 2n \}
-\]
-%
-Ohne große Ausführungen zu machen, setzen wir $c_1 = \frac13$, $c_2 = 1$, $c_3 = 1$ und $c_4 = 2$, um alle mathematischen Ausdrücke zu einer wahren Aussage zu bewegen und wir sehen, dass beide Funktionen exakte Schranken zueinander sind.
-%
 \subsection{Logarithmische Funktionen}
+\index{Logarithmische Algorithmen}
 %
-Algorithmen mit konstanter Laufzeit werden durch Unabhängigkeit von der Eingabemenge begründet.
-Die Iteration in Abhängigkeit der Eingabemenge definiert die Klasse der Algorithmen mit linearer Laufzeit.
-Eine weitere Klasse wird durch logarithmisches Verhalten begründet.
-%
-\subsubsection{Die Binärsuche}
-%
-Die Binärsuche (Funktion~\ref{algo:binsearch}) ist der bekannteste Vertreter der logarithmischen Algorithmen. Als Parameter übergeben wir 2 Werte: Eine aufsteigend sortierte Liste mit Zahlen und eine Zahl. Retourniert werden soll der Index der Zahl in der Liste. Der Algorithmus setzt einen Index in die Mitte der Liste. Ist der Wert in der Mitte größer, wird der Suchbereich auf den linken Teil beschränkt. Ist der Wert kleiner, suchen wir den Wert rechts. Der Suchbereich wird durch \verb=width= definiert. \verb=index= beinhaltet den Index des betrachteten Werts in Funktion~\ref{algo:binsearch}.
+Algorithmen mit konstanter Laufzeit werden durch Unabhängigkeit von der Eingabemenge begründet. Die Iteration in proportionaler Abhängigkeit der Eingabemenge definiert die Klasse der Algorithmen mit linearer Laufzeit. Eine weitere Klasse wird durch logarithmisches Verhalten begründet, welche zwischen der konstanten und linearen Klasse einzuordnen ist.
 
-Wir möchten das Zeitverhalten des Algorithmus ermitteln. Dabei stellt sich heraus, dass der Algorithmus schneller ist als den Wert mit allen Werten zu vergleichen ($\On{n}$) und langsamer ist als eine Konstante ($\On{1}$). Wir teilen den Suchbereich immer durch zwei. Wir erhalten damit einen Binärbaum der Höhe $\log_2{n}$ in dem genau 1 Wert gesucht wird.
-
-\subsubsection{Die Äquivalenz der logarithmischen Klassen}
-%
-Logarithmische Funktionen mit unterschiedlicher Basis liegen alle in der selben Klasse. Wir können dies beweisen, indem wir es als formalen Beweis durchführen. Wir zeigen, dass $f_1(n) = \log_2(n)$ eine exakte Schranke von $f_2(n) = \log_3(n)$ und vice versa ist.
-\[
-  \On{\log_2{n}} \stackrel{?}{=} \On{\log_3{n}}
-\] \[
-  \log_2{n} = \frac{\log{n}}{\log{2}}
-\] \[
- \Theta(\log_3{n}) \stackrel{?}{=} \{ \log_2{n} \mid \exists c_1, c_2 \in \mathbb{R}^+, n_0 \in \mathbb{N},
-                      \forall n \geq n_0: c_1 \cdot \log_3{n} \leq \log_2{n} \leq c_2 \cdot \log_3{n} \}
-\] \[
-  c_1 \cdot \frac{\log{n}}{\log{3}} \leq \frac{\log{n}}{\log{2}} \leq c_3 \cdot \frac{\log{n}}{\log{3}}
-\] \[
-  c_1 \cdot \frac{1}{\log{3}} \leq \frac{1}{\log{2}} \leq c_2 \cdot \frac{1}{\log{3}}
-\] \[
-  3.3219 \cdot c_1 \leq 2.0959 \leq 3.3219 \cdot c_2
-\] \[
-  \text{Wahre Aussage mit } \{c_1 = \frac12, c_2 = 1\}
-\] \[
-  \Rightarrow \log_2(n) \in \Theta(\log_3(n))
-\] \[
-  \Theta(\log_2{n}) \stackrel{?}{=} \{ \log_3{n} \mid \exists c_1, c_2 \in \mathbb{R}^+, n_0 \in \mathbb{N},
-                      \forall n \geq n_0: c_1 \cdot \log_2{n} \leq \log_3{n} \leq c_2 \cdot \log_2{n} \}
-\] \[
-  \Theta(\log_2{n}) = \{ \log_3{n} \mid \exists c_1, c_2 \in \mathbb{R}^+, n_0 \in \mathbb{N},
-                      \forall n \geq n_0: c_1 \cdot \frac{\log{n}}{\log{2}} \leq \frac{\log{n}}{\log{3}} \leq c_2 \cdot \frac{\log{n}}{\log{2}} \}
-\] \[
-  c_1 \cdot \frac{1}{\log{2}} \leq \frac{1}{\log{3}} \leq c_2 \cdot \frac{1}{\log{2}}
-\] \[
-  2.0959 \cdot c_1 \leq 3.3219 \leq 2.0959 \cdot c_2
-\] \[
-  \text{Wahre Aussage mit } \{c_1 = 1, c_2 = 2\}
-\] \[
-  \Rightarrow \log_3(n) \in \Theta(\log_2(n))
-\]
-%
-Obwohl die Frage sich auf $\mathcal{O}$ (obere Schranke) bezogen hat und wir $\Theta$ (exakte Schranke) bewiesen, ist der Beweis vollständig, da eine exakte Schranke die obere Schranke impliziert:
-\[
-   f(n) \in \Theta(g(n)) \Leftrightarrow f(n) \in \On{g(n)} \land f(n) \in \Omega(g(n))
-\]
-
-Im Übrigen haben wir bei diesem Beweis zum ersten Mal gesehen, dass die Notation $f(n) = \On{g(n)}$ äquivalent zur Notation $f(n) \in \On{g(n)}$ ist. Werden \emph{zwei Klassen} gegenüber gestellt, so verwendet man Symbole der Mengenlehre.
-%
-\begin{algorithm}
-\caption{Binary search algorithm}
-\label{algo:binsearch}
-\lstset{language={python}, label={lst:pybinsearch}}
-\begin{lstlisting}
-import math
-
-def binary_search(n, search):
-    index = len(n) / 2
-    width = len(n) / 2
-    while True:
-        if n[index] == search:
-            return index
-        if width == 0:
-            raise KeyError("Value not in list")
-
-        elif n[index] > search:
-            index -= (width + 1) / 2
-        else:
-            index += (width + 1) / 2
-
-        width /= 2
-
-binary_search([1, 2, 3, 4], 2)
-\end{lstlisting}
-\end{algorithm}
+Für Algorithmen mit logarithmischer Laufzeit gibt es ein bekanntes Beispiel. Die Binärsuche ist ein Algorithmus, welcher ein Element in einer geordneten Liste findet. Dazu betrachtet der Algorithmus das mittlere Element der Liste und vergleicht es mit dem gesuchten Wert. Ist es größer, wird die Liste auf die linke Hälfte der Liste reduziert. Ist es kleiner, wird die Liste auf die rechte Hälfte reduziert. Stimmt es überein, haben wir das gesuchte Element gefunden. Dieser Algorithmus setzt sich so lange fort bis das Element gefunden wurde. Die ständige Halbierung der Eingabegröße $n$ beschreibt eine logarithmische Funktion. Daher ist die Binärsuche ein Vertreter der Algorithmen mit logarithmischer Laufzeit.
 %
 \subsection{Polynomielle Funktionen der Form $n^k$}
+\index{Polynomielle Algorithmen}
 %
-Funktionen der Form $f(n) = n^k$ mit $k \in \mathbb{R}^+$ treten auch häufig auf. Ein typischer Algorithmus mit solch einer Struktur ist eine verschachtelte Schleife. Liegt in einer Schleife über alle Inputwerte eine Schleife über alle Inputwerte vor, wird pro Wert die gesamte Liste iteriert. Eine solche Funktion wächst ziemlich schnell, doch ist es wieder interessant, ob Funktionen mit unterschiedlichem $k$ in der selben Klasse liegen. Wir müssen uns wieder auf die formale Ebene bewegen und zeigen, dass etwa $n^3$ eine exakte Schranke von $n^2$ ist:
+Funktionen der Form $f(n) = n^k$ mit $k \in \mathbb{R}^+$ treten sehr häufig auf. Ein typischer Algorithmus mit solch einer Struktur ist eine verschachtelte Schleife, wobei die Anzahl der Iterationen proportional zu $n$ sein muss. Die Anzahl der Verschachtelungen entspricht $k$.
 
+Liegt in einer Schleife über alle Inputwerte eine Schleife über alle Inputwerte vor, wird pro Wert die gesamte Liste iteriert. Dies entspricht einem Algorithmus dessen Laufzeit mit der Funktion $n^2$ beschrieben werden kann.
+
+Eine offene Frage ist, ob $n^2$ eine andere Klasse als $n^3$ begründet. Da der formale Beweis für den Umfang des Dokuments unangebracht wäre, wird auf diesen verzichtet\footnote{Für formale Beweise ist stets die Ungleichheit der Funktionen in der formalen Definition der $\mathcal{O}$-Notation zu zeigen.} und notiert, dass $n^k$ eine andere Klasse als $n^l$ begründet für beliebige $k$ und $l$ mit $k \neq l$.
 \[
- \Theta(n^3) \stackrel{?}{=} \{ n^2 \mid \exists c_1, c_2 \in \mathbb{R}^+, n_0 \in \mathbb{N},
-                                \forall n \geq n_0: c_1 \cdot n^3 \leq n^2 \leq c_2 \cdot n^3 \}
-\] \[
-  c_1 \cdot n^3 \leq n^2 \leq c_2 \cdot n^3
-\] \[
-  \log{(c_1)} + 2\cdot\log{n} \leq 3\cdot\log{n} \leq \log{(c_2)} + 2\cdot\log{n}
-\] \[
-  \frac{\log{c_1}}{\log{n}} + 2 \leq 3 \leq \frac{\log{c_2}}{\log{n}} + 2
+  n^3 \notin \On{n^2}
 \]
-Das $n$ liegt unter dem Bruch und definiert damit mit größerem $n$ einen kleinen Gesamtwert. Wir schaffen es nicht ein beliebiges $n_0$ zu finden für das für alle größeren $n$ die Relation $\frac{\log{c_1}}{\log{n}} + 2 \leq 3$ gilt. Der Beweis ist damit gescheitert. Wir halten somit fest, dass alle Funktionen unterschiedlicher Hochzahl eine eigene Klasse bilden.
 %
 \subsection{Exponentielle Funktionen}
+\index{Exponentielle Algorithmen}
 %
-Exponentialfunktionen besitzen eine Struktur wie $k^n$. Wieder es interessiert uns, ob alle Exponentialfunktionen unterschiedlicher Basis in eine Klasse von Funktionen gehören. Wir vergleichen ${42}^n$ mit $2^n$ und legen damit wieder unsere exakte Schranke an:
+Exponentialfunktionen besitzen eine Struktur $k^n$ mit $k in \mathbb{R}^+$. Algorithmen, die Untermengen einer Menge mit $n$ Elementen verarbeiten, liegen oft in dieser Klasse, da die Anzahl der Untermengen für eine gegebene Menge $2^n$ ist. Ein anderes Beispiel sind die möglichen Variablenbelegungen für eine boolsche Formel. Sei eine boolsche Formel mit $n$ Variablen gegeben, müssen $2^n$ Variablenbelegungen getestet werden um festzustellen, ob welche Variablenbelegungen diese Formel wahr machen.
+
+Wieder ist es interessant, ob alle Exponentialfunktionen unterschiedlicher Basis in eine Klasse von Funktionen gehören. Auch an dieser Stelle sparen wir uns den formalen Beweis, aber notieren auch hier, dass jede Basis eine eigene Klasse bilden.
 \[
-  \Theta({42}^n) \stackrel{?}{=} \{ 2^n \mid \exists c_1, c_2 \in \mathbb{R}^+, n_0 \in \mathbb{N},
-                                    \forall n \geq n_0: c_1 \cdot {42}^n \leq 2^n \leq c_2 \cdot {42}^n \}
-\] \[
-  c_1 \cdot {42}^n \leq 2^n \leq c_2 \cdot {42}^n
-\] \[
-  \log(c_1) + n\cdot\log{42} \leq n\log{2} \leq \log(c_2) + n\cdot\log{42}
-\] \[
-  \frac{\log(c_1)}{n} + \log{42} \leq \log{2} \leq \frac{\log(c_2)}{n} + \log{42}
+  3^n \notin \On{2^n}
 \]
-Wir haben selbiges Problem wie bei vorigem Beweis: Diese Relation ist nicht für konstante $c_1$ und $c_2$ und beliebig große $n$ erfüllt. Daher begründen alle Exponentialfunktionen mit unterschiedlicher Basis eigene Klassen.
-
-\subsection{Exponentielle Funktion mit konstanten Summanden in der Hochzahl}
 %
-Wie sieht es mit $3^n$ gegenüber $3^{n+1}$ aus? Liegen die beiden Funktionen in der selben Klasse?
-Wieder muss die exakte Schranke vice versa gezeigt werden:
+\section{Die Suche nach der zugehörigen oberen Schranke}
 %
-\[
-  \Theta(3^n) \stackrel{?}{=} \{ 3^{n+1} \mid \exists c_1, c_2 \in \mathbb{R}^+, n_0 \in \mathbb{N},
-                                 \forall n \geq n_0: c_1 \cdot {3}^n \leq 3^{n+1} \leq c_2 \cdot {3}^n \}
-\] \[
-  c_1 \cdot 3^n \leq 3^n \cdot 3 \leq c_2 \cdot {3}^n
-\]% \[
-%  \log(c_1) + n\cdot\log{3} \leq \log{3} + n\cdot\log{3} \leq \log(c_2) + n\cdot\log{3}
-%\] \[
-%  \underbrace{\frac{\log(c_1)}{n\cdot\log{3}} + 1}_{\text{konvergiert gegen 1}} \leq \underbrace{\frac{1}{n} + 1}_{\text{konvergiert gegen 1}} \leq \underbrace{\frac{\log(c_2)}{n\cdot\log{3}} + 1}_{\text{konvergiert gegen 1}}
-%\] \[
-%  1 \leq 1 \leq 1
-%\] \[
-%  \Rightarrow \text{Wahre Aussage}
-%\]
+Wir sprechen von ,,möglichst großem $n$`` und von ,,Wachstum`` sowie ,,oberen Schranken``. Bei der Angabe von Beispielen zu diesem Thema findet man jedoch die Frage nach der ,,langsamst wachsenden Funktion``. Wie passen diese Dinge zusammen?
 
-Mit $c_1 = 3$ und $c_2 = 3$ ergibt sich für beliebiges $n$ ein wahrer Ausdruck. Es gilt somit $3^{n+1} \in \Theta(3^n)$.
+Wir haben eine Klasse als Menge von Funktionen definiert. Die Effizienz eines Algorithmus kann durch eine mathematische Funktion beschrieben werden. Daher wissen wir in welcher Klasse ein Algorithmus liegt. Weiters bilden diese Mengen Untermengen von anderen Klassen. Wir sprechen hier von ,,oberen Schranken``, die nach unten hin offen sind. Ein Algorithmus mit linearem Laufzeitverhalten ist gleich effizient wie ein anderer linearer Algorithmus und effizienter als konstante oder logarithmische Algorithmen. Es bildet sich also eine Hierarchie:
 
 \[
-  \Theta(3^{n+1}) \stackrel{?}{=} \{ 3^n \mid \exists c_1, c_2 \in \mathbb{R}^+, n_0 \in \mathbb{N},
-                                     \forall n \geq n_0: c_1 \cdot {3}^{n+1} \leq 3^n \leq c_2 \cdot 3^{n+1} \}
+  A \rightarrow B \qquad \text{,,B ist effizienter als A``}
 \] \[
-  c_1 \cdot 3^n \cdot 3 \leq 3^n \leq c_2 \cdot 3^n \cdot 3
+  k \in \mathbb{R}^+
+\] \[
+  \text{konstant} \rightarrow
+  \text{logarithmisch} \rightarrow
+  \text{linear} \rightarrow
+  \text{polynomiell mit $n^k$} \rightarrow
+  \text{exponentiell mit $k^n$}
 \]
-Mit $c_1 = \frac{1}{3}$ und $c_2 = \frac{1}{3}$ ergibt sich eine wahre Aussage für ein beliebig großes $n$ (daher $3^n \in \Theta(3^{n+1})$).
 
-Da sie exakte Schranken zueinander sind, handelt es sich bei $\On{3^n}$ und $\On{3^{n+1}}$ um die selben Klassen von Funktionen.
-%
-\subsection{Die Suche nach der langsamst wachsenden Funktion}
-%
-Wir sprechen von ,,möglichst großem $n$`` und von ,,Wachstum`` sowie ,,oberen Schranken``. Bei der Angabe von Beispielen zum Rechnen findet man jedoch die Frage nach der ,,langsamst wachsenden Funktion``. Wie passen diese Dinge zusammen?
+Es können noch weitere Klassen definiert werden, um Algorithmen noch besser zu klassifizieren. Allerdings umfasst diese Sichtweise alle wesentlichen Klassen, die wir hier betrachten möchten. Wir notieren weiters, dass alle Klassen kleiner oder gleich ,,polynomiell mit $n^k$`` durch einen Polynom\footnote{Mathematische Struktur der Form $x_0x^0 + x_1x^1 + x_2x^2 + \ldots + x_nx^n$.} beschrieben werden können und daher mit ,,Algorithmen polynomieller Laufzeit`` bezeichnet werden. Es ist gängige Konvention polynomielle Algorithmen als ,,effizient`` zu bezeichnen und exponentielle Algorithmen als ,,ineffizient``.
 
-Wir definieren drei Funktionen $f_1(n) = n$, $f_2(n) = 42n$ und $f_3(n) = n^n$. Mithilfe der formalen Definition stellen wir fest, dass die Relationen $f_1 \in \On{n^n}$, $f_2 \in \On{n^n}$ und $f_3 \in \On{n^n}$ gelten. Unzufrieden stellen wir fest, dass jede der betrachteten Funktionen $n^n$ als obere Schranke besitzt. Die Information ,,die Laufzeit fast aller Algorithmen kann mit $\On{n^n}$ abgeschätzt werden`` ist praktisch nicht hilfreich. Aus diesem Grund suchen wir jene Klasse für eine Funktion, in der die Funktion liegt und die im Vergleich zu anderen Klassen am langsamsten wächst.
+Wir könnten nun alle Funktionen mit $\On{n^n}$ abschätzen und stellen fest, dass diese Klasse alle praxisrelevanten Algorithmen umfasst. Allerdings würde es uns nicht weiterhelfen die Effizienz eines Algorithmus zu erfassen. Wir suchen daher für einen Algorithmus jene mathematische Funktion, die den Algorithmus möglichst genau beschreibt. Wir wählen keine zu große Schranke, um gute Klassifikation zu erreichen. Wir wählen keine zu kleine Funktion, da dies keine obere Schranke der Funktion wäre. Mit ,,langsamst wachsende Funktion`` ist also die kleinstmögliche (aber formal korrekte) ,,obere Schranke`` gemeint.
 %
-\subsection{Polynomiell vs exponentiell}
+\section{Zusammenfassung}
+\index{O-Notation!Intuitive Erklärung}
 %
-Abseits der Betrachtung von Klassen gibt es auch Sichtweisen, die Algorithmen in nur 2 Klassen teilen: Polynomielle Funktionen (jene der Struktur $a_1 \cdot n^0 + a_2 \cdot n^1 + a_3 \cdot n^2 + \ldots$) und exponentielle Funktionen. Dabei werden polynomielle Funktionen als ,,effizient`` betrachtet und sind erstrebenswert. Diese Sichtweise begründet die Sichtweise auf ,,Komplexitätsklassen`` in der theoretischen Informatik.
-%
-\section{Conclusio}
-%
-Wir betrachten mit der $\mathcal{O}$-Notation verschiedene Klassen von Funktionen, die Attribute wie Laufzeit oder Speicherverbrauch beschreiben. Obwohl sie formal genau definiert ist und ein etabliertes Werkzeug ist, steht die $\mathcal{O}$-Notation auch Kritik\footnote{Suche etwa nach ``Algorithms for the masses``} gegenüber, da sie dem Programmierer nicht jenes Werkzeug zur Verfügung stellt, welches wir immer brauchen (Sprechen wir \emph{immer} von sehr großen $n$? Wird immer sauber definiert, was man mit $n$ bezeichnet?).
+In den vorigen Kapiteln haben wir uns einige Formalismen mit Hinweis auf andere Lehrveranstaltungen erspart. Zugleich haben wir kein intuitives Verständnis der $\mathcal{O}$-Notation entwickelt. Zweiteres wollen wir in diesem Abschnitt nachholen.
 
-In Bezug auf Notation verwenden wir jetzt möglichst einheitliche Notationen für Klassen von Funktionen. Es wäre sinnfrei $\On{3n}$ zu notieren, da es zu $\On{42n}$ äquivalent ist und $\On{n}$ am einfachsten zu schreiben ist. Wir definieren als eine Liste an bekannten Funktionsklassen aufsteigend nach ihrer Komplexität (Tabelle~\ref{tab:classes}).
+Gegeben sei ein Algorithmus. Wir untersuchen wie stark die Laufzeit des Algorithmus von der Eingabe abhängt. Auf Basis dieser Information bilden wir eine mathematische Funktion, die dieses Verhalten beschreibt. Wir reduzieren dann die Funktion auf eine Repräsentation, welche für die jeweilige Klasse repräsentativ ist. Dies können wir mit folgenden Regeln durchführen (beachte dass dieses Modell nicht vollständig ist, aber für die Betrachtung einfacher Polynome ausreicht):
+%
+\begin{enumerate}
+  \item Sind zwei Funktionen durch eine Addition verbunden (Exponenten dürfen nicht als eigenständige Funktion betrachtet werden), reduzieren wir die Funktion auf jenen Summanden, der die größte obere Schranke besitzt.
+  \item Eine Funktion der Struktur $an^{b}$ (mit $a$ und $b$ als Konstanten) reduzieren wir auf $n^b$.
+  \item Eine Funktion der Struktur $ab^{cn + d}$ (mit $a$, $b$, $c$ und $d$ als Konstanten) reduzieren wir auf $e^n$ mit $e=b^c$. Dem liegt die Rechenregel $n^{km} = {n^k}^m$ zugrunde.
+\end{enumerate}
+
+Wir möchten ein paar Beispiele durchgehen. Die Funktion $f(n) = 3n^2 + n$ können wir zuerst mit Regel (1) bearbeiten. Wir sehen, dass die Funktion aus einer quadratischen Teilfunktion $3n^2$ und einer linearen Funktion $n$ besteht. Wir wissen aufgrund der Klassifikationen, dass die quadratische Funktion schnell wächst. Daher möchten wir die Funktion auf $f(n) = 3n^2$ reduzieren. Nun wird unsere Struktur durch Regel (2) beschrieben und wir ersetzen sie dementsprechend mit $n^2$. Das heißt unsere finale Klasse in der $f$ liegt, nennt sich $\mathcal{O}(n^2)$.
+
+Für das Beispiel $f(n) = 5^n + n^2 - 5$ gilt: $5^n + n^2 - 5 \stackrel{(1)}{\Rightarrow} 5^n  \Rightarrow \mathcal{O}(5^n)$. In Tabelle~\ref{tab:classes} wird nochmals ausgeführt welche Relationen zwischen den Klassen besteht.
+
+\index{O-Notation!Beispiele}
+Ich möchte allerdings auch nicht verneinen, dass wir Themen offen gelassen haben. Ich möchte wieder auf weiterführende Lehrveranstaltungen verweisen, aber trotzdem einen Überblick geben:
+\begin{itemize}
+  \item Was ist wenn wir eine beschränkte Problemgröße haben? $n$ kann nicht ins Unendliche wachsen. In diesem Fall eignet sich die $\mathcal{O}$-Notation nicht gut.
+  \item Kann ich mehrere Input-Variablen modellieren?
+  \item Wie analysiert man rekursive Funktionen?
+  \item Wie stehen obere, untere und exakte Schranken zueinander? Welche Rechenregeln ergeben sich?
+\end{itemize}
+%
 \begin{table}[ht]
  \begin{center}
   \begin{tabular}{cl}
    Klasse & Beschreibung \\
   \hline
    $\On{1}$ & konstant \\
-   $\On{n}$ & linear \\
    $\On{\log{n}}$ & logarithmisch \\
+   $\On{n}$ & linear \\
    $\On{n^2}$ & quadratisch \\
    $\On{n^3}$ & kubisch \\
    $\On{n^k}$ & polynomiell $k$-ten Grades (mit $k>3$) \\
    $\On{2^n}$ & exponentiell zur Basis 2 \\
    $\On{3^n}$ & exponentiell zur Basis 3 \\
-   $\On{n!}$ & faktoriell \\
+   $\On{k^n}$ & exponentiell zur Basis $k$ \\
+%   $\On{n!}$ & faktoriell \\
   \end{tabular}
-  \caption{Funktionenklassen nach $\mathcal{O}$-Notation}
+  \caption{Klassen nach $\mathcal{O}$-Notation}
   \label{tab:classes}
  \end{center}
 \end{table}
 
-Auf der Basis unseres Verständnisses für die $\mathcal{O}$-Notation, betrachten wir verschiedene Verhältnisse:%
+Wir möchten noch ein paar Beispielfunktionen durchgehen:
 \[
    f_1(n) = 1 \mathspace
    f_2(n) = 42 \mathspace
-   f_3(n) = n \mathspace
-   f_4(n) = 2n \mathspace
+   f_3(n) = \log{n} \mathspace
+   f_4(n) = \log_2{n} \mathspace
 \] \[
-   f_5(n) = \log{n} \mathspace
-   f_6(n) = \log_2{n} \mathspace
+   f_5(n) = n \mathspace
+   f_6(n) = 2n \mathspace
    f_7(n) = n^2 \mathspace
 \] \[
    f_8(n) = n^3 \mathspace
    f_9(n) = 3^n \mathspace
    f_{10}(n) = 3^{n+1}
 \]
-\begin{itemize}
-  \item $f_1 \in \On{1}$
-  \item $f_2 \in \On{1}$
-  \item $f_3 \notin \On{1}$
-  \item $f_3 \in \On{n}$
-  \item $f_4 \in \On{n}$
-  \item $\On{f_3} = \On{f_4}$
-  \item $\On{f_1} \subset \On{f_3}$
-  \item $f_3 \in \Theta(f_4) \land f_4 \in \Theta(f_3) \Rightarrow \On{f_3} = \On{f_4}$
-  \item $f_5 \in \On{\log{n}}$
-  \item $f_6 \in \On{\log{n}}$
-  \item $f_7 \in \On{n^2}$
-  \item $f_8 \notin \On{n^2}$
-  \item $f_9 \in \On{3^n}$
-  \item $f_9 \notin \On{n}$
-  \item $f_9 \notin \On{2^n}$
-  \item $f_9 \in \On{f_{10}} \land f_{10} \in \On{f_9}$
-  \item $f_{10} \in \On{3^n}$
-\end{itemize}
-
-\section{Unbehandelte Themen}
-%
-\begin{itemize}
-  \item Was ist mein $n$ bei mehreren Parametern?
-  \item Umgang mit Funktionen die mehrere $n$ definieren?
-  \item Wie analysiert man rekursive Funktionen?
-  \item Wie stehen obere, untere und exakte Schranken zueinander? Welche Rechenregeln ergeben sich?
-\end{itemize}
-%
-Die Lehrveranstaltungen \coursedaa{}, \coursetcs{} und \coursedaa{} sind Pflichtlehrveranstaltungen der Studiengänge ,,Informatik``, (teilweise) ,,Softwareentwicklung-Wirtschaft``, (teilweise) ,,Telematik`` und (teilweise) ,,(Technische) Mathematik``. Sie behandeln die behandelten und unbehandelten Konzepte tiefergehend.
+\begin{table}[p]
+ \begin{center}
+  \begin{tabular}{cccccccc}
+  \hline \hline
+   $=$      & $\On{1}$   & $\On{\log{n}}$ & $\On{n}$   & $\On{n^2}$ & $\On{n^3}$ & $\On{2^n}$ & $\On{3^n}$ \\
+  \hline
+   $f_1$    & \checkmark & \checkmark     & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+   $f_2$    & \checkmark & \checkmark     & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+   $f_3$    & \xmark     & \checkmark     & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+   $f_4$    & \xmark     & \checkmark     & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+   $f_5$    & \xmark     & \xmark         & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+   $f_6$    & \xmark     & \xmark         & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+   $f_7$    & \xmark     & \xmark         & \xmark     & \checkmark & \checkmark & \checkmark & \checkmark \\
+   $f_8$    & \xmark     & \xmark         & \xmark     & \xmark     & \checkmark & \checkmark & \checkmark \\
+   $f_9$    & \xmark     & \xmark         & \xmark     & \xmark     & \xmark     & \xmark     & \checkmark \\
+   $f_{10}$ & \xmark     & \xmark         & \xmark     & \xmark     & \xmark     & \xmark     & \checkmark \\
+ \hline \hline
+  \end{tabular}
+  \caption{Klassifikation der Funktionen $f_1$ bis $f_{10}$. Wähle eine Funktion (Zeile) und schaue nach ob sie in der Klasse (Spalte) enthalten ist. $\checkmark$ für ,,Ja`` und $\xmark$ für ,,Nein``.}
+  \label{tab:function_cheatsheet}
+ \end{center}
+\end{table}

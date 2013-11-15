@@ -1,4 +1,5 @@
 \chapter{Mengenlehre}
+\index{Mengenlehre}
 %
 Die Mengenlehre ist ein Teilgebiet der Mathematik und beschäftigt sich mit Sammlungen von unterscheidbaren Objekten. Da in der Informatik das Konzept der Mengen oft wiederverwendet wird, sei eine oberflächliche, aber präzise Betrachtungsweise gegeben.
 
@@ -18,6 +19,7 @@ Die leere Menge wird mit $\diameter$ oder $\{\}$ bezeichnet. Die Anzahl der Elem
 \]
 
 \section{Mengennotation}
+\index{Mengennotation}
 %
 Wir stellen fest dass geschwungene Klammern genutzt werden, um Mengen zu definieren. Innerhalb dieser Klammern sind die Elemente dieser Menge komma-getrennt aufgelistet. Diese Notation reicht jedoch nicht immer aus, um beliebige Mengen zu spezifizieren.
 
@@ -32,6 +34,10 @@ Die Mengennotation (engl. ,,set-builder notation``, ,,set comprehension``) erlau
 \]
 
 \section{Eindeutigkeit und Abgrenzungen zu ähnlichen Begriffen}
+\index{Liste}
+\index{Sequenz}
+\index{Tupel}
+\index{Menge}
 %
 Entsprechend der genannten Definition darf jedes Element genau nur einmal vorkommen. Obwohl diese Definition oft respektiert wird, wird sie im Allgemeinen inkonsistent verwendet. So wird auch die Sequenz ($\{1, 2, 3, 2\}$) als Menge bezeichnet. Die Frage ist, wie sich die Begriffe Liste, Sequenz, Tupel und Menge voneinander abgrenzen. Wir möchten hier einen abstrakten Überblick geben, da die Unterschiede zur Definition von Datenstrukturen in der Programmierung relevant sind.
 %
@@ -49,6 +55,7 @@ werden jedoch oft nur eindimensional verwendet.
 \section{Elementare Mengenoperationen}
 %
 \subsection{Vereinigung}
+\index{Vereinigung (Mengenoperation)}
 %
 Gegeben seien 2 Mengen $A$ und $B$. Die Vereinigung (engl. union) der Mengen
 $A$ und $B$ ist die Menge der Elemente, die in $A$ \emph{oder} $B$ vorkommen.
@@ -70,6 +77,8 @@ sich eine Schnittstelle zwischen Logik und Mengenlehre:
 \end{figure}
 
 \subsection{Durchschnitt oder Schnittmenge}
+\index{Durchschnitt (Mengenoperation)}
+\index{Schnittmenge (Mengenoperation)}
 %
 Gegeben seien 2 Mengen $A$ und $B$. Der Durchschnitt (engl. intersection)
 der Menge $A$ und $B$ ist die Menge jener Elemente, die in $A$ \emph{und}
@@ -88,6 +97,7 @@ $B$ vorkommen:
 \end{figure}
 
 \subsection{Komplement oder Differenz}
+\index{Komplement (Mengenoperation)}
 %
 Gegeben seien 2 Mengen $A$ und $B$. Das Komplement der Menge $A$ und $B$
 ist die Menge jener Elemente, die in $A$, aber nicht in $B$, vorkommen.
@@ -105,6 +115,7 @@ ist die Menge jener Elemente, die in $A$, aber nicht in $B$, vorkommen.
 \end{figure}
 
 \subsection{Teilmenge}
+\index{Teilmenge (Mengenrelation)}
 %
 Die Teilmenge beschreibt eine Relation und erzeugt keine neue Menge.
 Ihr Ergebnis ist also eine ,,Ja`` oder ,,Nein`` Antwort.
@@ -119,6 +130,7 @@ Wir grenzen hierbei ,,echte Teilmengen`` ($A \neq B$, Operator $\subset$)
 von ,,Teilmengen`` ($A = B \lor |A| < |B|$, Operator $\subseteq$) ab.
 
 \subsection{Mitgliedschaft}
+\index{Mitgliedschaft (Mengenrelation)}
 %
 Eine weitere Relation ist die Mitgliedschaft.
 Für jede Menge kann getestet werden, ob ein Element enthalten ist. Als Beispiel
@@ -130,6 +142,7 @@ ein bestimmtes $x$?
 \]
 
 \section{Darstellung von Mengen}
+\index{Venn-Diagramm}
 %
 Möchte man Mengen und deren Relationen darstellen, bieten sich Venn-Diagramme an,
 die eine intuitive Übersicht bieten. In Darstellung~\ref{fig:venn_diagram} können
