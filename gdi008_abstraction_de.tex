@@ -6,9 +6,11 @@ Details auf der unteren Abstraktionsebene, können wir ein vereinfachtes Bild
 in der aktuellen Abstraktion annehmen.
 Ein Beispiel ist etwa das Schienennetz Österreichs. Möchte ein Informatiker
 alle freigegebenen und besetzen Blöcke visualisieren, so interessiert ihn
-das einzelne Material des Gleises auf einem gewissen Streckenabschnitt
-wenig. Viel wichtiger ist, dass das Netz als ein Graphen abgebildet werden
-kann. Die Visualisierung ist eine abstrakte Sichtweise auf das Netz.
+das spezifische Material des Gleises auf einem gewissen Streckenabschnitt
+wenig. Ein wesentlich besserer Ansatz (um mit dem Schienennetz an sich
+umzugehen) ist es das Netz als einen Graph darzustellen, um die Details
+wegzulassen, die für ein bestimmtes Problem irrelevant sind.
+Die Visualisierung des Graphen ist eine abstrakte Sichtweise auf das Netz.
 
 \section{In der Programmierung}
 %
@@ -30,4 +32,24 @@ int uppercase(char *string)
 }
 \end{verbatim}
 
+\section{In Bezug auf die theoretische Informatik}
+%
+Das selbe trifft auf Turingmaschinen zu. So sprechen wir bei universellen
+Turingmaschinen davon, dass eine Turingmaschine eine andere Turingmaschine
+simuliert. Wir haben dabei betont, dass wir auf die konkrete Kodierung der
+simulierten Turingmaschine nicht eingehen. Dem liegt zugrunde, dass diese
+Kodierungsform gewisse Details festlegen würde, die für das Verständnis
+der universellen Turingmaschine unerheblich sind.
 
+Abstraktion ist ein fundamentales Konzept der Informatik. Ironisch meint
+Kevlin Henney zu einem Zitat von David Wheeler,
+\begin{quotation}
+  ,,All problems in computer science can be solved by another level
+  of indirection except for the problem of too many layers of indirection`` \\
+  ---Kevlin Henney
+\end{quotation}
+\begin{quotation}
+  ,,Alle Probleme der Informatik können durch eine weitere Ebene von Umwegen
+  gelöst werden; außer das Problem von zu vielen Umwegen.`` \\
+  ---frei ins Deutsche übersetzt
+\end{quotation}

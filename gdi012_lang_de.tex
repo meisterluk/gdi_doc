@@ -278,12 +278,11 @@ In Tabelle~\ref{tab:regex_examples} sind Beispiele für reguläre Ausdrücke dar
       c & aabc \\
       bbbc & \\
     \hline
-      \multicolumn{2}{c}{\texttt{a?b*c+}} \\
+      \multicolumn{2}{c}{\texttt{(a?b?b)*a?}} \\
     \hline
-      abc & a \\
-      ac & ab \\
-      c & aabc \\
-      bbbc & \\
+      ab & aa \\
+      abbb & baaba \\
+      ababbabbba & bbbaaa \\
     \hline
       \multicolumn{2}{c}{\texttt{(ab+a*)+ab+}} \\
     \hline

@@ -14,7 +14,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="New document 1">
+   sodipodi:docname="nondeterministic_automaton.svg">
   <defs
      id="defs4">
     <marker
@@ -53,7 +53,7 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="10.0375"
+     inkscape:zoom="10.76"
      inkscape:cx="40"
      inkscape:cy="25"
      inkscape:document-units="px"
@@ -72,7 +72,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -90,7 +90,7 @@
        sodipodi:cy="51.858738"
        sodipodi:rx="8.9219332"
        sodipodi:ry="8.9219332"
-       d="m 47.397771,51.858738 a 8.9219332,8.9219332 0 1 1 -17.843866,0 8.9219332,8.9219332 0 1 1 17.843866,0 z" />
+       d="m 47.397771,51.858738 c 0,4.927448 -3.994486,8.921933 -8.921933,8.921933 -4.927448,0 -8.921933,-3.994485 -8.921933,-8.921933 0,-4.927448 3.994485,-8.921933 8.921933,-8.921933 4.927447,0 8.921933,3.994485 8.921933,8.921933 z" />
     <path
        transform="translate(18.342006,962.01566)"
        sodipodi:type="arc"
@@ -100,7 +100,7 @@
        sodipodi:cy="51.858738"
        sodipodi:rx="8.9219332"
        sodipodi:ry="8.9219332"
-       d="m 47.397771,51.858738 a 8.9219332,8.9219332 0 1 1 -17.843866,0 8.9219332,8.9219332 0 1 1 17.843866,0 z" />
+       d="m 47.397771,51.858738 c 0,4.927448 -3.994486,8.921933 -8.921933,8.921933 -4.927448,0 -8.921933,-3.994485 -8.921933,-8.921933 0,-4.927448 3.994485,-8.921933 8.921933,-8.921933 4.927447,0 8.921933,3.994485 8.921933,8.921933 z" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker3080);stroke-miterlimit:4;stroke-dasharray:none"
        d="m 24.345723,1019.6551 c 7.255872,-4.8667 10.851201,-6.4865 20.35316,-7.2491"
@@ -128,7 +128,7 @@
        sodipodi:cy="51.858738"
        sodipodi:rx="8.9219332"
        sodipodi:ry="8.9219332"
-       d="m 47.397771,51.858738 a 8.9219332,8.9219332 0 1 1 -17.843866,0 8.9219332,8.9219332 0 1 1 17.843866,0 z" />
+       d="m 47.397771,51.858738 c 0,4.927448 -3.994486,8.921933 -8.921933,8.921933 -4.927448,0 -8.921933,-3.994485 -8.921933,-8.921933 0,-4.927448 3.994485,-8.921933 8.921933,-8.921933 4.927447,0 8.921933,3.994485 8.921933,8.921933 z" />
     <path
        transform="matrix(0.76326692,0,0,0.76326692,27.45051,1002.2924)"
        sodipodi:type="arc"
@@ -138,7 +138,7 @@
        sodipodi:cy="51.858738"
        sodipodi:rx="8.9219332"
        sodipodi:ry="8.9219332"
-       d="m 47.397771,51.858738 a 8.9219332,8.9219332 0 1 1 -17.843866,0 8.9219332,8.9219332 0 1 1 17.843866,0 z" />
+       d="m 47.397771,51.858738 c 0,4.927448 -3.994486,8.921933 -8.921933,8.921933 -4.927448,0 -8.921933,-3.994485 -8.921933,-8.921933 0,-4.927448 3.994485,-8.921933 8.921933,-8.921933 4.927447,0 8.921933,3.994485 8.921933,8.921933 z" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker3080);stroke-miterlimit:4;stroke-dasharray:none"
        d="m 24.345723,1035.1424 c 7.255872,4.8668 10.851201,6.4865 20.35316,7.2491"
@@ -159,7 +159,7 @@
            style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Gentium Basic;-inkscape-font-specification:Gentium Basic" /></flowRegion><flowPara
          id="flowPara4864-2">a</flowPara></flowRoot>    <path
        style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#marker3080)"
-       d="m 63.775433,1022.3897 c 2.194519,2.3789 1.554298,5.6136 0,10.1301"
+       d="m 63.775433,1022.3897 c 3.787655,2.9653 2.125486,4.6975 0,10.1301"
        id="path3047"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />

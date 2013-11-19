@@ -1,4 +1,5 @@
 \chapter{Landau Notation}
+\label{sec:bigoh}
 \index{O-Notation}
 \index{Landau Notation}
 \index{Asymptotische Abschätzung}
@@ -229,11 +230,13 @@ Wir haben eine Klasse als Menge von Funktionen definiert. Die Effizienz eines Al
   \text{konstant} \rightarrow
   \text{logarithmisch} \rightarrow
   \text{linear} \rightarrow
+  \vspace{-8pt}
+\] \[
   \text{polynomiell mit $n^k$} \rightarrow
   \text{exponentiell mit $k^n$}
 \]
 
-Es können noch weitere Klassen definiert werden, um Algorithmen noch besser zu klassifizieren. Allerdings umfasst diese Sichtweise alle wesentlichen Klassen, die wir hier betrachten möchten. Wir notieren weiters, dass alle Klassen kleiner oder gleich ,,polynomiell mit $n^k$`` durch einen Polynom\footnote{Mathematische Struktur der Form $x_0x^0 + x_1x^1 + x_2x^2 + \ldots + x_nx^n$.} beschrieben werden können und daher mit ,,Algorithmen polynomieller Laufzeit`` bezeichnet werden. Es ist gängige Konvention polynomielle Algorithmen als ,,effizient`` zu bezeichnen und exponentielle Algorithmen als ,,ineffizient``.
+Es können noch weitere Klassen definiert werden, um Algorithmen noch besser zu klassifizieren. Allerdings umfasst diese Sichtweise alle wesentlichen Klassen, die wir hier betrachten möchten. Wir notieren weiters, dass alle Klassen kleiner oder gleich ,,polynomiell mit $n^k$`` durch einen Polynom\footnote{Mathematische Struktur der Form $y_0x^0 + y_1x^1 + y_2x^2 + \ldots + y_nx^n$.} beschrieben werden können und daher mit ,,Algorithmen polynomieller Laufzeit`` bezeichnet werden. Es ist gängige Konvention polynomielle Algorithmen als ,,effizient`` zu bezeichnen und exponentielle Algorithmen als ,,ineffizient``.
 
 Wir könnten nun alle Funktionen mit $\On{n^n}$ abschätzen und stellen fest, dass diese Klasse alle praxisrelevanten Algorithmen umfasst. Allerdings würde es uns nicht weiterhelfen die Effizienz eines Algorithmus zu erfassen. Wir suchen daher für einen Algorithmus jene mathematische Funktion, die den Algorithmus möglichst genau beschreibt. Wir wählen keine zu große Schranke, um gute Klassifikation zu erreichen. Wir wählen keine zu kleine Funktion, da dies keine obere Schranke der Funktion wäre. Mit ,,langsamst wachsende Funktion`` ist also die kleinstmögliche (aber formal korrekte) ,,obere Schranke`` gemeint.
 %
