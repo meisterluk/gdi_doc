@@ -9,13 +9,14 @@ Eine der bekannteren Grundlagen der Informatik ist, dass in der Informatik
 auch andere Zahlensysteme als das übliche Dezimalsystem zur Anwendung kommen.
 Vorgänge in der Software und Hardware lassen sich in jedem beliebigen
 Zahlensystem abbilden, da die Zahl als mathematisches Objekt verwendet wird
-und nicht über ihre Repräsentation. Es hat sich herausgestellt, dass das
+und nicht über ihre Repräsentation. Es hat sich jedoch herausgestellt, dass das
 Dezimalsystem nicht für jeden Anwendungsbereich eignet.
 
 \index{Radix}
 Bei der Verwendung von mehreren Zahlensystemen hat es sich etabliert,
-die Basis (,,Radix``) als Index neben die Repräsentation zu schreiben.
-Die Zahl 4 in Binärdarstellung wäre also mit $100_2$ zu notieren.
+die Basis (\emph{Radix}) als Index neben die Repräsentation zu schreiben.
+Die Zahl 42 in Dezimaldarstellung wäre also mit $42_{10}$ und die Zahl 4
+in Binärdarstellung wäre mit $100_2$ zu notieren.
 %
 \subsection{Terminologie}
 %
@@ -60,6 +61,7 @@ Das Dezimalsystem umfasst 10 verschiedene Ziffern.
 \end{align*}
 
 %\aside % TODO
+\index{Indexing}
 Fraglich ist, welche die erste natürliche Zahl ist. Einerseits wird mit $1$ zum
 Zählen begonnen und andererseits ist $0$ die Ziffer mit dem niedrigsten Wert.
 Jedenfalls hat es sich seit der C-Programmiersprache in der überwiegenden
@@ -86,7 +88,7 @@ implementiert binäre Operationen.
 %
 Das Hexadezimalsystem (\short{hex}) setzt 16 als Radix voraus. Das Besondere an
 16 ist der Zusammenhang zum Binärsystem ($2^4 = 16$). Selbiges gilt für
-das Oktalsystem (oct, Basis 8), welches die Zahlen 0--7 verwendet:
+das Oktalsystem (\short{oct}, Basis 8), welches die Zahlen 0 bis 7 verwendet:
 %
 \begin{align*}
   \text{Alphabet}_{\text{hex}} &= \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F\} \\
@@ -121,8 +123,8 @@ können wir uns eine abzählbar unendliche Struktur bilden.
   \caption{Inkrementieren mit natürlichen Dezimalzahlen}
 \end{figure}
 
-Die Dezimalzahlen seien hier in einer sequentiellen Datenstruktur gespeichert.
-Indexing innerhalb der Struktur $n$ mit dem Index $i$ erfolgt mit der Notation
+Die Dezimalzahlen seien in einer sequentiellen Datenstruktur gespeichert.
+Indexing innerhalb dieser Struktur $n$ mit dem Index $i$ erfolgt mit der Notation
 $n[i]$. Mit $n = 100_2 = \set{1, 0, 0}$ referenziert $n[0]$ die $1$ und
 $n[2]$ die erste $0$. Eine Zahl $z$ lässt sich dann wie folgt als eine Summe
 darstellen:
@@ -201,7 +203,7 @@ Speichergrößen in Bytes dargestellt.
   \end{center}
 \end{table}
 
-Leider sind Begriffe wie ,,Kilobyte`` in der Praxis nicht so eindeutig definiert, wie es wünschenswert wäre. Ein Kilo ($2^{10}$) weicht bei dieser Definition von Tabelle~\ref{tab:si_units} um 24 Werte vom üblichen Kilo ($10^3$) ab. Es gab mehrere Versuche die Präfixe auf das Binärsystem anzupassen, allerdings widerspiegelt die genannten Tabelle die übliche Konvention wider\footnote{Zur Unterscheidung wurde von der IEC der Präfix Kibi/Mebi/Gibi für die Basis 2 eingeführt.}.
+Leider sind Begriffe wie ,,Kilobyte`` in der Praxis nicht so eindeutig definiert, wie es wünschenswert wäre. Ein Kilo ($2^{10}$) weicht bei dieser Definition von Tabelle~\ref{tab:si_units} um 24 Werte vom üblichen Kilo ($10^3$) ab. Es gab mehrere Versuche die Präfixe auf das Binärsystem anzupassen, allerdings spiegelt die genannten Tabelle die übliche Konvention wider.\footnote{Zur Unterscheidung wurde von der IEC der Präfix Kibi/Mebi/Gibi für die Basis 2 eingeführt.}
 
 \subsection{Overflows und Underflows}
 %
@@ -214,8 +216,8 @@ unserer Verwendung von Zahlen.
 Daher müssen wir Zahlen auf eine Länge beschränken. Die Zahlen liegen
 dann an einem beliebigen Ort im Speicher. Eine Ganzzahl (engl.~,,Integer``)
 wird üblicherweise in einer Größe von 32bit%
-\footnote{Wie wir jetzt wissen, sind das 4 Bytes die 4294967296
-verschiedene Zustände annehmen können; also etwa 4,3 Milliarden.}
+\footnote{Wie wir jetzt wissen, sind das 4 Bytes. Diese können 4294967296
+(ca. 4.3 Milliarden) verschiedene Zustände annehmen.}
 gespeichert.
 
 \begin{figure}[ht]
@@ -242,16 +244,16 @@ $0$ (siehe Abbildung~\ref{fig:overflow}).
 Der Underflow beschreibt das Äquivalent für das Dekrementieren.
 Der Over- und Underflow kann durch Techniken wie Ganzzahlarithmetik vermieden
 werden, doch aufgrund des Geschwindigkeitsverlustes und der Komplexität
-verzichtet man in maschinennahen Umgebungen darauf. Dynamische Sprachen
+verzichtet man in maschinennahen Umgebungen darauf. Dynamische Programmiersprachen
 (etwa Python und ruby) bieten oft Ganzzahlen mit unendlicher Genauigkeit
-an und verstecken die Umsetzung auf maschinennahe Zahlen mit beschränkter
-Länge.
+an\footnote{Nur beschränkt durch die Größe des Hauptspeichers.} und verstecken
+die Umsetzung auf maschinennahe Zahlen mit beschränkter Länge.
 %
 \section{Konvertierung zwischen Zahlensystemen}
 \index{Konvertierung!zwischen Zahlensystemen}
 %
 Liegt eine Repräsentation einer Zahl vor, so lässt sie sich in ein beliebiges
-anderes Zahlensystem mit Stellenwertordnung umrechnen, indem man eine der
+anderes Zahlensystem mit Stellenwertordnung umrechnen, indem man eines der
 hier vorgestellten Verfahren verwendet.
 %
 \subsubsection{Moduloansatz über die Basis 10}
@@ -269,16 +271,16 @@ auch ,,Wissenschaftliche Schreibweise`` genannt} auf:
 Wir rechnen diese Zahl aus:
 \[ 64_{10} + 2_{10} = 66_{10} \]
 %
-Wir legen für $66_{10}$ eine Zahl $8^0$ an und rechnen mit der Basis 10 weiter.
+Wir legen für $66_{10}$ eine Zahl $8^0$ ($=1$) an und rechnen mit der Basis 10 weiter.
 Der Faktor ist das Ergebnis der Operation $\frac{(66)}{8^0}\mod{8^1}$.
 Bei uns also $2$.
 \[ 66 = \ldots + 2\cdot 8^0 \]
 %
-Wir legen $8^1$ an. Das Ergebnis der Operation
+Wir legen $8^1$ ($=8$) an. Das Ergebnis der Operation
 $\frac{(66-2\cdot8^0)}{8^1}\mod{8^1}$ ist $0$.
 \[ 66 = \ldots + 0\cdot 8^1 + 2\cdot 8^0 \]
 %
-Wir legen $8^2$ an. Das Ergebnis der Operation
+Wir legen $8^2$ ($=64$) an. Das Ergebnis der Operation
 $\frac{(66-2\cdot8^0-0\cdot8^1)}{8^2}\mod{8^2}$ ist $1$.
 \[ 66 = 1\cdot8^2 + 0\cdot8^2 + 2\cdot8^0 \]
 %
@@ -314,10 +316,10 @@ Sequenz von Addition und Multiplikation ab.
 Der Tabellenansatz erlaubt einen einfachen Umgang und stellt die explizite
 Frage ,,Brauche ich diesen Wert, um meinen Zielwert zu erreichen?{}``. Erfolgt
 die Antwort mit ,,Ja``, wird eine 1 notiert; sonst 0. Das Funktionsprinzip
-wird in Abbildung~\ref{tab:table_approach} dargestellt. Wir konvertieren die
+wird in Tabelle~\ref{tab:table_approach} dargestellt. Wir konvertieren die
 Zahl $59_{10}$ ins Binärsystem. Dazu tragen wir auf einer Linie die
-2er-Potenzen absteigend auf (die höchste Potenz muss die größer Zahl
-kleiner-gleich der gesuchten Zahlen sein). Wir bearbeiten die Zahlen
+2er-Potenzen absteigend auf (die höchste Potenz muss die größte Potenz sein,
+die kleiner-gleich der gesuchten Zahl ist). Wir bearbeiten die Zahlen
 von links nach rechts. Wir fragen uns, ob die Zahl $32$ kleiner oder gleich
 $59$ ist (dh. ob sie ,,gebraucht`` wird). Wenn ja, tragen wir darunter
 eine 1 ein. Wenn nein, tragen wir darunter eine 0 ein.
@@ -347,11 +349,12 @@ $\frac{\log{s}}{\log{d}} = n$ mit $n$ eine Zahl ohne Nachkommastellen,
 können wir die Zahl pro Stelle konvertieren. Dabei wird eine Stelle
 durch $n$ Stellen ersetzt.
 
-Wir beschreiben die Bedingung informal: Erreicht man die Zielbasis durch
-Potenzieren der Ausgangsbasis
+Wir beschreiben die Bedingung informal: Erreicht man den Zielradix durch
+Potenzieren des Ausgangsradix
 (etwa $2^n = 16$ mit $n=4$ oder $3^n = 9$ mit $n=2$), können wir jede
 Ziffer der Ausgangszahl verwenden und mit $n$ Stellen in die Zielbasis
-bringen und schlussendlich die Einzelzahlen konkatenieren.
+bringen und schlussendlich die Einzelzahlen aneinander fügen
+(\emph{konkatenieren}).
 
 Als Beispiel betrachten wir in \ref{tab:positional_approach} die
 Konvertierung von FACE$_{16}$ ins Binärsystem. So wird etwa $F$

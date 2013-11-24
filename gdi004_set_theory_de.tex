@@ -10,7 +10,7 @@ Eine \emph{Menge} (engl. Set) ist
  \item besitzt eine beliebige Anzahl von Elementen
 \end{itemize}
 %
-Die leere Menge wird mit $\diameter$ oder $\{\}$ bezeichnet. Die Anzahl der Elemente einer Menge nennt man auch \emph{Kardinalität einer Menge}. Zur Notation der Kardinalität werden vertikale Balken um die Menge verwendet. So haben wir etwa in Kapitel~\ref{sec:bits_numeric_systems_10} von $|\text{Alphabet}_{\text{dec}}|$ gesprochen, wobei hier auch die Anzahl der Elemente der Menge Alphabet im Dezimalsystem gemeint ist. Die Definition der Mengen erlaubt sowohl endliche als auch unendliche Mengen\footnote{Die Diskussion um die Definition eines Unendlichkeitsbegriffs und der Abgrenzung zum Begriff ,,endlich abzählbar`` entstammt direkt der Mengenlehre. Als guter Einstieg in die Thematik dient der Satz von Cantor.}. Mengen werden wie Matrizen per Konvention mit einem Großbuchstaben bezeichnet.
+Die \emph{leere Menge} wird mit $\diameter$ oder $\{\}$ bezeichnet. Die Anzahl der Elemente einer Menge nennt man auch \emph{Kardinalität einer Menge}. Zur Notation der Kardinalität werden vertikale Balken um die Menge verwendet. So haben wir etwa in Abschnitt~\ref{sec:bits_numeric_systems_10} von $|\text{Alphabet}_{\text{dec}}|$ gesprochen, womit die Anzahl der Elemente der Menge Alphabet im Dezimalsystem gemeint ist. Die Definition der Mengen erlaubt sowohl endliche als auch unendliche Mengen\footnote{Die Diskussion um die Definition eines Unendlichkeitsbegriffs und der Abgrenzung zum Begriff ,,endlich abzählbar`` entstammt direkt der Mengenlehre. Als guter Einstieg in die Thematik dient der Satz von Cantor.}. Mengen werden wie Matrizen per Konvention mit einem Großbuchstaben bezeichnet.
 %
 \[
    A = \{1, 2, 3, 4\}
@@ -21,7 +21,7 @@ Die leere Menge wird mit $\diameter$ oder $\{\}$ bezeichnet. Die Anzahl der Elem
 \section{Mengennotation}
 \index{Mengennotation}
 %
-Wir stellen fest dass geschwungene Klammern genutzt werden, um Mengen zu definieren. Innerhalb dieser Klammern sind die Elemente dieser Menge komma-getrennt aufgelistet. Diese Notation reicht jedoch nicht immer aus, um beliebige Mengen zu spezifizieren.
+Wir stellen fest dass geschwungene Klammern genutzt werden, um Mengen zu definieren. Innerhalb dieser Klammern sind die Elemente dieser Menge kommagetrennt aufgelistet. Diese Notation reicht jedoch nicht immer aus, um beliebige Mengen zu spezifizieren.
 
 Die Mengennotation (engl. ,,set-builder notation``, ,,set comprehension``) erlaubt es uns zwischen den geschwungenen Klammern einen vertikalen Balken (oder einen Doppelpunkt) zu verwenden. Wenn die Kriterien auf der rechten Seite des Balkens erfüllt sind, wird das Element auf der linken Seite aufgenommen. Domänenkriterien (zB. $t \in \mathbb{N}$) dürfen jedoch auch auf der linken Seite genannt werden, wenn sie sich nur auf das auszuwählende Element beziehen. Auf diesem Weg können wir auch unendliche Mengen abbilden.
 
@@ -57,14 +57,14 @@ werden jedoch oft nur eindimensional verwendet.
 \subsection{Vereinigung}
 \index{Vereinigung (Mengenoperation)}
 %
-Gegeben seien 2 Mengen $A$ und $B$. Die Vereinigung (engl. union) der Mengen
+Gegeben seien 2 Mengen $A$ und $B$. Die \emph{Vereinigung} (engl. ,,union``) der Mengen
 $A$ und $B$ ist die Menge der Elemente, die in $A$ \emph{oder} $B$ vorkommen.
 Dies bedeutet wir können den logischen Operator Oder verwenden, um aufgenommene
 bzw. abgelehnte Elemente der Vereinigungsmenge zu spezifizieren. Hier ergibt
 sich eine Schnittstelle zwischen Logik und Mengenlehre:
 %
 \[
-    A \cup B = \{x | (x \in A) \lor (x \in B)\}
+    A \cup B = \{x \,|\, (x \in A) \lor (x \in B)\}
 \]
 %
 \begin{figure}[p]
@@ -80,11 +80,11 @@ sich eine Schnittstelle zwischen Logik und Mengenlehre:
 \index{Durchschnitt (Mengenoperation)}
 \index{Schnittmenge (Mengenoperation)}
 %
-Gegeben seien 2 Mengen $A$ und $B$. Der Durchschnitt (engl. intersection)
+Gegeben seien 2 Mengen $A$ und $B$. Der \emph{Durchschnitt} (engl. ,,intersection``)
 der Menge $A$ und $B$ ist die Menge jener Elemente, die in $A$ \emph{und}
 $B$ vorkommen:
 \[
-    A \cap B = \{x | (x \in A) \land (x \in B)\}
+    A \cap B = \{x \,|\, (x \in A) \land (x \in B)\}
 \]
 %
 \begin{figure}[p]
@@ -97,12 +97,12 @@ $B$ vorkommen:
 \end{figure}
 
 \subsection{Komplement oder Differenz}
-\index{Komplement (Mengenoperation)}
+\index{Komplement, relativ (Mengenoperation)}
 %
-Gegeben seien 2 Mengen $A$ und $B$. Das Komplement der Menge $A$ und $B$
+Gegeben seien 2 Mengen $A$ und $B$. Das \emph{relative Komplement} der Menge $A$ und $B$
 ist die Menge jener Elemente, die in $A$, aber nicht in $B$, vorkommen.
 \[
-    A \setminus B = \{x | (x \in A) \land (x \notin B)\}
+    A \setminus B = \{x \,|\, (x \in A) \land (x \notin B)\}
 \]
 %
 \begin{figure}[p]
@@ -119,15 +119,15 @@ ist die Menge jener Elemente, die in $A$, aber nicht in $B$, vorkommen.
 %
 Die Teilmenge beschreibt eine Relation und erzeugt keine neue Menge.
 Ihr Ergebnis ist also eine ,,Ja`` oder ,,Nein`` Antwort.
-Eine Menge ist eine Teilmenge einer anderen Menge genau dann alle
-Elemente in der betrachteten Elemente enthalten sind. $A$ ist eine
+Eine Menge ist eine Teilmenge einer anderen Menge genau dann wenn alle
+Elemente der Teilmenge in ihr enthalten sind. $A$ ist eine
 Teilmenge von $B$ genau dann wenn $A \subseteq B$:
 \[
     A \subseteq B \text{ iff } \forall x \in A, x \in B
 \]
 
-Wir grenzen hierbei ,,echte Teilmengen`` ($A \neq B$, Operator $\subset$)
-von ,,Teilmengen`` ($A = B \lor |A| < |B|$, Operator $\subseteq$) ab.
+Wir grenzen hierbei ,,echte Teilmengen`` ($A \neq B $, Operator $\subset$)
+von ,,Teilmengen`` ($A = B \lor A \subset B$, Operator $\subseteq$) ab.
 
 \subsection{Mitgliedschaft}
 \index{Mitgliedschaft (Mengenrelation)}
@@ -147,7 +147,7 @@ ein bestimmtes $x$?
 Möchte man Mengen und deren Relationen darstellen, bieten sich Venn-Diagramme an,
 die eine intuitive Übersicht bieten. In Darstellung~\ref{fig:venn_diagram} können
 wir auch ein Beispiel des Inklusion-Exklusion Prinzips sehen. Dieses besagt, dass
-wir für die Beschreibung der Kardinalität von A, B und C die einzelnen Kardinalitäten
+wir für die Beschreibung der Kardinalität von A, B \emph{und} C die einzelnen Kardinalitäten
 der Mengen A, B und C betrachten müssen, die paarweisen Schnittmenge zu exkludieren
 sind und anschließend die Schnittmenge aller drei Mengen wieder zu inkludieren ist.
 Formal:

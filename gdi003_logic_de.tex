@@ -16,7 +16,7 @@ In den Lehrveranstaltungen \coursedm{} und \courselc{}\footnote{Lehrveranstaltun
 
 \index{Aussage (Logik)}
 \index{Literal}
-Eine Aussage ist ein aussagenlogischer Ausdruck, der wahr oder falsch ist. Diese Ausdrücke lassen sich beliebig verketten, sodass wie in der Arithmetik endlich lange Ausdrücke entstehen. Verkettete Aussagen kommen durch die Verknüpfung von Aussagen mithilfe von Operatoren zustande\footnote{Aussagenlogische Ausdrücke sind somit rekursive Strukturen}. Eine Aussage kann aber auch ein Wahrheitswert (wahr oder falsch) oder eine Variable (Literal, frei zuweisbarer Wert) sein. Weitere Notation für die Werte wahr und falsch sind $\set{1, 0}$, $\set{W, F}$ (Deutsch), $\set{T, F}$ (Englisch) oder $\set{\top, \bot}$. In diesem Dokument wird bevorzugt $\T$ und $\F$ verwendet.
+Eine Aussage ist ein aussagenlogischer Ausdruck, der wahr oder falsch ist. Diese Ausdrücke lassen sich beliebig verketten, wodurch wie in der Arithmetik beliebig lange Ausdrücke entstehen. Verkettete Aussagen kommen durch die Verknüpfung von Aussagen mithilfe von Operatoren zustande\footnote{Aussagenlogische Ausdrücke sind somit rekursive Strukturen}. Eine Aussage kann aber auch ein Wahrheitswert (wahr oder falsch) oder eine Variable (Literal, frei zuweisbarer Wert) sein. Weitere Notation für die Werte wahr und falsch sind $\set{1, 0}$, $\set{W, F}$ (Deutsch), $\set{T, F}$ (Englisch) oder $\set{\top, \bot}$. In diesem Dokument wird bevorzugt $\T$ und $\F$ verwendet.
 
 \section{Wahrheitstabellen und Verknüpfungen}
 \index{Oder-Verknüpfung}
@@ -67,10 +67,10 @@ Eine Aussage ist ein aussagenlogischer Ausdruck, der wahr oder falsch ist. Diese
  \end{center}
 \end{table}
 %
-Es gibt 3 Grundverknüpfungen, auf die aussagenlogische Ausdrücke oft reduziert werden: Das \emph{Oder} ($\lor$, ,,Disjunktion``) wird wahr (Tabelle~\ref{fig:or_operator}), wenn eines oder beide Argumente wahr sind. Das Und ($\land$, ,,Konjunktion``) wird wahr (Tabelle~\ref{fig:and_operator}), wenn beide Argumente einzeln wahr sind. Die Negation ($\neg$) ist eine unäre Operation (dh. sie bezieht sich nur auf 1 Argument) und gibt statt einem wahr falsch zurück und vice versa (Tabelle~\ref{fig:neg_operator}).
+Es gibt 3 Grundverknüpfungen, auf die aussagenlogischen Ausdrücke oft reduziert werden: Das \emph{Oder} ($\lor$, ,,Disjunktion``, Tabelle~\ref{fig:or_operator}) wird wahr, wenn eines oder beide Argumente wahr sind. Das \emph{Und} ($\land$, ,,Konjunktion``, Tabelle~\ref{fig:and_operator}) wird wahr, wenn beide Argumente einzeln wahr sind. Die \emph{Negation} ($\neg$) ist eine unäre Operation (dh. sie bezieht sich nur auf 1 Argument) und gibt statt einem wahr falsch zurück und vice versa (Tabelle~\ref{fig:neg_operator}).
 
 \index{Wahrheitstabelle}
-Die Tabellen stellen Wahrheitstabellen dar; Tabellen, die die einzelnen Variablenbelegungen angeben sowie das Ergebnis (und eventuell auch Teilergebnisse) des aussagelogischen Ausdrucks. Mit diesen drei Operatoren lassen sich alle aussagenlogische Ausdrücke formulieren (dh. jede beliebige Kombination von Wahrheitswerten in einer Wahrheitstabelle).
+Die Tabellen stellen Wahrheitstabellen dar; Tabellen, die die einzelnen Variablenbelegungen angeben sowie das Ergebnis (und eventuell auch Teilergebnisse) des aussagenlogischen Ausdrucks. Mit diesen drei Operatoren lassen sich alle aussagenlogische Ausdrücke formulieren (dh. jede beliebige Kombination von Wahrheitswerten in einer Wahrheitstabelle).
 
 Zwei aussagenlogische Ausdrücke sind äquivalent, wenn deren Wahrheitstabellen äquivalent sind.
 %
@@ -96,7 +96,7 @@ Zwei aussagenlogische Ausdrücke sind äquivalent, wenn deren Wahrheitstabellen 
  \end{center}
 \end{table}
 %
-XOR ($\oplus$, exklusives Oder, Kontravalenz, Abb.~\ref{fig:xor_operator}) ist genau dann wahr, wenn nur genau einer der Werte wahr ist.
+\emph{XOR} ($\oplus$, exklusives Oder, Kontravalenz, Abb.~\ref{fig:xor_operator}) ist genau dann wahr, wenn nur genau einer der Werte wahr ist.
 \[
   A \oplus B \spacewrap\lequal (A \lor B) \land (\neg A \lor \neg B)
 \]
@@ -121,11 +121,11 @@ Interessant ist weiters, dass ein 3-stelliges XOR diese Eigenschaft verliert. Ei
 %
 \begin{align*}
   0 \oplus{} 0 \oplus{} 0 & = 0 \\
+  0 \oplus{} 0 \oplus{} 1 & = 1 \\
   0 \oplus{} 1 \oplus{} 0 & = 1 \\
   1 \oplus{} 0 \oplus{} 0 & = 1 \\
-  1 \oplus{} 1 \oplus{} 0 & = 0 \\
-  0 \oplus{} 0 \oplus{} 1 & = 1 \\
   0 \oplus{} 1 \oplus{} 1 & = 0 \\
+  1 \oplus{} 1 \oplus{} 0 & = 0 \\
   1 \oplus{} 0 \oplus{} 1 & = 0 \\
   1 \oplus{} 1 \oplus{} 1 & = 1
 \end{align*}
@@ -150,7 +150,7 @@ Interessant ist weiters, dass ein 3-stelliges XOR diese Eigenschaft verliert. Ei
  \end{center}
 \end{table}
 %
-Eine Implikation ($\rightarrow$ oder $\implies$, Subjunktion, Abb.~\ref{fig:implication_operator}) wird so interpretiert, dass der zweite Ausdruck verwendet wird, wenn der erste Ausdruck wahr ist. Dies entspricht dem natürlich-sprachlichen ,,Wenn\dots dann\dots``.
+Eine \emph{Implikation} ($\rightarrow$ oder $\implies$, Subjunktion, Abb.~\ref{fig:implication_operator}) wird so interpretiert, dass der zweite Ausdruck verwendet wird, wenn der erste Ausdruck wahr ist. Dies entspricht dem natürlichsprachlichen ,,Wenn\dots dann\dots``.
 \begin{equation}
   A \rightarrow B \spacewrap\lequal \neg A \lor B
 \end{equation}
@@ -179,7 +179,7 @@ Man kann es als unintuitiv betrachten, dass die Implikation wahr zurückgibt, we
 Das NAND ($|$ oder $\uparrow$, Shefferscher Strich) ist die Negation des Und-Operators. Als Besonderheit lassen sich aus diesem Operator alle aussagenlogische Ausdrücke ableiten. Somit können sie darauf verzichten die aussagenlogischen Ausdrücke auf die Operatoren $\land$, $\lor$ und $\neg$ zu reduzieren, sondern können direkt nur das NAND nutzen, um alle Ausdrücke abzubilden. So wird als Beispiel in Formel~\ref{eq:nand_false} das NAND verwendet, um den Wahrheitswert falsch abzuleiten.
 \begin{equation}
  \label{eq:nand_false}
-  (A | A) | B \leftrightarrow \bot
+  (A \,|\, A) \,|\, B \leftrightarrow \bot
 \end{equation}
 %
 \subsection{Bijunktion}
@@ -249,7 +249,7 @@ Unter einer Tautologie ($\top$) versteht man eine boolsche Funktion, die unter e
 \index{Widerspruch}
 \index{Kontradiktion}
 %
-Unter einem Widerspruch ($\bot$, Kontradiktion) versteht man eine boolsche Funktion, die unter einer beliebigen Variablenkonfiguration zum Ausdruck falsch evaluiert. Sie ist damit bedingungslos. Sie stellt ein wichtiges Werkzeug bei der mathematischen Beweisform \emph{Beweis durch Widerspruch} dar. In einigen formalen Systemen ist auch der Spruch ,,ex falso quodlibet`` relevant, welcher repräsentiert, dass aus einem Widerspruch Beliebiges geschlossen werden kann.
+Unter einem Widerspruch ($\bot$, Kontradiktion) versteht man eine boolsche Funktion, die unter einer beliebigen Variablenkonfiguration zum Ausdruck falsch evaluiert. Sie ist bedingungslos. Sie stellt ein wichtiges Werkzeug bei der mathematischen Beweisform \emph{Beweis durch Widerspruch} dar. In einigen formalen Systemen ist auch der Spruch ,,ex falso quodlibet`` relevant, welcher repräsentiert, dass aus einem Widerspruch Beliebiges geschlossen werden kann.
 %
 \begin{equation}
   ((A \lor B) \lor (B \land A)) \land (\neg A \land \neg B) \leftrightarrow \bot
@@ -264,7 +264,8 @@ Ausdrücke könnten mehrdeutig sein, wenn die Klammerung die Reihenfolge der Eva
   A \lor B \land \neg C \rightarrow D
 \]
 %
-Die \emph{operator precedence} sind semantische Regeln, welche Operatoren am stärksten binden. Es gibt unterschiedliche Auffassungen und sie werden nicht so konsistent verwendet, wie hier dargestellt, doch stellt die Tabelle~\ref{tab:op_precedence} eine Zusammenfassung des allgemeinen Konsens dar. Allgemein binden binäre (= zweistellige) Operatoren schwächer als unäre (= einstellige) und typischerweise bindet das Und stärker als das Oder. Während alle Operatoren links-assoziativ sind, bildet die Implikation mit einer Rechtsassoziativität eine Ausnahme:
+\index{Bindung (Aussagenlogik)}
+Die \emph{operator precedence} sind semantische Regeln, welche Operatoren am stärksten binden. Je stärker ein Operator bindet, desto früher wird er evaluiert. Es gibt unterschiedliche Auffassungen und sie werden nicht so konsistent verwendet, wie hier dargestellt, doch stellt die Tabelle~\ref{tab:op_precedence} eine Zusammenfassung des allgemeinen Konsens dar. Allgemein binden binäre (= zweistellige) Operatoren schwächer als unäre (= einstellige) und typischerweise bindet das Und stärker als das Oder. Während alle Operatoren links-assoziativ sind, bildet die Implikation mit einer Rechtsassoziativität eine Ausnahme:
 \begin{equation}
   (a \rightarrow b \rightarrow c) \spacewrap\lequal (a \rightarrow (b \rightarrow c))
 \end{equation}
@@ -296,10 +297,10 @@ Die aussagenlogische Formel von vorhin besitzt folgende äquivalente Klammerung:
 \index{Klausel}
 \index{Monom}
 %
-Unter einer Klausel (Disjunktionsterm) versteht man eine Oder-verknüpfte Liste von Literalen. Das konjunktive Äquivalent bezeichnet man als Monom (Konjunktionsterm). Eine $n$-Klausel ist eine Disjunktion aus $n$ Literalen.
+Unter einer \emph{Klausel} (Disjunktionsterm) versteht man eine Oder-verknüpfte Liste von Literalen. Das konjunktive Äquivalent bezeichnet man als Monom (Konjunktionsterm). Eine $n$-Klausel ist eine Disjunktion aus $n$ Literalen.
 
 \index{Hornklausel}
-Hornklauseln finden in der logischen Programmierung Anwendung und seien deshalb hier auch erwähnt: Hornklauseln sind Klauseln, die maximal einen negationsfreien Literal besitzen.
+Hornklauseln finden in der logischen Programmierung Anwendung und seien deshalb hier auch kurz erwähnt: Hornklauseln sind Klauseln, die maximal einen negationsfreien Literal besitzen.
 %
 \begin{table}[ht]
  \begin{center}
@@ -347,21 +348,41 @@ Dieser Algorithmus wurde in Tabelle~\ref{tab:general-knf-dnf} auf Basis der Wahr
 % TODO: Clarify and explain those tables.
 \begin{table}[p]
   \begin{center}
-    \begin{tabular}{cc}
-     \hline
-      Funktion     & Transformationsregel \\
-     \hline \hline
-      $((A \lor B) \land C) \lor (A \land B)$
-         & $X \lor (Y \land Z) \Leftrightarrow (X \lor Y) \land (X \lor Z)$ \\
-      $((A \lor B) \lor (A \land B)) \land ((A \land B) \lor C)$
-         & Tauschen \\
-      $((A \land B) \lor C) \land ((A \land B) \lor (A \lor B))$
-         & $X \lor (Y \land Z) \Leftrightarrow (X \lor Y) \land (X \lor Z)$ \\
-      $((A \lor C) \land (B \lor C)) \land ((A \land B) \lor (A \lor B))$
-         & $((X \land Y) \lor (X \lor Y)) \Leftrightarrow (X \lor Y)$ \\
-      $(A \lor C) \land (B \lor C) \land (A \lor B)$ & Konjunktive Normalform \\
-     \hline
-    \end{tabular}
+%    \begin{tabular}{cc}
+%     \hline
+%      Funktion     & Transformationsregel \\
+%     \hline \hline
+%      $((A \lor B) \land C) \lor (A \land B)$
+%         & $X \lor (Y \land Z) \Leftrightarrow (X \lor Y) \land (X \lor Z)$ \\
+%      $((A \lor B) \lor (A \land B)) \land ((A \land B) \lor C)$
+%         & Tauschen \\
+%      $((A \land B) \lor C) \land ((A \land B) \lor (A \lor B))$
+%         & $X \lor (Y \land Z) \Leftrightarrow (X \lor Y) \land (X \lor Z)$ \\
+%      $((A \lor C) \land (B \lor C)) \land ((A \land B) \lor (A \lor B))$
+%         & $((X \land Y) \lor (X \lor Y)) \Leftrightarrow (X \lor Y)$ \\
+%      $(A \lor C) \land (B \lor C) \land (A \lor B)$ & Konjunktive Normalform \\
+%     \hline
+%    \end{tabular}
+    \begin{displaymath}
+      ((A \lor B) \land C) \lor (A \land B)
+    \end{displaymath} \begin{displaymath}
+      [X \lor (Y \land Z) \Leftrightarrow (X \lor Y) \land (X \lor Z)]
+    \end{displaymath} \begin{displaymath}
+      ((A \lor B) \lor (A \land B)) \land ((A \land B) \lor C)
+    \end{displaymath} \begin{displaymath}
+      [\text{Tauschen}]
+    \end{displaymath} \begin{displaymath}
+      ((A \land B) \lor C) \land ((A \land B) \lor (A \lor B))
+    \end{displaymath} \begin{displaymath}
+      [X \lor (Y \land Z) \Leftrightarrow (X \lor Y) \land (X \lor Z)]
+    \end{displaymath} \begin{displaymath}
+      ((A \lor C) \land (B \lor C)) \land ((A \land B) \lor (A \lor B))
+    \end{displaymath} \begin{displaymath}
+      [((X \land Y) \lor (X \lor Y)) \Leftrightarrow (X \lor Y)]
+    \end{displaymath} \begin{displaymath}
+      (A \lor C) \land (B \lor C) \land (A \lor B)
+    \end{displaymath}
+
     \caption{Transformation von $\f$ in eine KNF}
     \label{tab:knf}
   \end{center}
@@ -416,7 +437,7 @@ gebildet wird.
  \bigvee_i \bigwedge_j x_{ij} \qquad \text{ mit } x_{ij} \in \set{\T, \F} \text{ oder } \neg x_{ij}
 \]
 %
-Äquivalent zur KNF kann die DNF gebildet werden, indem Variablenbelegungen---die zu wahr evaluieren---disjunktiert werden (allerdings nicht negiert).
+Äquivalent zur KNF kann die DNF gebildet werden, indem Variablenbelegungen (die zu wahr evaluieren) disjunktiert werden; allerdings nicht negiert.
 %
 \section{Gödelscher Unvollständigkeitssatz}
 \index{Gödelscher Unvollständigkeitssatz}
@@ -426,7 +447,7 @@ gebildet wird.
   In jedem formalen und logischen System gibt es Aussagen, die unentscheidbar sind.
 \end{quote}
 %
-Kurt Gödel (\life{1906}{1978}) beschrieb die sogenannten Unvollständigkeitssätze\cite{GoedelUnvS}, die die Grenzen von formalen Systemen aufzeigen.
+Kurt Gödel (\life{1906}{1978}) beschrieb die sogenannten Unvollständigkeitssätze, die die Grenzen von formalen Systemen aufzeigen \cite{GoedelUnvS}.
 In der Aussagenlogik möchten wir uns mit Unvollständigkeit beschäftigen, indem wir das Lügnerparadoxon betrachten:
 %
 \begin{quote}
@@ -435,4 +456,4 @@ In der Aussagenlogik möchten wir uns mit Unvollständigkeit beschäftigen, inde
 %
 Handelt es sich um einen Ausdruck, der gesamtheitlich als \T{} angenommen wird, so muss die Summe aller Teilaussagen als wahrheitsgemäß angesehen werden d.h. ,,Diese Aussage ist falsch`` wird zu \T{} evaluieren. Da sich die Aussage auf den Gesamtausdruck bezieht, müsste dieser Ausdruck zu \F{} evaluieren, was sich mit unserer Annahme widerspricht. Das vorliegende Problem kann durch die Selbstreferenzierung nicht gelöst werden. Es ist somit nicht entscheidbar.
 
-Selbige Überlegung lässt sich mit \F{} durchführen. Im Gesamten kann somit die Aussage nicht entschieden werden. Das Lügner-Paradoxon bildet ein Beispiel hierfür in der Logik.
+Selbige Überlegung lässt sich mit \F{} durchführen. Im Gesamten kann somit die Aussage nicht entschieden werden. Das Lügner-Paradoxon bildet ein Beispiel des Unvollständigkeitssatzes in der Logik.
