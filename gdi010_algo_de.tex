@@ -14,11 +14,9 @@ Ein kleines Beispiel für algorithmisches Denken ist etwa das Tauschen zweier Za
 %
 \begin{figure}[ht]
  \begin{center}
-  \begin{align*}
-  \texttt{h} \texttt{=} & \texttt{a} \\
-  \texttt{a} \texttt{=} & \texttt{b} \\
-  \texttt{b} \texttt{=} & \texttt{h}
-  \end{align*}
+  \texttt{h = a} \\
+  \texttt{a = b} \\
+  \texttt{b = h}
   \caption{Dreieckstausch zweier Variablen a und b}
  \end{center}
 \end{figure}
@@ -43,7 +41,7 @@ Algorithmen repräsentieren Verarbeitungssequenzen. Diese Sequenzen besitzen Eig
  \item[Strategie] Divide and Conquer, Dynamic Programming, Heuristische Verfahren, \dots
 \end{description}
 
-Während die letzten beiden Eigenschaft neutral sind, sind die ersten beiden der Hauptgrund einen Algorithmus einem anderen vorzuziehen. Platz (also Speicher) ist nicht immer ausreichend vorhanden und die Laufzeit soll gering gehaltet werden, um Zeit und Energie zu sparen.
+Während die letzten beiden Eigenschaften neutral sind, sind die ersten beiden der Hauptgrund einen Algorithmus einem anderen vorzuziehen. Platz (also Speicher) ist nicht immer ausreichend vorhanden und die Laufzeit soll gering gehaltet werden, um Zeit und Energie zu sparen.
 
 \section{Rekursive und iterative Algorithmen}
 %
@@ -56,10 +54,10 @@ Eine weitere Eigenschaft von Algorithmen ist ein rekursives Verhalten. Man hat e
 \end{quote}
 
 \index{Abbruchbedingung}
-Rekursion bedeutet die Definition einer Sache durch sich selbst. Im obigen Zitat wird etwas Rekursion durch sich selbst definiert und soll damit den Begriff illustrieren\footnote{Die Suchmaschine Google fragt (als Easteregg) bei der Eingabe von ,,recursion`` nach, ob der Benutzer denn nicht ,,recursion`` gemeint hat.}. So sind rekursive Algorithmen so aufgebaut, dass sie in ihrer Definition sich selbst nochmals aufrufen. Dabei besitzt der rekursive Aufruf jedoch typischerweise unterschiedliche Parameter als der Aufruf zuvor, sodass es irgendwann zum Eintreten der \emph{Abbruchbedingung} kommt, die dieses rekursive Verhalten abbricht. Die Fibonacci-Zahlen lassen sich über eine Rekursion darstellen:
+Rekursion bedeutet die Definition einer Sache durch sich selbst. Im obigen Zitat wird etwa Rekursion durch sich selbst definiert und soll damit den Begriff illustrieren\footnote{Die Suchmaschine Google fragt (als Easteregg) bei der Eingabe von ,,recursion`` nach, ob der Benutzer denn nicht ,,recursion`` gemeint hat.}. Äquivalent sind rekursive Algorithmen so aufgebaut, dass sie in ihrer Definition sich selbst nochmals aufrufen. Dabei besitzt der rekursive Aufruf jedoch typischerweise unterschiedliche Parameter als der Aufruf zuvor, sodass es irgendwann zum Eintreten der \emph{Abbruchbedingung} kommt, die dieses rekursive Verhalten abbricht. Die Fibonacci-Zahlen lassen sich über eine Rekursion darstellen:
 
 % TODO: Avoid fibonacci as recursion example
-\lstset{language={Haskell},label={lst:fib},caption={Haskell Quelltext zur Definition der Fibonacci-Zahlen}}
+\lstset{language={Haskell},label={lst:fib},caption={Haskell Quelltext zur Berechnung der Fibonacci-Zahlen}}
 \begin{lstlisting}
 fib 0 = 0
 fib 1 = 1
@@ -68,7 +66,7 @@ fib n = fib (n - 1) + fib (n - 2)
 
 Im Listing~\ref{lst:fib} wird in der dritten Zeile die Funktion fib durch einen Aufruf von sich selbst definiert. Die Zeilen 1 und 2 stellen Abbruchbedingungen dar. Das iterative Äquivalent in der Programmiersprache C sieht etwa so aus wie Listing~\ref{lst:fibc}. % TODO: fix numbering of \ref. Argl.
 %
-\lstset{language={C},label={lst:fibc},caption={C Quelltext zur Definition der Fibonacci-Zahlen}}
+\lstset{language={C},label={lst:fibc},caption={C Quelltext zur Berechnung der Fibonacci-Zahlen}}
 \begin{lstlisting}
 #include <stdio.h>
 
@@ -91,24 +89,24 @@ int main()
 }
 \end{lstlisting}
 %
-\section{Bekannte Algorithmen}
+%\section{Bekannte Algorithmen}
+%%
+%Algorithmen \& Maschinen:
+%%
+%Hier seien einige Algorithmen genannt, die einem angehenden Informatiker geläufig sein solten:
+%\begin{itemize}
+%  \item Rekursion
+%  \item Mandelbrot
+%  \item Bubblesort
+%  \item Euklidischer Algorithmus
+%  \item Game of Life
+%  \item Ameise
+%  \item Vierfarbenproblem 
+%  \item Halteproblem
+%  \item Türme von Hanoi
+%  \item TSP
+%\end{itemize}
 %
-Algorithmen \& Maschinen:
-%
-Hier seien einige Algorithmen genannt, die einem angehenden Informatiker geläufig sein solten:
-\begin{itemize}
-  \item Rekursion
-  \item Mandelbrot
-  \item Bubblesort
-  \item Euklidischer Algorithmus
-  \item Game of Life
-  \item Ameise
-  \item Vierfarbenproblem 
-  \item Halteproblem
-  \item Türme von Hanoi
-  \item TSP
-\end{itemize}
-
 %TODO \subsection{Türme von Hanoi}
 %%
 %Gegeben seien 3 Stapel. Auf Stapel 1 befinden sich Ringe, wobei der oberste

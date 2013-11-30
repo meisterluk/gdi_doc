@@ -1,10 +1,10 @@
 gdi_doc
 =======
 
-:last update:   20th of Nov 2013
+:last update:   30th of Nov 2013
 :author:        Lukas Prokop
 :license:       Public Domain
-:version:       0.4.2
+:version:       1.0 "moebius"
 
 Script for the course “Foundations of Computer Science”.
 

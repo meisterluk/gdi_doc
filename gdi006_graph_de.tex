@@ -5,10 +5,11 @@
  \begin{center}
   \includegraphics{img/example_graph.pdf}
   \caption{
-      Visualisierung eines ungerichteten Beispielgraphs $V = {a, b, c, d, e},
-      E = \{(a, c), (a, e), (b, c), (b, d), (b, e), (c, d), (d, e)\}$.
-      Der Graph besitzt 7 von 10 ($= \frac{|V| \cdot (|V|-1)}{2}$) möglichen Kanten.
-      Er ist einfach, besitzt 4 Zyklen und kann planar dargestellt werden.
+      Visualisierung eines ungerichteten Beispielgraphs $V = \set{a, b, c, d, e},
+      E = \set{(a, c), (a, e), (b, c), (b, d), (b, e), (c, d), (d, e)}$.
+      Der Graph besitzt 7 von maximal 10 ($= \frac{|V| \cdot (|V|-1)}{2}$)
+      Kanten. Es handelt sich um einen einfachen Graphen, der 4 Zyklen besitzt
+      und planar dargestellt werden kann.
   }
   \label{fig:example_graph}
  \end{center}
@@ -21,9 +22,9 @@ Ein Graph ist eine Menge $(V, E)$ von Knoten (engl. vertex) und Kanten (engl. ed
 %
 \begin{description}
   \item[(un)gerichteter Graph]
-    Ein gerichteter Graph unterscheidet zwischen einer Kante $(u, v)$ und der Kante $(v, u)$, während diese Unterscheidung beim ungerichteten Graphen wegfällt. Bei der Visualisierung werden Pfeile genutzt, um die
-    Richtung zu definieren.
-  \item[Pfad / Weg] Eine beliebige Sequenz von benachbarten Knoten.
+    Ein gerichteter Graph unterscheidet zwischen einer Kante $(u, v)$ und der Kante $(v, u)$, während diese Unterscheidung beim ungerichteten Graphen wegfällt. Bei einer Visualisierung werden Pfeile genutzt, um die Richtung einer Kante anzugeben.
+  \item[Pfad / Weg]
+   Unter einem Pfad (oder Weg) versteht man eine Sequenz von Kanten, die einer Wanderung durch den Graphen entspricht (Endknoten sind Startknoten der nächsten Kante).
   \item[Zyklus]
    Ein Pfad dessen Startknoten gleich dem Endknoten ist.
   \item[Schleife]
@@ -35,25 +36,23 @@ Ein Graph ist eine Menge $(V, E)$ von Knoten (engl. vertex) und Kanten (engl. ed
   \item[Baum]
    Ein Baum wird als zusammenhängender, zyklusfreier Graph verstanden. Er ermöglicht es Daten einer hierarchischen Struktur abzubilden.
   \item[Brücke]
-   Unter einer Brücke versteht man eine Kante deren Entfernung zur Verlust der Eigenschaft ,,zusammenhängend`` des Graphens führt.
+   Unter einer Brücke versteht man eine Kante deren Entfernung zum Verlust der Eigenschaft ,,zusammenhängend`` des Graphens führt.
   \item[Vollständiger Graph]
    Unter einem vollständigen Graph versteht man einen Graph, in dem jeder Knoten mit jedem Knoten direkt verbunden ist.
   \item[Untergraph]
-   Ein Graph $G'$, welcher eine Untermenge der Knoten von $G$ verwendet und nur jene Kanten verwendet, deren Knoten in $G'$ enthalten sind.
+   Ein Graph $G'$, welcher eine Untermenge der Knoten von $G$ verwendet und nur jene Kanten verwendet, deren zugehörige Knoten in $G'$ enthalten sind.
   \item[Clique]
    Ein vollständiger Untergraph.
-  \item[Eulerscher Graph]
-   Der Eulersche Graph ist ein spezieller Zyklus, der alle Knoten des Graphen nutzt und jede Kanten genau nur 1mal verwendet.
+  \item[Eulerkreis]
+   Der Eulerkreis ist ein spezieller Zyklus, der alle Knoten des Graphen nutzt und jede Kante genau einmal verwendet.
   \item[Grad eines Knoten]
    Der Grad eines Knotens ist definiert als die Anzahl an ein- und ausgehenden Kanten.
   \item[Hamiltonpfad]
    Unter einem Hamiltonpfad versteht man einen Pfad im Graphen, der jeden Knoten genau einmal besucht.
-  \item[Pfad]
-   Unter einem Pfad versteht man eine Sequenz von Kanten, die einer Wanderung durch den Graphen entspricht (Endknoten sind Startknoten des nächsten Knotens)
   \item[Planarität]
    Ein Graph ist planar, wenn er ohne Überschneidungen von Kanten auf einer 2D-Fläche gezeichnet werden kann.
   \item[Quelle/Senke]
-   Unter der Quelle versteht man bei einem gerichteten Graph einen Knoten, der nur nach außen führende Kanten besitzt. Eine Senke ist ein Knoten, der nur eingehende Kanten auf diesen Knoten besitzt.
+   Unter der Quelle versteht man bei einem gerichteten Graphen einen Knoten, der nur nach außen führende Kanten besitzt. Eine Senke ist ein Knoten, der nur eingehende Kanten auf diesen Knoten besitzt.
 \end{description}
 
 \section{Datenstrukturen zur Speicherung von Graphen}

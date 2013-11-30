@@ -5,11 +5,11 @@ zu bauen. Dieser Ansatz nennt sich Abstraktion. Durch das Auslassen kleiner
 Details auf der unteren Abstraktionsebene, können wir ein vereinfachtes Bild
 in der aktuellen Abstraktion annehmen.
 Ein Beispiel ist etwa das Schienennetz Österreichs. Möchte ein Informatiker
-alle freigegebenen und besetzen Blöcke visualisieren, so interessiert ihn
-das spezifische Material des Gleises auf einem gewissen Streckenabschnitt
-wenig. Ein wesentlich besserer Ansatz (um mit dem Schienennetz an sich
-umzugehen) ist es das Netz als einen Graph darzustellen, um die Details
-wegzulassen, die für ein bestimmtes Problem irrelevant sind.
+alle freigegebenen und besetzen Schienenblöcke visualisieren, so interessiert
+ihn das spezifische Material des Gleises auf einem gewissen Streckenabschnitt
+wenig. Ein wesentlich besserer Ansatz (um die Schienenblöcke auf dem
+Schienennetz zu erfassen) ist es das Netz als einen Graphen darzustellen,
+um die Details wegzulassen, die für ein bestimmtes Problem irrelevant sind.
 Die Visualisierung des Graphen ist eine abstrakte Sichtweise auf das Netz.
 
 \section{In der Programmierung}
@@ -17,9 +17,14 @@ Die Visualisierung des Graphen ist eine abstrakte Sichtweise auf das Netz.
 Auch in der Programmierung benötigen wir durchgehend Methoden zur Abstraktion.
 Dabei werden einzelne Instruktionssequenzen zu einem Block zusammengefasst,
 welcher eine gewisse semantische Funktionalität repräsentiert. So kann etwa
-eine kleine Unterfunktion eine Konvertierung der ASCII-Kleinbuchstaben in
-Großbuchstaben vornehmen.
+eine kleine Unterfunktion (siehe \ref{algo:uppercase}) eine Konvertierung
+der ASCII-Kleinbuchstaben in Großbuchstaben vornehmen. Und diese Funktionen
+können mehrfach in verschiedenen Kontexten wiederverwendet werden,
+um größere Konzepte zu bauen.
 
+\begin{algorithm}[b]
+\caption{Klein- in Großbuchstabenkonvertierung für ASCII in C}
+\label{algo:uppercase}
 \begin{verbatim}
 int uppercase(char *string)
 {
@@ -31,6 +36,7 @@ int uppercase(char *string)
     return 0;
 }
 \end{verbatim}
+\end{algorithm}
 
 \section{In Bezug auf die theoretische Informatik}
 %
@@ -39,7 +45,8 @@ Turingmaschinen davon, dass eine Turingmaschine eine andere Turingmaschine
 simuliert. Wir haben dabei betont, dass wir auf die konkrete Kodierung der
 simulierten Turingmaschine nicht eingehen. Dem liegt zugrunde, dass diese
 Kodierungsform gewisse Details festlegen würde, die für das Verständnis
-der universellen Turingmaschine unerheblich sind.
+der universellen Turingmaschine unerheblich sind; äquivalent zur Abstraktion,
+die Details versteckt.
 
 Abstraktion ist ein fundamentales Konzept der Informatik. Ironisch meint
 Kevlin Henney zu einem Zitat von David Wheeler,

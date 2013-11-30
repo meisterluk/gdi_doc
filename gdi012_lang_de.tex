@@ -1,7 +1,7 @@
 \chapter{Formale Grammatiken}
 \index{Formale Grammatiken}
 %
-Die Informatik macht sich Gedanken um die systematische Verarbeitung von Information. Anhand verschiedener Modelle haben wir bereits gesehen, wie wir eine Eingabe nehmen, diese nach Vorschriftsregeln verarbeiten und dann eine Antwort auf das gestellte Anfangsproblem liefern. Dabei haben wir eine wichtige Frage wegfallen lassen: Woher weiß der Algorithmus, ob diese Eingabe valid? Woher weiß die Turingmaschine, dass das---was auf dem Band steht---eine korrekte Eingabe ist, die zu keinem undefinierten Verhalten führt?\footnote{Als Beispiel für undefiniertes Verhalten sei hier die Division durch Null gegeben.}
+Die Informatik macht sich Gedanken um die systematische Verarbeitung von Information. Anhand verschiedener Modelle haben wir bereits gesehen, wie wir eine Eingabe nehmen, diese nach Vorschriftsregeln verarbeiten und dann eine Antwort auf das gestellte Anfangsproblem liefern. Dabei haben wir eine wichtige Frage wegfallen lassen: Woher weiß der Algorithmus, ob diese Eingabe valid ist? Woher weiß die Turingmaschine, dass das (was auf dem Band steht) eine korrekte Eingabe ist, die zu keinem undefinierten Verhalten führt?\footnote{Als Beispiel für undefiniertes Verhalten sei hier die Division durch Null gegeben.}
 
 \index{Wortproblem}
 Das Wortproblem stellt folgende Frage:
@@ -9,12 +9,12 @@ Das Wortproblem stellt folgende Frage:
   Gegeben sei eine Sprache $S$. Ermittle, ob ein Wort $W$ Teil von $S$ ist oder nicht.
 \end{quotation}
 %
-Wir verwenden die neuen Begriffe \emph{Wort} (oder String bzw. Zeichenkette) und \emph{Sprache} (Vorschriften über die mögliche Aneinanderreihung von Wörtern). Eine Sprache beschreibt eine Menge von Wörtern\footnote{Beachte, dass Wort anders als im linguistischen Sinn betrachtet wird. So ist ein Satz wie ,,Der Gärtner ist der Mörder`` \emph{ein} Wort der Sprache.}. Für diese muss eine Zugehörigkeitsbeziehung ermittelt werden können. Wir führen das Konzept der Sprachen und Grammatiken ein.
+Wir verwenden die neuen Begriffe \emph{Wort} (oder String bzw. Zeichenkette) und \emph{Sprache} (Vorschriften über die mögliche Aneinanderreihung von Wörtern). Eine Sprache beschreibt eine Menge von Wörtern\footnote{Beachte, dass Wort anders als im linguistischen Sinn betrachtet wird. So ist ein Satz wie ,,Der Gärtner ist der Mörder`` \emph{ein} Wort einer Sprache.}. Für diese muss eine Zugehörigkeitsbeziehung ermittelt werden können. Wir führen das Konzept der Sprachen und Grammatiken ein.
 
 \section{Eine einfache Sprache}
 \index{Reguläre Ausdrücke!Beispiel}
 %
-Gegeben sei eine einfache Sprache, die genau nur 1 Zeichenkette akzeptieren soll und zwar jene, die nur aus \gramm{a} besteht. Stimmt das Eingabewort $W$ mit der Zeichenkette \gramm{a} überein, wird die Eingabe akzeptiert andernfalls zurückgewiesen. So wird das Wortproblem entschieden. Da wir die Sprache als Menge repräsentieren können, verwenden wir Mengennotation: $S = \{\texttt{a}\}$ und das Wortproblem für einen String $s$ lautet $s \stackrel{?}{\in} S$.
+Gegeben sei eine einfache Sprache $S$, die genau nur 1 Zeichenkette akzeptieren soll und zwar jene, die nur aus \gramm{a} besteht. Stimmt das Eingabewort $W$ mit der Zeichenkette \gramm{a} überein, wird die Eingabe akzeptiert; andernfalls zurückgewiesen. So wird das Wortproblem entschieden. Da wir die Sprache als Menge repräsentieren können, verwenden wir Mengennotation: $S = \{\texttt{a}\}$ und das Wortproblem für einen String $s$ lautet $s \stackrel{?}{\in} S$.
 %
 \begin{figure}[ht]
  \begin{center}
@@ -26,7 +26,7 @@ Gegeben sei eine einfache Sprache, die genau nur 1 Zeichenkette akzeptieren soll
 
 Ein komplexeres Beispiel verwendet mehrere Zeichen: Die Sprache $T$ als \gramm{abb} akzeptiert genau jene Wörter, die eine Länge 3 und den Aufbau ,,abb`` haben.
 
-Wir möchten in diesem Kapitel also Sprachen definieren. Wir haben eine textuelle Beschreibung verwendet. Wir haben auch Mengennotation verwendet. Wobei diese Ansätze durchaus legitim sind, besitzt der textuelle Ansatz das Problem fehleranfällig zu sein (Spezialfälle werden nicht spezifiziert) und Mengennotation kann komplexere, unendliche Sprachen nicht übersichtlich abbilden. Wir befassen uns daher mit zwei weiteren Ansätzen in den folgenden Abschnitten:
+Wir möchten in diesem Kapitel also Sprachen definieren. Wir haben eine textuelle Beschreibung verwendet. Wir haben auch Mengennotation verwendet. Wobei diese Ansätze durchaus legitim sind, besitzt der textuelle Ansatz das Problem fehleranfällig zu sein (Spezialfälle werden nicht spezifiziert) und Mengennotation kann komplexere Sprachen nicht übersichtlich abbilden. Wir befassen uns daher mit zwei weiteren Ansätzen in den folgenden Abschnitten:
 \index{Reguläre Ausdrücke}
 \begin{itemize}
   \item reguläre Ausdrücke (kompakte Schreibweise für eine bestimmte Untermenge von Sprachen)
@@ -67,7 +67,7 @@ Wir möchten unsere Sprachendefinitionen erweitern, indem wir eine Anzahl abbild
 \subsection{In regulären Ausdrücken}
 \index{Reguläre Ausdrücke!Quantoren}
 %
-Wir führen daher das Konzept der Quantoren ein. Ein regulärer Ausdruck ist eine Zeichenkette, die ein oder mehrere Zeichenketten spezifiziert. Grundsätzlich wird für reguläre Ausdrücke jenes Wort notiert, welches innerhalb der Sprache liegt. Wir lernen jetzt Konzepte kennen, um mehrere Wörter abzubilden.
+Wir führen das Konzept der Quantoren ein. Ein regulärer Ausdruck ist eine Zeichenkette, die ein oder mehrere Zeichenketten spezifiziert. Grundsätzlich wird für reguläre Ausdrücke jenes Wort notiert, welches innerhalb der Sprache liegt. Wir lernen jetzt Konzepte kennen, um mehrere Wörter abzubilden.
 %
 \begin{table}[ht]
  \begin{center}
@@ -93,7 +93,7 @@ Wir betrachten ein Beispiel. Gesucht sei folgende Grammatik $R$:
 \end{quote}
 
 Der folgende Ausdruck spezifiziert diese Grammatik:
-\lstset{language={}, label={lst:regex_repetition}, caption={Die Grammatik $\{a^n b c^m | 0\leq n\leq 1, m \geq 0\}$}, frame={single}}
+\lstset{language={}, label={lst:regex_repetition}, caption={Die Grammatik $R$ als regulärer Ausdruck}, frame={single}}
 \begin{lstlisting}
 a?bc*
 \end{lstlisting}
@@ -102,7 +102,7 @@ Das erste Fragezeichen bezieht sich auf das vorige Zeichen ,,a`` und macht es op
 
 \subsection{In Mengennotation}
 %
-Die Beschriftung von Listing~\ref{lst:regex_repetition} nutzt Mengennotation. Hierbei wird die Anzahl der Vorkommnisse eines Zeichens oder einer Gruppe mit einer hochgestellten Zahl notiert. Wird die Domäne der Variable ($n$ und $m$) nicht angegeben, spricht man von natürlichen Zahlen inklusive der 0.
+In Mengennotation wird $R$ als $\{a^n b c^m | 0\leq n\leq 1, m \geq 0\}$ notiert. Hierbei wird die Anzahl der Vorkommnisse eines Zeichens oder einer Gruppe mit einer hochgestellten Zahl notiert. Wird die Domäne der Variable ($n$ und $m$) nicht angegeben, spricht man von natürlichen Zahlen inklusive der 0.
 
 \subsection{Als formale Grammatik}
 \index{Reguläre Ausdrücke!Beispiel}
@@ -113,7 +113,7 @@ In einer formalen Grammatik ist Wiederholung über Rekursion abzubilden.
 Aber besprechen wir zuerst, was formale Grammatiken denn sind und wie sie Wörter erzeugen. Eine formale Grammatik $G = (V, \Sigma, P, S)$ besitzt ein endliches Vokabular $V$, ein Alphabet $\Sigma$, Produktionsregeln $P$ und ein Startsymbol $S$. Das Erzeugen von Strings startet stets mit dem Startsymbol $S$ und Produktionsregeln $P$ erlauben es uns Zeichen sukzessive durch Zeichen aus $V$ zu ersetzen. Wir unterscheiden dabei zwischen den Terminalsymbolen $\Sigma$ und Nonterminalsymbolen $V \setminus \Sigma$. Terminalsymbole sind jene Symbole, die in der endgültigen Zeichenkette vorkommen. Für Nonterminalsymbole sind Regeln in $P$ definiert, wie man sie ersetzen kann. Die Ersetzungen erfolgen so lange bis nur mehr Terminalsymbole enthalten sind.
 
 % TODO: ,` and ,,`` in wrong order
-Als ersten Schritt (um $R$ zu definieren) beschreiben wir eine Grammatik ,Das Zeichen \gramm{a} kann vorkommen`.
+Als ersten Schritt (um $R$ zu definieren) beschreiben wir eine Grammatik $R1$ mit ,Das Zeichen \gramm{a} kann vorkommen`.
 \lstset{language={}, label={lst:regex_R1}, caption={$R1$ als formale Grammatik $G=(V,\Sigma,P,S)$}, frame={single}, escapechar=\@}
 \begin{lstlisting}
 S @$\rightarrow$@ a
@@ -122,23 +122,23 @@ S @$\rightarrow$@
 
 Wir starten also mit einem Startsymbol ,,S`` und ersetzen es jetzt. Entweder wir entscheiden uns für die Zeile 1 und setzen ,,a`` ein oder einen leeren String ,,`` (Zeile 2).
 
-Als zweiten Schritt beschreiben wir eine Grammatik ,Das Zeichen \gramm{a} kann vorkommen. Nachfolgend kommt ein \gramm{b}`.
+Als zweiten Schritt beschreiben wir eine Grammatik $R2$ mit ,Das Zeichen \gramm{a} kann vorkommen. Nachfolgend kommt ein \gramm{b}`.
 \lstset{language={}, label={lst:regex_R2}, caption={$R2$ als formale Grammatik $G=(V,\Sigma,P,S)$}, frame={single}, escapechar=\@}
 \begin{lstlisting}
 S @$\rightarrow$@ ab
 S @$\rightarrow$@ b
 \end{lstlisting}
 
-Nachdem ein optionales \texttt{a} angegeben wurde, folgt ein \texttt{b}. Für die Wiederholung von \texttt{c} verwenden wir ein Nonterminalsymbol \texttt{R} (welches per Konvention großgeschrieben wird).
+Nachdem ein optionales \texttt{a} angegeben wurde, folgt ein \texttt{b}. Für die Wiederholung von \texttt{c} verwenden wir ein Nonterminalsymbol \texttt{T} (welches per Konvention großgeschrieben wird).
 \lstset{language={}, label={lst:regex_R3}, caption={$R$ als formale Grammatik $G=(V,\Sigma,P,S)$}, frame={single}, escapechar=\@}
 \begin{lstlisting}
-S @$\rightarrow$@ abR
-S @$\rightarrow$@ bR
-R @$\rightarrow$@
-R @$\rightarrow$@ cR
+S @$\rightarrow$@ abT
+S @$\rightarrow$@ bT
+T @$\rightarrow$@
+T @$\rightarrow$@ cT
 \end{lstlisting}
 
-Gehen wir die Produktionsregeln für den Eingabestring \texttt{abcc} durch. Wir starten wieder mit dem Startsymbol ,,S``. Wir ersetzen es mittels der 1. Zeile zu ,,abR``. Wir erkennen ein verbleibendes Nonterminal in ,,R`` in dem String und suchen uns hierfür entsprechende Regeln; die Regeln 3 und 4 kommen in Frage. Für den gegebenen Eingabestring müssen wir Regel 4 verwenden. Es entsteht der String ,,abcR``. Wieder ersetzen wir das ,,R`` durch die Regel 4. ,,abcR`` besitzt auch noch ein Nonterminal, welches jetzt jedoch mittels Regel 3 ersetzt wird. Es entsteht der String ,,abcc`` (bestehend nur aus Terminalsymbolen). Damit liegt der String ,,abcc`` in der durch die formale Grammatik spezifizierten Sprache.
+Gehen wir die Produktionsregeln für den Eingabestring \texttt{abcc} durch. Wir starten wieder mit dem Startsymbol ,,S``. Wir ersetzen es mittels der 1. Zeile zu ,,abT``. Wir erkennen ein verbleibendes Nonterminal in ,,T`` in dem String und suchen uns hierfür entsprechende Regeln; die Regeln 3 und 4 kommen in Frage. Für den gegebenen Eingabestring müssen wir Regel 4 verwenden. Es entsteht der String ,,abcT``. Wieder ersetzen wir das ,,T`` durch die Regel 4. ,,abcT`` besitzt auch noch ein Nonterminal, welches jetzt jedoch mittels Regel 3 ersetzt wird. Es entsteht der String ,,abcc`` (bestehend nur aus Terminalsymbolen). Damit liegt der String ,,abcc`` in der durch die formale Grammatik spezifizierten Sprache.
 
 \section{Alternation in Grammatiken}
 %
@@ -164,9 +164,9 @@ Alternation haben wir schon implizit bei formalen Grammatiken kennen gelernt. Wi
 %
 \lstset{language={}, label={lst:regex_A}, caption={$A$ als formale Grammatik $G=(V,\Sigma,P,S)$}, frame={single}, escapechar=\@}
 \begin{lstlisting}
-S @$\rightarrow$@ message of the A!
-A @$\rightarrow$@ day
-A @$\rightarrow$@ week
+S @$\rightarrow$@ message of the T!
+T @$\rightarrow$@ day
+T @$\rightarrow$@ week
 \end{lstlisting}
 
 Wir haben jetzt die wichtigsten Konzepte betrachtet, um Sprachen definieren zu können. Wir möchten jetzt noch auf ein paar spezifische Details eingehen und die Mächtigkeit von Sprachen evaluieren.
@@ -197,7 +197,7 @@ Reguläre Ausdrücke (engl. ,,regular expressions`` oder kurz RegEx) sind eine k
 \subsection{Non-greedy Verhalten}
 \index{Greediness (Reguläre Ausdrücke)}
 %
-RegEx-Implementierungen gibt es unterschiedliche. Die zwei großen Implementierungen nennen sich ,,POSIX`` und ,,PCRE``. Diese unterscheiden sich durch ihren Aufbau und ihre Features. Ich möchte hier auf ein Detail eingehen.
+RegEx-Implementierungen gibt es unterschiedliche. Die zwei großen Implementierungen nennen sich ,,POSIX`` und ,,PCRE``. Diese unterscheiden sich durch ihren Aufbau und ihre erweiterten Möglichkeiten. Ich möchte hier auf ein Detail eingehen.
 
 Eine häufig vorkommende Struktur bei regulären Ausdrücken ist \texttt{(.*)}. Es handelt es sich um eine Gruppe von beliebigen Zeichen beliebiger Länge. Salopp gesprochen matcht dieser Ausdruck jeden String.
 Wie sieht es nun mit dem regulären Ausdruck \texttt{(.*)} und der Eingabe ,,abc`` aus? Greedy-Verhalten bezeichnet das Bestreben eines Ausdrucks, möglichst viel Inhalt zu matchen. Entsprechend würde dieser Ausdruck die gesamte Eingabe matchen, da sie versucht sich alles zuzuweisen. Dies verwirrt viele RegEx-Benutzer, da ein RegEx \texttt{a(.*)a} bei dem Eingabestring ,,abaaba`` nicht ,,aba`` zweimal matcht, sondern einmal ,,abaaba``. RegEx sind für gewöhnlich immer bestrebt möglichst viel zu matchen.
@@ -207,33 +207,33 @@ Non-greedy Verhalten kann man durch das Anfügen eines Fragezeichens nach dem Gr
 \subsection{Deterministische Automaten}
 \index{Konvertierung!von regulären Ausdrücken zu Automaten}
 %
-Abseits der Strings mit den jeweiligen Operatoren gibt es auch eine andere Darstellungsweise für reguläre Ausdrücke. Zu jedem regulären Ausdruck kann ein deterministischer Automat gefunden. Ein deterministischer Automat ist ein gerichteter, kantenbeschrifteter Graph. Wir erinnern uns, dass ein Graph aus Knoten und Kanten besteht. Es gibt einen Startknoten\footnote{In diesem Dokument folgen wir der Konvention, dass der Startknoten der am weitesten links positionierte Knoten ist. Im Allgemeinen handelt es sich um die einzige Quelle im Graphen.} und von diesem ausgehend werden die Zeichen vom Eingabestring gelesen. Je nach gelesenem Zeichen folgt man jener Kanten, deren Beschriftung mit dem Zeichen übereinstimmt. Ein Eingabestring wird genau dann von der Grammatik akzeptiert, wenn der String auf einem Endknoten zu Ende geht, der durch einen zusätzlichen inneren Kreis markiert ist.
+Abseits der Strings mit den jeweiligen Operatoren gibt es auch eine andere Darstellungsweise für reguläre Ausdrücke. Zu jedem regulären Ausdruck kann ein deterministischer Automat gefunden. Ein deterministischer Automat ist ein gerichteter, kantenbeschrifteter Graph. Wir erinnern uns, dass ein Graph aus Knoten und Kanten besteht. Es gibt einen Startknoten\footnote{In diesem Dokument folgen wir der Konvention, dass der Startknoten der am weitesten links positionierte Knoten ist. Im Allgemeinen handelt es sich um den einzigen Quellknoten im Graphen.} und von diesem ausgehend werden die Zeichen vom Eingabestring gelesen. Je nach gelesenem Zeichen folgt man jenen Kanten, deren Beschriftung mit dem Zeichen übereinstimmt. Ein Eingabestring wird genau dann von der Grammatik akzeptiert, wenn der String auf einem Endknoten zu Ende geht, der durch einen zusätzlichen inneren Kreis markiert ist.
 
 \index{Nichtdeterminismus!Automaten von regulären Sprachen}
-Das Wesentliche ist, dass dieser Automat das Kriterium des Determinismus zu erfüllen hat. Dies bedeutet in jedem beliebigen Zustand des Automatens kann durch das gelesene Zeichen eindeutig bestimmt werden welcher Kante zu folgen ist. Oder in anderen Worten gibt es keine zwei Kanten mit der selben Beschriftung, die am selben Ausgangsknoten starten. In Abbildung~\ref{fig:nondeterministic_automaton} ist nicht-deterministischer Automat dargestellt, der diese Regel bricht.
+Das Wesentliche ist, dass dieser Automat das Kriterium des Determinismus zu erfüllen hat. Dies bedeutet in jedem beliebigen Zustand des Automaten kann durch das gelesene Zeichen eindeutig bestimmt werden welcher Kante zu folgen ist. Oder in anderen Worten gibt es keine zwei Kanten mit der selben Beschriftung, die am selben Ausgangsknoten starten. In Abbildung~\ref{fig:nondeterministic_automaton} ist nicht-deterministischer Automat dargestellt, der diese Regel bricht.
 
-Bei der Erstellung eines Automatens wird folgender Ansatz empfohlen:
+Bei der Erstellung eines Automaten wird folgender Ansatz empfohlen:
 \begin{enumerate}
   \item Repräsentiere die Operatoren äquivalent, wie sie in Abbildung~\ref{fig:basic_automatons} dargestellt werden.
-  \item Reduziere den Automaten, indem unnötige Strukturen entfernt werden (zB wenn die linke und rechte Seite einer Alternation äquivalent ist)
+  \item Reduziere den Automaten, indem unnötige Strukturen entfernt werden (zB wenn die linke und rechte Seite einer Alternation äquivalent ist).
   \item Entferne Nichtdeterminismus.
 \end{enumerate}
 %
-Es gibt keinen universellen Algorithmus um Nichtdeterminismus entfernen zu können. Für jede reguläre Sprache existiert jedoch ein deterministischer Automat. Es sei folgender Hinweis gegeben: Während die Operatoren darauf optimiert sind anzugeben wie oft ein Zeichen oder eine Sequenz vorkommt, stellt der Automat stets die Frage ,,welches Zeichen kommt als nächstes?``. Es empfiehlt sich daher Beispielstrings aufzuschreiben und bei jedem Zeichen die Frage nach dem nächsten möglichen Zeichen zu stellen. Die Abzweigungen im Automaten verändern sich dadurch oft stark. In Abbildung~\ref{fig:example_automatons} sind einige Beispielautomaten gegeben.
+Es gibt keinen universellen Algorithmus um Nichtdeterminismus entfernen zu können. Für jede reguläre Sprache existiert jedoch ein deterministischer Automat. Es sei folgender Hinweis gegeben: Während die Operatoren darauf optimiert sind anzugeben wie oft ein Zeichen oder eine Sequenz vorkommt, stellt der Automat stets die Frage ,,welches Zeichen kommt als nächstes?{}``. Es empfiehlt sich daher Beispielstrings aufzuschreiben und bei jedem Zeichen die Frage nach dem nächsten möglichen Zeichen zu stellen. Die Abzweigungen im Automaten verändern sich dadurch oft stark. In Abbildung~\ref{fig:example_automatons} sind einige Beispielautomaten gegeben.
 %
 \begin{figure}[hb]
  \begin{center}
   \includegraphics{img/nondeterministic_automaton.pdf}
-  \caption{Beispiel eines nicht-deterministischen Automatens}
+  \caption{Beispiel eines nicht-deterministischen Automaten}
   \label{fig:nondeterministic_automaton}
  \end{center}
 \end{figure}
 
 \subsection{Konventionen und Beispiele}
 %
-Ich möchte hier noch auf Konventionen im Bereich der formalen Grammatiken aufmerksam machen. So ist es üblich den leeren String ,,`` mit einem $\varepsilon$ darzustellen, da der leere String kein druckbares Zeichen ist und die Anführungszeichen kein Teil der Spezifikation von formalen Grammatiken ist.
+Ich möchte hier noch auf Konventionen im Bereich der formalen Grammatiken aufmerksam machen. So ist es üblich den leeren String ,,`` mit einem $\varepsilon$ darzustellen, um Missverständnisse vorzubeugen und ihn als druckbares Zeichen darzustellen.
 
-Wendet man reguläre Ausdrücke in Programmiersprachen an, entdeckt man, dass Ausdrücke auf Teile des Gesamtwortes angewendet werden und nicht den gesamten String matchen müssen. Hierfür existieren die Operatoren \^ und \$, welche den Anfang und das Ende eines Strings repräsentieren. Jenes Zeichen welches einem \$ vorangestellt ist, muss also das letzte Zeichen des Eingabestrings sein. Die Verwendung dieser Operatoren ist im Bereich der formalen Grammatik nicht notwendig, da stets davon ausgegangen wird, dass der gesamte String gematcht werden soll.
+Wendet man reguläre Ausdrücke in Programmiersprachen an, entdeckt man, dass Ausdrücke auf Teile des Gesamtwortes angewendet werden und nicht den gesamten String matchen müssen. Hierfür existieren die Operatoren \^{} und \$, welche den Anfang und das Ende eines Strings repräsentieren. Jenes Zeichen welches einem \$ vorangestellt ist, muss also das letzte Zeichen des Eingabestrings sein. Die Verwendung dieser Operatoren ist im Bereich der formalen Grammatik nicht notwendig, da stets davon ausgegangen wird, dass der gesamte String gematcht werden soll.
 
 In Tabelle~\ref{tab:regex_examples} sind Beispiele für reguläre Ausdrücke dargestellt.
 \index{Reguläre Ausdrücke!Beispiel}
@@ -331,7 +331,7 @@ Probieren wir einen regulären Ausdruck zu finden.
 (ab)*
 \end{lstlisting}
 
-Die äquivalente formale Grammatik sieht folgendermaßen aus:
+Die formale Grammatik für $E$ sieht folgendermaßen aus:
 \lstset{language={}, label={lst:regex_A}, caption={Sprache $E$ als formale Grammatik}, frame={single}, escapechar=\@}
 \begin{lstlisting}
 S @$\rightarrow$@ abS
@@ -345,7 +345,7 @@ Bisher war jedoch die Reihenfolge der Zeichen undefiniert. Wir erweitern nun $E$
 In Mengennotation wäre dies mit $\set{a^n b^n \mid n \in \mathbb{N}, n \geq 0}$ anzugeben.
 
 Durch die Vorgabe der Position bekommen wir ein neues Problem. Wir versuchen es mit folgendem regulären Ausdruck:
-\lstset{language={}, label={lst:rep}, caption={Regulärer Ausdruck Versuch für die Sprache $F$}, frame={single}}
+\lstset{language={}, label={lst:rep}, caption={Versuch eines regulären Ausdrucks für die Sprache $F$}, frame={single}}
 \begin{lstlisting}
 a*b*
 \end{lstlisting}
@@ -363,12 +363,12 @@ S @$\rightarrow$@
 Basierend auf S können wir jetzt beliebige Wörter der Sprache ableiten. So nehmen wir etwa $n=3$ an:
 \[
   \text{S} \rightarrow \text{aSb} \rightarrow \text{aaSbb} \rightarrow
-  \text{aaaSbbb} \rightarrow \text{aaaSbbb} 
+  \text{aaaSbbb} \rightarrow \text{aaaSbbb} \rightarrow \text{aaabbb}
 \]
 
 Für kontextfreie Grammatiken dürfen wir Nonterminale definieren, die ersetzt werden. Die Idee für diese Grammatik ist es bei jeder Rekursion auf der linken und rechten Seite der Rekursion Zeichen zum endgültigen String hinzuzufügen.
 
-Wir müssen dabei beachten, dass wir auf der linken Seite nur ein Nonterminal verwenden dürfen, um eine kontextfreie Grammatik zu sein.
+Wir müssen dabei beachten, dass wir auf der linken Seite nur ein Nonterminal verwenden dürfen, um wirklich eine kontextfreie Grammatik zu spezifizieren.
 
 \section{Kontext-sensitive Grammatik}
 \index{Kontext-sensitive Grammatik}
@@ -395,19 +395,20 @@ Die Grammatik in Listing~\ref{lst:cflcsl} ist inkorrekt. Mithilfe der Ableitung
 \]
 können wir uns ein Wort bauen, welches aus der Grammatik aus Listing~\ref{lst:cflcsl} stammt allerdings nicht Teil der Menge $H$ ist. Daher ist die Grammatik fehlerhaft. Die Anzahl der ,,a`` und ,,b`` sind äquivalent, aber die ,,c`` sind unabhängig.
 
-Wir müssen unsere Grammatik ausbauen und auf der linken Seite sowohl Terminale als auch Non-Terminale verwenden:
-\lstset{language={}, label={lst:cslsample}, caption={Die kontext-sensitive Grammatik $\set{a^n b^n c^n}$}, frame={single}, escapechar=\@}
+Wir müssen unsere Grammatik ausbauen und auf der linken Seite sowohl Terminale als auch Nonterminale verwenden:
+\lstset{language={}, label={lst:cslsample}, caption={Die kontext-sensitive Grammatik $\set{a^n b^n c^n \,|\, n \in \mathbb{N}_0}$}, frame={single}, escapechar=\@}
 \begin{lstlisting}
-S @$\rightarrow$@ aSBH
+S @$\rightarrow$@ aSBC
 S @$\rightarrow$@
-aS @$\rightarrow$@ aa
 aB @$\rightarrow$@ ab
 bB @$\rightarrow$@ bb
-HB @$\rightarrow$@ BC
+bC @$\rightarrow$@ bc
+CB @$\rightarrow$@ BC
 bC @$\rightarrow$@ bc
 cC @$\rightarrow$@ cc
-CH @$\rightarrow$@ CC
 \end{lstlisting}
+
+Zum ersten Mal verwenden wir ein Terminalsymbol und ein Nonterminalsymbol oder 2 Nonterminalsymbole zugleich auf der linken Seite. Dies ist er bei kontext-sensitiven Sprachen erlaubt.
 
 \section{Chomsky-Hierarchie}
 \index{Chomsky-Hierarchie}

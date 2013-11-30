@@ -4,7 +4,7 @@
 \index{Landau Notation}
 \index{Asymptotische Abschätzung}
 %
-Die Informatik ist daran interessiert, Algorithmen---so wie sie im Alltag zur Anwendung kommen\footnote{Ein bekanntes Beispiel sind hierfür Sortieralgorithmen.}---zu optimieren, um Rechenzeit, Speicherplatz und Energie zu sparen. Effizientere Algorithmen erlauben ein wirtschaftlicheres Handeln. Wir benötigen daher ein Werkzeug, um Algorithmen bezüglich ihrer Eigenschaften wie Speicherverbrauch und Laufzeit vergleichen zu können. Obwohl wir nachfolgend von der Laufzeit sprechen, kann die dahinterstehende Theorie genauso auf andere Ressourcen angewandt werden.
+Die Informatik ist daran interessiert, Algorithmen (so wie sie im Alltag zur Anwendung kommen) zu optimieren, um Rechenzeit, Speicherplatz und Energie zu sparen. Effizientere Algorithmen erlauben ein wirtschaftlicheres Handeln. Wir benötigen daher ein Werkzeug, um Algorithmen bezüglich ihrer Eigenschaften wie Speicherverbrauch und Laufzeit vergleichen zu können. Obwohl wir nachfolgend von der Laufzeit sprechen, kann die dahinterstehende Theorie genauso auf andere Ressourcen angewandt werden.
 
 Wir bedienen uns einer speziellen mathematischen Notation, welcher die Betrachtung des asymptotischen Verhaltens einer Funktion zugrunde liegt. Diese nennt sich ,,Landau-Notation``, ,,$\mathcal{O}$-Notation``\footnote{In \LaTeX{}  \texttt{\textbackslash mathcal\{O\}} und in Unicode mit U+039F ,,GREEK CAPITAL LETTER OMICRON`` notiert.} oder engl.~``Big O-Notation``. Der Ressourcenverbrauch eines Algorithmus kann durch eine mathematische Funktion beschrieben werden und die $\mathcal{O}$-Notation gibt uns ein relatives Maß, um Algorithmen vergleichen zu können.
 
@@ -21,15 +21,15 @@ Bei den nachfolgenden Beispielen sprechen wir von einer Variable $n$. Es ist jen
 \begin{lstlisting}
 def function(n):
     print("Hello World")
-    return 0
+    return
 \end{lstlisting}
 \end{algorithm}
 %
-Der Algorithmus~\ref{algo:constant} (siehe Seite~\pageref{algo:constant}) nimmt einen Parameter \texttt{lst} an und gibt einen Wahrheitswert zurück. Wir suchen jetzt eine mathematische Funktion, welche uns repräsentiert wieviele Schritte der Algorithmus für eine Eingabe ausführen wird. Für Algorithmus~\ref{algo:constant} gilt: Unabhängig von der Größe von $n$ wird 1 Instruktion ausgeführt\footnote{Die Rückgabe eines Wertes ist stets Teil einer Funktionsverarbeitung und zählen wir daher nicht dazu.}. Wir setzen daher die mathematische Funktion
+Der Algorithmus~\ref{algo:constant} (siehe Seite~\pageref{algo:constant}) nimmt einen Parameter \texttt{n} an und gibt einen leeren Wert zurück. Wir suchen jetzt eine mathematische Funktion, welche uns repräsentiert wieviele Schritte der Algorithmus für eine Eingabe ausführen wird. Für Algorithmus~\ref{algo:constant} gilt: Unabhängig von der Größe von $n$ wird 1 Instruktion ausgeführt\footnote{Die Rückgabe eines Wertes ist stets Teil einer Funktionsverarbeitung und zählen wir daher nicht dazu.}. Wir setzen daher die mathematische Funktion
 \[
   f_1(x) = 1
 \]
-an. Relevant ist hier, dass es sich bei der Zahl $1$ um eine Konstante handelt. Alle Algorithmen deren Effizienz mit einer mathematischen Funktion beschrieben werden können, die nur Konstanten verwendet, fallen in die Klasse ,,konstant``. Also auch etwa $f_2(x) = 0$ oder $f_3(x) = 365$. Ganz allgemein: Ein Algorithmus der Ressourcen unabhängig von der Eingabegröße verwendet, besitzt eine konstante Schranke bezüglich dieser Ressource.
+an. Relevant ist hier, dass es sich bei der Zahl $1$ um eine Konstante handelt. Alle Algorithmen deren Effizienz mit einer mathematischen Funktion beschrieben werden können, die nur Konstanten verwendet, fallen in die Klasse ,,konstant``. Also etwa $f_2(x) = 0$ oder $f_3(x) = 365$ als auch $f_1$ haben konstante Laufzeiten. Ganz allgemein: Ein Algorithmus der Ressourcen unabhängig von der Eingabegröße verwendet, besitzt eine konstante Schranke bezüglich dieser Ressource.
 
 Wir haben die Formulierung ,,in eine Klasse fallen`` genutzt. Es bedeutet, dass eine Klasse (wie $\mathcal{O}(1)$) eine Menge von Funktionen ist und unsere gegebene Funktion $f_1$ ist Teil dieser Menge. Alle konstanten Algorithmen sind Elemente von $\On{1}$. Wir schreiben ,,ist Teil von`` mit dem Gleichheitszeichen an\footnote{Das Zeichen $\in$ wird auch genutzt, aber kommt in Fachliteratur selten vor. Wir möchten daher in diesem Dokument der Gleichheitszeichen-Konvention folgen.}:
 \[
@@ -47,11 +47,11 @@ Wir haben die Formulierung ,,in eine Klasse fallen`` genutzt. Es bedeutet, dass 
 def function(lst):
     for i in lst:
         print(i)
-    return 0
+    return
 \end{lstlisting}
 \end{algorithm}
 %
-Der Algorithmus~\ref{algo:linear} benötigt eine lineare Laufzeit. Der Ablauf verrät, dass er über alle Elemente der Liste als Parameter iteriert und damit genau $n$ Schritte benötigt, wenn $n$ die Anzahl der Listenelemente beschreibt. Wird ein $n$ hinzugefügt, benötigt der Algorithmus $1$ Instruktion mehr. Es besteht eine \emph{direkte Proportionalität} zwischen $n$ und der Anzahl von Schritten.
+Der Algorithmus~\ref{algo:linear} benötigt eine lineare Laufzeit. Der Ablauf verrät, dass er über alle Elemente der übergebenen Liste iteriert und damit genau $n$ Schritte benötigt, wenn $n$ die Anzahl der Listenelemente beschreibt. Wird ein $n$ hinzugefügt, benötigt der Algorithmus $1$ Instruktion mehr. Es besteht eine \emph{direkte Proportionalität} zwischen $n$ und der Anzahl von Schritten.
 
 \section{Wozu $\mathcal{O}$ und wie es definiert ist}
 %
@@ -75,6 +75,7 @@ Angenommen wir hätten zwei Algorithmen. Der erste Algorithmus löst ein gegeben
  \end{center}
 \end{table}
 
+\index{Obere Schranke}
 Wir führen nun die $\mathcal{O}$-Notation ein und untersuchen, ob eine der beiden Funktionen ,,größer`` ist als die andere. ,,Größer`` bedeutet mathematisch wir finden eine Schranke $g(n)$ für eine Funktion $f(n)$, die stets größere Werte liefert als $f(n)$. In diesem Fall sprechen wir von einer ,,oberen Schranke`` und uns interessiert das asymptotische Verhalten.
 
 Wir überlegen uns intuitiv folgende Definition: Eine Funktion $g(n)$ ist die obere Schranke von $f(n)$, wenn\dots
@@ -117,7 +118,7 @@ def function(lst):
     for i in lst:
         print(i)
     print("Hello World")
-    return 0
+    return
 \end{lstlisting}
 \end{algorithm}
 \begin{algorithm}
@@ -127,13 +128,13 @@ def function(lst):
 \begin{lstlisting}
 def function(lst):
     print("Hello World")
-    return 0
+    return
 
 def function2(lst):
     for i in lst:
         function(lst)
         print(i)
-    return 0
+    return
 \end{lstlisting}
 \end{algorithm}
 %
@@ -147,7 +148,7 @@ Gegeben sei Algorithmus~\ref{algo:sequence}, welcher in zwei Teilbereiche geteil
   \Rightarrow f_1(n) \cdot f_2(n) = \On{g_1(n) \cdot g_2(n)}
 \]
 %
-Die erste Regel besagt, dass bei sequentieller Betrachtung der Algorithmen die am stärksten wachsende Funktion die asymptotische Schranke des gesamten Algorithmus vorgibt. Die zweite Regel beschreibt eine verschachtelte Ausführung wie in Algorithmus~\ref{algo:nested}. Wenn ein Algorithmus einen anderen Algorithmus verwendet, entspricht dies der Multiplikation der Funktionen.
+Die erste Regel besagt, dass bei sequentieller Betrachtung der Algorithmen die am stärksten wachsende Funktion die asymptotische Schranke des gesamten Algorithmus angibt. Die zweite Regel beschreibt eine verschachtelte Ausführung wie in Algorithmus~\ref{algo:nested}. Wenn ein Algorithmus einen anderen Algorithmus verwendet, entspricht dies der Multiplikation der Funktionen.
 
 Für Algorithmus~\ref{algo:sequence} berechnen wir:
 %
@@ -163,9 +164,9 @@ Für Algorithmus~\ref{algo:nested} gilt:
   n \cdot 1 = \On{n}
 \]
 %
-Wir merken uns also: Wir müssen immer alle Elemente des Algorithmus betrachten, um die Gesamtlaufzeit angeben zu können.
+Wir merken uns: Wir müssen immer alle Elemente des Algorithmus betrachten, um die Gesamtlaufzeit angeben zu können.
 %
-\section{Verallgemeinerung und Visualisierung der $\mathcal{O}$-Notation}
+\section{Verallgemeinerung der $\mathcal{O}$-Notation}
 \index{O-Notation}
 %
 Wobei wir hier in unserem Fall von Laufzeiten sprechen, behandelt die Landau-Notation allgemein asymptotisches Verhalten von Funktionen. Wir können für beliebige Ressourcenverwendung eine mathematische Funktion zur Beschreibung heranziehen und durch die $\mathcal{O}$-Notation entsprechende Klassen bilden, um Ressourcenverwendungen zu vergleichen. Liegen zwei Funktionen in der selben Klasse und ein genauer Vergleich ist notwendig, ist eine genaue mathematische Analyse der ignorierten Terme notwendig. Wir haben jedoch vorhin eine Begründung geliefert, dass diese Terme im Allgemeinen nicht relevant sind.
@@ -174,6 +175,7 @@ Abseits von der oberen Schranke $\mathcal{O}$ gibt es auch untere Schranken $\Om
 
 Weiters möchten wir hier noch folgenden Aspekt diskutieren: Im Algorithmus~\ref{algo:constant} wird von einer Funktion \texttt{print} gesprochen. Doch welche Laufzeit besitzt diese Funktion eigentlich? Über mehrere Abstraktionsebenen hinweg wird es sich letztendlich um eine Sequenz von Maschinenbefehlen handeln. Doch dazu müssten wir die gesamte Maschine analysieren. Wir einigen uns aber in der Theoretischen Informatik darauf, dass die Architektur der Maschine vernachlässigt wird indem stets die Turingmaschine als Referenzmodell herangezogen wird. Die Turingmaschine bietet uns ein universelles Konzept, um Berechenbarkeit erfassbar zu machen. Ein Schritt auf der Turingmaschine ist unsere elementare Einheit. Und unter anderem deshalb ist die Turingmaschine heute genauso wichtig wie zu Zeiten als Rechenmaschinen noch nicht gebaut werden konnten.
 %
+\index{Obere Schranke}
 \begin{figure}[h]
  \begin{center}
   \includegraphics{img/upper_bound.pdf}
@@ -209,9 +211,9 @@ Eine offene Frage ist, ob $n^2$ eine andere Klasse als $n^3$ begründet. Da der 
 \subsection{Exponentielle Funktionen}
 \index{Exponentielle Algorithmen}
 %
-Exponentialfunktionen besitzen eine Struktur $k^n$ mit $k in \mathbb{R}^+$. Algorithmen, die Untermengen einer Menge mit $n$ Elementen verarbeiten, liegen oft in dieser Klasse, da die Anzahl der Untermengen für eine gegebene Menge $2^n$ ist. Ein anderes Beispiel sind die möglichen Variablenbelegungen für eine boolsche Formel. Sei eine boolsche Formel mit $n$ Variablen gegeben, müssen $2^n$ Variablenbelegungen getestet werden um festzustellen, ob welche Variablenbelegungen diese Formel wahr machen.
+Exponentialfunktionen besitzen eine Struktur $k^n$ mit $k \in \mathbb{R}^+$. Algorithmen, die Untermengen einer Menge mit $n$ Elementen verarbeiten, liegen oft in dieser Klasse, da die Anzahl der Untermengen für eine gegebene Menge $2^n$ ist. Ein anderes Beispiel sind die möglichen Variablenbelegungen für eine boolsche Formel. Sei eine boolsche Formel mit $n$ Variablen gegeben, müssen $2^n$ Variablenbelegungen getestet werden um festzustellen, ob Variablenbelegungen existieren, die diese Formel wahr machen.
 
-Wieder ist es interessant, ob alle Exponentialfunktionen unterschiedlicher Basis in eine Klasse von Funktionen gehören. Auch an dieser Stelle sparen wir uns den formalen Beweis, aber notieren auch hier, dass jede Basis eine eigene Klasse bilden.
+Wieder ist es interessant, ob alle Exponentialfunktionen unterschiedlicher Basis in eine Klasse von Funktionen gehören. Auch an dieser Stelle sparen wir uns den formalen Beweis, aber notieren auch hier, dass jede Basis eine eigene Klasse bildet.
 \[
   3^n \notin \On{2^n}
 \]
@@ -225,8 +227,6 @@ Wir haben eine Klasse als Menge von Funktionen definiert. Die Effizienz eines Al
 \[
   A \rightarrow B \qquad \text{,,B ist effizienter als A``}
 \] \[
-  k \in \mathbb{R}^+
-\] \[
   \text{konstant} \rightarrow
   \text{logarithmisch} \rightarrow
   \text{linear} \rightarrow
@@ -234,9 +234,11 @@ Wir haben eine Klasse als Menge von Funktionen definiert. Die Effizienz eines Al
 \] \[
   \text{polynomiell mit $n^k$} \rightarrow
   \text{exponentiell mit $k^n$}
+\] \[
+  k \in \mathbb{R}^+, n \in \mathbb{N}
 \]
 
-Es können noch weitere Klassen definiert werden, um Algorithmen noch besser zu klassifizieren. Allerdings umfasst diese Sichtweise alle wesentlichen Klassen, die wir hier betrachten möchten. Wir notieren weiters, dass alle Klassen kleiner oder gleich ,,polynomiell mit $n^k$`` durch einen Polynom\footnote{Mathematische Struktur der Form $y_0x^0 + y_1x^1 + y_2x^2 + \ldots + y_nx^n$.} beschrieben werden können und daher mit ,,Algorithmen polynomieller Laufzeit`` bezeichnet werden. Es ist gängige Konvention polynomielle Algorithmen als ,,effizient`` zu bezeichnen und exponentielle Algorithmen als ,,ineffizient``.
+Es können noch weitere Klassen definiert werden, um Algorithmen noch besser zu klassifizieren. Allerdings handelt es sich bei diesen Klassen um einen guten Überblick. Wir notieren weiters, dass alle Klassen kleiner oder gleich ,,polynomiell mit $n^k$`` durch einen Polynom\footnote{Mathematische Struktur der Form $y_0x^0 + y_1x^1 + y_2x^2 + \ldots + y_nx^n$.} beschrieben werden können und daher mit ,,Algorithmen polynomieller Laufzeit`` bezeichnet werden. Es ist gängige Konvention polynomielle Algorithmen als ,,effizient`` zu bezeichnen und andere (insbesondere exponentielle Algorithmen) als ,,ineffizient``.
 
 Wir könnten nun alle Funktionen mit $\On{n^n}$ abschätzen und stellen fest, dass diese Klasse alle praxisrelevanten Algorithmen umfasst. Allerdings würde es uns nicht weiterhelfen die Effizienz eines Algorithmus zu erfassen. Wir suchen daher für einen Algorithmus jene mathematische Funktion, die den Algorithmus möglichst genau beschreibt. Wir wählen keine zu große Schranke, um gute Klassifikation zu erreichen. Wir wählen keine zu kleine Funktion, da dies keine obere Schranke der Funktion wäre. Mit ,,langsamst wachsende Funktion`` ist also die kleinstmögliche (aber formal korrekte) ,,obere Schranke`` gemeint.
 %
