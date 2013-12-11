@@ -252,7 +252,7 @@ Gegeben sei ein Algorithmus. Wir untersuchen wie stark die Laufzeit des Algorith
 \begin{enumerate}
   \item Sind zwei Funktionen durch eine Addition verbunden (Exponenten dürfen nicht als eigenständige Funktion betrachtet werden), reduzieren wir die Funktion auf jenen Summanden, der die größte obere Schranke besitzt.
   \item Eine Funktion der Struktur $an^{b}$ (mit $a$ und $b$ als Konstanten) reduzieren wir auf $n^b$.
-  \item Eine Funktion der Struktur $ab^{cn + d}$ (mit $a$, $b$, $c$ und $d$ als Konstanten) reduzieren wir auf $e^n$ mit $e=b^c$. Dem liegt die Rechenregel $n^{km} = {n^k}^m$ zugrunde.
+  \item Eine Funktion der Struktur $ab^{cn + d}$ (mit $a$, $b$, $c$ und $d$ als Konstanten) reduzieren wir auf $e^n$ mit $e=b^c$. Dem liegt die Rechenregel $n^{km} = {(n^k)}^m$ zugrunde.
 \end{enumerate}
 
 Wir möchten ein paar Beispiele durchgehen. Die Funktion $f(n) = 3n^2 + n$ können wir zuerst mit Regel (1) bearbeiten. Wir sehen, dass die Funktion aus einer quadratischen Teilfunktion $3n^2$ und einer linearen Funktion $n$ besteht. Wir wissen aufgrund der Klassifikationen, dass die quadratische Funktion schnell wächst. Daher möchten wir die Funktion auf $f(n) = 3n^2$ reduzieren. Nun wird unsere Struktur durch Regel (2) beschrieben und wir ersetzen sie dementsprechend mit $n^2$. Das heißt unsere finale Klasse in der $f$ liegt, nennt sich $\mathcal{O}(n^2)$.
