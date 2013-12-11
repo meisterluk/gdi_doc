@@ -1,5 +1,5 @@
-\chapter{Formale Grammatiken}
-\index{Formale Grammatiken}
+\chapter{Formale Sprachen}
+\index{Formale Sprachen}
 %
 Die Informatik macht sich Gedanken um die systematische Verarbeitung von Information. Anhand verschiedener Modelle haben wir bereits gesehen, wie wir eine Eingabe nehmen, diese nach Vorschriftsregeln verarbeiten und dann eine Antwort auf das gestellte Anfangsproblem liefern. Dabei haben wir eine wichtige Frage wegfallen lassen: Woher weiß der Algorithmus, ob diese Eingabe valid ist? Woher weiß die Turingmaschine, dass das (was auf dem Band steht) eine korrekte Eingabe ist, die zu keinem undefinierten Verhalten führt?\footnote{Als Beispiel für undefiniertes Verhalten sei hier die Division durch Null gegeben.}
 
@@ -60,7 +60,7 @@ S @$\rightarrow$@ a
 S @$\rightarrow$@ abb
 \end{lstlisting}
 
-\section{Eine Grammatik mit Wiederholungen}
+\section{Eine Sprache mit Wiederholungen}
 %
 Wir möchten unsere Sprachendefinitionen erweitern, indem wir eine Anzahl abbilden können. So war es uns bislang nicht möglich eine Sprache (zB) ,,Akzeptiere alle Wörter die nur aus \emph{a}s bestehen`` zu formulieren. Hierfür müssen wir Wiederholungen repräsentieren.
 
@@ -86,14 +86,14 @@ Wir führen das Konzept der Quantoren ein. Ein regulärer Ausdruck ist eine Zeic
 \index{Quantoren (reguläre Ausdrücke)}
 In Tabelle~\ref{tab:quantifiers} werden Quantoren definiert. Kommen diese Zeichen in einem regulären Ausdruck vor, werden diese nicht wortwörtlich verstanden, sondern beziehen sich auf das letzte Zeichen oder die letzte Gruppe.
 
-Wir betrachten ein Beispiel. Gesucht sei folgende Grammatik $R$:
+Wir betrachten ein Beispiel. Gesucht sei folgende Sprache $R$:
 \begin{quote}
   Das Zeichen \gramm{a} kann (aber muss nicht) vorkommen. Nachfolgend kommt ein \gramm{b} und
   anschließend beliebig viele \gramm{c}.
 \end{quote}
 
-Der folgende Ausdruck spezifiziert diese Grammatik:
-\lstset{language={}, label={lst:regex_repetition}, caption={Die Grammatik $R$ als regulärer Ausdruck}, frame={single}}
+Der folgende Ausdruck spezifiziert diese Sprache:
+\lstset{language={}, label={lst:regex_repetition}, caption={Die Sprache~$R$ als regulärer Ausdruck}, frame={single}}
 \begin{lstlisting}
 a?bc*
 \end{lstlisting}
@@ -113,7 +113,7 @@ In einer formalen Grammatik ist Wiederholung über Rekursion abzubilden.
 Aber besprechen wir zuerst, was formale Grammatiken denn sind und wie sie Wörter erzeugen. Eine formale Grammatik $G = (V, \Sigma, P, S)$ besitzt ein endliches Vokabular $V$, ein Alphabet $\Sigma$, Produktionsregeln $P$ und ein Startsymbol $S$. Das Erzeugen von Strings startet stets mit dem Startsymbol $S$ und Produktionsregeln $P$ erlauben es uns Zeichen sukzessive durch Zeichen aus $V$ zu ersetzen. Wir unterscheiden dabei zwischen den Terminalsymbolen $\Sigma$ und Nonterminalsymbolen $V \setminus \Sigma$. Terminalsymbole sind jene Symbole, die in der endgültigen Zeichenkette vorkommen. Für Nonterminalsymbole sind Regeln in $P$ definiert, wie man sie ersetzen kann. Die Ersetzungen erfolgen so lange bis nur mehr Terminalsymbole enthalten sind.
 
 % TODO: ,` and ,,`` in wrong order
-Als ersten Schritt (um $R$ zu definieren) beschreiben wir eine Grammatik $R1$ mit ,Das Zeichen \gramm{a} kann vorkommen`.
+Als ersten Schritt (um $R$ zu definieren) beschreiben wir eine Sprache~$R1$ mit ,Das Zeichen \gramm{a} kann vorkommen`.
 \lstset{language={}, label={lst:regex_R1}, caption={$R1$ als formale Grammatik $G=(V,\Sigma,P,S)$}, frame={single}, escapechar=\@}
 \begin{lstlisting}
 S @$\rightarrow$@ a
@@ -140,9 +140,9 @@ T @$\rightarrow$@ cT
 
 Gehen wir die Produktionsregeln für den Eingabestring \texttt{abcc} durch. Wir starten wieder mit dem Startsymbol ,,S``. Wir ersetzen es mittels der 1. Zeile zu ,,abT``. Wir erkennen ein verbleibendes Nonterminal in ,,T`` in dem String und suchen uns hierfür entsprechende Regeln; die Regeln 3 und 4 kommen in Frage. Für den gegebenen Eingabestring müssen wir Regel 4 verwenden. Es entsteht der String ,,abcT``. Wieder ersetzen wir das ,,T`` durch die Regel 4. ,,abcT`` besitzt auch noch ein Nonterminal, welches jetzt jedoch mittels Regel 3 ersetzt wird. Es entsteht der String ,,abcc`` (bestehend nur aus Terminalsymbolen). Damit liegt der String ,,abcc`` in der durch die formale Grammatik spezifizierten Sprache.
 
-\section{Alternation in Grammatiken}
+\section{Alternation in Sprachen}
 %
-Gesucht sei folgende Grammatik $A$:
+Gesucht sei folgende Sprache~$A$:
 \begin{quote}
   Die Zeichenkette beginnt mit ,,message of the `` und endet entweder mit ,,day`` oder ,,week``. Am Ende befindet sich weiters ein Rufzeichen ,,{!}``.
 \end{quote}
@@ -152,7 +152,7 @@ Gesucht sei folgende Grammatik $A$:
 %
 In einem regulären Ausdruck lässt sich eine Alternation definieren, indem der vertikale Balken als Alternationsoperator verwendet wird. Dabei wird entweder die linke Seite vom Balken oder die rechte Seite herangezogen. Die Seiten können durch eine Gruppierung beschränkt werden, die durch runde Klammern definiert wird.
 
-\lstset{language={}, label={lst:regex_alternation}, caption={Die Grammatik $A$}, frame={single}}
+\lstset{language={}, label={lst:regex_alternation}, caption={Die Sprache $A$}, frame={single}}
 \begin{lstlisting}
 message of the (day|week)!
 \end{lstlisting}
@@ -207,7 +207,7 @@ Non-greedy Verhalten kann man durch das Anfügen eines Fragezeichens nach dem Gr
 \subsection{Deterministische Automaten}
 \index{Konvertierung!von regulären Ausdrücken zu Automaten}
 %
-Abseits der Strings mit den jeweiligen Operatoren gibt es auch eine andere Darstellungsweise für reguläre Ausdrücke. Zu jedem regulären Ausdruck kann ein deterministischer Automat gefunden. Ein deterministischer Automat ist ein gerichteter, kantenbeschrifteter Graph. Wir erinnern uns, dass ein Graph aus Knoten und Kanten besteht. Es gibt einen Startknoten\footnote{In diesem Dokument folgen wir der Konvention, dass der Startknoten der am weitesten links positionierte Knoten ist. Im Allgemeinen handelt es sich um den einzigen Quellknoten im Graphen.} und von diesem ausgehend werden die Zeichen vom Eingabestring gelesen. Je nach gelesenem Zeichen folgt man jenen Kanten, deren Beschriftung mit dem Zeichen übereinstimmt. Ein Eingabestring wird genau dann von der Grammatik akzeptiert, wenn der String auf einem Endknoten zu Ende geht, der durch einen zusätzlichen inneren Kreis markiert ist.
+Abseits der Strings mit den jeweiligen Operatoren gibt es auch eine andere Darstellungsweise für reguläre Ausdrücke. Zu jedem regulären Ausdruck kann ein deterministischer Automat gefunden. Ein deterministischer Automat ist ein gerichteter, kantenbeschrifteter Graph. Wir erinnern uns, dass ein Graph aus Knoten und Kanten besteht. Es gibt einen Startknoten\footnote{In diesem Dokument folgen wir der Konvention, dass der Startknoten der am weitesten links positionierte Knoten ist. Im Allgemeinen handelt es sich um den einzigen Quellknoten im Graphen.} und von diesem ausgehend werden die Zeichen vom Eingabestring gelesen. Je nach gelesenem Zeichen folgt man jenen Kanten, deren Beschriftung mit dem Zeichen übereinstimmt. Ein Eingabestring wird genau dann von der Sprache akzeptiert, wenn der String auf einem Endknoten zu Ende geht, der durch einen zusätzlichen inneren Kreis markiert ist.
 
 \index{Nichtdeterminismus!Automaten von regulären Sprachen}
 Das Wesentliche ist, dass dieser Automat das Kriterium des Determinismus zu erfüllen hat. Dies bedeutet in jedem beliebigen Zustand des Automaten kann durch das gelesene Zeichen eindeutig bestimmt werden welcher Kante zu folgen ist. Oder in anderen Worten gibt es keine zwei Kanten mit der selben Beschriftung, die am selben Ausgangsknoten starten. In Abbildung~\ref{fig:nondeterministic_automaton} ist nicht-deterministischer Automat dargestellt, der diese Regel bricht.
@@ -233,7 +233,7 @@ Es gibt keinen universellen Algorithmus um Nichtdeterminismus entfernen zu könn
 %
 Ich möchte hier noch auf Konventionen im Bereich der formalen Grammatiken aufmerksam machen. So ist es üblich den leeren String ,,`` mit einem $\varepsilon$ darzustellen, um Missverständnisse vorzubeugen und ihn als druckbares Zeichen darzustellen.
 
-Wendet man reguläre Ausdrücke in Programmiersprachen an, entdeckt man, dass Ausdrücke auf Teile des Gesamtwortes angewendet werden und nicht den gesamten String matchen müssen. Hierfür existieren die Operatoren \^{} und \$, welche den Anfang und das Ende eines Strings repräsentieren. Jenes Zeichen welches einem \$ vorangestellt ist, muss also das letzte Zeichen des Eingabestrings sein. Die Verwendung dieser Operatoren ist im Bereich der formalen Grammatik nicht notwendig, da stets davon ausgegangen wird, dass der gesamte String gematcht werden soll.
+Wendet man reguläre Ausdrücke in Programmiersprachen an, entdeckt man, dass Ausdrücke auf Teile des Gesamtwortes angewendet werden und nicht den gesamten String matchen müssen. Hierfür existieren die Operatoren \^{} und \$, welche den Anfang und das Ende eines Strings repräsentieren. Jenes Zeichen welches einem \$ vorangestellt ist, muss also das letzte Zeichen des Eingabestrings sein. Die Verwendung dieser Operatoren ist im sprachtheoretischen Kontext nicht notwendig, da stets davon ausgegangen wird, dass der gesamte String gematcht werden soll.
 
 In Tabelle~\ref{tab:regex_examples} sind Beispiele für reguläre Ausdrücke dargestellt.
 \index{Reguläre Ausdrücke!Beispiel}
@@ -301,24 +301,24 @@ In Tabelle~\ref{tab:regex_examples} sind Beispiele für reguläre Ausdrücke dar
  \begin{center}
   \includegraphics{img/basic_deterministic_automatons.pdf}
   \caption{
-    Die deterministischen Automaten der Grammatiken
+    Die deterministischen Automaten der Sprachen
     (a) \gramm{a|b} (b) \gramm{a?b} (c) \gramm{a+} (d) \gramm{a*}
   }
   \label{fig:basic_automatons}
  \end{center}
  \begin{center}
   \includegraphics{img/deterministic_automatons.pdf}
-  \caption{Die deterministischen Automaten der Grammatiken
+  \caption{Die deterministischen Automaten der Sprachen
     (a) \gramm{(ab+a*)+ab+} (b) \gramm{(ab)?|cd} (c) \gramm{a?b*c+}}
   \label{fig:example_automatons}
  \end{center}
 \end{figure}
 
-\section{Kontextfreie Grammatiken}
+\section{Kontextfreie Sprachen}
 \index{CFL}
-\index{Kontextfreie Grammatik}
+\index{Kontextfreie Sprache}
 %
-Kontextfreie Sprachen (engl. ,,context-free languages``) sind mächtiger als reguläre Sprachen. Diese Behauptung besagt, dass die Menge der Sprachen die durch reguläre Ausdrücke repräsentiert werden können kleiner als die Menge der Sprachen ist, die mit kontextfreien Grammatiken spezifiziert werden können. Wir betrachten ein Beispiel.
+Kontextfreie Sprachen (engl. ,,context-free languages``) sind mächtiger als reguläre Sprachen. Diese Behauptung besagt, dass die Menge der Sprachen die durch reguläre Ausdrücke repräsentiert werden können kleiner als die Menge der Sprachen ist, die mit kontextfreien Sprachen spezifiziert werden können. Wir betrachten ein Beispiel.
 
 Gesucht sei folgende Sprache $E$:
 \begin{quote}
@@ -350,9 +350,9 @@ Durch die Vorgabe der Position bekommen wir ein neues Problem. Wir versuchen es 
 a*b*
 \end{lstlisting}
 
-Das geübte Auge erkennt, dass die Anzahl der erzeugten ,,a`` ungleich der Anzahl von ,,b`` sein kann. Daher repräsentiert dieser reguläre Ausdruck nicht die spezifizierte Sprache. So ist etwa ,,aaab`` in der Sprache des regulären Ausdrucks enthalten, aber nicht in der textuellen Beschreibung. Wir erkennen, dass die vorliegende Grammatik sich nicht mehr regulär abbilden lässt, sondern ,,kontextfrei`` ist. Es handelt sich um unsere erste Sprache, die in der Menge der kontextfreien Sprachen aber nicht in der Menge der regulären Sprachen liegt.
+Das geübte Auge erkennt, dass die Anzahl der erzeugten ,,a`` ungleich der Anzahl von ,,b`` sein kann. Daher repräsentiert dieser reguläre Ausdruck nicht die spezifizierte Sprache. So ist etwa ,,aaab`` in der Sprache des regulären Ausdrucks enthalten, aber nicht in der textuellen Beschreibung. Wir erkennen, dass die vorliegende Sprache sich nicht mehr regulär abbilden lässt, sondern ,,kontextfrei`` ist. Es handelt sich um unsere erste Sprache, die in der Menge der kontextfreien Sprachen aber nicht in der Menge der regulären Sprachen liegt.
 
-\index{Kontextfreie Grammatik!Beispiel}
+\index{Kontextfreie Sprache!Beispiel}
 Mithilfe einer formalen Grammatik können wir diese Sprache jedoch definieren:
 \lstset{language={}, label={lst:lang_F}, caption={Formale Grammatik für Sprache $F$}, frame={single}, escapechar=\@}
 \begin{lstlisting}
@@ -368,17 +368,17 @@ Basierend auf S können wir jetzt beliebige Wörter der Sprache ableiten. So neh
 
 Für kontextfreie Grammatiken dürfen wir Nonterminale definieren, die ersetzt werden. Die Idee für diese Grammatik ist es bei jeder Rekursion auf der linken und rechten Seite der Rekursion Zeichen zum endgültigen String hinzuzufügen.
 
-Wir müssen dabei beachten, dass wir auf der linken Seite nur ein Nonterminal verwenden dürfen, um wirklich eine kontextfreie Grammatik zu spezifizieren.
+Wir müssen dabei beachten, dass wir auf der linken Seite nur ein Nonterminal verwenden dürfen, um wirklich eine kontextfreie Sprache zu spezifizieren.
 
-\section{Kontext-sensitive Grammatik}
-\index{Kontext-sensitive Grammatik}
+\section{Kontext-sensitive Sprache}
+\index{Kontext-sensitive Sprache}
 %
 Eine weitere Menge stellen die kontext-sensitiven Sprachen dar. Dazu sei folgende Sprache zu formulieren:
 \[
   H = \set{a^n b^n c^n \mid n \in \mathbb{N}, n \geq 0}
 \]
 
-\index{Kontext-sensitive Grammatik!Beispiel}
+\index{Kontext-sensitive Sprache!Beispiel}
 Wir setzen wieder eine Grammatik an und versuchen durch Gegenbeispiele ihre Falschheit zu zeigen.
 \lstset{language={}, label={lst:cflcsl}, caption={Lösungsversuch für Sprache $H$}, frame={single}, escapechar=\@}
 \begin{lstlisting}
