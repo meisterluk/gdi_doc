@@ -157,7 +157,7 @@ Gegeben sei eine Turingmaschine. Auf dem Band befindet sich eine beliebige Seque
 %
 Gegeben sei eine Turingmaschine. Auf dem Band befinden sich 6 Nullen oder Einsen. Diese sind als 3 2-bit Zahlen zu interpretieren. Schreibe rechts von diesen Zahlen jenen Wert, der das Minimum der 3 Zahlen repräsentiert und lasse das restliche Band im Anfangszustand. Der Startzustand sei ,,Start`` und der Endzustand sei ,,End``. Die initiale Cursorposition sei die linkeste Ziffer. Im Endzustand soll der Cursor ganz rechts sein.
 
-\textbf{Lösung (Tabelle~\ref{tab:count_ones}).} Unser Lösungsansatz beruht auf der Idee, dass wir sämtliche relevanten Informationen des Inputs in den Zuständen speichern. Wir modifizieren das Band nicht (d.h. gelesene und geschriebene Zeichen sind stets ident außer wir schreiben das Ergebnis) und die Bewegung geht stets nach rechts (außer wir terminieren). Wir lesen Ziffer für Ziffer ein und wechseln in einen entsprechenden Zustand. So wird etwa in dem Startzustand bei einem gelesenen $1$ in den Zustand $001$ gewechselt, um uns zu merken dass das kleinste Minimum $00$ war (wir haben bisher noch keine Zahl gelesen und daher wird die niedrigste Zahl $00$ verwendet) und mit der zusätzlichen $1$ merken wir uns das letzte gelesene Symbol. Dies ist bei allen Zuständen, die aus 3 Ziffern bestehen gleichartig. Wir müssen dabei in jenen Zustand wechseln, welcher das Maximum der zwei Zustände repräsentiert, die wir durch den aktuellen Zustand und das gelesene Zeichen kodiert haben. Haben wir eine gerade Anzahl an Zeichen gelesen, befinden wir uns in einem Zustand aus 2 Ziffern und sonst in einem Zustand aus 3 Ziffern. Kommen wir auf ein Blanksymbol, schreiben wir jene Zahl, die wir als Minimum im Namen des Zustands gespeichert haben.
+\textbf{Lösung (Tabelle~\ref{tab:min_3bit}).} Unser Lösungsansatz beruht auf der Idee, dass wir sämtliche relevanten Informationen des Inputs in den Zuständen speichern. Wir modifizieren das Band nicht (d.h. gelesene und geschriebene Zeichen sind stets ident außer wir schreiben das Ergebnis) und die Bewegung geht stets nach rechts (außer wir terminieren). Wir lesen Ziffer für Ziffer ein und wechseln in einen entsprechenden Zustand. So wird etwa in dem Startzustand bei einem gelesenen $1$ in den Zustand $001$ gewechselt, um uns zu merken dass das kleinste Minimum $00$ war (wir haben bisher noch keine Zahl gelesen und daher wird die niedrigste Zahl $00$ verwendet) und mit der zusätzlichen $1$ merken wir uns das letzte gelesene Symbol. Dies ist bei allen Zuständen, die aus 3 Ziffern bestehen gleichartig. Wir müssen dabei in jenen Zustand wechseln, welcher das Maximum der zwei Zustände repräsentiert, die wir durch den aktuellen Zustand und das gelesene Zeichen kodiert haben. Haben wir eine gerade Anzahl an Zeichen gelesen, befinden wir uns in einem Zustand aus 2 Ziffern und sonst in einem Zustand aus 3 Ziffern. Kommen wir auf ein Blanksymbol, schreiben wir jene Zahl, die wir als Minimum im Namen des Zustands gespeichert haben.
 %
 \begin{table}
  \begin{center}
@@ -200,7 +200,7 @@ Gegeben sei eine Turingmaschine. Auf dem Band befinden sich 6 Nullen oder Einsen
    \hline
   \end{tabular}
   \caption{Eine Zustandstabelle für ,,Minimum von 3 2-bit Zahlen``}
-  \label{tab:count_ones}
+  \label{tab:min_3bit}
  \end{center}
 \end{table}
 
