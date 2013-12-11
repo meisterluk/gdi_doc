@@ -3,13 +3,15 @@
 %
 Die Informatik macht sich Gedanken um die systematische Verarbeitung von Information. Anhand verschiedener Modelle haben wir bereits gesehen, wie wir eine Eingabe nehmen, diese nach Vorschriftsregeln verarbeiten und dann eine Antwort auf das gestellte Anfangsproblem liefern. Dabei haben wir eine wichtige Frage wegfallen lassen: Woher weiß der Algorithmus, ob diese Eingabe valid ist? Woher weiß die Turingmaschine, dass das (was auf dem Band steht) eine korrekte Eingabe ist, die zu keinem undefinierten Verhalten führt?\footnote{Als Beispiel für undefiniertes Verhalten sei hier die Division durch Null gegeben.}
 
-\index{Wortproblem}
-Das Wortproblem stellt folgende Frage:
+\index{Wortproblem, WP}
+Das Wortproblem (WP) stellt folgende Frage:
 \begin{quotation}
   Gegeben sei eine Sprache $S$. Ermittle, ob ein Wort $W$ Teil von $S$ ist oder nicht.
 \end{quotation}
 %
-Wir verwenden die neuen Begriffe \emph{Wort} (oder String bzw. Zeichenkette) und \emph{Sprache} (Vorschriften über die mögliche Aneinanderreihung von Wörtern). Eine Sprache beschreibt eine Menge von Wörtern\footnote{Beachte, dass Wort anders als im linguistischen Sinn betrachtet wird. So ist ein Satz wie ,,Der Gärtner ist der Mörder`` \emph{ein} Wort einer Sprache.}. Für diese muss eine Zugehörigkeitsbeziehung ermittelt werden können. Wir führen das Konzept der Sprachen und Grammatiken ein.
+Wir verwenden die neuen Begriffe \emph{Wort} (oder String bzw. Zeichenkette) und \emph{Sprache} (Vorschriften über die mögliche Aneinanderreihung von Wörtern). Eine Sprache beschreibt eine Menge von Wörtern\footnote{Beachte, dass Wort anders als im linguistischen Sinn betrachtet wird. So ist ein Satz wie ,,Der Gärtner ist der Mörder`` \emph{ein} Wort einer Sprache.}. Für diese muss eine Zugehörigkeitsbeziehung ermittelt werden können. Diesem Problem begegnen Informatiker in der Praxis ständig, da zB verifiziert werden muss, ob es sich bei einer Zeichenkette um eine Emailadresse handelt.
+
+Wir eignen uns den theoretischen Hintergrund an und führen das Konzept der Sprachen und Grammatiken ein:
 
 \section{Eine einfache Sprache}
 \index{Reguläre Ausdrücke!Beispiel}
@@ -51,11 +53,11 @@ abb
 \end{lstlisting}
 
 \subsubsection*{Unsere einfachen Sprachen als formale Grammatik}
-\lstset{language={}, label={lst:regex_S}, caption={$S$ als formale Grammatik $G=(V,\Sigma,P,S)$}, frame={single}, escapechar=\@}
+\lstset{language={}, label={lst:fg_S}, caption={$S$ als formale Grammatik $G=(V,\Sigma,P,S)$}, frame={single}, escapechar=\@}
 \begin{lstlisting}
 S @$\rightarrow$@ a
 \end{lstlisting}
-\lstset{language={}, label={lst:regex_T}, caption={$T$ als formale Grammatik $G=(V,\Sigma,P,S)$}, frame={single}, escapechar=\@}
+\lstset{language={}, label={lst:fg_T}, caption={$T$ als formale Grammatik $G=(V,\Sigma,P,S)$}, frame={single}, escapechar=\@}
 \begin{lstlisting}
 S @$\rightarrow$@ abb
 \end{lstlisting}
@@ -332,7 +334,7 @@ Probieren wir einen regulären Ausdruck zu finden.
 \end{lstlisting}
 
 Die formale Grammatik für $E$ sieht folgendermaßen aus:
-\lstset{language={}, label={lst:regex_A}, caption={Sprache $E$ als formale Grammatik}, frame={single}, escapechar=\@}
+\lstset{language={}, label={lst:fg_A}, caption={Sprache $E$ als formale Grammatik}, frame={single}, escapechar=\@}
 \begin{lstlisting}
 S @$\rightarrow$@ abS
 S @$\rightarrow$@
@@ -413,7 +415,19 @@ Zum ersten Mal verwenden wir ein Terminalsymbol und ein Nonterminalsymbol oder 2
 \section{Chomsky-Hierarchie}
 \index{Chomsky-Hierarchie}
 %
-Wir haben bei diesen Beispielen gesehen, dass gewisse Modelle nicht ausreichen, um Sprachen zu beschreiben. Noam Chomsky hat die Chomsky-Hierarchie formuliert, um Sprachen in Kategorien einzuteilen. Dabei sind reguläre Sprachen die schwächsten Sprachen. Kontextfreie Sprachen stehen über den regulären Sprachen und können auch alle regulären Sprachen abbilden. Am mächtigsten sind die rekursiv-aufzählbaren Sprachen, die es etwa erlauben die Anzahl der Rekursionen in den Ersetzungsregeln während der Verarbeitung zu verändern. Wir möchten hier auf weitere Beispiele verzichten und auf die Lehrveranstaltung \courseswp{} verweisen, welche sich detailierter mit diesen Sprachen auseinander setzt.
+Wir haben bei diesen Beispielen gesehen, dass nicht alle Grammatiken alle Sprachen abbilden können; daher manche mächtiger sind als andere. Noam Chomsky hat die Chomsky-Hierarchie formuliert, um Sprachen in Kategorien einzuteilen. Dabei sind reguläre Sprachen die schwächsten Sprachen. Kontextfreie Sprachen stehen über den regulären Sprachen und können auch alle regulären Sprachen abbilden. Am mächtigsten sind die rekursiv-aufzählbaren Sprachen, die es etwa erlauben die Anzahl der Rekursionen in den Ersetzungsregeln während der Verarbeitung zu verändern. Wir möchten hier auf weitere Unterteilungen und Details verzichten und auf die Lehrveranstaltung \courseswp{} verweisen, welche sich detailierter mit diesen Sprachen auseinander setzt.
+
+Wir möchten noch kurz begründen und zusammenfassen, wie diese Unterscheidung der Klassen zustande kommt und wieso sie in der Praxis benötigt wird:
+
+\emph{Reguläre Sprachen} können effizient verarbeitet werden. Wir haben gesehen, dass wir jede reguläre Sprache durch einen endlichen, deterministischen Automaten verarbeiten können. Der endliche, deterministische Automat hat die Eigenschaft, dass in jedem Zustand sofort auf den Folgezustand geschlossen werden kann (sonst wäre das Kriterium des Determinismus nicht erfüllt). Somit kann das Wortproblem für eine gegebene Zeichenkette in linearer Zeit gelöst werden.
+
+\emph{Kontextfreie Sprachen} erfüllen dieses Kriterium (durch das Lesen eines Zeichens auf den Folgezustand schließen zu können) im Allgemeinen nicht. Dennoch können kontextfreie Sprachen in polynomieller Zeit und daher effizient verarbeitet werden. Sie haben als obere Schranke kubische Laufzeit um das Wortproblem zu entscheiden. In der Praxis wird für die formalen Sprachen Kontextfreiheit angestrebt, da sie eine gute Balance zwischen Mächtigkeit und Performance bieten.\footnote{Zum Beispiel sind die Markupsprache XML (Version 1.0) und Datenbankabfragesprache SQL (Version 2003) kontextfrei.}
+
+\emph{Kontext-sensitive Sprachen} sind die ersten Sprachen, die nicht in polynomieller Zeit verarbeitet werden können. Sie erlauben es die Anzahl der Wiederholungen über mehrere Rekursionen zu bestimmen, sofern die Anzahl der Rekursionen vordefiniert ist. Man versucht kontext-sensitive Sprachen zu vermeiden.
+
+\emph{Rekursiv-aufzählbare Sprachen} können nur von Maschinen verarbeitet werden, die gleich mächtig wie eine Turingmaschine sind. Sie sind damit sehr mächtig, aber zu entscheiden ob ein Wort innerhalb einer solchen Sprache liegt, lässt sich möglicherweise gar nicht feststellen (,,Unentscheidbarkeit``).
+
+Die Wahl eines ungeeigneten Werkzeugs um die Sprache zu verarbeiten oder die Einführung eines syntaktisch komplexen Konstrukts in einer Sprache kann zum Scheitern eines Softwareprojekts führen. Deshalb sei nochmals die Wichtigkeit dieses Themengebiets hervorgehoben.
 
 Abbildung~\ref{fig:chomsky_hierarchy} visualisiert die Chomsky-Hierarchie.
 %
@@ -422,5 +436,24 @@ Abbildung~\ref{fig:chomsky_hierarchy} visualisiert die Chomsky-Hierarchie.
   \includegraphics{img/chomsky_hierarchy.pdf}
   \caption{Die Chomsky-Hierarchie}
   \label{fig:chomsky_hierarchy}
+ \end{center}
+\end{figure}
+
+\section{Anmerkung zu formalen Grammatiken}
+%
+Wir haben in diesem Kapitel von 3 verschiedenen Notationen gesprochen:
+\begin{description}
+  \item[Mengennotation] Erlaubt es uns sehr schnell Sprachen aus allen vier Ebenen zu spezifizieren. Wird jedoch nicht in der Industrie angewandt.
+  \item[Reguläre Ausdrücke] Erlauben es reguläre Sprachen zu formulieren. In der Praxis kommen reguläre Ausdrücke in den Formen POSIX und PCRE vor. Diese Implementierungen erlauben es jedoch\footnote{PCRE implementiert Operatoren die Backreferences und Lookaheads genannt werden. Mit diesen können Sprachen entschieden werden, die weit über den regulären liegen.} sogar kontext-sensitive Sprachen zu entscheiden. Man verwendet reguläre Ausdrücke primär, um einfache Sprachen (die typischerweise regulär sind) zu matchen.
+  \item[Formale Grammatik] Die Pfeilnotation erlaubt es uns Sprachen aus allen vier Ebenen anzugeben. Allerdings müssen Einschränkungen bezüglich des Aufbaus der Produktionsregeln beachtet werden, wenn es sich um keine rekursiv-aufzählbare Grammatik handelt. In Abbildung~\ref{fig:grammars} sind die Einschränkungen aufgelistet.
+\end{description}
+
+Für die Notation von kontextfreien Sprachen würden sich also alle drei Notationen eignen. Wird eine Programmiersprache formal notiert, verwendet man Abwandlungen der formalen Grammatik: die Erweiterte Backus-Naur-Form (EBNF) oder Angereicherte Backus-Naur-Form (ABNF).
+
+\begin{figure}[h]
+ \begin{center}
+  \includegraphics{img/grammar_types.pdf}
+  \caption{Die 4 Typen von formalen Sprachen und deren Eigenschaften}
+  \label{fig:grammars}
  \end{center}
 \end{figure}

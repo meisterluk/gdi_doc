@@ -16,7 +16,6 @@ Roadmap
 *1.1*
   * Consider future of encoding chapter.
   * Introduce proof of halting problem.
-  * Extend chapter about chomsky hierarchy and introduce rationale for usage of a specific layer.
 *1.2*
   Release if the following sections are ready:  
 
