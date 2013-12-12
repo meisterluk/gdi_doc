@@ -5,3 +5,4 @@ Errata
 d35023d67a0fe13f661a673b4cf7c907c6a09ea0 Georg Regitnig         \xmark produces "5" in math environment.
 d35023d67a0fe13f661a673b4cf7c907c6a09ea0 Georg Regitnig         "meisten" becomes "meistens".
 d35023d67a0fe13f661a673b4cf7c907c6a09ea0 Georg Regitnig         "SI-Präfixe" becomes "SI-Präfixen".
+d35023d67a0fe13f661a673b4cf7c907c6a09ea0 Georg Regitnig         Modal verb requires "werden".
