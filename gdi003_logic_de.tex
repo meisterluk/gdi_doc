@@ -255,8 +255,8 @@ Unter einem Widerspruch ($\bot$, Kontradiktion) versteht man eine boolsche Funkt
   ((A \lor B) \lor (B \land A)) \land (\neg A \land \neg B) \leftrightarrow \bot
 \end{equation}
 
-\section{Operator precedence}
-\index{Operator precedence}
+\section{Operatorenpräzedenz}
+\index{Operatorenpräzedenz}
 %
 Ausdrücke könnten mehrdeutig sein, wenn die Klammerung die Reihenfolge der Evaluierung der Operatoren nicht klar vorgibt.
 %
@@ -265,7 +265,7 @@ Ausdrücke könnten mehrdeutig sein, wenn die Klammerung die Reihenfolge der Eva
 \]
 %
 \index{Bindung (Aussagenlogik)}
-Die \emph{operator precedence} sind semantische Regeln, welche Operatoren am stärksten binden. Je stärker ein Operator bindet, desto früher wird er evaluiert. Es gibt unterschiedliche Auffassungen und sie werden nicht so konsistent verwendet, wie hier dargestellt, doch stellt die Tabelle~\ref{tab:op_precedence} eine Zusammenfassung des allgemeinen Konsens dar. Allgemein binden binäre (= zweistellige) Operatoren schwächer als unäre (= einstellige) und typischerweise bindet das Und stärker als das Oder. Während alle Operatoren links-assoziativ sind, bildet die Implikation mit einer Rechtsassoziativität eine Ausnahme:
+Die Operatorenpräzedenz (engl. ,,operator precedence``) sind semantische Regeln, welche Operatoren am stärksten binden. Je stärker ein Operator bindet, desto früher wird er evaluiert. Es gibt unterschiedliche Auffassungen und sie werden nicht so konsistent verwendet, wie hier dargestellt, doch stellt die Tabelle~\ref{tab:op_precedence} eine Zusammenfassung des allgemeinen Konsens dar. Allgemein binden binäre (= zweistellige) Operatoren schwächer als unäre (= einstellige) und typischerweise bindet das Und stärker als das Oder. Während alle Operatoren links-assoziativ sind, bildet die Implikation mit einer Rechtsassoziativität eine Ausnahme:
 \begin{equation}
   (a \rightarrow b \rightarrow c) \spacewrap\lequal (a \rightarrow (b \rightarrow c))
 \end{equation}
@@ -278,13 +278,13 @@ Die \emph{operator precedence} sind semantische Regeln, welche Operatoren am st�
    $\lor$        & Disjunktion \\
    $\rightarrow$ & Implikation
   \end{tabular}
-  \caption{Operator precedence für aussagenlogische Operatoren
+  \caption{Operatorenpräzedenz für aussagenlogische Operatoren
            (Operatoren weiter oben binden stärker)}
   \label{tab:op_precedence}
  \end{center}
 \end{table}
 
-Klammern sind ein Ausweg, um Unklarheiten in der operator precedence zu deklarieren und werden auf dem selben Weg in der Mathematik verwendet.
+Klammern sind ein Ausweg, um Unklarheiten in der Präzedenz zu deklarieren und werden auf dem selben Weg in der Mathematik verwendet.
 Die aussagenlogische Formel von vorhin besitzt folgende äquivalente Klammerung:
 %
 \begin{equation}
