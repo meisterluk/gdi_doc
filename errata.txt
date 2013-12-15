@@ -8,3 +8,4 @@ d35023d67a0fe13f661a673b4cf7c907c6a09ea0 Georg Regitnig         "SI-Präfixe" be
 d35023d67a0fe13f661a673b4cf7c907c6a09ea0 Georg Regitnig         Modal verb requires "werden".
 3d87cf37cb28f1a3e335f2238f2564bac5f678d0 criscom                Spelling mistake.
 d35023d67a0fe13f661a673b4cf7c907c6a09ea0 Helmut Zöhrer          DFA is missing a label "b".
+a5868d5c4e9abf1db719d4a04afa8febb57faa2b criscom                Omitted "ein" p. 71
