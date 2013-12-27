@@ -234,6 +234,74 @@ Im Kontext der Komplexitätstheorie spricht man bei Nichtdeterminismus von den s
 \index{Halteproblem}
 %
 \index{Turing-berechenbar}
-Wichtig ist es zu verstehen, dass es eine Menge an Funktionen\footnote{Wir verwenden hier den Begriff ,,Funktion`` wie den Begriff ,,Algorithmus``. Was in diesem Dokument stets ein Algorithmus ist, bezeichnete Alan Turing als Funktion.} gibt, die mit einer Turingmaschine berechenbar sind und welche, die nicht \emph{Turing-berechenbar} sind. Die Menge aller Funktionen teilt sich also in jene der Turing-berechenbaren und nicht-Turing-berechenbaren. Wir haben jetzt Turing-berechenbare Probleme kennen gelernt\footnote{Erkennbar daran, dass wir ein Problem analysiert, eine entsprechende Implementierung formuliert und dann einen Algorithmus entwickelt haben, der uns das Problem entscheidet.}. Welche nicht-Turing-berechenbare Funktionen gibt es? Der bekannteste Vertreter dieser ist das Halteproblem.
+ Die Menge aller Funktionen\footnote{Wir verwenden hier den Begriff ,,Funktion`` wie den Begriff ,,Algorithmus``. Was in diesem Dokument stets ein Algorithmus ist, bezeichnete Alan Turing als Funktion.} teilt sich  in jene der \emph{Turing-berechenbaren} und \emph{nicht-Turing-berechenbaren}. Bisher wurden im Skript \emph{Turing-berechenbare} Probleme besprochen.\newline
 
-Das Halteproblem stellt uns die Frage, ob wir mit einer universellen Turingmaschine $U$ entscheiden können, ob eine andere Turingmaschine $M$ beim Ausführen eines beliebigen Algorithmus terminieren wird. Dieses Problem kann für einen allgemeinen Algorithmus nicht entschieden werden und ist daher nicht Turing-berechenbar.
+ In der Informatik stellt sich die folgende praktische Frage: Ist es theoretisch möglich, einen Algorithmus zu finden, welcher für jedes beliebiges Programm in endlicher Zeit feststellt, ob dieses bei einer Eingabe stehen bleibt oder nicht? Dieses Problem wird als Halte-Problem bezeichnet und ist der bekannteste Vertreter der \emph{nicht-Turing-berechenbaren} Funktionen.\newline
+
+Das Halte-Problem:
+\begin{itemize}
+  \item Gesucht ist eine Turingmaschine (= Algorithmus) $\mathbf{H}$, die für eine beliebige zweite Turingmaschine $\mathbf{M}$ bestimmt, ob $\mathbf{M}$ mit Input $\mathbf{I_M}$ irgendwann anhalten wird oder nicht. Das Ergebnis steht, wenn $\mathbf{H}$ anhält, am Band (entweder \emph{ja} oder \emph{nein}).
+\end{itemize}
+
+{\bf Das Halte-Problem ist unentscheidbar.} Der Beweis folgt durch einen Widerspruch, welcher nur aufgelöst werden kann, indem die folgende Annahme zurückgenommen wird (d.h. die Annahme verworfen wird).\newline
+
+Annahme: Es gibt eine Turingmaschine (= Algorithmus) $\mathbf{H}$, die für eine beliebige (korrekt kodierte) Turingmaschine $\mathbf{M}$ in endlicher Zeit (d.h. in endlich vielen Schritten) bestimmt, ob $\mathbf{M}$ mit Input $\mathbf{I_M}$ (auch korrekt kodiert) nach endlich vielen Schritten anhalten wird oder nicht. Die Turingmaschine $\mathbf{H}$ gibt als Output \emph{ja}, wenn $\mathbf{M}$ mit $\mathbf{I_M}$ anhält und \emph{nein}, wenn $\mathbf{M}$ mit Input $\mathbf{I_M}$ nicht anhält (siehe Abbildung \ref{halteproblem_fig1}). \newline
+
+\begin{figure}[h]
+\begin{minipage}[h]{0.475\textwidth}
+\centering
+\includegraphics[width=3cm]{img/haltingproblem1.jpg}
+    \caption{Turing Machine $\mathbf{H}$}
+    \label{halteproblem_fig1}
+\end{minipage}
+%
+\begin{minipage}[h]{0.475\textwidth}
+\centering
+\includegraphics[width=3cm]{img/haltingproblem2.jpg}
+    \caption{Turing Machine $\mathbf{D}$}
+    \label{halteproblem_fig2}
+\end{minipage}
+\end{figure}
+
+
+Dann wird noch eine zweite Turingmaschine (gleiche Kodierung) $\mathbf{D}$ definiert, die sich wie folgt verhält (siehe Abbildung \ref{halteproblem_fig2}):
+\begin{itemize}
+  \item Bei Eingabe von (der kodierten Form von) $\mathbf{M}$ simuliert $\mathbf{D}$  die Turingmaschine $\mathbf{H}$ mit Eingabe $\mathbf{I_M = M}$;
+  \item $\mathbf{H}$ beantwortet hier also mit \emph{ja} oder \emph{nein} in endlicher Zeit, ob $\mathbf{M}$ bei Eingabe ihres eigenen kodierten Programmcodes $\mathbf{M}$ anhält oder nicht (bei Absturz in Form einer Endlosschleife also \emph{nein});
+  \item Sobald $\mathbf{H}$ fertig ist (was nach endlicher Zeit sicher passiert, so die Annahme), so verhält sich $\mathbf{D}$ wie folgt:
+    \begin{itemize}
+      \item falls $\mathbf{H}$ als Resultat \emph{ja} ausgibt, geht $\mathbf{D}$ in eine Endlosschleife
+      \item falls $\mathbf{H}$ als Resultat \emph{nein} ausgibt, hält $\mathbf{D}$  an.
+    \end{itemize}
+\end{itemize}
+
+
+Jetzt wird der Programmcode von $\mathbf{D}$ in die Turingmaschine $\mathbf{D}$ als Input eingegeben, d.h. $\mathbf{D}$ wird mit Programminput $\mathbf{D}$ ausgeführt. Es kommt zu einer Fallunterscheidung:
+\begin{itemize}
+  \item {\bf Fall 1:} Wenn $\mathbf{D}$ mit der Eingabe $\mathbf{D}$ hält, müsste $\mathbf{H}$ ein \emph{ja} ausgeben, aber $\mathbf{D}$ geht in eine Endlosschleife und hält nicht. Somit kann der Fall 1 nicht eintreten.
+  \item {\bf Fall 2:} Wenn $\mathbf{D}$ mit der Eingabe $\mathbf{D}$ nicht hält, müsste $\mathbf{H}$ ein \emph{nein} ausgeben, aber $\mathbf{D}$ hält an. Somit kann der Fall 2 auch nicht eintreten.
+\end{itemize}
+
+Diese beiden möglichen Fälle können also nicht eintreten. Alles, ausser der Annahme, dass $\mathbf{H}$ existiert, ist nachvollziehbar und korrekt $\Rightarrow$ Annahme muss verworfen werden. q.e.d.\newline
+
+Es kann also keine solche Turingmaschine geben, die immer feststellen kann, ob eine beliebige andere Turingmaschine irgendwann in ihren Berechnungen anhält. Über die Church-Turing-These gilt dies auch für Algorithmen und für jegliche anderen rationalen Gedankengänge.
+
+
+\paragraph{Beispiel Collatz-Problem}
+Gäbe es eine Turingmaschine $\mathbf{H}$, dann wären dadurch viele Probleme lösbar. Das (3n+1) Problem, auch bekannt unter der Bezeichnung Collatz-Problem\footnote{Das Problem wurde von Lothar Collatz im Jahre 1937 gestellt und ist seitdem ungelöst. Seither wurden mehrmals Preise für dessen Lösung ausgelobt.}, zählt zu den ungelösten mathematischen Problemen. Schreibt man sich nun das folgende Programm für die Bildung der Folge $\langle n_i \rangle$\newline
+
+\begin{subequations}
+Wiederhole bis $n_i=1$:
+\begin{align*}
+n_i=\left\{
+  \begin{array}{lll}
+    3*n_{i-1}+1 &\text{ falls $n_{i-1}$ ungerade} \\
+    n_{i-1}/2 &\text{ falls $n_{i-1}$ gerade} \\
+  \end{array}
+\right.
+\end{align*}
+\end{subequations}
+
+kann man mit dem jetzigen Wissensstand in der Mathematik nicht vorhersagen, ob dieses Bildungsgesetz für jeden Anfangswert $n_0 \in \mathbb{N}$ eine endliche Folge erzeugt, welche mit $[\ldots,4, 2, 1]$ aufhört.
+
+%Weil es keine Turingmaschine $\mathbf{H}$ gibt, die das Halte-Problem löst, kann die Informatik diese Frage, ob das Programm bei jeder beliebigen %Eingabe $n$ endet oder nicht, auch nicht beantworten.
