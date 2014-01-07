@@ -17,7 +17,7 @@ Ein kleines Beispiel für algorithmisches Denken ist etwa das Tauschen zweier Za
   \texttt{h = a} \\
   \texttt{a = b} \\
   \texttt{b = h}
-  \caption{Dreieckstausch zweier Variablen a und b}
+  \caption{Dreieckstausch zweier Variablen a und b.}
  \end{center}
 \end{figure}
 
@@ -57,7 +57,7 @@ Eine weitere Eigenschaft von Algorithmen ist ein rekursives Verhalten. Man hat e
 Rekursion bedeutet die Definition einer Sache durch sich selbst. Im obigen Zitat wird etwa Rekursion durch sich selbst definiert und soll damit den Begriff illustrieren\footnote{Die Suchmaschine Google fragt (als Easteregg) bei der Eingabe von ,,recursion`` nach, ob der Benutzer denn nicht ,,recursion`` gemeint hat.}. Äquivalent sind rekursive Algorithmen so aufgebaut, dass sie in ihrer Definition sich selbst nochmals aufrufen. Dabei besitzt der rekursive Aufruf jedoch typischerweise unterschiedliche Parameter als der Aufruf zuvor, sodass es irgendwann zum Eintreten der \emph{Abbruchbedingung} kommt, die dieses rekursive Verhalten abbricht. Die Fibonacci-Zahlen lassen sich über eine Rekursion darstellen:
 
 % TODO: Avoid fibonacci as recursion example
-\lstset{language={Haskell},label={lst:fib},caption={Haskell Quelltext zur Berechnung der Fibonacci-Zahlen}}
+\lstset{language={Haskell},label={lst:fib},caption={Haskell Quelltext zur Berechnung der Fibonacci-Zahlen.}}
 \begin{lstlisting}
 fib 0 = 0
 fib 1 = 1
@@ -66,7 +66,7 @@ fib n = fib (n - 1) + fib (n - 2)
 
 Im Listing~\ref{lst:fib} wird in der dritten Zeile die Funktion fib durch einen Aufruf von sich selbst definiert. Die Zeilen 1 und 2 stellen Abbruchbedingungen dar. Das iterative Äquivalent in der Programmiersprache C sieht etwa so aus wie Listing~\ref{lst:fibc}. % TODO: fix numbering of \ref. Argl.
 %
-\lstset{language={C},label={lst:fibc},caption={C Quelltext zur Berechnung der Fibonacci-Zahlen}}
+\lstset{language={C},label={lst:fibc},caption={C Quelltext zur Berechnung der Fibonacci-Zahlen.}}
 \begin{lstlisting}
 #include <stdio.h>
 

@@ -43,21 +43,21 @@ Wir möchten in diesem Kapitel also Sprachen definieren. Wir haben eine textuell
 \]
 
 \subsubsection*{Unsere einfachen Sprachen als regulärer Ausdruck}
-\lstset{language={}, label={lst:regex_S}, caption={$S$ als regulärer Ausdruck}, frame={single}}
+\lstset{language={}, label={lst:regex_S}, caption={$S$ als regulärer Ausdruck.}, frame={single}}
 \begin{lstlisting}
 a
 \end{lstlisting}
-\lstset{language={}, label={lst:regex_T}, caption={$T$ als regulärer Ausdruck}, frame={single}}
+\lstset{language={}, label={lst:regex_T}, caption={$T$ als regulärer Ausdruck.}, frame={single}}
 \begin{lstlisting}
 abb
 \end{lstlisting}
 
 \subsubsection*{Unsere einfachen Sprachen als formale Grammatik}
-\lstset{language={}, label={lst:fg_S}, caption={$S$ als formale Grammatik $G=(V,\Sigma,P,S)$}, frame={single}, escapechar=\@}
+\lstset{language={}, label={lst:fg_S}, caption={$S$ als formale Grammatik $G=(V,\Sigma,P,S)$.}, frame={single}, escapechar=\@}
 \begin{lstlisting}
 S @$\rightarrow$@ a
 \end{lstlisting}
-\lstset{language={}, label={lst:fg_T}, caption={$T$ als formale Grammatik $G=(V,\Sigma,P,S)$}, frame={single}, escapechar=\@}
+\lstset{language={}, label={lst:fg_T}, caption={$T$ als formale Grammatik $G=(V,\Sigma,P,S)$.}, frame={single}, escapechar=\@}
 \begin{lstlisting}
 S @$\rightarrow$@ abb
 \end{lstlisting}
@@ -80,7 +80,7 @@ Wir führen das Konzept der Quantoren ein. Ein regulärer Ausdruck ist eine Zeic
     \texttt{?} & Das vorige Zeichen kommt 0--1 mal vor (,,optional``) \\
    \hline
   \end{tabular}
-  \caption{Quantoren in regulären Ausdrücken}
+  \caption{Quantoren in regulären Ausdrücken.}
   \label{tab:quantifiers}
  \end{center}
 \end{table}
@@ -95,7 +95,7 @@ Wir betrachten ein Beispiel. Gesucht sei folgende Sprache $R$:
 \end{quote}
 
 Der folgende Ausdruck spezifiziert diese Sprache:
-\lstset{language={}, label={lst:regex_repetition}, caption={Die Sprache~$R$ als regulärer Ausdruck}, frame={single}}
+\lstset{language={}, label={lst:regex_repetition}, caption={Die Sprache~$R$ als regulärer Ausdruck.}, frame={single}}
 \begin{lstlisting}
 a?bc*
 \end{lstlisting}
@@ -116,7 +116,7 @@ Aber besprechen wir zuerst, was formale Grammatiken denn sind und wie sie Wörte
 
 % TODO: ,` and ,,`` in wrong order
 Als ersten Schritt (um $R$ zu definieren) beschreiben wir eine Sprache~$R1$ mit ,Das Zeichen \gramm{a} kann vorkommen`.
-\lstset{language={}, label={lst:regex_R1}, caption={$R1$ als formale Grammatik $G=(V,\Sigma,P,S)$}, frame={single}, escapechar=\@}
+\lstset{language={}, label={lst:regex_R1}, caption={$R1$ als formale Grammatik $G=(V,\Sigma,P,S)$.}, frame={single}, escapechar=\@}
 \begin{lstlisting}
 S @$\rightarrow$@ a
 S @$\rightarrow$@
@@ -125,14 +125,14 @@ S @$\rightarrow$@
 Wir starten also mit einem Startsymbol ,,S`` und ersetzen es jetzt. Entweder wir entscheiden uns für die Zeile 1 und setzen ,,a`` ein oder einen leeren String ,,`` (Zeile 2).
 
 Als zweiten Schritt beschreiben wir eine Grammatik $R2$ mit ,Das Zeichen \gramm{a} kann vorkommen. Nachfolgend kommt ein \gramm{b}`.
-\lstset{language={}, label={lst:regex_R2}, caption={$R2$ als formale Grammatik $G=(V,\Sigma,P,S)$}, frame={single}, escapechar=\@}
+\lstset{language={}, label={lst:regex_R2}, caption={$R2$ als formale Grammatik $G=(V,\Sigma,P,S)$.}, frame={single}, escapechar=\@}
 \begin{lstlisting}
 S @$\rightarrow$@ ab
 S @$\rightarrow$@ b
 \end{lstlisting}
 
 Nachdem ein optionales \texttt{a} angegeben wurde, folgt ein \texttt{b}. Für die Wiederholung von \texttt{c} verwenden wir ein Nonterminalsymbol \texttt{T} (welches per Konvention großgeschrieben wird).
-\lstset{language={}, label={lst:regex_R3}, caption={$R$ als formale Grammatik $G=(V,\Sigma,P,S)$}, frame={single}, escapechar=\@}
+\lstset{language={}, label={lst:regex_R3}, caption={$R$ als formale Grammatik $G=(V,\Sigma,P,S)$.}, frame={single}, escapechar=\@}
 \begin{lstlisting}
 S @$\rightarrow$@ abT
 S @$\rightarrow$@ bT
@@ -154,7 +154,7 @@ Gesucht sei folgende Sprache~$A$:
 %
 In einem regulären Ausdruck lässt sich eine Alternation definieren, indem der vertikale Balken als Alternationsoperator verwendet wird. Dabei wird entweder die linke Seite vom Balken oder die rechte Seite herangezogen. Die Seiten können durch eine Gruppierung beschränkt werden, die durch runde Klammern definiert wird.
 
-\lstset{language={}, label={lst:regex_alternation}, caption={Die Sprache $A$}, frame={single}}
+\lstset{language={}, label={lst:regex_alternation}, caption={Die Sprache $A$.}, frame={single}}
 \begin{lstlisting}
 message of the (day|week)!
 \end{lstlisting}
@@ -164,7 +164,7 @@ message of the (day|week)!
 %
 Alternation haben wir schon implizit bei formalen Grammatiken kennen gelernt. Wir wählen aus mit welcher Regel wir ein Nonterminalsymbol ersetzen.
 %
-\lstset{language={}, label={lst:regex_A}, caption={$A$ als formale Grammatik $G=(V,\Sigma,P,S)$}, frame={single}, escapechar=\@}
+\lstset{language={}, label={lst:regex_A}, caption={$A$ als formale Grammatik $G=(V,\Sigma,P,S)$.}, frame={single}, escapechar=\@}
 \begin{lstlisting}
 S @$\rightarrow$@ message of the T!
 T @$\rightarrow$@ day
@@ -189,7 +189,7 @@ Wir haben jetzt die wichtigsten Konzepte betrachtet, um Sprachen definieren zu k
     \texttt{?}     & Das vorige Zeichen kommt 0--1 mal vor (,,optional``) \\
    \hline
   \end{tabular}
-  \caption{RegEx Operatoren}
+  \caption{RegEx Operatoren.}
   \label{tab:regex_op}
  \end{center}
 \end{table}
@@ -226,7 +226,7 @@ Es gibt keinen universellen Algorithmus um Nichtdeterminismus entfernen zu könn
 \begin{figure}[hb]
  \begin{center}
   \includegraphics{img/nondeterministic_automaton.pdf}
-  \caption{Beispiel eines nicht-deterministischen Automaten}
+  \caption{Beispiel eines nicht-deterministischen Automaten.}
   \label{fig:nondeterministic_automaton}
  \end{center}
 \end{figure}
@@ -294,7 +294,7 @@ In Tabelle~\ref{tab:regex_examples} sind Beispiele für reguläre Ausdrücke dar
       abaabbb & abbbaaba \\
     \hline \hline
   \end{tabular}
-  \caption{Beispiele für reguläre Ausdrücke und deren Matching-Verhalten}
+  \caption{Beispiele für reguläre Ausdrücke und deren Matching-Verhalten.}
   \label{tab:regex_examples}
  \end{center}
 \end{table}
@@ -328,13 +328,13 @@ Gesucht sei folgende Sprache $E$:
 \end{quote}
 
 Probieren wir einen regulären Ausdruck zu finden.
-\lstset{language={}, label={lst:cfg_regex1}, caption={Regulärer Ausdruck für die Sprache $E$}, frame={single}}
+\lstset{language={}, label={lst:cfg_regex1}, caption={Regulärer Ausdruck für die Sprache $E$.}, frame={single}}
 \begin{lstlisting}
 (ab)*
 \end{lstlisting}
 
 Die formale Grammatik für $E$ sieht folgendermaßen aus:
-\lstset{language={}, label={lst:fg_A}, caption={Sprache $E$ als formale Grammatik}, frame={single}, escapechar=\@}
+\lstset{language={}, label={lst:fg_A}, caption={Sprache $E$ als formale Grammatik.}, frame={single}, escapechar=\@}
 \begin{lstlisting}
 S @$\rightarrow$@ abS
 S @$\rightarrow$@
@@ -347,7 +347,7 @@ Bisher war jedoch die Reihenfolge der Zeichen undefiniert. Wir erweitern nun $E$
 In Mengennotation wäre dies mit $\set{a^n b^n \mid n \in \mathbb{N}, n \geq 0}$ anzugeben.
 
 Durch die Vorgabe der Position bekommen wir ein neues Problem. Wir versuchen es mit folgendem regulären Ausdruck:
-\lstset{language={}, label={lst:rep}, caption={Versuch eines regulären Ausdrucks für die Sprache $F$}, frame={single}}
+\lstset{language={}, label={lst:rep}, caption={Versuch eines regulären Ausdrucks für die Sprache $F$.}, frame={single}}
 \begin{lstlisting}
 a*b*
 \end{lstlisting}
@@ -356,7 +356,7 @@ Das geübte Auge erkennt, dass die Anzahl der erzeugten ,,a`` ungleich der Anzah
 
 \index{Kontextfreie Sprache!Beispiel}
 Mithilfe einer formalen Grammatik können wir diese Sprache jedoch definieren:
-\lstset{language={}, label={lst:lang_F}, caption={Formale Grammatik für Sprache $F$}, frame={single}, escapechar=\@}
+\lstset{language={}, label={lst:lang_F}, caption={Formale Grammatik für Sprache $F$.}, frame={single}, escapechar=\@}
 \begin{lstlisting}
 S @$\rightarrow$@ aSb
 S @$\rightarrow$@
@@ -382,7 +382,7 @@ Eine weitere Menge stellen die kontext-sensitiven Sprachen dar. Dazu sei folgend
 
 \index{Kontext-sensitive Sprache!Beispiel}
 Wir setzen wieder eine Grammatik an und versuchen durch Gegenbeispiele ihre Falschheit zu zeigen.
-\lstset{language={}, label={lst:cflcsl}, caption={Lösungsversuch für Sprache $H$}, frame={single}, escapechar=\@}
+\lstset{language={}, label={lst:cflcsl}, caption={Lösungsversuch für Sprache $H$.}, frame={single}, escapechar=\@}
 \begin{lstlisting}
 S @$\rightarrow$@ aSbB
 S @$\rightarrow$@
@@ -398,7 +398,7 @@ Die Grammatik in Listing~\ref{lst:cflcsl} ist inkorrekt. Mithilfe der Ableitung
 können wir uns ein Wort bauen, welches aus der Grammatik aus Listing~\ref{lst:cflcsl} stammt allerdings nicht Teil der Menge $H$ ist. Daher ist die Grammatik fehlerhaft. Die Anzahl der ,,a`` und ,,b`` sind äquivalent, aber die ,,c`` sind unabhängig.
 
 Wir müssen unsere Grammatik ausbauen und auf der linken Seite sowohl Terminale als auch Nonterminale verwenden:
-\lstset{language={}, label={lst:cslsample}, caption={Die kontext-sensitive Grammatik $\set{a^n b^n c^n \,|\, n \in \mathbb{N}_0}$}, frame={single}, escapechar=\@}
+\lstset{language={}, label={lst:cslsample}, caption={Die kontext-sensitive Grammatik $\set{a^n b^n c^n \,|\, n \in \mathbb{N}_0}$.}, frame={single}, escapechar=\@}
 \begin{lstlisting}
 S @$\rightarrow$@ aSBC
 S @$\rightarrow$@
@@ -434,7 +434,7 @@ Abbildung~\ref{fig:chomsky_hierarchy} visualisiert die Chomsky-Hierarchie.
 \begin{figure}[h]
  \begin{center}
   \includegraphics{img/chomsky_hierarchy.pdf}
-  \caption{Die Chomsky-Hierarchie}
+  \caption{Die Chomsky-Hierarchie.}
   \label{fig:chomsky_hierarchy}
  \end{center}
 \end{figure}
@@ -453,7 +453,7 @@ Für die Notation von kontextfreien Sprachen würden sich also alle drei Notatio
 \begin{figure}[h]
  \begin{center}
   \includegraphics{img/grammar_types.pdf}
-  \caption{Die 4 Typen von formalen Sprachen und deren Eigenschaften}
+  \caption{Die 4 Typen von formalen Sprachen und deren Eigenschaften.}
   \label{fig:grammars}
  \end{center}
 \end{figure}

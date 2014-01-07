@@ -34,7 +34,7 @@ Eine Aussage ist ein aussagenlogischer Ausdruck, der wahr oder falsch ist. Diese
     \T  & \F  & \T \\
     \T  & \T  & \T \\
   \end{tabular}
-  \caption{Wahrheitstabelle einer Oder-Verknüpfung}
+  \caption{Wahrheitstabelle einer Oder-Verknüpfung.}
   \label{fig:or_operator}
  \end{center}
 \end{table}
@@ -49,7 +49,7 @@ Eine Aussage ist ein aussagenlogischer Ausdruck, der wahr oder falsch ist. Diese
     \T  & \F  & \F \\
     \T  & \T  & \T \\
   \end{tabular}
-  \caption{Wahrheitstabelle einer Und-Verknüpfung}
+  \caption{Wahrheitstabelle einer Und-Verknüpfung.}
   \label{fig:and_operator}
  \end{center}
 \end{table}
@@ -62,7 +62,7 @@ Eine Aussage ist ein aussagenlogischer Ausdruck, der wahr oder falsch ist. Diese
     \F   & \T \\
     \T   & \F \\
   \end{tabular}
-  \caption{Wahrheitstabelle einer Nicht-Verknüpfung}
+  \caption{Wahrheitstabelle einer Nicht-Verknüpfung.}
   \label{fig:neg_operator}
  \end{center}
 \end{table}
@@ -91,7 +91,7 @@ Zwei aussagenlogische Ausdrücke sind äquivalent, wenn deren Wahrheitstabellen 
     \T  & \F  & \T \\
     \T  & \T  & \F \\
   \end{tabular}
-  \caption{Wahrheitstabelle einer XOR-Verknüpfung}
+  \caption{Wahrheitstabelle einer XOR-Verknüpfung.}
   \label{fig:xor_operator}
  \end{center}
 \end{table}
@@ -145,7 +145,7 @@ Interessant ist weiters, dass ein 3-stelliges XOR diese Eigenschaft verliert. Ei
     \T  & \F  & \F \\
     \T  & \T  & \T \\
   \end{tabular}
-  \caption{Wahrheitstabelle einer Implikation}
+  \caption{Wahrheitstabelle einer Implikation.}
   \label{fig:implication_operator}
  \end{center}
 \end{table}
@@ -171,7 +171,7 @@ Man kann es als unintuitiv betrachten, dass die Implikation wahr zurückgibt, we
     \T  & \F  & \T \\
     \T  & \T  & \F \\
   \end{tabular}
-  \caption{Wahrheitstabelle einer NAND-Verknüpfung}
+  \caption{Wahrheitstabelle einer NAND-Verknüpfung.}
   \label{fig:nand_operator}
  \end{center}
 \end{table}
@@ -197,7 +197,7 @@ Das NAND ($|$ oder $\uparrow$, Shefferscher Strich) ist die Negation des Und-Ope
     \T  & \F  & \F \\
     \T  & \T  & \T \\
   \end{tabular}
-  \caption{Wahrheitstabelle einer Bijunktion}
+  \caption{Wahrheitstabelle einer Bijunktion.}
   \label{fig:bijunction_operator}
  \end{center}
 \end{table}
@@ -216,7 +216,7 @@ Die Bijunktion ($\leftrightarrow$, Äquivalenz) wird genau dann wahr, wenn beide
 %
 In Zusammenhang mit dem Lernen von Programmiersprachen entsteht die Frage, was der Unterschied zwischen logischen und binären Evaluierungen von boolschen Ausdrücken ist. Wir betrachten die Programmiersprache C.
 %
-\lstset{language={C}, caption={Unterschied zwischen logischen und binären Operatoren}, label={lst:difflogbin}}
+\lstset{language={C}, caption={Unterschied zwischen logischen und binären Operatoren.}, label={lst:difflogbin}}
 \begin{lstlisting}
 if (6 & 1) printf("foo");
 if (6 && 1) printf("bar");
@@ -279,7 +279,7 @@ Die Operatorenpräzedenz (engl. ,,operator precedence``) sind semantische Regeln
    $\rightarrow$ & Implikation
   \end{tabular}
   \caption{Operatorenpräzedenz für aussagenlogische Operatoren
-           (Operatoren weiter oben binden stärker)}
+           (Operatoren weiter oben binden stärker).}
   \label{tab:op_precedence}
  \end{center}
 \end{table}
@@ -314,7 +314,7 @@ Hornklauseln finden in der logischen Programmierung Anwendung und seien deshalb 
     Hornklausel & $A \lor \neg B \lor \neg C \lor \neg D$ \\
    \hline
   \end{tabular}
-  \caption{Beispiele für Klauseln und Monome}
+  \caption{Beispiele für Klauseln und Monome.}
   \label{fig:clauses_monoms}
  \end{center}
 \end{table}
@@ -383,7 +383,7 @@ Dieser Algorithmus wurde in Tabelle~\ref{tab:general-knf-dnf} auf Basis der Wahr
       (A \lor C) \land (B \lor C) \land (A \lor B)
     \end{displaymath}
 
-    \caption{Transformation von $\f$ in eine KNF}
+    \caption{Transformation von $\f$ in eine KNF.}
     \label{tab:knf}
   \end{center}
 \end{table}
@@ -402,7 +402,7 @@ Dieser Algorithmus wurde in Tabelle~\ref{tab:general-knf-dnf} auf Basis der Wahr
       \T & \T & \F & \T \\
       \T & \T & \T & \T
     \end{tabular}
-    \caption{Wahrheitstabelle der Funktion $\f$}
+    \caption{Wahrheitstabelle der Funktion $\f$.}
     \label{tab:knf-table}
   \end{center}
 \end{table}
@@ -422,7 +422,7 @@ Dieser Algorithmus wurde in Tabelle~\ref{tab:general-knf-dnf} auf Basis der Wahr
       \lor (A \land B \land \neg C) \lor (A \land B \land C)$ & DNF \\
      \hline
     \end{tabular}
-    \caption{Konstruktion der KNF/DNF durch Disjunktion/Konjunktion der Variablenbelegungen, die zu wahr/falsch führen}
+    \caption{Konstruktion der KNF/DNF durch Disjunktion/Konjunktion der Variablenbelegungen, die zu wahr/falsch führen.}
     \label{tab:general-knf-dnf}
   \end{center}
 \end{table}
