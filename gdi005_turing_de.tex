@@ -295,16 +295,16 @@ In dem Beweis wird das Halteproblem mittels einer sogenannten Reduktion (eine ei
 
 Im Falle des Korrektheitsproblems müssen wir also bloß eine Reduktion angeben, die zu jeder beliebigen Instanz des Halteproblems eine entsprechende Instanz des Korrektheits\-problems mit gleicher ja/nein Antwort konstruiert. Sei $\mathbf{M}$ eine beliebige Turingmaschine mit einem beliebigen Input $\mathbf{I_M}$. Die Reduktion besteht nun darin, eine neue Turingmaschine $\mathbf{M'}$ zu konstruieren, indem wir Übergangsregeln zu $\mathbf{M}$ so hinzuzufügen, dass nach dem Stehenbleiben des ursprünglichen Programms in mehreren zusätzlichen Schritten das gesamte Band mit Nullen überschrieben wird, schließlich eine einzelne $1$ darauf geschrieben wird und $\mathbf{M'}$ unmittelbar danach stehen bleibt. Dies ist möglich, da wir ohne Verlust der Allgemeinheit erzwingen können, dass eine Turingmaschine, hier $\mathbf{M}$, immer nur in \emph{einem} speziellen Endzustand anhalten kann. 
 
-Die Instanz des Korrektheitsproblem wird nun formuliert als die Frage, ob das Programm $\mathbf{M'}$ mit der gegebenen Spezifikation \glqq{}Bei Input $\mathbf{I_M}$ liefere den Wert $1$ zurück\grqq{} übereinstimmt. Klarerweise wird das \emph{genau dann und nur dann} passieren, wenn $\mathbf{M}$ mit Input $\mathbf{I_M}$ anhält. 
-
-Wenn es nun eine Turingmaschine $\mathbf{K}$ gäbe, die diese einfache Form des Korrektheitspro\-blems \emph{entscheiden} könnte (genau dies ist die zweifelhafte Annahme, die wir weiter unten wieder zurücknehmen müssen), dann würde durch obige Reduktion auch ein Algorithmus für das Halteproblem vorliegen: er würde zuerst $\mathbf{M'}$ konstruieren und dann $\mathbf{K}$ auf $\mathbf{M'}$ mit Input $\mathbf{I_M}$ loslassen, und das ja/nein Ergebnis der Berechnung von $\mathbf{K}$ als Ergebnis von $\mathbf{H}$ auswerfen (siehe Abbildung~\ref{fig:correctnessproblem}). 
-
-\begin{figure}[t]
+\begin{figure}[h]
 \centering
-\includegraphics[width=10cm]{img/correctnessproblem.png}
+\includegraphics[width=12cm]{img/correctnessproblem.jpg}
 \caption{Reduktion des Halteproblems auf das Korrektheitsproblem.}
 \label{fig:correctnessproblem}
 \end{figure}
+
+Die Instanz des Korrektheitsproblem wird nun formuliert als die Frage, ob das Programm $\mathbf{M'}$ mit der gegebenen Spezifikation \glqq{}Bei Input $\mathbf{I_M}$ liefere den Wert $1$ zurück\grqq{} übereinstimmt. Klarerweise wird das \emph{genau dann und nur dann} passieren, wenn $\mathbf{M}$ mit Input $\mathbf{I_M}$ anhält. 
+
+Wenn es nun eine Turingmaschine $\mathbf{K}$ gäbe, die diese einfache Form des Korrektheitspro\-blems \emph{entscheiden} könnte (genau dies ist die zweifelhafte Annahme, die wir weiter unten wieder zurücknehmen müssen), dann würde durch obige Reduktion auch ein Algorithmus für das Halteproblem vorliegen: er würde zuerst $\mathbf{M'}$ konstruieren und dann $\mathbf{K}$ auf $\mathbf{M'}$ mit Input $\mathbf{I_M}$ loslassen, und das ja/nein Ergebnis der Berechnung von $\mathbf{K}$ als Ergebnis von $\mathbf{H}$ auswerfen (siehe Abbildung~\ref{fig:correctnessproblem}). 
 
 Dies steht allerdings im Widerspruch zur Unentscheidbarkeit des Halteproblems, demge\-mäß es ja keinen solchen Algorithmus geben kann. Daher müssen wir die oben genannte Annahme, dass eine solche Turingmaschine $\mathbf{K}$ existieren kann, zurücknehmen, und damit ist natürlich auch das allgemeine Korrektheitsproblem unentscheidbar.~Q.E.D.\newline
 
