@@ -264,7 +264,7 @@ Der Beweis der Unentscheidbarkeit des Halteproblems folgt durch einen Widerspruc
 
 Für den Beweis wird eine weitere Turingmaschine $D$ (siehe Erklärung weiter unten, warum hier der Buchstabe \emph{D} verwendet wird) definiert, die sich wie folgt verhält (siehe Abbildung~\ref{fig:haltingproblem2}):
 \begin{itemize}
-  \item Bei Eingabe von (der kodierten Form von) $M$ simuliert $D$ die Turingmaschine $H$ mit Eingabe $I_M = M$.
+  \item Bei der Eingabe $M$ (in kodierter Form) simuliert $D$ die Turingmaschine $H$ mit Eingabe $I_M = M$.
   \item $H$ antwortet hier also mit ,,Ja`` oder ,,Nein``, je nachdem ob $M$ bei Verwendung des eigenen kodierten Programmcodes (also von $M$) als Input anhält oder nicht.
   \item Sobald die Simulation von $H$ fertig ist (was nach endlich vielen Schritten sicher passiert, so die Annahme), so verhält sich $D$ zusätzlich noch wie folgt:
     \begin{itemize}
@@ -280,9 +280,9 @@ Für den Beweis wird eine weitere Turingmaschine $D$ (siehe Erklärung weiter un
   \item Falls $D$ mit der Eingabe der kodierten Form von $D$ in eine Endlosschleife ginge, also \emph{nicht} anhielte, dann müsste die Simulation von $H$ vor dem übergang in die Endlos\-schleife bei der Ausführung von $D$ ein ,,Ja`` ausgegeben haben. Letzteres entspricht aber der Evaluierung des Anhaltens von $D$ mit der Eingabe $D$, d.h.\ $D$ mit der Eingabe $D$ müsste dementsprechend angehalten haben. Da $D$ mit der Eingabe $D$ also sowohl nicht halten als auch halten müsste, ergibt sich auch in diesem Fall ein Widerspruch.
 \end{itemize}
 
-\noindent Beide Fälle führen also zu einem Widerspruch. Alles außer der Annahme, dass $H$ existiert, ist nachvollziehbar und korrekt $\Rightarrow$ die einzige Möglichkeit, die genannten Widersprüche zu umgehen, ist die Annahme zu verwerfen.~Q.E.D.\newline
+Beide Fälle führen also zu einem Widerspruch. Alles außer der Annahme, dass $H$ existiert, ist nachvollziehbar und korrekt $\Rightarrow$ die einzige Möglichkeit, die genannten Widersprüche zu umgehen, ist die Annahme zu verwerfen.~Q.E.D.
 
-\noindent Es \emph{kann} also keine solche Turingmaschine geben, die immer entscheiden kann, ob eine beliebige andere Turingmaschine irgendwann in ihren Berechnungen anhält. über die Church-Turing-These gilt dies auch für jegliche Algorithmen (und damit für alle Arten rationaler Gedankengänge).
+Es \emph{kann} also keine solche Turingmaschine geben, die immer entscheiden kann, ob eine beliebige andere Turingmaschine irgendwann in ihren Berechnungen anhält. über die Church-Turing-These gilt dies auch für jegliche Algorithmen (und damit für alle Arten rationaler Gedankengänge).
 
 \paragraph{Erklärung der Bezeichnung der Turingmaschine $D$ (der entsprechende Gedankengang ist eine alternative Form des Beweises):} Der Buchstabe \emph{D} steht für Diagonalisierungsargument. Und zwar betrachtet man eine Tabelle, deren Zeilen und Spalten mit allen überhaupt möglichen Kodierungen von Turingmaschinen und allen ihren möglichen Inputs für $H$, je\-weils aufsteigend geordnetet, beschriftet sind. Dies geht z.B.\ mittels einer binären Kodierung, falls Programme und Inputs für $H$ nur mit Nullen und Einsen beschrieben werden, also genauso wie für konventionelle heute gebräuchliche Hardware. Im Feld der Tabelle in der Zeile, deren Beschriftung $M$ kodiert, und der Spalte, deren Beschriftung $I_M$ kodiert, steht $0$ falls die Turingmaschine $M$ mit Input $I_M$ anhält, und $1$ falls sie nicht anhält. Dann entsprechen die Werte in der \emph{Diagonale} in der Tabelle genau dem Verhalten von $D$, wenn der Wert $1$ bedeutet, dass $D$ \emph{anhält} (also genau \emph{umgekehrt} wie für $M$!), und $0$ dass sie nicht anhält. Dann entsprechen die Werte in Zeile (und Spalte) mit der Kodierung von $M$ in der \emph{Diagonale} in der Tabelle genau dem Verhalten von $D$ mit Input $M$, wenn der Wert $1$ bedeutet, dass $D$ mit Input $M$ \emph{anhält} (also genau \emph{umgekehrt} wie für $M$!), und $0$ dass sie nicht anhält.
 
