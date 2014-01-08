@@ -245,37 +245,39 @@ Der Beweis der Unentscheidbarkeit des Halteproblems folgt durch einen Widerspruc
 \paragraph{Annahme:} Es gibt eine Turingmaschine $H$, die für eine beliebige Turingmaschine $M$ und einen beliebigen Input $I_M$ in endlich vielen Schritten herausfindet, ob $M$ mit anfänglichen Bandinhalt $I_M$ irgendwann anhält oder nicht. Die Turingmaschine $H$ schreibt als Antwort aufs Band \emph{Ja}, falls $M$ mit $I_M$ irgendwann anhält, und \emph{Nein}, falls $M$ mit Input $I_M$ nicht anhält, und bleibt sofort danach stehen (siehe Abbildung~\ref{fig:haltingproblem1}).
 
 \begin{figure}[h]
-\begin{minipage}[h]{0.475\textwidth}
-\centering
-\includegraphics[width=3cm]{img/haltingproblem1.jpg}
-    \caption{Turingmaschine $H$.}
-    \label{fig:haltingproblem1}
-\end{minipage}
-%
-\begin{minipage}[h]{0.475\textwidth}
-\centering
-\includegraphics[width=3cm]{img/haltingproblem2.jpg}
-    \caption{Turingmaschine $D$.}
-    \label{fig:haltingproblem2}
-\end{minipage}
+ \begin{minipage}[h]{0.475\textwidth}
+  \begin{center}
+   \includegraphics[width=3cm]{img/haltingproblem1.jpg}
+   \caption{Turingmaschine $H$.}
+   \label{fig:haltingproblem1}
+  \end{center}
+ \end{minipage}%
+ %
+ \begin{minipage}[h]{0.475\textwidth}
+  \begin{center}
+   \includegraphics[width=3cm]{img/haltingproblem2.jpg}
+   \caption{Turingmaschine $D$.}
+   \label{fig:haltingproblem2}
+  \end{center}
+ \end{minipage}
 \end{figure}
 
 Für den Beweis wird eine weitere Turingmaschine $D$ (siehe Erklärung weiter unten, warum hier der Buchstabe \emph{D} verwendet wird) definiert, die sich wie folgt verhält (siehe Abbildung~\ref{fig:haltingproblem2}):
 \begin{itemize}
-  \item Bei Eingabe von (der kodierten Form von) $M$ simuliert $D$  die Turingmaschine $H$ mit Eingabe $I_M = M$.
-  \item $H$ antwortet hier also mit \emph{Ja} oder \emph{Nein}, je nachdem ob $M$ bei Verwendung des eigenen kodierten Programmcodes (also von $M$) als Input anhält oder nicht.
+  \item Bei Eingabe von (der kodierten Form von) $M$ simuliert $D$ die Turingmaschine $H$ mit Eingabe $I_M = M$.
+  \item $H$ antwortet hier also mit ,,Ja`` oder ,,Nein``, je nachdem ob $M$ bei Verwendung des eigenen kodierten Programmcodes (also von $M$) als Input anhält oder nicht.
   \item Sobald die Simulation von $H$ fertig ist (was nach endlich vielen Schritten sicher passiert, so die Annahme), so verhält sich $D$ zusätzlich noch wie folgt:
     \begin{itemize}
-      \item Falls $H$ als Resultat \emph{Ja} ausgegeben hat, geht $D$ in eine Endlosschleife.
-      \item Falls $H$ als Resultat \emph{Nein} ausgegeben hat, hält $D$  an.
+      \item Falls $H$ als Resultat ,,Ja`` ausgegeben hat, geht $D$ in eine Endlosschleife.
+      \item Falls $H$ als Resultat ,,Nein`` ausgegeben hat, hält $D$  an.
     \end{itemize}
 \end{itemize}
 
 \noindent Nun wird der kodierte Programmcode von $D$ in die Turingmaschine $D$ als Input eingegeben, d.h.\ $D$ wird mit Programminput $D$ ausgeführt. Es gibt dann nur folgende zwei Fälle:
 
 \begin{itemize}
-  \item Falls $D$ mit der Eingabe der kodierten Form von $D$ anhielte, dann müsste die Simulation von $H$, sobald diese fertig ist, also knapp \emph{vor} dem Ende der Ausführung von $D$, ein \emph{Nein} ausgegeben haben. Dies entspricht aber der Evaluierung des Anhaltens von $D$ mit der Eingabe $D$, d.h.\ $D$ mit der Eingabe $D$ dürfte dementsprechend \emph{nicht} angehalten haben. Da $D$ mit der Eingabe $D$ also sowohl halten als auch nicht halten müsste, ergibt sich in diesem Fall ein Widerspruch.
-  \item Falls $D$ mit der Eingabe der kodierten Form von $D$ in eine Endlosschleife ginge, also \emph{nicht} anhielte, dann müsste die Simulation von $H$ vor dem übergang in die Endlos\-schleife bei der Ausführung von $D$ ein \emph{Ja} ausgegeben haben. Letzteres entspricht aber der Evaluierung des Anhaltens von $D$ mit der Eingabe $D$, d.h.\ $D$ mit der Eingabe $D$ müsste dementsprechend angehalten haben. Da $D$ mit der Eingabe $D$ also sowohl nicht halten als auch halten müsste, ergibt sich auch in diesem Fall ein Widerspruch.
+  \item Falls $D$ mit der Eingabe der kodierten Form von $D$ anhielte, dann müsste die Simulation von $H$, sobald diese fertig ist, also knapp \emph{vor} dem Ende der Ausführung von $D$, ein ,,Nein`` ausgegeben haben. Dies entspricht aber der Evaluierung des Anhaltens von $D$ mit der Eingabe $D$, d.h.\ $D$ mit der Eingabe $D$ dürfte dementsprechend \emph{nicht} angehalten haben. Da $D$ mit der Eingabe $D$ also sowohl halten als auch nicht halten müsste, ergibt sich in diesem Fall ein Widerspruch.
+  \item Falls $D$ mit der Eingabe der kodierten Form von $D$ in eine Endlosschleife ginge, also \emph{nicht} anhielte, dann müsste die Simulation von $H$ vor dem übergang in die Endlos\-schleife bei der Ausführung von $D$ ein ,,Ja`` ausgegeben haben. Letzteres entspricht aber der Evaluierung des Anhaltens von $D$ mit der Eingabe $D$, d.h.\ $D$ mit der Eingabe $D$ müsste dementsprechend angehalten haben. Da $D$ mit der Eingabe $D$ also sowohl nicht halten als auch halten müsste, ergibt sich auch in diesem Fall ein Widerspruch.
 \end{itemize}
 
 \noindent Beide Fälle führen also zu einem Widerspruch. Alles außer der Annahme, dass $H$ existiert, ist nachvollziehbar und korrekt $\Rightarrow$ die einzige Möglichkeit, die genannten Widersprüche zu umgehen, ist die Annahme zu verwerfen.~Q.E.D.\newline
@@ -286,7 +288,7 @@ Für den Beweis wird eine weitere Turingmaschine $D$ (siehe Erklärung weiter un
 
 Der Widerspruch ergibt sich bei dieser Sichtweise daraus, dass ja $D$ ebenfalls eine Tu\-ringmaschine ist, die auch selbst mit der gleichen Methode wie $M$ und $I_M$ kodiert werden kann. Ihre Ausführung auf sich selbst als Input entspricht also ebenfalls einem Feld in der Diagonale, das dann allerdings gleichzeitig sowohl den Wert $0$ als auch den Wert $1$ enthalten müsste, was natürlich nicht sein kann --- dieses Feld in der Diagonale und damit auch die Kodierung von $D$ sowie in weiterer Folge $H$ können daher nicht existieren. Gemäß diesem Beweis ist das Halteproblem also ebenfalls unentscheidbar.~Q.E.D.
 
-\paragraph{Das $3n+1$ Problem:} Dieses Problem, auch bekannt unter der Bezeichnung Collatz-Problem, zählt zu den bekanntesten ungelösten mathematischen Problemen. Sei $n$ eine natürliche Zahl. Falls $n$ gerade ist, dann fahre mit $n/2$, sonst mit $3n+1$ fort, bis durch wiederholte Anwendung dieser beiden Formeln die Zahl $1$ erreicht wird. Die Frage ist, ob der Algorithmus bei \emph{jedem} ganzahligen Anfangswert größer als $0$ die Zahl $1$ erreicht und damit anhält. Trotz größter Anstrengungen ist diese Frage bisher unbeantwortet, und für mehrere Verallgemeinerungen konnte bewiesen werden, dass sie unentscheidbar sind.
+\paragraph{Das $\mathbf{3n+1}$ Problem:} Dieses Problem, auch bekannt unter der Bezeichnung Collatz-Problem, zählt zu den bekanntesten ungelösten mathematischen Problemen. Sei $n$ eine natürliche Zahl. Falls $n$ gerade ist, dann fahre mit $n/2$, sonst mit $3n+1$ fort, bis durch wiederholte Anwendung dieser beiden Formeln die Zahl $1$ erreicht wird. Die Frage ist, ob der Algorithmus bei \emph{jedem} ganzahligen Anfangswert größer als $0$ die Zahl $1$ erreicht und damit anhält. Trotz größter Anstrengungen ist diese Frage bisher unbeantwortet, und für mehrere Verallgemeinerungen konnte bewiesen werden, dass sie unentscheidbar sind.
 
 \subsection{Unentscheidbarkeit des Korrektheitsproblems}
 Es gibt unzählige andere unentscheidbare Probleme\footnote{Laut dem \href{http://de.wikipedia.org/wiki/Satz_von_Rice}{Satz von Rice} ist \emph{jede} nicht-triviale Fragestellung die Turingmaschinen betrifft unentscheidbar.}, zum Beispiel das für die Informatik bedeutsame sogenannte \emph{Korrektheitsproblem}, bei dem es darum geht herauszufinden ob ein Algorithmus einer Spezifikation entspricht oder nicht. Klarerweise wäre es sehr wünschenswert, automatisch die Einhaltung einer Spezifikation überprüfen zu können. Leider lässt sich die Unentscheidbarkeit des Korrektheitsproblems leicht mittels eines sogenannten Reduktionsbeweises zeigen, wodurch sich dieser Wunsch als prinzipiell unerfüllbar erweist.
