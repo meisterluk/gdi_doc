@@ -231,18 +231,27 @@ Der Nichtdeterminismus ist ein wichtiges Konzept für die theoretische Informati
 Im Kontext der Komplexitätstheorie spricht man bei Nichtdeterminismus von den sogenannten \emph{Orakelturingmaschinen}. Liegen mehrere Zustandübergänge für eine Konfiguration vor, befragt die Turingmaschine die (zur Verfügung stehende) Orakelturingmaschine. Diese antwortet stets mit jenem Übergang, welcher direkt zur richtigen Lösung führt. Diese Hervorsagefähigkeit begründet ihren Namen ,,Orakel``.
 %
 \subsection{Unentscheidbarkeit des Halteproblems}
+\label{sec:haltingproblem}
 \index{Halteproblem}
 %
-\index{Turing-berechenbar}
 Alan Turing konnte 1936~\cite{Turing01011937} überraschenderweise beweisen, dass es einfache, nur mit Ja oder Nein beantwortbare Fragestellungen (auch Entscheidungsprobleme genannt) gibt, die sich mit Turingmaschinen \emph{nicht} vollständig beantworten lassen, obwohl eine klar definierte Antwort offensichtlich existieren muss. Dabei ist es für die eigentliche Fragestellung selbstverständlich rein logisch gesehen unwichtig, \emph{wie} die Antwort herausgefunden wird, sie muss nur der Wahrheit entsprechen und liegt sozusagen unmittelbar vor, während eine Turingmaschine die korrekte Antwort erst Schritt-für-Schritt berechnen muss.
 
 Turing bewies nun, dass es keine Turingmaschine $H$ geben \emph{kann}, die in jedem Fall nach endlich vielen Schritten die richtige Antwort auf die Fragestellung liefert, ob eine beliebige andere Turingmaschine $M$ bei anfänglichen Bandinhalt $I_M$ irgendwann anhält oder stattdessen für immer weiterrechnet (das sogenannte \emph{Halteproblem}).
 
+\index{Turing-berechenbar}
 Unter Annahme der Church-Turing These lassen sich solche Fragestellungen daher mittels bekannter Methoden nicht eindeutig entscheiden, und man bezeichnet sie entsprechend als \emph{unentscheidbar} (ohne Annahme der Church-Turing These kann man nur sagen, dass das Halteproblem nicht \emph{Turing-berechenbar} ist, allerdings ist die Church-Turing These allgemein akzeptiert).
 
+\subsubsection{Beweis der Unentscheidbarkeit des Halteproblems}
+\label{sec:proof_haltingproblem}
+\index{Halteproblem (Beweis)}
+%
 Der Beweis der Unentscheidbarkeit des Halteproblems folgt durch einen Widerspruch, welcher nur beseitigt werden kann, wenn folgende Annahme zurückgenommen wird (d.h.\ die Turingmaschine $H$ kann es nicht geben).
 
-\paragraph{Annahme:} Es gibt eine Turingmaschine $H$, die für eine beliebige Turingmaschine $M$ und einen beliebigen Input $I_M$ in endlich vielen Schritten herausfindet, ob $M$ mit anfänglichen Bandinhalt $I_M$ irgendwann anhält oder nicht. Die Turingmaschine $H$ schreibt als Antwort aufs Band \emph{Ja}, falls $M$ mit $I_M$ irgendwann anhält, und \emph{Nein}, falls $M$ mit Input $I_M$ nicht anhält, und bleibt sofort danach stehen (siehe Abbildung~\ref{fig:haltingproblem1}).
+\paragraph{Annahme:}
+Es gibt eine Turingmaschine $H$, die für eine beliebige Turingmaschine $M$ und einen beliebigen Input $I_M$ in endlich vielen Schritten herausfindet, ob $M$ mit anfänglichen Bandinhalt $I_M$ irgendwann anhält oder nicht.
+
+\paragraph{Konstruktion:}
+Die Turingmaschine $H$ schreibt als Antwort aufs Band \emph{Ja}, falls $M$ mit $I_M$ irgendwann anhält, und \emph{Nein}, falls $M$ mit Input $I_M$ nicht anhält, und bleibt sofort danach stehen (siehe Abbildung~\ref{fig:haltingproblem1}).
 
 \begin{figure}[h]
  \begin{minipage}[h]{0.475\textwidth}
@@ -273,7 +282,8 @@ Für den Beweis wird eine weitere Turingmaschine $D$ (siehe Erklärung weiter un
     \end{itemize}
 \end{itemize}
 
-\noindent Nun wird der kodierte Programmcode von $D$ in die Turingmaschine $D$ als Input eingegeben, d.h.\ $D$ wird mit Programminput $D$ ausgeführt. Es gibt dann nur folgende zwei Fälle:
+\paragraph{Folgerung:}
+Nun wird der kodierte Programmcode von $D$ in die Turingmaschine $D$ als Input eingegeben, d.h.\ $D$ wird mit Programminput $D$ ausgeführt. Es gibt dann nur folgende zwei Fälle:
 
 \begin{itemize}
   \item Falls $D$ mit der Eingabe der kodierten Form von $D$ anhielte, dann müsste die Simulation von $H$, sobald diese fertig ist, also knapp \emph{vor} dem Ende der Ausführung von $D$, ein ,,Nein`` ausgegeben haben. Dies entspricht aber der Evaluierung des Anhaltens von $D$ mit der Eingabe $D$, d.h.\ $D$ mit der Eingabe $D$ dürfte dementsprechend \emph{nicht} angehalten haben. Da $D$ mit der Eingabe $D$ also sowohl halten als auch nicht halten müsste, ergibt sich in diesem Fall ein Widerspruch.
@@ -284,15 +294,24 @@ Beide Fälle führen also zu einem Widerspruch. Außer der Annahme, dass $H$ exi
 
 Es \emph{kann} also keine solche Turingmaschine geben, die immer entscheiden kann, ob eine beliebige andere Turingmaschine irgendwann in ihren Berechnungen anhält. über die Church-Turing-These gilt dies auch für jegliche Algorithmen (und damit für alle Arten rationaler Gedankengänge).
 
-\paragraph{Erklärung der Bezeichnung der Turingmaschine $D$ (der entsprechende Gedankengang ist eine alternative Form des Beweises):} Der Buchstabe \emph{D} steht für Diagonalisierungsargument. Und zwar betrachtet man eine Tabelle, deren Zeilen und Spalten mit allen überhaupt möglichen Kodierungen von Turingmaschinen und allen ihren möglichen Inputs für $H$, je\-weils aufsteigend geordnetet, beschriftet sind. Dies geht z.B.\ mittels einer binären Kodierung, falls Programme und Inputs für $H$ nur mit Nullen und Einsen beschrieben werden, also genauso wie für konventionelle heute gebräuchliche Hardware. Im Feld der Tabelle in der Zeile, deren Beschriftung $M$ kodiert, und der Spalte, deren Beschriftung $I_M$ kodiert, steht $0$ falls die Turingmaschine $M$ mit Input $I_M$ anhält, und $1$ falls sie nicht anhält. Dann entsprechen die Werte in der \emph{Diagonale} in der Tabelle genau dem Verhalten von $D$, wenn der Wert $1$ bedeutet, dass $D$ \emph{anhält} (also genau \emph{umgekehrt} wie für $M$!), und $0$ dass sie nicht anhält. Dann entsprechen die Werte in Zeile (und Spalte) mit der Kodierung von $M$ in der \emph{Diagonale} in der Tabelle genau dem Verhalten von $D$ mit Input $M$, wenn der Wert $1$ bedeutet, dass $D$ mit Input $M$ \emph{anhält} (also genau \emph{umgekehrt} wie für $M$!), und $0$ dass sie nicht anhält.
+\subsubsection{Alternativer Beweis}
+%
+\index{Diagonalisierungsargument}
+Gegeben sei die selbe Annahme und Konstruktion.
+
+Der Buchstabe \emph{D} steht für Diagonalisierungsargument. Und zwar betrachtet man eine Tabelle, deren Zeilen und Spalten mit allen überhaupt möglichen Kodierungen von Turingmaschinen und allen ihren möglichen Inputs für $H$, je\-weils aufsteigend geordnetet, beschriftet sind. Dies geht z.B.\ mittels einer binären Kodierung, falls Programme und Inputs für $H$ nur mit Nullen und Einsen beschrieben werden, also genauso wie für konventionelle heute gebräuchliche Hardware. Im Feld der Tabelle in der Zeile, deren Beschriftung $M$ kodiert, und der Spalte, deren Beschriftung $I_M$ kodiert, steht $0$ falls die Turingmaschine $M$ mit Input $I_M$ anhält, und $1$ falls sie nicht anhält. Dann entsprechen die Werte in der \emph{Diagonale} in der Tabelle genau dem Verhalten von $D$, wenn der Wert $1$ bedeutet, dass $D$ \emph{anhält} (also genau \emph{umgekehrt} wie für $M$!), und $0$ dass sie nicht anhält. Dann entsprechen die Werte in Zeile (und Spalte) mit der Kodierung von $M$ in der \emph{Diagonale} in der Tabelle genau dem Verhalten von $D$ mit Input $M$, wenn der Wert $1$ bedeutet, dass $D$ mit Input $M$ \emph{anhält} (also genau \emph{umgekehrt} wie für $M$!), und $0$ dass sie nicht anhält.
 
 Der Widerspruch ergibt sich bei dieser Sichtweise daraus, dass ja $D$ ebenfalls eine Tu\-ringmaschine ist, die auch selbst mit der gleichen Methode wie $M$ und $I_M$ kodiert werden kann. Ihre Ausführung auf sich selbst als Input entspricht also ebenfalls einem Feld in der Diagonale, das dann allerdings gleichzeitig sowohl den Wert $0$ als auch den Wert $1$ enthalten müsste, was natürlich nicht sein kann --- dieses Feld in der Diagonale und damit auch die Kodierung von $D$ sowie in weiterer Folge $H$ können daher nicht existieren. Gemäß diesem Beweis ist das Halteproblem also ebenfalls unentscheidbar.~Q.E.D.
 
 \paragraph{Das $\mathbf{3n+1}$ Problem:} Dieses Problem, auch bekannt unter der Bezeichnung Collatz-Problem, zählt zu den bekanntesten ungelösten mathematischen Problemen. Sei $n$ eine natürliche Zahl. Falls $n$ gerade ist, dann fahre mit $n/2$, sonst mit $3n+1$ fort, bis durch wiederholte Anwendung dieser beiden Formeln die Zahl $1$ erreicht wird. Die Frage ist, ob der Algorithmus bei \emph{jedem} ganzahligen Anfangswert größer als $0$ die Zahl $1$ erreicht und damit anhält. Trotz größter Anstrengungen ist diese Frage bisher unbeantwortet, und für mehrere Verallgemeinerungen konnte bewiesen werden, dass sie unentscheidbar sind.
 
 \subsection{Unentscheidbarkeit des Korrektheitsproblems}
+\index{Korrektheitsproblem}
+%
 Es gibt unzählige andere unentscheidbare Probleme\footnote{Laut dem Satz von Rice ist \emph{jede} nicht-triviale Fragestellung die Turingmaschinen betrifft unentscheidbar.}, zum Beispiel das für die Informatik bedeutsame sogenannte \emph{Korrektheitsproblem}, bei dem es darum geht herauszufinden ob ein Algorithmus einer Spezifikation entspricht oder nicht. Klarerweise wäre es sehr wünschenswert, automatisch die Einhaltung einer Spezifikation überprüfen zu können. Leider lässt sich die Unentscheidbarkeit des Korrektheitsproblems leicht mittels eines sogenannten Reduktionsbeweises zeigen, wodurch sich dieser Wunsch als prinzipiell unerfüllbar erweist.
 
+\subsubsection{Beweis der Unentscheidbarkeit des Korrektheitsproblems}
+%
 In dem Beweis wird das Halteproblem mittels einer sogenannten Reduktion (eine einfache Transformation, die problemlos ausprogrammiert werden kann) auf eine bestimmte Form des Korrektheitsproblems reduziert (dieser Begriff ergibt sich daraus, dass sich das Halteproblem dadurch sozusagen als eine vereinfachte, also eingeschränkte, sprich reduzierte Version des Korrektheitsproblems herausstellt). Wäre nun das allgemeine Korrektheitspro\-blem entscheid\-bar, würde sich aus der Reduktion ein funktionierender Algorithmus für das Halteproblem ergeben, was im Widerspruch zur bereits gezeigten Unentscheidbarkeit des Halteproblems stünde. Deshalb \emph{muss}, damit dieser Widerspruch umgangen werden kann, auch das Korrekt\-heitsproblem unentscheidbar sein.
 
 Im Falle des Korrektheitsproblems müssen wir also bloß eine Reduktion angeben, die zu jeder beliebigen Instanz des Halteproblems eine entsprechende Instanz des Korrektheits\-problems mit gleicher Ja/Nein Antwort konstruiert. Sei $M$ eine beliebige Turingmaschine mit einem beliebigen Input $I_M$. Die Reduktion besteht nun darin, eine neue Turingmaschine $M'$ zu konstruieren, indem wir übergangsregeln zu $M$ so hinzuzufügen, dass nach dem Stehenbleiben des ursprünglichen Programms in mehreren zusätzlichen Schritten das gesamte Band mit Nullen überschrieben wird, schließlich eine einzelne $1$ darauf geschrieben wird und $M'$ unmittelbar danach stehen bleibt. Dies ist möglich, da wir ohne Verlust der Allgemeinheit erzwingen können, dass eine Turingmaschine, hier $M$, immer nur in \emph{einem} speziellen Endzustand anhalten kann.
@@ -310,4 +329,4 @@ Wenn es nun eine Turingmaschine $K$ gäbe, die diese einfache Form des Korrekthe
 
 Dies steht allerdings im Widerspruch zur Unentscheidbarkeit des Halteproblems, demge\-mäß es ja keinen solchen Algorithmus geben kann. Daher müssen wir die oben genannte Annahme, dass eine solche Turingmaschine $K$ existieren kann, zurücknehmen, und damit ist natürlich auch das allgemeine Korrektheitsproblem unentscheidbar.~Q.E.D.\newline
 
-\noindent Für die Softwareentwicklung bedeutet dies, dass im Allgemeinen leider \emph{weder} eine automatisierte überprüfung (auch \emph{formale Verifikation} genannt) einer übereinstimmung zwischen einem Programm (bzw.\ seines source codes) und seiner Spezifikation, \emph{noch} eine händische durch einen rational vorgehenden Menschen möglich ist.
+Für die Softwareentwicklung bedeutet dies, dass im Allgemeinen leider \emph{weder} eine automatisierte überprüfung (auch \emph{formale Verifikation} genannt) einer übereinstimmung zwischen einem Programm (bzw.\ seines source codes) und seiner Spezifikation, \emph{noch} eine händische durch einen rational vorgehenden Menschen möglich ist.
