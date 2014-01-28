@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   width="886"
+   height="582"
+   sodipodi:docname="correctnessproblem.svg">
+  <metadata
+     id="metadata8">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs6">
+    <marker
+       inkscape:stockid="Arrow1Send"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Send"
+       style="overflow:visible;">
+      <path
+         id="path4035"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;"
+         transform="scale(0.2) rotate(180) translate(6,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Mend"
+       style="overflow:visible;">
+      <path
+         id="path4029"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;"
+         transform="scale(0.4) rotate(180) translate(10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lend"
+       style="overflow:visible;">
+      <path
+         id="path4023"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1280"
+     inkscape:window-height="751"
+     id="namedview4"
+     showgrid="false"
+     inkscape:zoom="0.92439863"
+     inkscape:cx="443"
+     inkscape:cy="291"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <flowRoot
+     xml:space="preserve"
+     id="flowRoot3755"
+     style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Basic;-inkscape-font-specification:Gentium Basic"
+     transform="translate(30.069739,1.1033624)"><flowRegion
+       id="flowRegion3757"><rect
+         id="rect3759"
+         width="141.23039"
+         height="78.33873"
+         x="48.547947"
+         y="25.905355" /></flowRegion><flowPara
+       id="flowPara3761"
+       style="font-size:50px">HALT</flowPara></flowRoot>  <flowRoot
+     xml:space="preserve"
+     id="flowRoot3755-2"
+     style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Basic;-inkscape-font-specification:Gentium Basic"
+     transform="translate(450.64754,0.86863302)"><flowRegion
+       id="flowRegion3757-4"><rect
+         id="rect3759-3"
+         width="373.57092"
+         height="78.33873"
+         x="48.547947"
+         y="25.905355" /></flowRegion><flowPara
+       id="flowPara3761-7"
+       style="font-size:50px">CORRECTNESS</flowPara></flowRoot>  <flowRoot
+     xml:space="preserve"
+     id="flowRoot3755-2-1"
+     style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Basic;-inkscape-font-specification:Gentium Basic"
+     transform="translate(449.55628,194.36461)"><flowRegion
+       id="flowRegion3757-4-3"><rect
+         id="rect3759-3-8"
+         width="412.65756"
+         height="78.33873"
+         x="48.547947"
+         y="25.905355" /></flowRegion><flowPara
+       id="flowPara3761-7-4"
+       style="font-size:50px">K(M', (M, X), 1)</flowPara></flowRoot>  <flowRoot
+     xml:space="preserve"
+     id="flowRoot3755-2-1-8"
+     style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Basic;-inkscape-font-specification:Gentium Basic"
+     transform="translate(443.26448,455.06331)"><flowRegion
+       id="flowRegion3757-4-3-0"><rect
+         id="rect3759-3-8-2"
+         width="412.65756"
+         height="78.33873"
+         x="48.547947"
+         y="25.905355" /></flowRegion><flowPara
+       id="flowPara3761-7-4-6"
+       style="font-size:50px">Yes/No</flowPara></flowRoot>  <flowRoot
+     xml:space="preserve"
+     id="flowRoot3755-2-1-8-2"
+     style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Basic;-inkscape-font-specification:Gentium Basic"
+     transform="translate(-108.73552,455.06331)"><flowRegion
+       id="flowRegion3757-4-3-0-4"><rect
+         id="rect3759-3-8-2-5"
+         width="412.65756"
+         height="78.33873"
+         x="48.547947"
+         y="25.905355" /></flowRegion><flowPara
+       id="flowPara3761-7-4-6-8"
+       style="font-size:50px">Yes/No</flowPara></flowRoot>  <flowRoot
+     xml:space="preserve"
+     id="flowRoot3755-2-1-2"
+     style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Basic;-inkscape-font-specification:Gentium Basic"
+     transform="translate(-107.67909,195.46797)"><flowRegion
+       id="flowRegion3757-4-3-2"><rect
+         id="rect3759-3-8-4"
+         width="412.65756"
+         height="78.33873"
+         x="48.547947"
+         y="25.905355" /></flowRegion><flowPara
+       id="flowPara3761-7-4-62"
+       style="font-size:50px">H(M, X)?</flowPara></flowRoot>  <flowRoot
+     xml:space="preserve"
+     id="flowRoot3755-1"
+     style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Basic;-inkscape-font-specification:Gentium Basic"
+     transform="translate(103.6463,100.17125)"><flowRegion
+       id="flowRegion3757-45"><rect
+         id="rect3759-7"
+         width="536.23413"
+         height="46.319641"
+         x="48.547947"
+         y="25.905355" /></flowRegion><flowPara
+       style="font-size:25px"
+       id="flowPara3032">Simply: M'(M, X) := if M(x) halts, then 1</flowPara></flowRoot>  <flowRoot
+     xml:space="preserve"
+     id="flowRoot3755-1-3"
+     style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Basic;-inkscape-font-specification:Gentium Basic"
+     transform="translate(79.372327,0.31072696)"><flowRegion
+       id="flowRegion3757-45-2"><rect
+         id="rect3759-7-5"
+         width="536.23413"
+         height="61.7883"
+         x="48.547947"
+         y="25.905355" /></flowRegion><flowPara
+       id="flowPara3761-8-2"
+       style="font-size:50px">≤</flowPara></flowRoot>  <flowRoot
+     xml:space="preserve"
+     id="flowRoot3755-1-3-8"
+     style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Basic;-inkscape-font-specification:Gentium Basic"
+     transform="translate(79.372325,190.31073)"><flowRegion
+       id="flowRegion3757-45-2-9"><rect
+         id="rect3759-7-5-6"
+         width="536.23413"
+         height="61.7883"
+         x="48.547947"
+         y="25.905355" /></flowRegion><flowPara
+       id="flowPara3761-8-2-1"
+       style="font-size:50px">→</flowPara></flowRoot>  <flowRoot
+     xml:space="preserve"
+     id="flowRoot3755-1-3-8-6"
+     style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Basic;-inkscape-font-specification:Gentium Basic"
+     transform="translate(79.372325,446.31073)"><flowRegion
+       id="flowRegion3757-45-2-9-8"><rect
+         id="rect3759-7-5-6-7"
+         width="536.23413"
+         height="61.7883"
+         x="48.547947"
+         y="25.905355" /></flowRegion><flowPara
+       id="flowPara3761-8-2-1-4"
+       style="font-size:50px">←</flowPara></flowRoot>  <flowRoot
+     xml:space="preserve"
+     id="flowRoot4006"
+     style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Basic;-inkscape-font-specification:Gentium Basic"
+     transform="translate(-33.100872,37.514321)"><flowRegion
+       id="flowRegion4008"><rect
+         id="rect4010"
+         width="250.46326"
+         height="126.88667"
+         x="666.43091"
+         y="322.70984" /></flowRegion><flowPara
+       id="flowPara4012"
+       style="font-size:30px">↓ complex</flowPara></flowRoot>  <path
+     style="fill:none;stroke:#000000;stroke-width:15;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Send);stroke-miterlimit:4;stroke-dasharray:none"
+     d="m 385.07347,310.57285 c 97.62446,13.29125 110.16798,103.68125 0,118.05978"
+     id="path4014"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cc" />
+</svg>
