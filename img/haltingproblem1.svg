@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   width="177"
+   height="232"
+   sodipodi:docname="haltingproblem1.svg">
+  <metadata
+     id="metadata8">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs6">
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Mend"
+       style="overflow:visible;">
+      <path
+         id="path3780"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;"
+         transform="scale(0.4) rotate(180) translate(10,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1280"
+     inkscape:window-height="751"
+     id="namedview4"
+     showgrid="false"
+     inkscape:zoom="2.3189655"
+     inkscape:cx="88.500001"
+     inkscape:cy="116"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <rect
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+     id="rect3755"
+     width="157.82899"
+     height="78.483269"
+     x="8.6245356"
+     y="53.903347" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 35.899628,54.118959 -13.799256,-20.052045 45.494424,0 -13.04461,19.728625"
+     id="path3757"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 120.8513,53.687732 -13.69145,-19.405204 46.14127,0 -13.58365,19.405204"
+     id="path3759"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 74.925651,132.27881 -14.122677,19.94424 46.788106,0 -14.661712,-19.94424"
+     id="path3761"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
+     d="m 74.171004,152.43866 0,19.18959 -39.349443,0 0,16.60223"
+     id="path3763"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
+     d="m 94.007435,152.33085 0,19.1896 39.241635,0 0,16.81784"
+     id="path3765"
+     inkscape:connector-curvature="0" />
+  <flowRoot
+     xml:space="preserve"
+     id="flowRoot4211"
+     style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Basic;-inkscape-font-specification:Gentium Basic"
+     transform="translate(-6.4684015,1.7249071)"><flowRegion
+       id="flowRegion4213"><rect
+         id="rect4215"
+         width="64.252785"
+         height="41.39777"
+         x="17.249071"
+         y="1.2936803" /></flowRegion><flowPara
+       id="flowPara4217"
+       style="font-size:27px;font-weight:bold;-inkscape-font-specification:Gentium Basic Bold">M</flowPara></flowRoot>  <flowRoot
+     xml:space="preserve"
+     id="flowRoot4211-1"
+     style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Basic;-inkscape-font-specification:Gentium Basic"
+     transform="translate(77.531599,-2.2750882)"><flowRegion
+       id="flowRegion4213-3"><rect
+         id="rect4215-6"
+         width="64.252785"
+         height="41.39777"
+         x="17.249071"
+         y="1.2936803" /></flowRegion><flowPara
+       id="flowPara4217-4"
+       style="font-size:27px;font-weight:bold;-inkscape-font-specification:Gentium Basic Bold">I<flowSpan
+   style="font-size:65.00091553%;baseline-shift:sub"
+   id="flowSpan4246">M</flowSpan></flowPara></flowRoot>  <flowRoot
+     xml:space="preserve"
+     id="flowRoot4211-0"
+     style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Basic;-inkscape-font-specification:Gentium Basic"
+     transform="translate(38.746872,75.541343)"><flowRegion
+       id="flowRegion4213-7"><rect
+         id="rect4215-1"
+         width="64.252785"
+         height="41.39777"
+         x="17.249071"
+         y="1.2936803" /></flowRegion><flowPara
+       id="flowPara4217-6"
+       style="font-size:27px;font-weight:bold;-inkscape-font-specification:Gentium Basic Bold">H</flowPara></flowRoot>  <flowRoot
+     xml:space="preserve"
+     id="flowRoot4211-0-3"
+     style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Basic;-inkscape-font-specification:Gentium Basic"
+     transform="translate(-12.164254,194.75324)"><flowRegion
+       id="flowRegion4213-7-8"><rect
+         id="rect4215-1-5"
+         width="64.252785"
+         height="41.39777"
+         x="17.249071"
+         y="1.2936803" /></flowRegion><flowPara
+       id="flowPara4217-6-4"
+       style="font-size:16px;font-weight:normal;-inkscape-font-specification:Gentium Basic">yes</flowPara></flowRoot>  <flowRoot
+     xml:space="preserve"
+     id="flowRoot4211-0-3-8"
+     style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Basic;-inkscape-font-specification:Gentium Basic"
+     transform="translate(84.788133,195.43285)"><flowRegion
+       id="flowRegion4213-7-8-3"><rect
+         id="rect4215-1-5-1"
+         width="64.252785"
+         height="41.39777"
+         x="17.249071"
+         y="1.2936803" /></flowRegion><flowPara
+       id="flowPara4217-6-4-7"
+       style="font-size:16px;font-weight:normal;-inkscape-font-specification:Gentium Basic">no</flowPara></flowRoot></svg>
