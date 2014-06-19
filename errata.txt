@@ -10,3 +10,6 @@ d35023d67a0fe13f661a673b4cf7c907c6a09ea0 Georg Regitnig         Modal verb requi
 d35023d67a0fe13f661a673b4cf7c907c6a09ea0 Helmut Zöhrer          DFA is missing a label "b".
 a5868d5c4e9abf1db719d4a04afa8febb57faa2b criscom                Omitted "ein" p. 71
 75ed55a9c32ebaefde0d2370cdd32e1bf09bc5d4 Frédéric Gierlinger    "Zustandsübergang" instead of "Zustandübergang"
+8c26fcf5b88957b7883eba6ecc014ac57a3fc40d Peter Grassberger      change dutch "informati-ka" to "informatica"
+8c26fcf5b88957b7883eba6ecc014ac57a3fc40d Peter Grassberger      add missing "ist"
+8c26fcf5b88957b7883eba6ecc014ac57a3fc40d Peter Grassberger      add missing word "durchgesetzt"
