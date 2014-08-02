@@ -8,7 +8,7 @@ TARGET_FILE=document
 EDITOR=geany
 SHELL=/bin/sh
 LATEX=latex
-PDFLATEX=/home/meisterluk/.texlive/bin/x86_64-linux/pdflatex
+PDFLATEX=pdflatex
 
 %.pdf : %.tex
 	$(PDFLATEX) -halt-on-error $<
