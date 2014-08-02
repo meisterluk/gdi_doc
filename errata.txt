@@ -13,3 +13,4 @@ a5868d5c4e9abf1db719d4a04afa8febb57faa2b criscom                Omitted "ein" p.
 8c26fcf5b88957b7883eba6ecc014ac57a3fc40d Peter Grassberger      change dutch "informati-ka" to "informatica"
 8c26fcf5b88957b7883eba6ecc014ac57a3fc40d Peter Grassberger      add missing "ist"
 8c26fcf5b88957b7883eba6ecc014ac57a3fc40d Peter Grassberger      add missing word "durchgesetzt"
+d9285ed7fe6049c87d1a6578c9eca29e0d2943ac Peter Grassberger      fix first capital letter of sentence
