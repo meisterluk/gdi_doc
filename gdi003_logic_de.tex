@@ -293,11 +293,11 @@ Die aussagenlogische Formel von vorhin besitzt folgende äquivalente Klammerung:
 %
 \section{Spezielle Strukturen}
 %
-\subsection{Klauseln und Monome}
+\subsection{Klauseln und Cubes}
 \index{Klausel}
-\index{Monom}
+\index{Cube}
 %
-Unter einer \emph{Klausel} (Disjunktionsterm) versteht man eine Oder-verknüpfte Liste von Literalen. Das konjunktive Äquivalent bezeichnet man als Monom (Konjunktionsterm). Eine $n$-Klausel ist eine Disjunktion aus $n$ Literalen.
+Unter einer \emph{Klausel} (Disjunktionsterm) versteht man eine Oder-verknüpfte Liste von Literalen. Das konjunktive Äquivalent bezeichnet man als Cube (Konjunktionsterm). Eine $n$-Klausel ist eine Disjunktion aus $n$ Literalen.
 
 \index{Hornklausel}
 Hornklauseln finden in der logischen Programmierung Anwendung und seien deshalb hier auch kurz erwähnt: Hornklauseln sind Klauseln, die maximal einen negationsfreien Literal besitzen.
@@ -310,11 +310,11 @@ Hornklauseln finden in der logischen Programmierung Anwendung und seien deshalb 
    \hline \hline
     Klausel     & $A \lor B \lor C \lor D \lor E$ \\
     3-Klausel   & $A \lor B \lor C$ \\
-    Monom       & $A \land B \land C \land D$ \\
+    Cube        & $A \land B \land C \land D$ \\
     Hornklausel & $A \lor \neg B \lor \neg C \lor \neg D$ \\
    \hline
   \end{tabular}
-  \caption{Beispiele für Klauseln und Monome.}
+  \caption{Beispiele für Klauseln und Cubes.}
   \label{fig:clauses_monoms}
  \end{center}
 \end{table}
@@ -431,7 +431,7 @@ Dieser Algorithmus wurde in Tabelle~\ref{tab:general-knf-dnf} auf Basis der Wahr
 \index{Disjunktive Normalform}
 %
 Unter der disjunktiven Normalform versteht man einen aussagenlogischen
-Ausdruck, der aus eine beliebigen Anzahl von Oder-verknüpften Monomen
+Ausdruck, der aus eine beliebigen Anzahl von Oder-verknüpften Cubes
 gebildet wird.
 \[
  \bigvee_i \bigwedge_j x_{ij} \qquad \text{ mit } x_{ij} \in \set{\T, \F} \text{ oder } \neg x_{ij}
