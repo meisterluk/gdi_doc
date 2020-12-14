@@ -1,10 +1,10 @@
 gdi_doc
 =======
 
-:last update:   30th of Nov 2013
+:last update:   14th of Dec 2020
 :author:        Lukas Prokop
 :license:       Public Domain
-:version:       1.0 "moebius"
+:version:       1.0.1 "pr"
 
 Script for the course “Foundations of Computer Science”.
 
@@ -13,6 +13,8 @@ Roadmap
 
 *1.0*
   Accepted by Q&A.  
+*1.0.1*
+  Accepted pull requests regarding famous computer scientists.
 *1.1*
   * Consider future of encoding chapter.
   * Introduce proof of halting problem.
